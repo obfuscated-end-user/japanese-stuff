@@ -1,0 +1,93 @@
+anki card format
+
+English
+
+front:
+<div class="english-word">word</div>
+
+back:
+<div class="english-back">
+(pronunciation)
+
+<b>Noun, Adjective, Verb, Adverb, whatever</b>
+
+1. definition, omit the number when there is only one definition
+
+<div class="source">source</div>
+Sample sentence.
+
+...
+
+<b>Synonyms</b> <!-- if there is/are any -->
+(<i>details</i>): synonym
+...
+
+<b>Usage notes</b> <!-- if there is/are any -->
+...
+
+</div>
+
+Japanese
+
+Hiragana
+<!--
+<span class ="alt-forms">kanji or alternative forms</span>
+
+romaji
+
+definition(s)
+
+<div class="vert">sample sentences</div>
+if there is only one sentence, then just leave it be, otherwise, use this
+-->
+
+Katakana
+<!--
+<span class ="alt-forms">kanji (mostly ateji and some rarely used shit)</span>
+
+hiragana transcription
+
+definition(s)
+
+<div class="vert">sample sentences</div>
+if there is only one sentence, then just leave it be, otherwise, use this
+-->
+
+Kanji
+<!--
+front:
+<ruby>kanji<rt class="ruby">most common reading</rt></ruby><!--kanji for search purposes-->
+<!--
+
+<span class="alt-forms">alternative forms</span>
+
+hiragana transcription
+
+definition(s)
+
+<div class="vert">sample sentences</div>
+if there is only one sentence, then just leave it be, otherwise, use this
+-->
+
+Single Kanji
+<!--
+
+front:
+<ruby>kanji<rt class="ruby">most common reading</rt></ruby><!--kanji for search purposes-->
+<!--
+
+<span class="alt-forms">alternative forms (kyujitai, shit like that)</span>
+
+kun'yomi in hiragana, kun'yomi and okurigana separated by a dot (period, not the one at the middle)
+on'yomi in katakana
+
+definition(s)
+
+<div class="vert">sample sentences</div>
+if there is only one sentence, then just leave it be, otherwise, use this
+
+words with this kanji:
+<ruby>kanji<rt class="ruby">reading in hiragana (or in katakana in rare cases), evenly spread out, not one reading for each kanji, this is to save time</rt></ruby> - definition
+-->
+
+

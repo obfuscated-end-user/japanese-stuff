@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<style>
+			.sample-sentences {
+			  writing-mode: horizontal-tb;
+			}
+			
+			.ruby {
+font-size: 60%;
+color: black;
+vertical-align: sup;
+ruby-align: space-between;
+ruby-merge: separate;
+/*toggle ruby text visibility, remove comment signs vvv*/
+display: fuck;
+}
+		</style>
+	</head>
+	<body>
+		<div class="sample-sentences">
+			this is text<br>これはテキストです。
+		</div>
+		<br>
+		<p><!--伯叔扇潜覗蝮氣曻沒窪學觀相屬拜辭讀竒麥滯軰瞞欺兒單黑關漸箭奬駈驅敺條檢俢穉稺填耻辱燒傳請仰濟泄尽裝旾瘠瘦絕對藝銜聯驗准埦湧涌鎔專惧懼畏祕國聽圍鐵徑說棘緡苛莿痺皰嘔狀體藥處旹閇斬伐截馴實廣吉佳踋斷壓御暜秇戰矩遂竟亊縡賣也崎碕嵜豪覺龜乕虝〆洲朙班牙壞絨毯竝傡踴變權雙捌艸幾詛咒逢遭擁隱匿顕會恰鷰紐畫顏麭參葱頁壱弌壹蔭帋檎躰軆躯乘椉勿嚊嬶穐龝牝嬢蕉嗚噫嗟阿弗哥倫每欧羅圓猟噓馳肆塵俄朱緋芲臘烟垨仗漆縣伍淚泪涕之維惟哭佛珈琲髮姐玖迚惡夛祷這挿照晝寶寳寚阴阥隂險乚冐籤箋籖橇轌譯其發虞當數憎伙犧附融熔衞逞遣懷褱聀軄耺𫟉應侭儘継庶况匣查擔兩爭觔覽捉掴歷輿齦莖齒假證號郶饂飩來戾澁圖乄斜肯尼亜𬇐勸將產覆轉卸枉憇秊壅颱臺餘繫從內滿旺壮邦圀戀綂暫姑須臾龍龒經邀亂揭遲鈍橫濱㐂步𬇐播苅圃畝稻麵麪缻罐鑵胤畠穀收溫糓蓮藕蝦鰕魵墨戶烏克蘭露魯淸哇伊葡萄珠麑区諾靜繩駿里橡杤巴瑞灣瀧瀑爾敦剌捏櫻濠埃陀逸乙坂賓瀉泻吾莨丹淡婆拉柳瓦斯倶蜀黍瓜苺莓薔薇荊粁胡芋鮭獨厵佱灋屎諳黨殿凡已獲摂採莫迦樣凖頰苔縦輛輌續迄恢此邉邊緞氈靣鹹倖刅戧徤魄響响惱冀眞贒勲翅栬椛栴皨讓蕐叅垩鐸旭冲澳灮炗榮𫞂倭閑嶋嶌嶹冣洯冰鮉靁豐喆嚞德斈斅綠翠翆勈伮壘畾只但鄰乹僜囙煅樂奧涉芯忄裡靑蒼碧餠劍劔劒剱釼垕杜牡侽禽夓镸蝿蠅煩嚙咬嚼寢虐巢栖窼鷄毀辝辤爲册擧舉妝僃曆頸頚價-->
+		</p>
+		<span class="definitions">whether or not<br><br>phraseかどうか<br>"whether or not phrase"</span><br><br><span class="sample-sentences">この<ruby>答<rt class="ruby">こた</rt></ruby>えが<ruby>正<rt class="ruby">ただ</rt></ruby>しい<b>かどうか</b>わかりません。<br><ruby>彼<rt class="ruby">かれ</rt></ruby>は<ruby>来<rt class="ruby">く</rt></ruby>る<b>かどうか</b><ruby>分<rt class="ruby">わ</rt></ruby>かりません。<br><ruby>彼女<rt class="ruby">かのじょ</rt></ruby>がもう<ruby>到着<rt class="ruby">とうちゃく</rt></ruby>した<b>かどうか</b><ruby>確<rt class="ruby">たし</rt></ruby>かめてくれませんか。</span>
+	</body>
+	<script>
+		/* var sampleSentences = document.getElementsByClassName('sample-sentences');
+		var randomNumber1 = Math.round(Math.random());
+		var writingDirection = '';
+		if (randomNumber1 == 0) {
+			writingDirection = 'horizontal-tb';
+		} else if (randomNumber1 == 1) {
+			writingDirection = 'vertical-rl';
+		}
+		var writingMode = sampleSentences.style.writingMode;
+		writingMode = writingDirection;
+		*/
+		/*var furiganaVisibility = ['fuck', 'none'], // the attributes to be used as strings
+rubyText = document.getElementsByClassName('ruby')[0], // the ruby class
+randomVariable2 = furiganaVisibility[Math.round(Math.random() * furiganaVisibility.length)]; // determine what index should be used, 0 for block, 1 for none
+rubyText.style.display = randomVariable2; // apply string as an attribute to that element*/
+
+var furiganaVisibility = ['block', 'none'];
+var randomVariable2 = furiganaVisibility[Math.round(Math.random() * furiganaVisibility.length)];
+
+var rubyText = document.getElementsByClassName('ruby');
+for (i =0; i < rubyText.length; i++)    {
+    rubyText[i].style.display = randomVariable2;
+}
+	</script>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>jp sentence to markup</title>
+		<meta charset="utf-8">
+		<meta name="description" content="normal sentence to markup">
+		<meta name="author" content="Jesus Christ">
+		<style>
+			body {
+				text-align: center;
+				font-family: "Noto Sans", "Noto Sans CJK JP", Arial, sans-serif;
+			}
+			.container { /* .k */
+				margin-top: 100px;
+			}
+			.red { /* .l */
+				color: red;
+				font-weight: bold;
+			}
+			p {
+				font-family: Meiryo, Arial, sans-serif;
+				margin: 1% 20%;
+				text-align: justify;
+			}
+			textarea {
+				width: 1000px;
+				height: 100px;
+			}
+			#horizontal { /* #c */
+				font-size: 25px;
+				font-family: 'Yu Gothic', 'Noto Sans CJK JP Regular', Arial, sans-serif;
+				margin: 1% 20%;
+				text-align: justify;
+				margin: 5px; 
+				padding: 8px;
+				border: 1px solid black;
+				overflow-y: auto;
+			}
+			#vertical { /* #d */
+				font-size: 25px;
+				font-family: 'Yu Gothic', 'Noto Sans CJK JP Regular', Arial, sans-serif;
+				margin: 1% 20%;
+				writing-mode: vertical-rl;
+				text-align: justify;
+				margin: 5px; 
+				padding: 8px;
+				border: 1px solid black;
+				overflow-x: auto;
+			}
+			rt {
+				font-size: 60%;
+				color: black;
+				vertical-align: sup;
+				ruby-align: space-between;
+				ruby-merge: separate;
+			}
+			.centered { /* .p */
+				margin: 10px 20px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#yokogaki { /* #n */
+				writing-mode: horizontal-lr;
+			}
+			#tategaki { /* #o */
+				writing-mode: vertical-rl;
+			}
+		</style>
+	</head>
+	<body>
+	<header>
+		USELESS HEADER!!!
+		<b>ビタミン</b><ruby>Ｃ<rt>シー</rt></ruby>
+	</header>
+	<div class="container">
+		<p>
+			Input a string in Japanese and I will replace anything that has:<br>
+			・ (漢字)[かんじ] - &lt;ruby&gt;漢字&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;<br>
+			・ {漢字}[かんじ] - &lt;ruby&gt;&lt;b&gt;漢字&lt;/b&gt;&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;<br>
+			・ `ひらがなカタカナ~ - &lt;b&gt;ひらがなカタカナ&lt;/b&gt;<br>
+			・(line break) - &lt;br&gt;
+		</p>
+		<div class="textbox" lang="ja">
+			<textarea id="rawtext" value=""></textarea>
+		</div>
+		<button type="button" onclick="convertText()">convert</button>&emsp;
+		<button type="button" onclick="clearText()">clear</button>
+		<div class="textbox">
+			<textarea id="result" value="" lang="ja" readonly></textarea>
+		</div>
+		<button type="button" onclick="copy(result.value)">copy</button><br><br>
+		<h3>Preview:</h3><h1 id="yokogaki">横書き</h1>
+		<span class="centered"><div id="horizontal">　</div></span>
+		<span class="centered"><h1 id="tategaki">縦書き</h1><div id="vertical">　</div></span>
+	</div>
+	</body>
+	<script>
+		// use single quotes
+		var rawtext = document.getElementById('rawtext'),	// a
+		result = document.getElementById('result'), 			// b
+		horizontal = document.getElementById('horizontal'),	// c
+		vertical = document.getElementById('vertical'), 		// d
+		temp = 'jeff';	// e
+		
+		function convertText() {	// g
+			temp = rawtext.value;
+
+			// regular
+			temp = temp.replaceAll('(', '<ruby>');
+			temp = temp.replaceAll(')[', '<rt>');
+			temp = temp.replaceAll(']', '</rt></ruby>');
+			//	bold
+			temp = temp.replaceAll('{', '<ruby><b>');
+			temp = temp.replaceAll('}[', '</b><rt>');
+			// kana
+			temp = temp.replaceAll('`', '<b>');
+			temp = temp.replaceAll('~', '</b>');
+			
+			// line breaks
+			temp = temp.replaceAll(/(?:\r|\n|\r\n)/g, '<br>');		
+			
+			// put value of temp to result, horizontal, and vertical
+			result.innerHTML = temp;
+			horizontal.innerHTML = temp;
+			vertical.innerHTML = temp;
+			
+			// prevents errors
+			temp = '';
+		}
+		
+		// halfwidth to fullwidth, in case if there's crap in the string
+		//  source: https://blog.yug1224.com/archives/580e07c974d0d51807ee1295/
+		String.prototype.toFullWidth = function() {
+            return this.replace(/[A-Za-z0-9!?&:;.%$¥@#*^~()\"\\]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
+        };
+		
+		/* use this later
+			// halfwidth to fullwidth conversion	
+			temp = String(temp).toFullWidth();
+		*/
+		
+		// clears text
+		function clearText() {	// h
+			rawtext.value = '';
+			result.innerHTML = '';
+			horizontal.innerHTML = '';
+			vertical.innerHTML = '';
+		}
+		
+		// get the text in result and put it into your clipboard
+		function copy(text) {	// i
+			// create a textbox (does not mean that it appears immediately on screen)
+			var input = document.createElement('textarea'); // f
+			// set the content of that new textbox to that of "text"
+			input.innerHTML = text;
+			// put the textbox named "input" somewhere in the document
+			document.body.appendChild(input);
+			// select all text in "input"
+			input.select();
+			// copy whatever is in "input". i don't know how this knows that it has to grab from that specific textbox but it must be the child index number bullshit again.
+			var result = document.execCommand('copy');	// also b in the compressed code
+			// delete "input"
+			document.body.removeChild(input);
+			// return whatever was in "input"
+			return result;
+		}
+		
+		// clear all forms and variables(?) on page load
+		function init() {	// j
+			rawtext.value = '';
+			result.innerHTML = '';
+			horizontal.innerHTML = '';
+			vertical.innerHTML = '';
+			temp = '';
+		}
+		window.onload = init;
+		
+		let x = 1;
+		function cancer() {
+			console.log("hello world " + x);
+			x += 1;
+		}
+		/*
+			TO-DO:
+			1. all fields blank on load x
+			2. make shortcut keys for converting and copying in order to reduce hand movements
+			3. add a preview at the bottom of result x
+		*/
+		
+		/*
+			input a string in japanese and replace anything that has:
+			- (漢字)[かんじ] - <ruby>漢字<rt class="ruby">かんじ</rt></ruby>
+			- {漢字}[かんじ] - <ruby><b>漢字</b><rt class="ruby">かんじ</rt></ruby>
+			- `ひらがなカタカナ` - <b>ひらがなカタカナ</b> (backticks)
+			and return output as plaintext, not formatted text (preferrably inside a textbox)
+		*/
+	</script>
+</html>
