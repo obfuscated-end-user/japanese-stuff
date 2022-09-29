@@ -33,4 +33,4 @@ count: 1538
 total: 2220
 
 # Inspirational quote
-"Are you fucking stupid? There's no way that you'd be able to learn all of this shit. Stick to programming instead, fucking retard."
+"Are you fucking stupid? There's no way that you can learn all of this shit. Stick to programming instead, fucking retard."
