@@ -1,4 +1,5 @@
 # Japanese resources list
+**TBD**
 ## Resource sites
 [Yookoso](https://www.yookoso.com/)  
 [Guide to Japanese](http://guidetojapanese.org/learn/resources/)  
@@ -38,26 +39,40 @@ https://www.comico.jp/
 [TBS NEWS](https://news.tbs.co.jp)  
 [Japanese Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8)  
 [Gigazine](https://gigazine.net)  
-[GIZMODO](https://www.gizmodo.jp/)  
-[Lifehacker Japan](https://www.lifehacker.jp/) - "normie site"  
-http://hamusoku.com - 2chan type shit - 2ちゃんっぽいスレ集
-https://www.newsweekjapan.jp/column/ - hard news
-https://www.1101.com/home.html - some guy's blog
-http://anicobin.ldblog.jp/ - otaku blog shit - アニメオタクについてのクソブログ
-https://philosophyx.net/ - philosophy in nipponese - 哲学、日本語で
-https://yuchrszk.blogspot.com/ - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。
-https://japanese.engadget.com/ - blog about gadgets
-https://okurukotoba.tokyo/ - blog about random shit
-https://quizknock.com/ - blog
-https://www.nippon.com/ja/ - news, it seems
-https://www.huffingtonpost.jp/ - news
-https://matcha-jp.com/jp/ - matcha, but not easy anymore
+[GIZMODO](https://www.gizmodo.jp)  
+[Lifehacker Japan](https://www.lifehacker.jp) - "normie site"  
+[ハムスター速報](http://hamusoku.com)  
+[Newsweek Japan](https://www.newsweekjapan.jp/column)
+[哲学入門](https://philosophyx.net/)  
+[nippon.com](https://www.nippon.com/ja/)  
+[HuffPost (Huffington Post) Japan](https://www.huffingtonpost.jp/)  
+[MATCHA](https://matcha-jp.com/jp/)  
 https://thebridge.jp/ - tech
 https://gendai.ismedia.jp/ - news, and some manga
 https://diamond.jp/ - contains articles related to shit you don't like (business, economics, basically anything about money and business suits)
 https://www.1000moji.com/ - essays no more than 1000 characters long
 https://gendai.ismedia.jp/
 https://www.madameriri.com/
+https://www.watch.impress.co.jp/
+https://togetter.com/ - collects tweets (?)
+https://animelon.com/ - ANIME WITH JP SUBS
+https://kakuyomu.jp/ - read stories or share yours (which you obviously can't do because you're dumb as fuck, quit hoping faggot)
+https://syosetu.com/ - somewhat the same thing as above
+https://ja.uncyclopedia.info - detailed articles about japan written by trained journalists. recommended for advanced learners.
+https://yomou.syosetu.com/ - novels and writing shit
+https://withnews.jp/ - news
+https://r25.jp/ - random articles (looks like some リア充 shit)
+https://neutmagazine.com/ - news(?), site looks like shit and is slow as shit
+https://official.ameba.jp/
+https://www.itmedia.co.jp/news/subtop/technology/index.html
+
+blogs
+https://www.1101.com/home.html - some guy's blog
+http://anicobin.ldblog.jp/ - otaku blog shit - アニメオタクについてのクソブログ
+https://yuchrszk.blogspot.com/ - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。
+https://japanese.engadget.com/ - blog about gadgets
+https://okurukotoba.tokyo/ - blog about random shit
+https://quizknock.com/ - blog
 https://www.bushikaku.net/bustrip/ - travel blog
 https://tabicoffret.com/ - travel blog
 https://coneru-web.com/ - blog about korean things in japanese
@@ -70,19 +85,7 @@ http://haikuimage.blog.fc2.com/ - a cup of haiku
 http://kabochan.blog.jp/ - doge's owner's blog
 https://kabosu112.exblog.jp - doge's owner's blog (old)
 http://kotobahiroi.seesaa.net/ - blog
-https://www.watch.impress.co.jp/
-https://togetter.com/ - collects tweets (?)
-https://animelon.com/ - ANIME WITH JP SUBS
-https://kakuyomu.jp/ - read stories or share yours (which you obviously can't do because you're dumb as fuck, quit hoping faggot)
-https://syosetu.com/ - somewhat the same thing as above
 https://mischabt.hatenablog.com/ - blog
-https://ja.uncyclopedia.info - detailed articles about japan written by trained journalists. recommended for advanced learners.
-https://yomou.syosetu.com/ - novels and writing shit
-https://withnews.jp/ - news
-https://r25.jp/ - random articles (looks like some リア充 shit)
-https://neutmagazine.com/ - news(?), site looks like shit and is slow as shit
-https://official.ameba.jp/
-https://www.itmedia.co.jp/news/subtop/technology/index.html
 
 dictionaries
 https://dictionary.goo.ne.jp/ - jp to jp
