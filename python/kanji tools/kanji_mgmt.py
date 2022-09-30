@@ -189,4 +189,4 @@ with (
 
     print("Ran successfully.")
     
-faggot = input('Press any button to exit...\n')
+exit = input('Press any button to exit...\n')
