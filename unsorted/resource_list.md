@@ -43,28 +43,27 @@ https://www.comico.jp/
 [Lifehacker Japan](https://www.lifehacker.jp) - "normie site"  
 [ハムスター速報](http://hamusoku.com)  
 [Newsweek Japan](https://www.newsweekjapan.jp/column)
-[哲学入門](https://philosophyx.net/)  
-[nippon.com](https://www.nippon.com/ja/)  
-[HuffPost (Huffington Post) Japan](https://www.huffingtonpost.jp/)  
-[MATCHA](https://matcha-jp.com/jp/)  
-https://thebridge.jp/ - tech
-https://gendai.ismedia.jp/ - news, and some manga
-https://diamond.jp/ - contains articles related to shit you don't like (business, economics, basically anything about money and business suits)
-https://www.1000moji.com/ - essays no more than 1000 characters long
-https://gendai.ismedia.jp/
-https://www.madameriri.com/
-https://www.watch.impress.co.jp/
-https://togetter.com/ - collects tweets (?)
-https://animelon.com/ - ANIME WITH JP SUBS
-https://kakuyomu.jp/ - read stories or share yours (which you obviously can't do because you're dumb as fuck, quit hoping faggot)
-https://syosetu.com/ - somewhat the same thing as above
-https://ja.uncyclopedia.info - detailed articles about japan written by trained journalists. recommended for advanced learners.
-https://yomou.syosetu.com/ - novels and writing shit
-https://withnews.jp/ - news
-https://r25.jp/ - random articles (looks like some リア充 shit)
-https://neutmagazine.com/ - news(?), site looks like shit and is slow as shit
-https://official.ameba.jp/
-https://www.itmedia.co.jp/news/subtop/technology/index.html
+[哲学入門](https://philosophyx.net)  
+[nippon.com](https://www.nippon.com/ja)  
+[HuffPost (Huffington Post) Japan](https://www.huffingtonpost.jp)  
+[MATCHA](https://matcha-jp.com/jp)  
+[BRIDGE](https://thebridge.jp) - tech news
+[現代ビジネス](https://gendai.ismedia.jp) - business things
+[DIAMOND online](https://diamond.jp) - news
+[1000文字小説](https://www.1000moji.com) - short stories in 1000 characters
+[MADAME RIRI](https://www.madameriri.com) - news? what the fuck is this
+[ImpressWatch](https://www.watch.impress.co.jp)
+[Togetter](https://togetter.com) - collects tweets
+[Animelon](https://animelon.com) - watch anime with japanese subs
+[カクヨム](https://kakuyomu.jp) - stories. you can also read them vertically.
+[小説家になろう](https://syosetu.com) - somewhat the same thing as above
+[アンサイクロペディア](https://ja.uncyclopedia.info) - detailed articles about japan written by professionally trained journalists. highly recommended for advanced learners.
+[小説を読もう！](https://yomou.syosetu.com) - read (light) novels
+[withnews](https://withnews.jp)
+[新R25](https://r25.jp) - shit
+[NEUT](https://neutmagazine.com) - news. site looks like shit though.
+[Ameba](https://official.ameba.jp)
+[ITmedia](https://www.itmedia.co.jp) - tech
 
 blogs
 https://www.1101.com/home.html - some guy's blog
