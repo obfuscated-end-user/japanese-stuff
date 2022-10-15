@@ -15,9 +15,16 @@
             height: 100px;
             resize: none;
         }
+
         /* The two screens */
         /* Left */
-        .anki {
+        #modes {
+            border: solid 1px black;
+            text-align: left;
+            margin: auto 10%;
+            padding: 1.5%;
+        }
+        #anki {
             height: 100%;
             width: 50%;
             position: fixed;
@@ -28,8 +35,17 @@
             left: 0;
             overflow-y: auto;
         }
+        #alt-forms-textarea {
+            font-family: 'UDEV Gothic', Consolas, 'Courier New', Courier, monospace;
+        }
+        #preview {
+            border: solid 1px black;
+            margin: auto 10%;
+            padding: 2.5%;
+            text-align: left;
+        }
         /* Right */
-        .external {
+        #external {
             height: 100%;
             width: 50%;
             position: fixed;
@@ -42,61 +58,222 @@
         }
         /* There's only one iframe anyway, no need to use multiple ids. */
         iframe {
-            height: 100%;
-            width: 100%;
+            height: 90%;
+            width: 90%;
         }
     </style>
     <body>
-        <div class="anki">
-            <!--alt-forms, readings, definitions, haskanji, sample-sentences-->
-            <span class="centered">
-                <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name">
-                Alternative forms<br>
-                <textarea id="alt-forms-textarea" value=""></textarea><br>
+        <div id="anki">
+            <div id="modes">
+                <input type="radio" id="hiragana-only-radio" name="conversion-mode">Hiragana only<br>
+                <input type="radio" id="regular-word-radio" name="conversion-mode">Regular word<br>
+                <input type="radio" id="kanji-entry-radio" name="conversion-mode">Kanji entry<br>
+                <button type="button" onclick="setCheckboxes()">Set checkboxes</button>
+            </div>
+            <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name">
+            Alternative forms<br>
+            <textarea id="alt-forms-textarea" value=""></textarea><br>
 
-                <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name">
-                Readings<br>
-                <textarea id="readings-textarea" value=""></textarea><br>
+            <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name">
+            Readings<br>
+            <textarea id="readings-textarea" value=""></textarea><br>
 
-                <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name">
-                Definitions<br>
-                <textarea id="definitions-textarea" value=""></textarea><br>
+            <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name">
+            Definitions<br>
+            <textarea id="definitions-textarea" value=""></textarea><br>
 
-                <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name">
-                Words containing this kanji<br>
-                <textarea id="haskanji-textarea" value=""></textarea><br>
+            <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name">
+            Words containing this kanji<br>
+            <textarea id="haskanji-textarea" value=""></textarea><br>
 
-                <input type="checkbox" id="sample-sentences-checkbox" name="sample-sentences-checkbox-name">
-                Example usages<br>
-                <textarea id="sample-sentences-textarea" value=""></textarea><br>
+            <input type="checkbox" id="sample-sentences-checkbox" name="sample-sentences-checkbox-name">
+            Example usages<br>
+            <textarea id="sample-sentences-textarea" value=""></textarea><br>
 
-                <button type="button">convert</button>&emsp;
-                <button type="button">clear</button><br>
+            <button type="button" onclick="convertText()">convert</button>&emsp;
+            <button type="button" onclick="clearAll(0)">clear</button>&emsp;
+            <button type="button" onclick="clearAll(1)">reset</button><br><br>
 
-                HTML<br>
-                <textarea id="anki-html" value="" lang="ja" readonly></textarea><br>
+            HTML<br>
+            <textarea id="anki-html" value="" lang="ja" readonly></textarea><br>
 
-                <button type="button">copy</button>
-                <div class="preview">
-                    
-                </div>
-            </span>
-            
+            <button type="button" onclick="copy(ankiHTML.value)">copy</button><br><br>
+            Preview
+            <div id="preview">
+                this should not appear there
+            </div><br><br><br><br><br><br>
         </div>
-        <div class="external">
-            <span class="centered"><iframe src="https://en.wiktionary.org/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E#Japanese"></iframe></span>
+        <div id="external">
+            Word to search: <input type="text" id="search">&nbsp;<button type="button">Search</button><br><br>
+            <input type="radio" id="wiktionary-radio" name="search-mode">Wiktionary&nbsp;
+            <input type="radio" id="jisho-definitions-radio" name="search-mode">jisho.org (definitions)&nbsp;<input type="radio" id="jisho-kanji-radio" name="search-mode">jisho.org (kanji)&nbsp;<input type="radio" id="jisho-sentences-radio" name="search-mode">jisho.org (example sentences)&nbsp;
+            <input type="radio" id="massif-radio" name="search-mode">Massif (example sentences)<br>
+            <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just fucks up the quotations section in some pages. -->
+            <iframe id="external-content" sandbox="allow-same-origin" src="https://jisho.org/search/term"></iframe>
         </div>
     </body>
     <script>
+        // TANGINA INCONSISTENT QUOTATION MARK USE BOBO DOUBLE QUOTES DITO SINGLE QUOTES DOON BOBO BOBO BOBO BOBO BOBO PUTANG INA BOBO KA TALAGA
+        // LEFT SIDE
+        // Textboxes
+        let altFormsTextArea = document.getElementById("alt-forms-textarea");
+        let readingsTextArea = document.getElementById("readings-textarea");
+        let definitionsTextArea = document.getElementById("definitions-textarea");
+        let hasKanjiTextArea = document.getElementById("haskanji-textarea");
+        let sampleSentencesTextArea = document.getElementById("sample-sentences-textarea");
+
+        // Read-only HTML code generated from the fields above.
+        let ankiHTML = document.getElementById("anki-html");
+
+        // Radio buttons
+        let conversionMode = document.getElementsByName("conversion-mode");
+        let hiraganaOnly = document.getElementById("hiragana-only-radio");
+        let regularWord = document.getElementById("regular-word-radio");
+        let kanjiEntry = document.getElementById("kanji-entry-radio");
+
+        // Checkboxes
+        let altFormsCheckbox = document.getElementById("alt-forms-checkbox");
+        let readingsCheckbox = document.getElementById("readings-checkbox");
+        let definitionsCheckbox = document.getElementById("definitions-checkbox");
+        let hasKanjiCheckbox = document.getElementById("haskanji-checkbox");
+        let sampleSentencesCheckbox = document.getElementById("sample-sentences-checkbox");
+        
+        // Preview box at the bottom of the page/.
+        let preview = document.getElementById("preview");
+
+        function setCheckboxes() {
+            if (hiraganaOnly.checked) {
+                altFormsCheckbox.checked = true;
+                readingsCheckbox.checked = false;
+                definitionsCheckbox.checked = true;
+                hasKanjiCheckbox.checked = false;
+                sampleSentencesCheckbox.checked = true;
+            } else if (regularWord.checked) {
+                altFormsCheckbox.checked = true;
+                readingsCheckbox.checked = true;
+                definitionsCheckbox.checked = true;
+                hasKanjiCheckbox.checked = false;
+                sampleSentencesCheckbox.checked = true;
+            } else if (kanjiEntry.checked) {
+                altFormsCheckbox.checked = true;
+                readingsCheckbox.checked = true;
+                definitionsCheckbox.checked = true;
+                hasKanjiCheckbox.checked = true;
+                sampleSentencesCheckbox.checked = true;
+            }
+        }
+
+        // Remember, if it's a div, then innerHTML. If it's a textbox, then value.
+        // Reformats the text to convert some shorthand expressions. I know, stupid fucking function name, should've been the one at the bottom, but whatever. Mainly used for kanji in text.
+        function reformat(text) {
+            // regular
+			text = text.replaceAll('(', '<ruby>');
+			text = text.replaceAll(')[', '<rt>');
+			text = text.replaceAll(']', '</rt></ruby>');
+			// bold
+			text = text.replaceAll('{', '<ruby><b>');
+			text = text.replaceAll('}[', '</b><rt>');
+			// kana
+			text = text.replaceAll('`', '<b>');
+			text = text.replaceAll('~', '</b>');
+            // italics
+            text = text.replaceAll("*^", "<em>");
+            text = text.replaceAll("^*", "</em>");
+			// line breaks
+			text = text.replaceAll(/(?:\r|\n|\r\n)/g, '<br>');
+            
+            return text;
+            // proably make the escape versions of these? for example, typing "\(" (not including quotes) in the text area would convert into "(".
+        }
+
+        // Add all of this into one big string, and put it in the HTML box and the preview box.
+        function convertText() {
+            let final = "";
+
+            // lol your code is shit and hard to read
+            if (altFormsCheckbox.checked)
+                final += "<span class=\"alt-forms\">" + reformat(altFormsTextArea.value) + "</span>";
+            if (readingsCheckbox.checked) {
+                if (altFormsCheckbox.checked)
+                    final += "<br><br>";
+                final += "<span class=\"readings\">" + reformat(readingsTextArea.value) + "</span>";
+            } if (definitionsCheckbox.checked) {
+                if (readingsCheckbox.checked || altFormsCheckbox.checked)
+                    final += "<br><br>";
+                final += "<span class=\"definitions\">" + reformat(definitionsTextArea.value) + "</span>";
+            } if (hasKanjiCheckbox.checked) {
+                if (definitionsCheckbox.checked)
+                    final += "<br><br>";
+                final += "<span class=\"haskanji\">words with this kanji:<br>" + reformat(hasKanjiTextArea.value) + "</span>";
+            } if (sampleSentencesCheckbox.checked) {
+                if (definitionsCheckbox.checked || hasKanjiCheckbox.checked)
+                    final += "<br><br>";
+                final += "<span class=\"sample-sentences\">" + reformat(sampleSentencesTextArea.value) + "</span>";
+            }
+
+            ankiHTML.value = final;
+            preview.innerHTML = final;
+        }
+
+        function clearAll(mode) {
+            // soft reset, only clears the textboxes
+            if (mode == 0) {
+                altFormsTextArea.value = "";
+                readingsTextArea.value = "";
+                definitionsTextArea.value = "";
+                hasKanjiTextArea.value = "";
+                sampleSentencesTextArea.value = "";
+
+                ankiHTML.value = "";
+                preview.innerHTML = "";
+            // hard reset, clear everything
+            } else if (mode == 1) {
+                altFormsTextArea.value = "";
+                readingsTextArea.value = "";
+                definitionsTextArea.value = "";
+                hasKanjiTextArea.value = "";
+                sampleSentencesTextArea.value = "";
+
+                ankiHTML.value = "";
+                preview.innerHTML = "";
+
+                for (let radioButton = 0; radioButton < conversionMode.length; ++radioButton)
+                    conversionMode[radioButton].checked = false;
+
+                altFormsCheckbox.checked = false;
+                readingsCheckbox.checked = false;
+                definitionsCheckbox.checked = false;
+                hasKanjiCheckbox.checked = false;
+                sampleSentencesCheckbox.checked = false;
+            }
+        }
+        // clear everything on page load
+        window.onload = clearAll(1);
+
+        // Copies text and puts it in your clipboard. It just fucking works.
+        function copy(text) {
+			var input = document.createElement("textarea");
+			input.innerHTML = text;
+			document.body.appendChild(input);
+			input.select();
+			var result = document.execCommand("copy");
+			document.body.removeChild(input);
+
+			return result;
+		}
+
+        // RIGHT SIDE
+        // reload iframe
+        document.getElementById("external-content").src = document.getElementById("external-content").src
 
     </script>
 </html>
 
 <!--
     started doing this on 2022/10/15. you think you're hot shit because you wrote all of this crap by hand? fuck outta here and touch some grass you asocial fat fuck!
+    github does not support word wrap. sorry that you had to scroll all the way to the left to read some text. open this in a text editor with word wrap and see it do its magic.
 
     WHAT TO DO:
-
     the screen on the left contains the convert to anki thing, with checkboxes within each field (for example, one for the readings, another one for the definition, etc.). on the bottom of the screen, there should be a convert button that converts the following data from the fields above to the appropriate html code for anki conversion later. apply the same thing you did from the txt2markup files earlier like the copy to clipboard textbox etc and the conversion thing. (TBD)
 
     the screen on the right contains a search bar that asks for some japanese word and some radio buttons indicating what source to use when searching a word that is based on whatever is on the textbox. disable the search button if the search box is empty. the sources that you should use are wiktionary and jisho for definitions, and some sites like massif for example sentences.
@@ -115,15 +292,28 @@
 
         resize textarea:
         https://stackoverflow.com/questions/3896537/should-i-size-a-textarea-with-css-width-height-or-html-cols-rows-attributes
+    
+    radio buttons:
+        https://www.w3schools.com/tags/att_input_type_radio.asp
+        clear all buttons:
+            https://stackoverflow.com/questions/2554116/how-to-clear-radio-button-in-javascript
 
     checkboxes:
         https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/checkbox
         https://www.geeksforgeeks.org/html-dom-input-checkbox-name-property/
+        check checkbox state:
+            https://stackoverflow.com/questions/9887360/how-can-i-check-if-a-checkbox-is-checked
+        trigger checkbox state:
+            https://stackoverflow.com/questions/8206565/check-uncheck-checkbox-with-javascript
     
     iframes:
         https://stackoverflow.com/questions/28516561/how-can-i-load-a-webpage-into-a-div-element
+    don't load cookies
+        https://www.w3schools.com/tags/att_iframe_sandbox.asp
 
     link formats:
+    replace "term" with your word of choice
     wiktionary: https://en.wiktionary.org/wiki/term#Japanese
     jisho: https://jisho.org/search/term - i used search instead of the word page itself because of alternative forms
+    massif: https://massif.la/ja/search?q=term
 -->
