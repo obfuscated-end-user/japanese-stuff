@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Tool.</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Tool for Japanese things">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+        body {
+            text-align: center;
+        }
+        textarea {
+            width: 500px;
+            height: 100px;
+            resize: none;
+        }
+        /* The two screens */
+        /* Left */
+        .anki {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+            left: 0;
+            overflow-y: auto;
+        }
+        /* Right */
+        .external {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+            right: 0;
+            overflow-y: auto;
+        }
+        /* There's only one iframe anyway, no need to use multiple ids. */
+        iframe {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <body>
+        <div class="anki">
+            <!--alt-forms, readings, definitions, haskanji, sample-sentences-->
+            <span class="centered">
+                <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name">
+                Alternative forms<br>
+                <textarea id="alt-forms-textarea" value=""></textarea><br>
+
+                <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name">
+                Readings<br>
+                <textarea id="readings-textarea" value=""></textarea><br>
+
+                <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name">
+                Definitions<br>
+                <textarea id="definitions-textarea" value=""></textarea><br>
+
+                <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name">
+                Words containing this kanji<br>
+                <textarea id="haskanji-textarea" value=""></textarea><br>
+
+                <input type="checkbox" id="sample-sentences-checkbox" name="sample-sentences-checkbox-name">
+                Example usages<br>
+                <textarea id="sample-sentences-textarea" value=""></textarea><br>
+
+                <button type="button">convert</button>&emsp;
+                <button type="button">clear</button><br>
+
+                HTML<br>
+                <textarea id="anki-html" value="" lang="ja" readonly></textarea><br>
+
+                <button type="button">copy</button>
+                <div class="preview">
+                    
+                </div>
+            </span>
+            
+        </div>
+        <div class="external">
+            <span class="centered"><iframe src="https://en.wiktionary.org/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E#Japanese"></iframe></span>
+        </div>
+    </body>
+    <script>
+
+    </script>
+</html>
+
+<!--
+    started doing this on 2022/10/15. you think you're hot shit because you wrote all of this crap by hand? fuck outta here and touch some grass you asocial fat fuck!
+
+    WHAT TO DO:
+
+    the screen on the left contains the convert to anki thing, with checkboxes within each field (for example, one for the readings, another one for the definition, etc.). on the bottom of the screen, there should be a convert button that converts the following data from the fields above to the appropriate html code for anki conversion later. apply the same thing you did from the txt2markup files earlier like the copy to clipboard textbox etc and the conversion thing. (TBD)
+
+    the screen on the right contains a search bar that asks for some japanese word and some radio buttons indicating what source to use when searching a word that is based on whatever is on the textbox. disable the search button if the search box is empty. the sources that you should use are wiktionary and jisho for definitions, and some sites like massif for example sentences.
+
+    it's okay to swear in this document because nobody will take this shit seriously anyway. i write shit code, i expect a lot of bugs. simple. swearing relieves me and makes my frustration go away. just don't swear too much, or else you're gonna sound like you're fucking 7 and play cod idk fuk off bicht
+
+    RESOURCES:
+    remember, no retarded jquery shit
+    splitting screen:
+        https://www.w3schools.com/howto/howto_css_split_screen.asp
+        https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
+
+    textarea or "text box"
+        disable textarea resizing:
+        https://stackoverflow.com/questions/5235142/how-do-i-disable-the-resizable-property-of-a-textarea
+
+        resize textarea:
+        https://stackoverflow.com/questions/3896537/should-i-size-a-textarea-with-css-width-height-or-html-cols-rows-attributes
+
+    checkboxes:
+        https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/checkbox
+        https://www.geeksforgeeks.org/html-dom-input-checkbox-name-property/
+    
+    iframes:
+        https://stackoverflow.com/questions/28516561/how-can-i-load-a-webpage-into-a-div-element
+
+    link formats:
+    wiktionary: https://en.wiktionary.org/wiki/term#Japanese
+    jisho: https://jisho.org/search/term - i used search instead of the word page itself because of alternative forms
+-->
