@@ -110,12 +110,13 @@
         </div>
         <div id="external">
             Word to search: <input type="text" id="search-bar">&nbsp;<button type="button" onclick="searchWord()">Search</button><br><br>
-            <input type="radio" id="wiktionary-radio" name="search-mode">Wiktionary<br>
-            <input type="radio" id="jisho-definitions-radio" name="search-mode">jisho.org (definitions)<br>
-            <input type="radio" id="jisho-kanji-radio" name="search-mode">jisho.org (kanji)<br>
-            <input type="radio" id="jisho-names-radio" name="search-mode">jisho.org (names)<br>
-            <input type="radio" id="jisho-sentences-radio" name="search-mode">jisho.org (example sentences)<br>
-            <input type="radio" id="massif-radio" name="search-mode">Massif (example sentences)<br>
+            <input type="radio" id="wiktionary-radio" name="search-mode">Wiktionary
+            <input type="radio" id="jisho-definitions-radio" name="search-mode">jisho.org (definitions)
+            <input type="radio" id="jisho-kanji-radio" name="search-mode">jisho.org (kanji)
+            <input type="radio" id="jisho-names-radio" name="search-mode">jisho.org (names)
+            <input type="radio" id="jisho-sentences-radio" name="search-mode">jisho.org (example sentences)
+            <input type="radio" id="massif-radio" name="search-mode">Massif (example sentences)
+            <input type="radio" id="yourei-radio" name="search-mode">用例 (example sentences)
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just fucks up the quotations section in some pages. -->
             <iframe id="external-content" sandbox="allow-same-origin"  src="https://jisho.org/search/term"></iframe>
         </div>
@@ -247,6 +248,7 @@
             let jishoNamesRadio = document.getElementById("jisho-names-radio");
             let jishoSentencesRadio = document.getElementById("jisho-sentences-radio");
             let massifRadio = document.getElementById("massif-radio");
+            let youreiRadio = document.getElementById("yourei-radio");
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             function searchWord() {
@@ -262,6 +264,8 @@
                     iframe.src = "https://jisho.org/search/" + searchBar.value + " %23sentences";
                 if (massifRadio.checked)
                     iframe.src = "https://massif.la/ja/search?q=" + searchBar.value;
+                if (youreiRadio.checked)
+                    iframe.src = "https://yourei.jp/" + searchBar.value;
             }
 
             // BOTH SIDES
@@ -312,6 +316,11 @@
             }
             // Clear everything on page load.
             window.onload = clearAll(1);
+
+            function darkMode() {
+                // TBD
+                let screen = "dark";
+            }
         </script>
     </body>
 </html>
@@ -373,5 +382,5 @@
             - kanji https://jisho.org/search/term %23kanji
             - sentences: https://jisho.org/search/term %23sentences
         massif: https://massif.la/ja/search?q=term
-        yourei (ADD THIS): https://yourei.jp/term
+        yourei (ADD THIS ;; ADDED 2022/10/30): https://yourei.jp/term
 -->
