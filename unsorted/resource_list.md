@@ -65,22 +65,22 @@ https://www.comico.jp/
 [Ameba](https://official.ameba.jp)
 [ITmedia](https://www.itmedia.co.jp) - tech
 
-blogs
-https://www.1101.com/home.html - some guy's blog
-http://anicobin.ldblog.jp/ - otaku blog shit - アニメオタクについてのクソブログ
-https://yuchrszk.blogspot.com/ - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。
-https://japanese.engadget.com/ - blog about gadgets
-https://okurukotoba.tokyo/ - blog about random shit
-https://quizknock.com/ - blog
-https://www.bushikaku.net/bustrip/ - travel blog
-https://tabicoffret.com/ - travel blog
-https://coneru-web.com/ - blog about korean things in japanese
-https://mainichi-kotoba.jp/ - blog about japanese words in japanese - 日本語で日本語単語のブログ
-https://blog.miraikan.jst.go.jp/ - science blog (kinda easy to read for me)
-http://zt112764.xsrv.jp/wan-nyans-univers.com/ - cats and the universe
-http://hiroichiblg.seesaa.net/ - blog, looks like something from someone who just started html
-http://hikobae0869.blog.fc2.com/ - blog about i don't know
-http://haikuimage.blog.fc2.com/ - a cup of haiku
+### blogs (fix these later, some don't even look like blogs)
+[ほぼ日刊イトイ新聞](https://www.1101.com/home.html)
+[あにこ便](http://anicobin.ldblog.jp) - otaku blog shit - アニメオタクについてのクソブログ
+[Paleolithic Man](https://yuchrszk.blogspot.com) - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。
+[engadget](https://japanese.engadget.com) - blog about gadgets (doesn't work? redirects to english site)
+[贈る言葉情報館](https://okurukotoba.tokyo) - blog about random shit
+[QuizKnock](https://web.quizknock.com)
+[Bushikaku](https://www.bushikaku.net) - travel blog (?)
+[たびこふれ](https://tabicoffret.com) - travel blog
+[コネルWEB](https://coneru-web.com) - blog about korean things in japanese
+[毎日ことば](https://mainichi-kotoba.jp) - blog about japanese words in japanese - 日本語で日本語単語のブログ
+[科学コミュニケーターブログ](https://blog.miraikan.jst.go.jp) - science blog
+[★ applestar 宇宙と猫の部屋 ★](http://zt112764.xsrv.jp/wan-nyans-univers.com) - cats and the universe
+[海洋学研究者の日常](http://hiroichiblg.seesaa.net) - blog, looks like something from someone who just started html
+[ひこばえ](http://hikobae0869.blog.fc2.com) - blog about i don't know
+[A Cup of 俳句](http://haikuimage.blog.fc2.com/) - haiku
 http://kabochan.blog.jp/ - doge's owner's blog
 https://kabosu112.exblog.jp - doge's owner's blog (old)
 http://kotobahiroi.seesaa.net/ - blog
