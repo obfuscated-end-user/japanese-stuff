@@ -42,81 +42,81 @@ https://www.comico.jp/
 [GIZMODO](https://www.gizmodo.jp)  
 [Lifehacker Japan](https://www.lifehacker.jp) - "normie site"  
 [ハムスター速報](http://hamusoku.com)  
-[Newsweek Japan](https://www.newsweekjapan.jp/column)
+[Newsweek Japan](https://www.newsweekjapan.jp/column)  
 [哲学入門](https://philosophyx.net)  
 [nippon.com](https://www.nippon.com/ja)  
 [HuffPost (Huffington Post) Japan](https://www.huffingtonpost.jp)  
 [MATCHA](https://matcha-jp.com/jp)  
-[BRIDGE](https://thebridge.jp) - tech news
-[現代ビジネス](https://gendai.ismedia.jp) - business things
-[DIAMOND online](https://diamond.jp) - news
-[1000文字小説](https://www.1000moji.com) - short stories in 1000 characters
-[MADAME RIRI](https://www.madameriri.com) - news? what the fuck is this
-[ImpressWatch](https://www.watch.impress.co.jp)
-[Togetter](https://togetter.com) - collects tweets
-[Animelon](https://animelon.com) - watch anime with japanese subs
-[カクヨム](https://kakuyomu.jp) - stories. you can also read them vertically.
-[小説家になろう](https://syosetu.com) - somewhat the same thing as above
-[アンサイクロペディア](https://ja.uncyclopedia.info) - detailed articles about japan written by professionally trained journalists. highly recommended for advanced learners.
-[小説を読もう！](https://yomou.syosetu.com) - read (light) novels
-[withnews](https://withnews.jp)
-[新R25](https://r25.jp) - shit
-[NEUT](https://neutmagazine.com) - news. site looks like shit though.
-[Ameba](https://official.ameba.jp)
-[ITmedia](https://www.itmedia.co.jp) - tech
+[BRIDGE](https://thebridge.jp) - tech news  
+[現代ビジネス](https://gendai.ismedia.jp) - business things  
+[DIAMOND online](https://diamond.jp) - news  
+[1000文字小説](https://www.1000moji.com) - short stories in 1000 characters  
+[MADAME RIRI](https://www.madameriri.com) - news? what the fuck is this  
+[ImpressWatch](https://www.watch.impress.co.jp)  
+[Togetter](https://togetter.com) - collects tweets  
+[Animelon](https://animelon.com) - watch anime with japanese subs  
+[カクヨム](https://kakuyomu.jp) - stories. you can also read them vertically.  
+[小説家になろう](https://syosetu.com) - somewhat the same thing as above  
+[アンサイクロペディア](https://ja.uncyclopedia.info) - detailed articles about japan written by professionally trained journalists. highly recommended for advanced learners.  
+[小説を読もう！](https://yomou.syosetu.com) - read (light) novels  
+[withnews](https://withnews.jp)  
+[新R25](https://r25.jp) - shit  
+[NEUT](https://neutmagazine.com) - news. site looks like shit though.  
+[Ameba](https://official.ameba.jp)  
+[ITmedia](https://www.itmedia.co.jp) - tech  
 
 ### blogs (fix these later, some don't even look like blogs)
-[ほぼ日刊イトイ新聞](https://www.1101.com/home.html)
-[あにこ便](http://anicobin.ldblog.jp) - otaku blog shit - アニメオタクについてのクソブログ
-[Paleolithic Man](https://yuchrszk.blogspot.com) - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。
-[engadget](https://japanese.engadget.com) - blog about gadgets (doesn't work? redirects to english site)
-[贈る言葉情報館](https://okurukotoba.tokyo) - blog about random shit
-[QuizKnock](https://web.quizknock.com)
-[Bushikaku](https://www.bushikaku.net) - travel blog (?)
-[たびこふれ](https://tabicoffret.com) - travel blog
-[コネルWEB](https://coneru-web.com) - blog about korean things in japanese
-[毎日ことば](https://mainichi-kotoba.jp) - blog about japanese words in japanese - 日本語で日本語単語のブログ
-[科学コミュニケーターブログ](https://blog.miraikan.jst.go.jp) - science blog
-[★ applestar 宇宙と猫の部屋 ★](http://zt112764.xsrv.jp/wan-nyans-univers.com) - cats and the universe
-[海洋学研究者の日常](http://hiroichiblg.seesaa.net) - blog, looks like something from someone who just started html
-[ひこばえ](http://hikobae0869.blog.fc2.com) - blog about i don't know
-[A Cup of 俳句](http://haikuimage.blog.fc2.com/) - haiku
-http://kabochan.blog.jp/ - doge's owner's blog
-https://kabosu112.exblog.jp - doge's owner's blog (old)
-http://kotobahiroi.seesaa.net/ - blog
-https://mischabt.hatenablog.com/ - blog
+[ほぼ日刊イトイ新聞](https://www.1101.com/home.html)  
+[あにこ便](http://anicobin.ldblog.jp) - otaku blog shit - アニメオタクについてのクソブログ  
+[Paleolithic Man](https://yuchrszk.blogspot.com) - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。  
+[engadget](https://japanese.engadget.com) - blog about gadgets (doesn't work? redirects to english site)  
+[贈る言葉情報館](https://okurukotoba.tokyo) - blog about random shit  
+[QuizKnock](https://web.quizknock.com)  
+[Bushikaku](https://www.bushikaku.net) - travel blog (?)  
+[たびこふれ](https://tabicoffret.com) - travel blog  
+[コネルWEB](https://coneru-web.com) - blog about korean things in japanese  
+[毎日ことば](https://mainichi-kotoba.jp) - blog about japanese words in japanese - 日本語で日本語単語のブログ  
+[科学コミュニケーターブログ](https://blog.miraikan.jst.go.jp) - science blog  
+[★ applestar 宇宙と猫の部屋 ★](http://zt112764.xsrv.jp/wan-nyans-univers.com) - cats and the universe  
+[海洋学研究者の日常](http://hiroichiblg.seesaa.net) - blog, looks like something from someone who just started html  
+[ひこばえ](http://hikobae0869.blog.fc2.com) - blog about i don't know  
+[A Cup of 俳句](http://haikuimage.blog.fc2.com) - haiku  
+[かぼちゃん](http://kabochan.blog.jp) - doge's owner's blog  
+[かぼすちゃんとおさんぽ。](https://kabosu112.exblog.jp) - doge's owner's blog (old, prefer link above)  
+[言葉拾い](http://kotobahiroi.seesaa.net) - blog  
+[めざせ日本語教師～ｵﾝﾗｲﾝ日本語Tutorのよもやま日記～](https://mischabt.hatenablog.com) - blog  
 
-dictionaries
-https://dictionary.goo.ne.jp/ - jp to jp
-https://gogen-yurai.jp/ - jp etymologies in jp
+### dictionaries
+[goo辞書](https://dictionary.goo.ne.jp) - jp to jp  
+[https://gogen-yurai.jp/](語源由来辞典) - jp etymologies in jp  
 
-podcasts
-https://lovefm.co.jp/yasashii_nihongo/blogs/podcast
+### podcasts
+[LOVE FM](https://lovefm.co.jp/yasashii_nihongo/blogs/podcast)
 
-download sites
-https://nyaa.si/ - anime and typical weeb shit
-https://sukebei.nyaa.si/ - like nyaa, but nsfw
-https://japanencodings.blogspot.com/ - western movies with japanese dubs
-https://itazuraneko.neocities.org/ - has many crap, includes subtitles
-https://kitsunekko.net - subtitles
-https://dlraw.net/ - raw manga ddl
-https://learnnatively.com/ - get books by difficulty - NO FUCK THIS SITE
+### download sites
+[Nyaa](https://nyaa.si) - anime and typical weeb shit  
+[Sukebei](https://sukebei.nyaa.si) - like nyaa, but nsfw  
+[JAPAN ENCODINGS](https://japanencodings.blogspot.com) - western movies with japanese dubs  
+[悪戯ネコ](https://itazuraneko.neocities.org) - has many crap, includes subtitles  
+[Kitsunekko](https://kitsunekko.net) - subtitles  
+[DLRaw](https://dlraw.net) - raw manga ddl  
+[NATIVELY](https://learnnatively.com) - get books by difficulty - NO FUCK THIS SITE  
 
-miscellaneous
-https://djtguide.neocities.org/ - massive list of resources
-http://downto.web.fc2.com/redd/jpsearch.html - r/newsokur search in japanese
-https://kanji.sljfaq.org/ - search kanji by handwriting
-https://www.imabi.net/ - more detailed explanations for grammar. full of technical jargon.
-https://pomax.github.io/nrGrammar/ - somewhat like this ^
-http://anime-manga.jp/ - use this when you're reading manga and come across something you don't understand. 邪王真眼は最強。
-https://j-lyric.net/ - lyric site that doesn't have that "no-copy" protection bullshit that every fucking japanese lyric site supposedly has. (12/14/2021, I CAN'T FUCKING COPY FROM THEM NO MORE)
-https://www.lyrical-nonsense.com - replacement for that ^
-https://wajyutu.com/ - find a phrase related to some topic.
-http://例文.jp/ - example sentences
-http://yourei.jp/ - same as above
-http://email.chottu.net/ - how to write formal letters
-https://www.aozora.gr.jp/cards/001265/files/46817_24670.html - 星の王子さまクソ版
-https://sethclydesdale.github.io/genki-study-resources/ - all genki activities made in china nigga
+### miscellaneous
+[you can [not] learn japanese](https://djtguide.neocities.org) - massive list of resources  
+[ニュー速R 日本語スレタイ簡易検索](http://downto.web.fc2.com/redd/jpsearch.html) - r/newsokur search in japanese  
+[Handwritten kanji recognition](https://kanji.sljfaq.org/) - search kanji by handwriting  
+[IMABI](https://www.imabi.net) - more detailed explanations for grammar. full of technical jargon.  
+[An Introduction to Japanese](https://pomax.github.io/nrGrammar) - somewhat like this ^  
+[アニメ・マンガの日本語](http://anime-manga.jp) - use this when you're reading manga and come across something you don't understand. 邪王真眼は最強。  
+[J-Lyric.net](https://j-lyric.net) - japanese lyric site mostly for japanese songs. it doesn't have that "no-copy" protection bullshit that every fucking japanese lyric site supposedly has.  
+[LYRICAL NONSENSE](https://www.lyrical-nonsense.com) - another japanese lyric site  
+[話術.com](https://wajyutu.com) - find a phrase related to some topic  
+[例文.jp](http://例文.jp) - example sentences  
+[用例.jp](http://yourei.jp) - example sentences  
+[ビジネスメールの書き方](http://email.chottu.net) - how to write formal letters  
+[あのときの王子くん](https://www.aozora.gr.jp/cards/001265/files/46817_24670.html) - 星の王子さまクソ版  
+[Genki Study Resources](https://sethclydesdale.github.io/genki-study-resources) - all genki activities  
 https://kanjibox.net/kb/sets/ - sets? dunno check later
 https://video.fluentcards.com/ - drag and drop video with subtitles, make flashcards with it
 http://nlb.ninjal.ac.jp/search/ - example sentences with search by pattern
