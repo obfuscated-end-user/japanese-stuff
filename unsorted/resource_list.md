@@ -26,7 +26,7 @@
 [Joi Japonin](https://joi-japonin.blogspot.com)  
 [Joi Japonin (newer)](https://www.japonin.com/free-learning-tools/teachers-blog.html)
 
-manga
+## manga
 https://gitmind.com/app/doc/ba5b7264f8029f079c47cf624cb91b91
 https://www.s-manga.net/index.html
 https://www.comico.jp/
