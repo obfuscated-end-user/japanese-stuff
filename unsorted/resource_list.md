@@ -154,6 +154,7 @@ https://web.archive.org/web/20190331004617/http://f9305710.hide-yoshi.net/henkan
 https://www.bunka.go.jp/kokugo_nihongo/sisaku/joho/joho/kijun/naikaku/kanji/joyokanjisakuin/index.html - also that, but not really ^
 http://dorilu.net/itiran4zyukugo.htm - yojijukugo
 https://japanese.meta.stackexchange.com/questions/756/resources-for-learning-japanese/2196#2196
+https://genshin-dictionary.com/en - genshin translations
 
 SPECFIC TO FINDING EXAMPLES
 http://例文.jp/ - example sentences
