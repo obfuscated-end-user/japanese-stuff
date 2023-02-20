@@ -117,48 +117,48 @@ https://www.comico.jp/
 [ビジネスメールの書き方](http://email.chottu.net) - how to write formal letters  
 [あのときの王子くん](https://www.aozora.gr.jp/cards/001265/files/46817_24670.html) - 星の王子さまクソ版  
 [Genki Study Resources](https://sethclydesdale.github.io/genki-study-resources) - all genki activities  
-https://kanjibox.net/kb/sets/ - sets? dunno check later
-https://video.fluentcards.com/ - drag and drop video with subtitles, make flashcards with it
-http://nlb.ninjal.ac.jp/search/ - example sentences with search by pattern
-https://j-nihongo.com/ - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"
-	- https://j-nihongo.com/category/%E5%8D%98%E8%AA%9E/ - words
-https://marshallyin.com/ - learn japanese thing whatever
-http://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index - copy and paste a sentence, then it will show pitch accent
-https://learnjapanese.moe/
-https://www.kecl.ntt.co.jp/icl/lirg/resources/goitokusei/vocabulary_test/php/login.php - vocabulary test
-https://blog.with2.net/ranking/all - jp blog rankings
-https://forum.duolingo.com/comment/38744994 - all kanji used in duolingo
-https://blog.goo.ne.jp/nzijukiroku-sailanbiyori/e/4373d0c8ea148d5ae7fbdb8a810db3e1 - what
-https://www.immersionkit.com/ - type something, find anime clips relevant from what you searched
-https://massif.la/ja - find sentences
-https://sentencesearch.neocities.org/ - sentences
-https://youglish.com/japanese - sentences
-https://play.google.com/store/apps/details?id=jp.co.pit.tit3&hl=ja - OFFLINE ANDROID DICTIONARY
-http://readyourlevel.jamesknelson.com/browse - read books (?) according to your "level"
-https://kakkoii-yougosyuu.com - sorted vocabulary list
-https://www.nhk.or.jp/kokokoza/radio/r2_genbun/ - listening crap
-https://jpdb.io/ - has a lot of shit
-https://selftaughtjapanese.com/2017/02/19/japanese-resource-list/
-https://www.reddit.com/r/LearnJapanese/comments/df7jcr/longer_articlespassage_length_native_material/
-https://jp.nihonku.com/ - what the fuck
-http://nihongo.monash.edu/japanese.html - check later
-http://kanji.wareya.moe/ - find kanji by radical, and also includes the (mostly obscure) cjk abcdefg shit
-http://www.tanos.co.uk/jlpt/ - JLPT shit
-http://www.kanjijiten.net/nandoku/ - hard to read kanji / 難読漢字
-https://dic.nicovideo.jp
-https://www.japanesewithanime.com/
-https://www.learn-japanese-adventure.com/japanese-words.html
-https://www.jpf.go.jp/e/project/japanese/education/resource/index.html
-http://www17.plala.or.jp/u-ho/zatugaku2.html - weird kanji
-https://web.archive.org/web/20190331004617/http://f9305710.hide-yoshi.net/henkanji.html - also that ^
-https://www.bunka.go.jp/kokugo_nihongo/sisaku/joho/joho/kijun/naikaku/kanji/joyokanjisakuin/index.html - also that, but not really ^
-http://dorilu.net/itiran4zyukugo.htm - yojijukugo
-https://japanese.meta.stackexchange.com/questions/756/resources-for-learning-japanese/2196#2196
-https://genshin-dictionary.com/en - genshin translations
+[KanjiBox Study Sets](https://kanjibox.net/kb/sets) - sets? dunno check later  
+[Fluentcards](https://video.fluentcards.com) - drag and drop video with subtitles, make flashcards with it  
+[NINJAL-LWP for BCCWJ](https://nlb.ninjal.ac.jp/search) - example sentences with search by pattern (seems dead)  
+[日本語の文法](https://j-nihongo.com) - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"  
+[日本語の文法・単語](https://j-nihongo.com/category/%E5%8D%98%E8%AA%9E) - words from that site above  
+[Marshall's Site](https://marshallyin.com) - learn japanese thing whatever (haven't checked this one yet)  
+[Prosody Tutor Suzuki-kun](http://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) - copy and paste a sentence, then it will show pitch accent  
+[TheMoeWay](https://learnjapanese.moe)
+[NTT](https://www.kecl.ntt.co.jp/icl/lirg/resources/goitokusei/vocabulary_test/php/login.php) - vocabulary test  
+[BLOG RANKING](https://blog.with2.net/ranking/all) - jp blog rankings  
+[DEAD LINK](https://forum.duolingo.com/comment/38744994) - all kanji used in duolingo  
+[ニュージーランド移住記録：日記「さいらん日和」](https://blog.goo.ne.jp/nzijukiroku-sailanbiyori/e/4373d0c8ea148d5ae7fbdb8a810db3e1) - what  
+[Immersion Kit](https://www.immersionkit.com) - type something, find anime clips relevant from what you searched  
+[Massif](https://massif.la/ja) - find sentences  
+[Search Japanese sentences with native audio!](https://sentencesearch.neocities.org) - sentences  
+[YouGlish (japanese)](https://youglish.com/japanese) - sentences  
+[ことわざ・四字熟語・難読漢字　学習小辞典](https://play.google.com/store/apps/details?id=jp.co.pit.tit3&hl=ja) - OFFLINE ANDROID DICTIONARY  
+[Read Your Level](http://readyourlevel.jamesknelson.com/browse) - read books (?) according to your "level" (dead link)  
+[創作に使えるかもしれない用語集](https://kakkoii-yougosyuu.com) - sorted vocabulary list  
+[NHK高校講座](https://www.nhk.or.jp/kokokoza/radio/r2_genbun) - listening crap  
+[jpdb.io](https://jpdb.io) - has a lot of shit  
+[Self Taught Japanese - Japanese Study Resource List](https://selftaughtjapanese.com/2017/02/19/japanese-resource-list) - resource list  
+[r/LearnJapanese - Longer articles/passage length native material?](https://www.reddit.com/r/LearnJapanese/comments/df7jcr/longer_articlespassage_length_native_material) - resource list  
+[Nihonku](https://jp.nihonku.com) - what the fuck  
+[Jim Breen's Japanese Page](http://nihongo.monash.edu/japanese.html) - check later, looks old as shit though  
+[Kanji Composition Search Tool](http://kanji.wareya.moe) - find kanji by radical, and also includes the (mostly obscure) cjk abcdefg shit  
+[tanos.co.uk](http://www.tanos.co.uk/jlpt) - JLPT shit  
+[漢字辞典ネット・難読漢字](http://www.kanjijiten.net/nandoku) - hard to read kanji / 難読漢字  
+[ニコニコ大百科](https://dic.nicovideo.jp) - niconico dictionary (kinda like japanese knowyourmeme but not really)  
+[Japanese with Anime](https://www.japanesewithanime.com) - learn japanese with anime and manga panels  
+[Learn Japanese Adventure](https://www.learn-japanese-adventure.com/japanese-words.html)
+[Japan Foundation](https://www.jpf.go.jp/e/project/japanese/education/resource/index.html)
+[おもしろい読みの漢字](http://www17.plala.or.jp/u-ho/zatugaku2.html) - weird kanji (DEAD)  
+[DEAD](https://web.archive.org/web/20190331004617/http://f9305710.hide-yoshi.net/henkanji.html) - also that ^  
+[常用漢字表の音訓索引](https://www.bunka.go.jp/kokugo_nihongo/sisaku/joho/joho/kijun/naikaku/kanji/joyokanjisakuin/index.html) - also that, but not really ^  
+[小学生のうちに覚えたい四字熟語の一覧表](http://dorilu.net/itiran4zyukugo.htm) - yojijukugo  
+[Japanese Meta Stack Exchange - Resources for learning Japanese](https://japanese.meta.stackexchange.com/questions/756/resources-for-learning-japanese/2196)  
+[GenshinDictionary](https://genshin-dictionary.com/en) - genshin translations (english, chinese, japanese)
 
-SPECFIC TO FINDING EXAMPLES
-http://例文.jp/ - example sentences
-http://yourei.jp/ - same as above
+## SPECFIC TO FINDING EXAMPLES
+[例文](http://例文.jp) - example sentences  
+[Yourei](http://yourei.jp) - same as above  
 http://nlb.ninjal.ac.jp/search/ - example sentences with search by pattern
 https://j-nihongo.com/ - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"
 https://massif.la/ja - find sentences
