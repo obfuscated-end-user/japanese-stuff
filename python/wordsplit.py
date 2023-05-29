@@ -1,7 +1,7 @@
 import os
 from tkinter import Tk
 
-sample_text1 = "兵隊、動態、掩蔽、幾多、酌む、夢想、育む、繙く、断片、赫奕、日輪、残照、平凡、俗称、五感、灯籠"
+sample_text1 = "購入、入手、名称、表記、改める、コスタリカ、ニュージーランド、繁殖、発症、息切れ、嗅覚、水際、ベラルーシ、頭金、納期、選択肢、最短、在庫、調整中、転出届、ブーケ、遊覧船、公文書、復帰、国産、フロマージュ、管理局、支援策、給付、実費、渡航、国費留学生、経費、採取、浸水、大井、搬送、緩和、垂直尾翼、紛失、判明、診療、総会、過去最大、食品ロス、送金"
 
 # text = input("Enter Japanese words separated by \"、\": ")
 
@@ -28,6 +28,7 @@ def word_split3(text: str):
     r.destroy()
     print("Added expression to clipboard.")
 
+# doesn't work
 def word_split4(text: str):
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
@@ -35,7 +36,10 @@ def word_split4(text: str):
     win32clipboard.CloseClipboard()
     print("Added expression to clipboard.")
 
-print(word_split1(sample_text1))
+def word_count(text: str):
+    return len(text.split("、"))
+
+print(word_split1(sample_text1), word_count(sample_text1))
 # word_split1(sample_text1)
 # print(word_split2(sample_text1))
 
