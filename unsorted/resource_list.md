@@ -159,44 +159,20 @@ https://www.comico.jp/
 ## SPECFIC TO FINDING EXAMPLES
 [例文](http://例文.jp) - example sentences  
 [Yourei](http://yourei.jp) - same as above  
-http://nlb.ninjal.ac.jp/search/ - example sentences with search by pattern
-https://j-nihongo.com/ - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"
-https://massif.la/ja - find sentences
-https://sentencesearch.neocities.org/ - sentences
-https://youglish.com/japanese - sentences
-https://jlptgrammarlist.neocities.org/ - grammar sorted by n-level
-https://japbase.neocities.org/ - same as above, but has more details (HAS JAP IN URL WHAT THE FUCK RACIST FUCKS)
+[nlb.ninjal.ac.jp](http://nlb.ninjal.ac.jp/search) - example sentences with search by pattern (dead)
+[j-nihongo](https://j-nihongo.com) - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"
+[Massif](https://massif.la/ja) - find sentences
+[Search Japanese sentences with native audio!](https://sentencesearch.neocities.org) - sentences
+[Youglish](https://youglish.com/japanese) - sentences
+[JLPT Grammar List](https://jlptgrammarlist.neocities.org) - grammar sorted by n-level
+[日本語文法辞典](https://japbase.neocities.org) - same as above, but has more details (HAS JAP IN URL WHAT THE FUCK RACIST FUCKS)
 
 SPECIFIC TO SUBS
-https://kitsunekko.net
-https://itazuraneko.neocities.org/library/sub.html
-https://github.com/Matchoo95/JP-Subtitles
-https://github.com/eurusdagr/Japanese-Movies-Subtitles
-https://animelon.com/ - stream anime with jp subs, not a sub download site
-
-"term" site:j-nihongo.com (you can remove the quotes if you want to be less specific)
-so, for something like 幽霊:
-"幽霊" site:j-nihongo.com
-"幽霊" site:nhkeasier.com
-
-easy:
-NHK
-Asahi
-BBC
-Business Insider
-Chunichi
-CNN
-Forbes
-Goo
-Google
-Live door
-MSN
-TBS
-Yahoo
-
-"difficult" only has NHK as a source
-
+[Kitsunekko](https://kitsunekko.net)
+[Itazuraneko](https://itazuraneko.neocities.org/library/sub.html)
+[JP subtitles (GitHub)](https://github.com/Matchoo95/JP-Subtitles)
+[JP movie subtitles (GitHub)](https://github.com/eurusdagr/Japanese-Movies-Subtitles)
+[Animelon](https://animelon.com) - stream anime with jp subs, not a sub download site
 
 FUCK THAT JAPANESE GUY YUTA
-his shitty site:
-https://members.japanesevocabularyshortcut.com/spage/course-open-trial.html?dfp=3xYy87X3xq
+[his shitty site](https://members.japanesevocabularyshortcut.com/spage/course-open-trial.html?dfp=3xYy87X3xq)
