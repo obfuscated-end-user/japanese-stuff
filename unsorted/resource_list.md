@@ -159,19 +159,19 @@ https://www.comico.jp/
 ## SPECFIC TO FINDING EXAMPLES
 [例文](http://例文.jp) - example sentences  
 [Yourei](http://yourei.jp) - same as above  
-[nlb.ninjal.ac.jp](http://nlb.ninjal.ac.jp/search) - example sentences with search by pattern (dead)
-[j-nihongo](https://j-nihongo.com) - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"
-[Massif](https://massif.la/ja) - find sentences
-[Search Japanese sentences with native audio!](https://sentencesearch.neocities.org) - sentences
-[Youglish](https://youglish.com/japanese) - sentences
-[JLPT Grammar List](https://jlptgrammarlist.neocities.org) - grammar sorted by n-level
+[nlb.ninjal.ac.jp](http://nlb.ninjal.ac.jp/search) - example sentences with search by pattern (dead)  
+[j-nihongo](https://j-nihongo.com) - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"  
+[Massif](https://massif.la/ja) - find sentences  
+[Search Japanese sentences with native audio!](https://sentencesearch.neocities.org) - sentences  
+[Youglish](https://youglish.com/japanese) - sentences  
+[JLPT Grammar List](https://jlptgrammarlist.neocities.org) - grammar sorted by n-level  
 [日本語文法辞典](https://japbase.neocities.org) - same as above, but has more details (HAS JAP IN URL WHAT THE FUCK RACIST FUCKS)
 
 SPECIFIC TO SUBS
-[Kitsunekko](https://kitsunekko.net)
-[Itazuraneko](https://itazuraneko.neocities.org/library/sub.html)
-[JP subtitles (GitHub)](https://github.com/Matchoo95/JP-Subtitles)
-[JP movie subtitles (GitHub)](https://github.com/eurusdagr/Japanese-Movies-Subtitles)
+[Kitsunekko](https://kitsunekko.net)  
+[Itazuraneko](https://itazuraneko.neocities.org/library/sub.html)  
+[JP subtitles (GitHub)](https://github.com/Matchoo95/JP-Subtitles)  
+[JP movie subtitles (GitHub)](https://github.com/eurusdagr/Japanese-Movies-Subtitles)  
 [Animelon](https://animelon.com) - stream anime with jp subs, not a sub download site
 
 FUCK THAT JAPANESE GUY YUTA
