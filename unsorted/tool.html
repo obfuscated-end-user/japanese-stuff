@@ -188,6 +188,8 @@
 
             // Formats the Alternative forms textbox.
             function formatAltForms() {
+                // edit this later to handle 々
+                // also \u200b
                 altFormsTextArea.value = altFormsTextArea.value.replaceAll(/( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】)/g, "").replaceAll(/(?:\r|\n|\r\n)/g, "、").replaceAll(",", "、");
             }
 
@@ -206,26 +208,6 @@
             // Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
             function convertText() {
                 let final = "";
-
-                /* if (altFormsCheckbox.checked)
-                    final += "<span class=\"alt-forms\">" + reformat(altFormsTextArea.value) + "</span>";
-                if (readingsCheckbox.checked) {
-                    if (altFormsCheckbox.checked)
-                        final += "<br><br>";
-                    final += "<span class=\"readings\">" + reformat(readingsTextArea.value) + "</span>";
-                } if (definitionsCheckbox.checked) {
-                    if (readingsCheckbox.checked || altFormsCheckbox.checked)
-                        final += "<br><br>";
-                    final += "<span class=\"definitions\">" + reformat(definitionsTextArea.value) + "</span>";
-                } if (hasKanjiCheckbox.checked) {
-                    if (definitionsCheckbox.checked)
-                        final += "<br><br>";
-                    final += "<span class=\"haskanji\">words with this kanji:<br>" + reformat(hasKanjiTextArea.value) + "</span>";
-                } if (examplesCheckbox.checked) {
-                    if (definitionsCheckbox.checked || hasKanjiCheckbox.checked)
-                        final += "<br><br>";
-                    final += "<span class=\"examples\">" + reformat(examplesTextArea.value) + "</span>";
-                } */
 
                 if (altFormsCheckbox.checked)
                     final += `<span class=\"alt-forms\">${reformat(altFormsTextArea.value)}</span>`;
@@ -283,9 +265,8 @@
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             function searchWord() {
-                if (wiktionaryRadio.checked) {
+                if (wiktionaryRadio.checked)
                     iframe.src = `https://en.wiktionary.org/wiki/${searchBar.value}#Japanese`;
-                }
                 if (jishoDefinitionsRadio.checked)
                     iframe.src = `https://jisho.org/search/${searchBar.value}`;
                 if (jishoKanjiRadio.checked)
@@ -384,6 +365,7 @@
 
     2023/03/12
     make something that automatically makes a verb template on a kanji verb. get the value of the entry on the search box, get the furigana on the readings textbox, and then make a template in the format of (kanji)[furigana]する - &#40;transitive) to < !--verbする- -> (space added because it fucks up the format)
+	^ turns out that this is really hard to do
 
     RESOURCES:
     remember, no retarded jquery shit
