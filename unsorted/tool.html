@@ -202,6 +202,10 @@
             function formatDefinitions() {
                 // i did it separately instead of something like ([\(\{\[\]]) because i need different html codes for each of these
                 // U+200B is a zero-width space, mostly coming from copying text on jisho.org
+			  // also put something like this on words containing this kanji box
+			  // also something that catches "<br>(", '("', "short for"
+              // for '("', use the 3rd entry on 根本 on wikt
+              // try to console.log() what was removed (use the match() method)
                 definitionsTextArea.value = definitionsTextArea.value.replaceAll(/(\()(?=[*\w])/g, "&#40;").replaceAll(/(\[)(?=[*\w])/g, "&#91;").replaceAll(/(\])(?=[*\w])/g, "&#93;").replaceAll(/(\{)(?=[*\w])/g, "&#123;").replaceAll(/[\u200b]/g, "").replaceAll(/[“|”]/g, "\"");
             }
     
