@@ -1,7 +1,7 @@
 import os
 from tkinter import Tk
 
-sample_text1 = "驟雨、鰰、鐙骨、婀娜、畦道、依怙贔屓、姥鮫、蓊鬱、鸚鵡貝、囮捜査、開闢、矍鑠、開梱、紙鑢、鱏、鶏姦、非営利団体、万象、頁岩、懐中時計、偏食、門番、抜擢、仇討ち、語り部、干支、破魔矢、大凶、住処"
+sample_text1 = "外法、奉る、傍観、粛正、遠心力、枠組み、風貌、駄菓子、鶴の一声、火炎、映える、惨敗、財宝、微糖、憐憫、噴飯、天道虫、醍醐味、焼却、補う、骨折り損、簫、霊長類、禍々しい、橄欖、炸裂、噤む、雑草、榧、愛猫、派生、延滞、梱包、海豹、菖蒲、生け簀、十六夜、豌豆豆、絡繰り、躱す、雁擬き、秋桜、蒟蒻、茜色、長閑、一弾指、格納、付随、断絶、溺愛、鰧、上諭"
 
 # text = input("Enter Japanese words separated by \"、\": ")
 
@@ -39,7 +39,7 @@ def word_split4(text: str):
 def word_count(text: str):
     return len(text.split("、"))
 
-print(word_split1(sample_text1), word_count(sample_text1))
+print(word_split1(sample_text1), "\n", word_count(sample_text1))
 # word_split1(sample_text1)
 # print(word_split2(sample_text1))
 
