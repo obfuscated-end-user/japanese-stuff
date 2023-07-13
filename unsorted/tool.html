@@ -188,26 +188,50 @@
 
             // Formats the Alternative forms textbox.
             function formatAltForms() {
-                // edit this later to handle 々
-                // also \u200b
-                altFormsTextArea.value = altFormsTextArea.value.replaceAll(/( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】)/g, "").replaceAll(/(?:\r|\n|\r\n)/g, "、").replaceAll(",", "、");
+                let regexNone = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()/g;
+                let regexComma = /(?:\r|\n|\r\n)|,/g;
+                let matchesRegexNone = altFormsTextArea.value.match(regexNone);
+                let matchesRegexComma = altFormsTextArea.value.match(regexComma);
+                altFormsTextArea.value = altFormsTextArea.value.replaceAll(regexNone, "").replaceAll(regexComma, "、");
+
+                console.log("alt-forms regexes:\nregexNone:\n", matchesRegexNone, "\nregexComma:\n", matchesRegexComma);
             }
 
             // Formats the Readings textbox.
             function fixCommas() {
-                // do something for "Kun: " and "On: "
-                readingsTextArea.value = readingsTextArea.value.replaceAll(" ", "");
+                let regex = /(Kun:\n|On:\n| |^\n*$)/g;
+                let matchesRegex = readingsTextArea.value.match(regex);
+                readingsTextArea.value = readingsTextArea.value.replaceAll(regex, "");
+                console.log("readings regexes:\n", matchesRegex);
             }
 
             // Formats the Definitions textbox.
             function formatDefinitions() {
                 // i did it separately instead of something like ([\(\{\[\]]) because i need different html codes for each of these
                 // U+200B is a zero-width space, mostly coming from copying text on jisho.org
-			  // also put something like this on words containing this kanji box
-			  // also something that catches "<br>(", '("', "short for"
+			    // also put something like this on words containing this kanji box
+			    // also something that catches "<br>(", '("', "short for"
                 // for '("', use the 3rd entry on 根本 on wikt
                 // try to console.log() what was removed (use the match() method)
-                definitionsTextArea.value = definitionsTextArea.value.replaceAll(/(\()(?=[*\w])/g, "&#40;").replaceAll(/(\[)(?=[*\w])/g, "&#91;").replaceAll(/(\])(?=[*\w])/g, "&#93;").replaceAll(/(\{)(?=[*\w])/g, "&#123;").replaceAll(/[\u200b]/g, "").replaceAll(/[“|”]/g, "\"");
+                // obviously there are better ways to do this instead of these clunky ass regexes
+                let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
+                let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
+                let regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
+                let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
+                let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
+                let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
+                let regexQm = /[“|”]/g;
+
+                definitionsTextArea.value = definitionsTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n");
+
+                let keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
+                for (let i = 0; i < keywords.length; ++i)
+                    definitionsTextArea.value = definitionsTextArea.value.replaceAll(keywords[i], `*^${keywords[i].toLowerCase()}^*`);
+            }
+
+            // format haskanji
+            function formatWordsContainingThisKanji() {
+                // tbd
             }
     
             // Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
@@ -357,6 +381,7 @@
 <!--
     started doing this on 2022/10/15. you think you're hot shit because you wrote all of this crap by hand? fuck outta here and touch some grass you asocial fat fuck!
     github does not support word wrap. sorry that you had to scroll all the way to the right to read some text. open this in a text editor with word wrap and see it do its magic.
+    EDIT 2023/07/13: turns out word wrap is supported now
 
     WHAT TO DO:
     the screen on the left contains the convert to anki thing, with checkboxes within each field (for example, one for the readings, another one for the definition, etc.). on the bottom of the screen, there should be a convert button that converts the following data from the fields above to the appropriate html code for anki conversion later. apply the same thing you did from the txt2markup files earlier like the copy to clipboard textbox etc and the conversion thing. (TBD)
@@ -384,7 +409,7 @@
 
         resize textarea:
         https://stackoverflow.com/questions/3896537/should-i-size-a-textarea-with-css-width-height-or-html-cols-rows-attributes
-    
+
     radio buttons:
         https://www.w3schools.com/tags/att_input_type_radio.asp
         clear all buttons:
