@@ -13,7 +13,7 @@ def word_split2(text):
     final = ""
     for word in word_list:
         if re.search("[々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ]", word):
-            final += word + "[<-]"
+            final += word + "[<-]|"
         else:
             final += word + "|"
     final = re.sub("\|$", "", final)
@@ -23,6 +23,15 @@ def word_split3(text):
     # "alt-forms">[A-Za-z0-9ぁ-んァ-ン一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ、「」]*</span>
     return "\"back:re:(.alt-forms.>|、)(" + text.replace("、", "|") + ")\""
 
+kanji = "摯伍翳沽聊諫筈夷狄趨闊碍誅瓢擂辜訝挺庸簒滾糾刎頸滸慚愧叛諧謔采鍾馗覿啜麾顛筐毅憾涛邁椰僭顳顬蔭毫鼬磐瞽壬榛"
+def kanji_separator(text):
+    result = ""
+    char_list = list(text)
+    for char in char_list:
+        result += char + "、"
+    result = result[:-1]
+    return result
+
 def word_count(text: str):
     return len(text.split("、"))
 
@@ -31,5 +40,5 @@ text2 = word_split2(sample_text1)
 text3 = word_split3(sample_text1)
 with open("python\output.txt", "w", encoding="utf-8") as out:
     text = text2
-    out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}")
+    out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}\nseparated kanji:\n{kanji_separator(kanji)}")
     print("done!")
