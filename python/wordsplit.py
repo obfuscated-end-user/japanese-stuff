@@ -23,7 +23,7 @@ def word_split3(text):
     # "alt-forms">[A-Za-z0-9ぁ-んァ-ン一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ、「」]*</span>
     return "\"back:re:(.alt-forms.>|、)(" + text.replace("、", "|") + ")\""
 
-kanji = "摯伍翳沽聊諫筈夷狄趨闊碍誅瓢擂辜訝挺庸簒滾糾刎頸滸慚愧叛諧謔采鍾馗覿啜麾顛筐毅憾涛邁椰僭顳顬蔭毫鼬磐瞽壬榛"
+kanji = "諍眩彿賂誣"
 def kanji_separator(text):
     result = ""
     char_list = list(text)
