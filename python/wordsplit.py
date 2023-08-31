@@ -42,3 +42,5 @@ with open("python\output.txt", "w", encoding="utf-8") as out:
     text = text2
     out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}\nseparated kanji:\n{kanji_separator(kanji)}")
     print("done!")
+
+# test
