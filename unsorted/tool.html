@@ -69,6 +69,8 @@
                 width: 90%;
             }
         </style>
+        <!--<script type="module" src="https://unpkg.com/x-frame-bypass"></script>-->
+        <!--<script type="module" src="https://unpkg.com/x-frame-bypass@1.0.2/x-frame-bypass.js"></script>-->
     </head>
     <body>
         <div id="anki">
@@ -96,11 +98,13 @@
             <textarea id="definitions-textarea" value=""></textarea><br>
 
             <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name">
-            Words containing this kanji<br>
+            Words containing this kanji &emsp;
+            <button type="button" onclick="formatWordsContainingThisKanji()">format words containing this kanji</button><br>
             <textarea id="haskanji-textarea" value=""></textarea><br>
 
             <input type="checkbox" id="examples-checkbox" name="examples-checkbox-name">
-            Example usage<br>
+            Example usage&emsp;
+            <button type="button" onclick="formatExamples()">format examples</button><br>
             <textarea id="examples-textarea" value=""></textarea><br>
 
             HTML&emsp;
@@ -125,8 +129,15 @@
             <input type="radio" id="jisho-sentences-radio" name="search-mode"><span title="jisho.org (example sentences)">JS</span>
             <input type="radio" id="massif-radio" name="search-mode"><span title="Massif (example sentences)">M</span>
             <input type="radio" id="yourei-radio" name="search-mode"><span title="用例 (example sentences)">Y</span>
+            <input type="radio" id="google-images-radio" name="search-mode"><span title="Google Images">GI</span>
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just fucks up the quotations section in some pages. -->
-            <iframe id="external-content" sandbox="allow-same-origin"></iframe>
+            <iframe id="external-content" sandbox="allow-same-origin"></iframe><br>
+            <a href="https://ruby.suki2.net">sentence fix</a>
+            <!--
+                <script async src="https://cse.google.com/cse.js?cx=f72a235b9ae354094">
+                </script>
+                <div class="gcse-search"></div>
+            -->
         </div>
         <script>
             // LEFT SIDE
@@ -205,6 +216,19 @@
                 console.log("readings regexes:\n", matchesRegex);
             }
 
+            // format haskanji
+            function formatWordsContainingThisKanji() {
+                let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
+                let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
+                let regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
+                let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
+                let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
+                let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
+                let regexQm = /[“|”]/g;
+                
+                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n");
+            }
+
             // Formats the Definitions textbox.
             function formatDefinitions() {
                 // i did it separately instead of something like ([\(\{\[\]]) because i need different html codes for each of these
@@ -229,9 +253,21 @@
                     definitionsTextArea.value = definitionsTextArea.value.replaceAll(keywords[i], `*^${keywords[i].toLowerCase()}^*`);
             }
 
-            // format haskanji
-            function formatWordsContainingThisKanji() {
-                // tbd
+            function formatExamples() {
+                // https://ruby.suki2.net
+                examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]");
+
+                //text.replaceAll("(", "<ruby>").replaceAll(")[", "<rt>").replaceAll("]", "</rt></ruby>").replaceAll("{", "<ruby><b>").replaceAll("}[", "</b><rt>").replaceAll("`", "<b>").replaceAll("~", "</b>").replaceAll("*^", "<i>").replaceAll("^*", "</i>").replaceAll(/(?:\r|\n|\r\n)/g, "<br>");
+
+                // TBD
+                // add an option that adds boldface to the target word, mostly likely:
+                // 1. get the word on the search bar
+                // 2. use regex magic to apply bold tags on the example sentences textbox, based on what was on the search bar
+                // 3. try to format empty "containers", e.g. ()[] and {}[]
+                let test1 = searchBar.value;
+                let test2 = examplesTextArea.value;
+                let test3 = "fuck";
+                console.log(test1);
             }
     
             // Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
@@ -291,6 +327,8 @@
             let jishoSentencesRadio = document.getElementById("jisho-sentences-radio");
             let massifRadio = document.getElementById("massif-radio");
             let youreiRadio = document.getElementById("yourei-radio");
+            let googleImagesRadio = document.getElementById("google-images-radio");
+            // let convertRadio = document.getElementById("convert-radio");
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             function searchWord() {
@@ -308,6 +346,11 @@
                     iframe.src = `https://massif.la/ja/search?q=${searchBar.value}`;
                 if (youreiRadio.checked)
                     iframe.src = `https://yourei.jp/${searchBar.value}`;
+                if (googleImagesRadio.checked)
+                    iframe.src = `https://www.google.com/webhp?igu=1`;
+                    // iframe.src = `https://www.google.com/search?q=${searchBar.value}`;
+                // if (convertRadio.checked)
+                    // iframe.src = "https://ruby.suki2.net";
             }
 
             // Check if a URL exists. Unused for now.
