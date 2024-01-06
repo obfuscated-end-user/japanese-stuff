@@ -225,8 +225,11 @@
                 let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
                 let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
                 let regexQm = /[“|”]/g;
+                let regexIl = /\(<i>/g;
+                let regexIr = /<\/i>\)/g;
+                let regexMoreDef = /(?<=[\w()"<>&])(<br>|<br><br>)(?=[\w()"<>&])/g;
                 
-                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n");
+                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ");
             }
 
             // Formats the Definitions textbox.
@@ -244,9 +247,14 @@
                 let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
                 let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
                 let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
+                // let regexNone = /[\n](?=[\n])[\n](?=[\n])/g;
+                // let regexNone = /(\n\s)(?=[\n\s])/g;
+                // let regexNewline = /\n(?=[\n])/g;
                 let regexQm = /[“|”]/g;
+                let regexSpacing = /(?<=[A-Za-z(&])\n(?=[\n&(])/g;
+                let regexTrailingWs = /^\n$/g;
 
-                definitionsTextArea.value = definitionsTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n");
+                definitionsTextArea.value = definitionsTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexSpacing, "\n\n").replaceAll(regexTrailingWs, "");
 
                 let keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
                 for (let i = 0; i < keywords.length; ++i)
