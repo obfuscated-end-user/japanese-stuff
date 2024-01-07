@@ -89,7 +89,7 @@
 
             <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name">
             Readings&emsp;
-            <button type="button" onclick="fixCommas()">format commas</button><br>
+            <button type="button" onclick="formatReadings()">format readings</button><br>
             <textarea id="readings-textarea" value=""></textarea><br>
 
             <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name">
@@ -209,7 +209,7 @@
             }
 
             // Formats the Readings textbox.
-            function fixCommas() {
+            function formatReadings() {
                 let regex = /(Kun:\n|On:\n| |^\n*$)/g;
                 let matchesRegex = readingsTextArea.value.match(regex);
                 readingsTextArea.value = readingsTextArea.value.replaceAll(regex, "");
@@ -227,9 +227,11 @@
                 let regexQm = /[“|”]/g;
                 let regexIl = /\(<i>/g;
                 let regexIr = /<\/i>\)/g;
-                let regexMoreDef = /(?<=[\w()"<>&])(<br>|<br><br>)(?=[\w()"<>&])/g;
+                // let regexMoreDef = /(?<=[\w()"<>&])(<br>|<br><br>)(?=[\w()"<>&])/g;
+                let regexMoreDef = /(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g;
+                // regex for <br>(<i> or letters), and replace it with <br>&#40;
                 
-                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ");
+                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replace("<br>&#40;", "<br>()");
             }
 
             // Formats the Definitions textbox.
@@ -263,7 +265,7 @@
 
             function formatExamples() {
                 // https://ruby.suki2.net
-                examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]");
+                examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]").replaceAll("()[]", "").replaceAll("{}[]", "").replaceAll("<b>", "`").replaceAll("</b>", "~");
 
                 //text.replaceAll("(", "<ruby>").replaceAll(")[", "<rt>").replaceAll("]", "</rt></ruby>").replaceAll("{", "<ruby><b>").replaceAll("}[", "</b><rt>").replaceAll("`", "<b>").replaceAll("~", "</b>").replaceAll("*^", "<i>").replaceAll("^*", "</i>").replaceAll(/(?:\r|\n|\r\n)/g, "<br>");
 
