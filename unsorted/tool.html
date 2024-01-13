@@ -256,7 +256,7 @@
                 let regexSpacing = /(?<=[A-Za-z(&])\n(?=[\n&(])/g;
                 let regexTrailingWs = /^\n$/g;
 
-                definitionsTextArea.value = definitionsTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexSpacing, "\n\n").replaceAll(regexTrailingWs, "");
+                definitionsTextArea.value = definitionsTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexSpacing, "\n\n").replaceAll(regexTrailingWs, "").replaceAll("<!---->", "");
 
                 let keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
                 for (let i = 0; i < keywords.length; ++i)
