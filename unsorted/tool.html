@@ -68,9 +68,14 @@
                 height: 90%;
                 width: 90%;
             }
+            #indicator, td, tr {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
         </style>
-        <!--<script type="module" src="https://unpkg.com/x-frame-bypass"></script>-->
-        <!--<script type="module" src="https://unpkg.com/x-frame-bypass@1.0.2/x-frame-bypass.js"></script>-->
     </head>
     <body>
         <div id="anki">
@@ -121,23 +126,32 @@
             </div><br><br><br><br><br><br>
         </div>
         <div id="external">
-            Word to search: <input type="text" id="search-bar">&nbsp;<button type="button" onclick="searchWord()">Search</button><br>
-            <input type="radio" id="wiktionary-radio" name="search-mode"><span title="Wiktionary">W</span>
-            <input type="radio" id="jisho-definitions-radio" name="search-mode"><span title="jisho.org (definitions)">JD</span>
-            <input type="radio" id="jisho-kanji-radio" name="search-mode"><span title="jisho.org (kanji)">JK</span>
-            <input type="radio" id="jisho-names-radio" name="search-mode"><span title="jisho.org (names)">JN</span>
-            <input type="radio" id="jisho-sentences-radio" name="search-mode"><span title="jisho.org (example sentences)">JS</span>
-            <input type="radio" id="massif-radio" name="search-mode"><span title="Massif (example sentences)">M</span>
-            <input type="radio" id="yourei-radio" name="search-mode"><span title="用例 (example sentences)">Y</span>
-            <input type="radio" id="google-images-radio" name="search-mode"><span title="Google Images">GI</span>
+            Word to search: <input type="text" id="search-bar">&nbsp;<button type="button" onclick="searchWord()">Search</button>
+            <table id="indicator">
+                <tr>
+                    <th>Definitions</th>
+                    <td>
+                        <input type="radio" id="wiktionary-radio" name="search-mode"><span title="Wiktionary">W</span>
+                        <input type="radio" id="jisho-definitions-radio" name="search-mode"><span title="jisho.org (definitions)">JD</span>
+                        <input type="radio" id="jisho-kanji-radio" name="search-mode"><span title="jisho.org (kanji)">JK</span>
+                        <input type="radio" id="jisho-names-radio" name="search-mode"><span title="jisho.org (names)">JN</span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Example sentences</th>
+                    <td>
+                        <input type="radio" id="jisho-sentences-radio" name="search-mode"><span title="jisho.org">JS</span>
+                        <input type="radio" id="massif-radio" name="search-mode"><span title="Massif">M</span>
+                        <input type="radio" id="yourei-radio" name="search-mode"><span title="用例">Y</span>
+                        <input type="radio" id="ejje-radio" name="search-mode"><span title="EJJE Weblio">EW</span>
+                        <input type="radio" id="eijirou-radio" name="search-mode"><span title="英辞郎 on the web">ER</span>
+                    </td>
+                </tr>
+            </table>
+            
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just fucks up the quotations section in some pages. -->
-            <iframe id="external-content" sandbox="allow-same-origin"></iframe><br>
-            <a href="https://ruby.suki2.net">sentence fix</a>
-            <!--
-                <script async src="https://cse.google.com/cse.js?cx=f72a235b9ae354094">
-                </script>
-                <div class="gcse-search"></div>
-            -->
+            <a href="https://ruby.suki2.net">Sentence fixer (not by me)</a><br>
+            <iframe id="external-content" sandbox="allow-same-origin"></iframe><br>.
         </div>
         <script>
             // LEFT SIDE
@@ -197,7 +211,7 @@
                 return text.replaceAll("(", "<ruby>").replaceAll(")[", "<rt>").replaceAll("]", "</rt></ruby>").replaceAll("{", "<ruby><b>").replaceAll("}[", "</b><rt>").replaceAll("`", "<b>").replaceAll("~", "</b>").replaceAll("*^", "<i>").replaceAll("^*", "</i>").replaceAll(/(?:\r|\n|\r\n)/g, "<br>");
             }
 
-            // Formats the Alternative forms textbox.
+            // Formats the "Alternative forms" textbox.
             function formatAltForms() {
                 let regexNone = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()/g;
                 let regexComma = /(?:\r|\n|\r\n)|,/g;
@@ -208,7 +222,7 @@
                 console.log("alt-forms regexes:\nregexNone:\n", matchesRegexNone, "\nregexComma:\n", matchesRegexComma);
             }
 
-            // Formats the Readings textbox.
+            // Formats the "Readings" textbox.
             function formatReadings() {
                 let regex = /(Kun:\n|On:\n| |^\n*$)/g;
                 let matchesRegex = readingsTextArea.value.match(regex);
@@ -216,7 +230,7 @@
                 console.log("readings regexes:\n", matchesRegex);
             }
 
-            // format haskanji
+            // Formats the "Words containing this kanji" textbox.
             function formatWordsContainingThisKanji() {
                 let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
                 let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
@@ -227,14 +241,13 @@
                 let regexQm = /[“|”]/g;
                 let regexIl = /\(<i>/g;
                 let regexIr = /<\/i>\)/g;
-                // let regexMoreDef = /(?<=[\w()"<>&])(<br>|<br><br>)(?=[\w()"<>&])/g;
                 let regexMoreDef = /(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g;
-                // regex for <br>(<i> or letters), and replace it with <br>&#40;
+                let regexItalics = /(<i>|<\/i>)/g;
                 
-                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replace("<br>&#40;", "<br>()");
+                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replaceAll("(<i>", "&#40;").replaceAll("<br>(", "<br>&#40;").replaceAll("<br>&#40;<i>", " ;; &#40;").replaceAll(regexItalics, "");
             }
 
-            // Formats the Definitions textbox.
+            // Formats the "Definitions" textbox.
             function formatDefinitions() {
                 // i did it separately instead of something like ([\(\{\[\]]) because i need different html codes for each of these
                 // U+200B is a zero-width space, mostly coming from copying text on jisho.org
@@ -249,9 +262,6 @@
                 let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
                 let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
                 let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
-                // let regexNone = /[\n](?=[\n])[\n](?=[\n])/g;
-                // let regexNone = /(\n\s)(?=[\n\s])/g;
-                // let regexNewline = /\n(?=[\n])/g;
                 let regexQm = /[“|”]/g;
                 let regexSpacing = /(?<=[A-Za-z(&])\n(?=[\n&(])/g;
                 let regexTrailingWs = /^\n$/g;
@@ -263,11 +273,10 @@
                     definitionsTextArea.value = definitionsTextArea.value.replaceAll(keywords[i], `*^${keywords[i].toLowerCase()}^*`);
             }
 
+            // Formats the "Example usage" textbox.
             function formatExamples() {
                 // https://ruby.suki2.net
                 examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]").replaceAll("()[]", "").replaceAll("{}[]", "").replaceAll("<b>", "`").replaceAll("</b>", "~");
-
-                //text.replaceAll("(", "<ruby>").replaceAll(")[", "<rt>").replaceAll("]", "</rt></ruby>").replaceAll("{", "<ruby><b>").replaceAll("}[", "</b><rt>").replaceAll("`", "<b>").replaceAll("~", "</b>").replaceAll("*^", "<i>").replaceAll("^*", "</i>").replaceAll(/(?:\r|\n|\r\n)/g, "<br>");
 
                 // TBD
                 // add an option that adds boldface to the target word, mostly likely:
@@ -276,8 +285,8 @@
                 // 3. try to format empty "containers", e.g. ()[] and {}[]
                 let test1 = searchBar.value;
                 let test2 = examplesTextArea.value;
-                let test3 = "fuck";
                 console.log(test1);
+                console.log(test2);
             }
     
             // Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
@@ -337,30 +346,32 @@
             let jishoSentencesRadio = document.getElementById("jisho-sentences-radio");
             let massifRadio = document.getElementById("massif-radio");
             let youreiRadio = document.getElementById("yourei-radio");
-            let googleImagesRadio = document.getElementById("google-images-radio");
+            let ejjeRadio = document.getElementById("ejje-radio");
+            let eijirouRadio = document.getElementById("eijirou-radio");
             // let convertRadio = document.getElementById("convert-radio");
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             function searchWord() {
+                let word = searchBar.value;
                 if (wiktionaryRadio.checked)
-                    iframe.src = `https://en.wiktionary.org/wiki/${searchBar.value}#Japanese`;
+                    iframe.src = `https://en.wiktionary.org/wiki/${word}#Japanese`;
                 if (jishoDefinitionsRadio.checked)
-                    iframe.src = `https://jisho.org/search/${searchBar.value}`;
+                    iframe.src = `https://jisho.org/search/${word}`;
+                // random spaces?
                 if (jishoKanjiRadio.checked)
-                    iframe.src = `https://jisho.org/search/${searchBar.value} %23kanji`;
+                    iframe.src = `https://jisho.org/search/${word}%23kanji`;
                 if (jishoNamesRadio.checked)
-                    iframe.src = `https://jisho.org/search/${searchBar.value} %23names`;
+                    iframe.src = `https://jisho.org/search/${word}%23names`;
                 if (jishoSentencesRadio.checked)
-                    iframe.src = `https://jisho.org/search/${searchBar.value} %23sentences`;;
+                    iframe.src = `https://jisho.org/search/${word}%23sentences`;;
                 if (massifRadio.checked)
-                    iframe.src = `https://massif.la/ja/search?q=${searchBar.value}`;
+                    iframe.src = `https://massif.la/ja/search?q=${word}`;
                 if (youreiRadio.checked)
-                    iframe.src = `https://yourei.jp/${searchBar.value}`;
-                if (googleImagesRadio.checked)
-                    iframe.src = `https://www.google.com/webhp?igu=1`;
-                    // iframe.src = `https://www.google.com/search?q=${searchBar.value}`;
-                // if (convertRadio.checked)
-                    // iframe.src = "https://ruby.suki2.net";
+                    iframe.src = `https://yourei.jp/${word}`;
+                if (ejjeRadio.checked)
+                    iframe.src = `https://ejje.weblio.jp/sentence/content/${word}`;
+                if (eijirouRadio.checked)
+                    iframe.src = `https://eow.alc.co.jp/search?q=${word}`
             }
 
             // Check if a URL exists. Unused for now.
@@ -416,8 +427,7 @@
                         searchMode[radioButton].checked = false;
                     wiktionaryRadio.checked = true;
 
-                    // iframe.src = "https://en.wiktionary.org/wiki/Wiktionary:Main_Page";
-                    iframe.src = "about:blank";
+                    iframe.src = "https://en.wiktionary.org/wiki/Wiktionary:Main_Page";
                 }
             }
             // Clear everything on page load.
@@ -470,7 +480,7 @@
 
     checkboxes:
         https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/checkbox
-        https://www.geeksforgeeks.org/html-dom-input-checkbox-name-property/
+        https://www.geeksforgeeks.org/html-dom-input-checkbox-name-property
         check checkbox state:
             https://stackoverflow.com/questions/9887360/how-can-i-check-if-a-checkbox-is-checked
         trigger checkbox state:
