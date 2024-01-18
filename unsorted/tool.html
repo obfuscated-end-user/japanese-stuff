@@ -126,7 +126,7 @@
             </div><br><br><br><br><br><br>
         </div>
         <div id="external">
-            Word to search: <input type="text" id="search-bar">&nbsp;<button type="button" onclick="searchWord()">Search</button>
+            <strong>Word to search:</strong> <input type="text" id="search-bar">&nbsp;<button type="button" onclick="searchWord()">Go!</button>
             <table id="indicator">
                 <tr>
                     <th>Definitions</th>
@@ -138,13 +138,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Example sentences</th>
+                    <th>Examples</th>
                     <td>
                         <input type="radio" id="jisho-sentences-radio" name="search-mode"><span title="jisho.org">JS</span>
                         <input type="radio" id="massif-radio" name="search-mode"><span title="Massif">M</span>
                         <input type="radio" id="yourei-radio" name="search-mode"><span title="用例">Y</span>
                         <input type="radio" id="ejje-radio" name="search-mode"><span title="EJJE Weblio">EW</span>
                         <input type="radio" id="eijirou-radio" name="search-mode"><span title="英辞郎 on the web">ER</span>
+                        <input type="radio" id="wikipedia-jp-radio" name="search-mode"><span title="ウィキペディア">WJ</span>
+                        <input type="radio" id="furigana-bunko-radio" name="search-mode"><span title="ふりがな文庫">FB</span>
                     </td>
                 </tr>
             </table>
@@ -327,7 +329,6 @@
                 document.body.removeChild(input);
 
                 return result;
-                // add a feature that after copying, make the radio button reset back to wiktionary.
             }
 
             // RIGHT SIDE
@@ -348,7 +349,8 @@
             let youreiRadio = document.getElementById("yourei-radio");
             let ejjeRadio = document.getElementById("ejje-radio");
             let eijirouRadio = document.getElementById("eijirou-radio");
-            // let convertRadio = document.getElementById("convert-radio");
+            let wikipediaJpRadio = document.getElementById("wikipedia-jp-radio");
+            let furiganaBunkoRadio = document.getElementById("furigana-bunko-radio");
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             function searchWord() {
@@ -357,7 +359,6 @@
                     iframe.src = `https://en.wiktionary.org/wiki/${word}#Japanese`;
                 if (jishoDefinitionsRadio.checked)
                     iframe.src = `https://jisho.org/search/${word}`;
-                // random spaces?
                 if (jishoKanjiRadio.checked)
                     iframe.src = `https://jisho.org/search/${word}%23kanji`;
                 if (jishoNamesRadio.checked)
@@ -372,6 +373,10 @@
                     iframe.src = `https://ejje.weblio.jp/sentence/content/${word}`;
                 if (eijirouRadio.checked)
                     iframe.src = `https://eow.alc.co.jp/search?q=${word}`
+                if (wikipediaJpRadio.checked)
+                    iframe.src = `https://ja.wikipedia.org/w/index.php?search=${word}`;
+                if (furiganaBunkoRadio.checked)
+                    iframe.src = `https://furigana.info/w/${word}`;
             }
 
             // Check if a URL exists. Unused for now.
