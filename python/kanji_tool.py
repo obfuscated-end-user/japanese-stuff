@@ -70,7 +70,7 @@ def extract_kanji(text):
 
 # remove_kanji("日本攜", "learnedKanji")
 # extract_kanji("天気の良い日に、稲穂がいっせいに風になびいている景色は大変美しかった。")
-add_kanji("煩悩、星霜、機嫌を取る、移駐、うろちょろ、華麗、狭義、浄瑠璃、偉業、燐光、添加、道理、条理、抄録、穐吉、寓意、赤檮、木苺、棄教、木蔦、極楽鳥花、棕櫚、水仙、黄楊、七竈、凌霄花、猫柳、鷂、蕗、芙蓉、光沢、茅葺、生い茂る、笹野、ほっぺ、沐浴", "learnedKanji")
+add_kanji("稲光、すなわち永遠なり。", "learnedKanji")
 
 # do not uncomment
 """ out_file = open(cwd + "/python/kanji tools/test/test1.json", "w", encoding="utf-8") 
