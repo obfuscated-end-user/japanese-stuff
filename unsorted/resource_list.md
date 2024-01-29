@@ -167,12 +167,12 @@ https://www.comico.jp/
 [JLPT Grammar List](https://jlptgrammarlist.neocities.org) - grammar sorted by n-level  
 [日本語文法辞典](https://japbase.neocities.org) - same as above, but has more details (HAS JAP IN URL WHAT THE FUCK RACIST FUCKS)
 
-SPECIFIC TO SUBS
+SPECIFIC TO SUBS  
 [Kitsunekko](https://kitsunekko.net)  
 [Itazuraneko](https://itazuraneko.neocities.org/library/sub.html)  
 [JP subtitles (GitHub)](https://github.com/Matchoo95/JP-Subtitles)  
 [JP movie subtitles (GitHub)](https://github.com/eurusdagr/Japanese-Movies-Subtitles)  
 [Animelon](https://animelon.com) - stream anime with jp subs, not a sub download site
 
-FUCK THAT JAPANESE GUY YUTA
+FUCK THAT JAPANESE GUY YUTA  
 [his shitty site](https://members.japanesevocabularyshortcut.com/spage/course-open-trial.html?dfp=3xYy87X3xq)
