@@ -88,7 +88,7 @@ https://www.comico.jp/
 
 ### dictionaries
 [goo辞書](https://dictionary.goo.ne.jp) - jp to jp  
-[https://gogen-yurai.jp/](語源由来辞典) - jp etymologies in jp  
+[語源由来辞典](https://gogen-yurai.jp) - jp etymologies in jp  
 
 ### podcasts
 [LOVE FM](https://lovefm.co.jp/yasashii_nihongo/blogs/podcast)
