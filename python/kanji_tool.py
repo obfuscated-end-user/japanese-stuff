@@ -9,7 +9,7 @@ kanji_list = json.load(open(cwd + "/kanji.json", encoding="utf8"))
 print(len(kanji_list["learnedKanji"]))
 
 sections = kanji_list.keys()
-garbage = "[0-9A-Za-zぁ-んァ-ン々、。０-９Ａ-ｚ]"
+garbage = "[0-9A-Za-zぁ-んァ-ン々、。ー０-９Ａ-ｚ]"
 valid_kanji = "[〆一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯豈-龎丽-𪘀]"
 
 def add_kanji(kanji_string, section):

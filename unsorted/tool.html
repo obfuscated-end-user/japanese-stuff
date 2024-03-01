@@ -126,12 +126,13 @@
             </div><br><br><br><br><br><br>
         </div>
         <div id="external">
-            <strong>Word to search:</strong> <input type="text" id="search-bar">&nbsp;<button type="button" onclick="searchWord()">Go!</button>
+            <strong>Word to search:</strong> <input type="text" id="search-bar">&nbsp;<button id="go-button" type="button" onclick="searchWord()">Go!</button>
             <table id="indicator">
                 <tr>
                     <th>Definitions</th>
                     <td>
-                        <input type="radio" id="wiktionary-radio" name="search-mode"><span title="Wiktionary (English)">W</span>
+                        <input type="radio" id="wiktionary-english-radio" name="search-mode"><span title="Wiktionary (English)">WE</span>
+                        <input type="radio" id="wiktionary-japanese-radio" name="search-mode"><span title="Wiktionary (Japanese)">WJ</span> <!--https://ja.wiktionary.org/wiki/-->
                         <input type="radio" id="jisho-definitions-radio" name="search-mode"><span title="jisho.org (definitions)">JD</span>
                         <input type="radio" id="jisho-kanji-radio" name="search-mode"><span title="jisho.org (kanji)">JK</span>
                         <input type="radio" id="jisho-names-radio" name="search-mode"><span title="jisho.org (names)">JN</span><br>
@@ -340,7 +341,8 @@
             
             // Radio buttons for modifying the search destination.
             let searchMode = document.getElementsByName("search-mode");
-            let wiktionaryRadio = document.getElementById("wiktionary-radio");
+            let wiktionaryEnglishRadio = document.getElementById("wiktionary-english-radio");
+            let wiktionaryJapaneseRadio = document.getElementById("wiktionary-japanese-radio");
             let jishoDefinitionsRadio = document.getElementById("jisho-definitions-radio");
             let jishoKanjiRadio = document.getElementById("jisho-kanji-radio");
             let jishoNamesRadio = document.getElementById("jisho-names-radio");
@@ -355,8 +357,10 @@
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             function searchWord() {
                 let word = searchBar.value;
-                if (wiktionaryRadio.checked)
+                if (wiktionaryEnglishRadio.checked)
                     iframe.src = `https://en.wiktionary.org/wiki/${word}#Japanese`;
+                if (wiktionaryJapaneseRadio.checked)
+                    iframe.src = `https://ja.wiktionary.org/wiki/${word}#日本語`;
                 if (jishoDefinitionsRadio.checked)
                     iframe.src = `https://jisho.org/search/${word}`;
                 if (jishoKanjiRadio.checked)
@@ -430,13 +434,54 @@
 
                     for (let radioButton = 0; radioButton < searchMode.length; ++radioButton)
                         searchMode[radioButton].checked = false;
-                    wiktionaryRadio.checked = true;
+                    wiktionaryEnglishRadio.checked = true;
 
                     iframe.src = "https://en.wiktionary.org/wiki/Wiktionary:Main_Page";
                 }
             }
             // Clear everything on page load.
             window.onload = clearAll(1);
+
+            /* document.getElementById("search-bar")
+                .addEventListener("keydown", function(event) {
+                event.preventDefault();
+                // Enter key at the moment.
+                // Make this to right shift + enter later.
+                // IME conflicts with this feature so you need to fix this anomaly ASAP.
+                if (event.keyCode === 13) {
+                    console.log("twat");
+                    document.getElementById("go-button").click();
+                }
+            }); */
+
+            /* var keyPressed = {};
+            document.addEventListener('keydown', function(e) {
+            keyPressed[e.key + e.location] = true;
+                if(keyPressed.Shift1 == true && keyPressed.Control1 == true){
+                    // Left shift+CONTROL pressed!
+                    keyPressed = {}; // reset key map
+                }
+                if(keyPressed.Shift2 == true && keyPressed.Control2 == true){
+                    // Right shift+CONTROL pressed!
+                    keyPressed = {};
+                }
+            }, false);
+            document.addEventListener('keyup', function(e) {
+                keyPressed[e.key + e.location] = false;
+                keyPressed = {};
+            }, false);
+
+            document.getElementById("search-bar")
+                .addEventListener("keydown", function(event) {
+                event.preventDefault();
+                if (event.keyCode === 16) {
+                    console.log("twat");
+                    if (event.keyCode === 13) {
+                        console.log("wanker");
+                        document.getElementById("go-button").click();
+                    }
+                }
+            }); */
 
             function darkMode() {
                 // TBD
@@ -499,6 +544,9 @@
             https://stackoverflow.com/questions/38931125/how-to-add-iframe-default-content-page
         reload iframe content
             https://stackoverflow.com/questions/86428/what-s-the-best-way-to-reload-refresh-an-iframe
+
+    search function:
+        https://stackoverflow.com/questions/155188/trigger-a-button-click-with-javascript-on-the-enter-key-in-a-text-box
 
     link formats:
     replace "term" with your word of choice
