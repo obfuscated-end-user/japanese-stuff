@@ -153,7 +153,8 @@
             </table>
             
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just fucks up the quotations section in some pages. -->
-            <a href="https://ruby.suki2.net">Sentence fixer (not by me)</a><br>
+            <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br>
+            <a href="https://www.drk7.jp/pub/tools/YahooRuby/index.cgi">Alternative (also not by me)</a><br>
             <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>.
         </div>
         <script>
@@ -279,7 +280,7 @@
             // Formats the "Example usage" textbox.
             function formatExamples() {
                 // https://ruby.suki2.net
-                examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]").replaceAll("()[]", "").replaceAll("{}[]", "").replaceAll("<b>", "`").replaceAll("</b>", "~");
+                examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]").replaceAll("()[]", "").replaceAll("{}[]", "").replaceAll("<b>", "`").replaceAll("</b>", "~").replaceAll("(<rb>", "(").replaceAll("</rb>)", ")");
 
                 // TBD
                 // add an option that adds boldface to the target word, mostly likely:
