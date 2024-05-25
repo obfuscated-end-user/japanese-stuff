@@ -356,6 +356,7 @@
             let furiganaBunkoRadio = document.getElementById("furigana-bunko-radio");
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
+            // look for something like 別表記 for alternative forms, and it must be in the 日本語 section
             function searchWord() {
                 let word = searchBar.value;
                 if (wiktionaryEnglishRadio.checked)
