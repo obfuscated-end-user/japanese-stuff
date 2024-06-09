@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /* STYLES BELOW ARE FOR THIS SITE, NOT INCLUDED IN ANKI */
+            .left {
+                float: left;
+                width: 50%;
+            }
+
+            .right {
+                float: left;
+                width: 50%;
+            }
+            /* END */
+
+            /* affects all elements. front, back, whatever.*/
+            .card {
+                /*font-family: _NotoSerifJP-Regular, arial;*/
+                /* font-family: Meiryo; remove this if it fucks up the look on mobile */
+                font-size: 120%;
+                color: black;
+                /*background-color: white;*/
+                margin: 20px;
+                /*text-align: justify;*/
+                hyphens: auto;
+            }
+
+            .win .card {
+                font-family: "Noto Serif JP", Meiryo, Arial, sans-serif;
+                font-size: 155%;
+            }
+
+            .win .front {
+                font-family: "Noto Serif JP", Meiryo, sans-serif;
+            }
+
+            .win .six-or-more {
+                font-size: 100%;
+                margin: 10px 0px 10px 0px;
+            }
+
+            .win .alt-forms {
+                font-family: "Noto Serif JP", "Noto Emoji", Meiryo, sans-serif;
+            }
+
+            .win .readings {
+                font-family: "Noto Serif JP", Meiryo, sans-serif;
+            }
+
+            .win .examples {
+                font-family: "Noto Serif JP", Meiryo, sans-serif;
+                font-size: 30px;
+                font-weight: 500;
+            }
+
+            .win .back {
+                    font-family: "Wingdings";
+            }
+
+            b {
+                color: red;
+            }
+
+            /* the part that is first shown when you open the card */
+            .front {
+                font-family: arial;
+                font-size: 300%;
+                text-align: center;
+                writing-mode: vertical-rl;
+                margin: 0 auto;
+                display: block;
+                overflow: auto;
+            }
+
+            /* For Japanese entries */
+            /* alternative forms of a word. may be in kanji, hiragana, katakana, or mixed (hiragana, katakana and kanji). */
+            .alt-forms {
+                font-size: 30px;
+                font-family: _yumin, _HanaMinB, Arial, sans-serif;
+            }
+
+            /* examples using the word */
+            .examples {
+                font-family: _yumin;
+                writing-mode: vertical-rl;
+                text-align: left;
+                margin: 0px; 
+                padding: 0px;
+                height: 75%;
+                width: 100%;
+                font-size: 23px;
+                overflow-x: auto;
+            }
+
+            ruby {
+                    ruby-position: over;
+            }
+
+            rt {
+                font-size: 60%;
+                /*color: black;*/
+                /*toggle ruby text visibility, remove comment signs vvv*/
+                    /* This being "display: block;" caused the whole fuck-up you waited so long to fix. */
+                    display: ruby-text;
+                    user-select: none;
+            }
+
+
+            /* kana on the individual kana deck. do not remove, even that you don't use that deck anymore. */
+            .kana {
+                font-size: 200%;
+            }
+
+            /* For 8 or more ruby characters */
+            .longruby {
+                font-size: 35%;
+                text-align: center;
+                color: black;
+                vertical-align: sup;
+            }
+
+            /* images used on cards (only on back side) */
+            .image {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 85%;
+                text-align: center;
+            }
+
+            /* used whenever a word on the front side does not fit perfectly on the screen (it breaks and goes over to the next line). does not necessarily have to be 6, it's just that your current phone can only fit a max of 6 characters on the screen*/
+            .six-or-more {
+                font-size: 55%;
+                margin: 10px 0px 10px 0px;
+            }
+
+            /* For English entries */
+            /* word on front side */
+            .english-word {
+                font-size: 30px;
+                margin: 20px;
+                text-align: center;
+            }
+
+            /* entries on the back side */
+            .english-back {
+                font-size: 14px;
+                margin: 20px;
+                text-align: justify;
+                hyphens: auto;
+            }
+
+            /* source of where the sentence quoted is from*/
+            .source {
+                font-size: 10px;
+            }
+
+            /* for font randomization */
+            @font-face { font-family: _HanaMinA; src: url('_HanaMinA.ttf'); }
+            @font-face { font-family: _meiryo; src: url('_meiryo.ttc');}
+            @font-face { font-family: _ipaexg; src: url('_ipaexg.ttf'); }
+            @font-face { font-family: _ipaexm; src: url('_ipaexm.ttf'); }
+            @font-face { font-family: _TakaoPMincho; src: url('_TakaoPMincho.ttf'); }
+            @font-face { font-family: _TakaoExMincho; src: url('_TakaoExMincho.ttf'); }
+            @font-face { font-family: _BIZ-UDGothicR; src: url('_BIZ-UDGothicR.ttc'); }
+            @font-face { font-family: _BIZ-UDMinchoM; src: url('_BIZ-UDMinchoM.ttc'); }
+            @font-face { font-family: _UDDigiKyokashoN-R; src: url('_UDDigiKyokashoN-R.ttc'); }
+            @font-face { font-family: _YOzK; src: url('_YOzK.TTC'); }
+            @font-face { font-family: _YuGothR; src: url('_YuGothR.ttc'); }
+            @font-face { font-family: _851MkPOP_100; src: url('_851MkPOP_100.ttf'); }
+            @font-face { font-family: _AP; src: url('_AP.ttf'); }
+            @font-face { font-family: _APT; src: url('_APT.ttf'); }
+            @font-face { font-family: _dartsfont; src: url('_dartsfont.ttf'); }
+            @font-face { font-family: _DotGothic16-Regular; src: url('_DotGothic16-Regular.ttf'); }
+            @font-face { font-family: _FUTENE; src: url('_FUTENE.ttf'); }
+            @font-face { font-family: _irohamaru-mikami-Regular; src: url('_irohamaru-mikami-Regular.ttf'); }
+            @font-face { font-family: _KanjiStrokeOrders_v4004; src: url('_KanjiStrokeOrders_v4004.ttf'); }
+            @font-face { font-family: _KiwiMaru-Regular; src: url('_KiwiMaru-Regular.ttf'); }
+            @font-face { font-family: _KosugiMaru-Regular; src: url('_KosugiMaru-Regular.ttf'); }
+            @font-face { font-family: _moonp; src: url('_moonp.ttf'); }
+            @font-face { font-family: _Mplus1-Regular; src: url('_Mplus1-Regular.ttf'); }
+            @font-face { font-family: _mplus-2p-regular; src: url('_mplus-2p-regular.ttf'); }
+            @font-face { font-family: _Mplus2-Regular; src: url('_Mplus2-Regular.ttf'); }
+            @font-face { font-family: _seap; src: url('_seap.ttf'); }
+            @font-face { font-family: _SoukouMincho; src: url('_SoukouMincho.ttf'); }
+            @font-face { font-family: _umeboshi_; src: url('_umeboshi_.ttf'); }
+            @font-face { font-family: _unifont_jp-14001; src: url('_unifont_jp-14001.ttf'); }
+            @font-face { font-family: _ZenAntique-Regular; src: url('_ZenAntique-Regular.ttf'); }
+            @font-face { font-family: _ZenAntiqueSoft-Regular; src: url('_ZenAntiqueSoft-Regular.ttf'); }
+            @font-face { font-family: _ZenKakuGothicAntique-Regular; src: url('_ZenKakuGothicAntique-Regular.ttf'); }
+        </style>
+    </head>
+    <body>
+        <div class="left">
+            <span class="alt-forms">愚癡をこぼす、愚痴を零す、愚痴を溢す</span><br><br><span class="readings">ぐちをこぼす</span><br><br><span class="definitions">(transitive)<br>to whinge; to kvetch; to gripe; to complain; to whine</span><br><br><span class="examples"><ruby>彼女<rt>かのじょ</rt></ruby>はいつも<ruby>自分<rt>じぶん</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>の<b>ぐちをこぼして</b>いる。<br><ruby>外国人<rt>がいこくじん</rt></ruby>は<ruby>日本人<rt>にっぽんじん</rt></ruby>と<ruby>知<rt>し</rt></ruby>り<ruby>合<rt>あ</rt></ruby>いになるのは<ruby>難<rt>むずか</rt></ruby>しいと<b>ぐちをこぼす</b>。ある<ruby>程度<rt>ていど</rt></ruby>これは<ruby>本当<rt>ほんとう</rt></ruby>かもしれない。</span>
+        </div>
+        <div class="right">
+            What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little "clever" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo.
+        </div>
+        <script type="text/javascript">
+            // fonts used for randomization. must be prepended with an underscore "_", in the collection.media folder, and not be an opentype font file (.otf).
+            var typefaces = ["_HanaMinA", "_yumin", "_meiryo", "_ipaexg", "_ipaexm", "_TakaoPMincho", "_TakaoExMincho", "_BIZ-UDGothicR", "_BIZ-UDMinchoM", "_UDDigiKyokashoN-R", "_YOzK", "_YuGothR", "_851MkPOP_100", "_AP", "_APT", "_dartsfont", "_DotGothic16-Regular", "_FUTENE", "_Hosohuwafont", "_irohamaru-mikami-Regular", "_KanjiStrokeOrders_v4004", "_KiwiMaru-Regular", "_KosugiMaru-Regular", "_moonp", "_Mplus1-Regular", "_mplus-2p-regular", "_Mplus2-Regular", "_seap", "_ShigotoMemogaki-Regular-1-01", "_SoukouMincho", "_umeboshi_", "_unifont_jp-14001", "_Yuzu_PenJin_M", "_Yuzu_PenJin_P", "_ZenAntique-Regular", "_ZenAntiqueSoft-Regular", "_ZenKakuGothicAntique-Regular"];
+
+            // front side of the card. it is here because the "front" class is still on the screen when you "flip" the card.
+            var frontTypeface = typefaces[Math.floor(Math.random() * typefaces.length)],
+            front = document.getElementsByClassName("front")[0];
+            front.style.cssText = `font-family:` + frontTypeface + `, _meiryo, sans-serif; font-size: 300%; text-align: center; writing-mode: vertical-rl; margin: 0 auto; display: block;}`;
+
+            // examples
+            var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)],
+            examples = document.getElementsByClassName("examples")[0];
+            examples.style.cssText = `font-family:` + examplesTypeface + `, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;}`;
+
+            // windows. remove this if it breaks android shit. SHIT SHIT MOTHERFUCKER
+            var windows = document.getElementsByClassName("win").length > 0;
+            if (windows) {
+                var examplesWindows = document.getElementsByClassName("examples");
+                examplesWindows[0].style.cssText = "font-family: 'Noto Serif JP', Meiryo, Arial, sans-serif;";
+
+                var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)],
+                examples = document.getElementsByClassName("examples")[0];
+                examples.style.cssText = `font-family:` + examplesTypeface + `, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; 		margin: 0px; padding: 0px; height: 75%; width: 100%;}`;
+            }
+
+            // randomize writing orientation (horizontal or vertical)
+            var writingDirection = Math.random() < 0.5;
+            if (writingDirection == true)
+                examples.style.writingMode = front.style.writingMode = "horizontal-tb";
+            else
+                examples.style.writingMode = front.style.writingMode = "vertical-rl";
+
+            // randomize if furigana should appear
+            var appearFurigana = Math.random() < 0.5, rubyText = document.getElementsByTagName("rt");
+            for (i = 0; i < rubyText.length; i++) {
+                if (appearFurigana == true)
+                    rubyText[i].style.display = "ruby-text";
+                else
+                    rubyText[i].style.display = "none";
+            }
+        </script>
+    </body>
+</html>

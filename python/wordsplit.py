@@ -4,11 +4,11 @@ sample_text1="琴瑟相和、近親相姦、魑魅魍魎、百戦錬磨、躊躇
 
 # text=input("Enter Japanese words separated by \"、\": ")
 def word_split1(text):
-    """returns a word search thing for anki. fuck you."""
+    """Returns a word search thing for Anki."""
     return "\"front:re:(" + text.replace("、", "|") + ")\""
 
 def word_split2(text):
-    """same as above, but without the anki stuff."""
+    """Same as above, but without the Anki stuff."""
     word_list=text.split("、")
     final=""
     for word in word_list:

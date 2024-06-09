@@ -2,16 +2,32 @@
 勉強材料/*
 ツール/*
 
-# python/nycthemeron.py
 python/*.txt
+python/kanji tools/congee.txt
+python/kanji tools/fuck.txt
+python/kanji tools/kanji (2023_01_22).txt
+python/kanji tools/kanji_mgmt.py
+python/kanji tools/mese.txt
 python/temp
-unsorted/temp
-unsorted/for anki.html
-unsorted/Selected Notes.txt
-unsorted/retard sandwich.txt
-unsorted/kanjidic2.md
+unsorted/anki testing.html
+unsorted/furigana.js
 unsorted/js anki sandbox.html
+unsorted/kanjidic2.md
+unsorted/for anki.html
+unsorted/regex test.html
+unsorted/retard sandwich.txt
+unsorted/Selected Notes.txt
+unsorted/seminal vesicle.txt
+unsorted/temp
 unsorted/tool (old 1).html
 unsorted/tool (old 2).html
-unsorted/regex test.html
 vocabulary/原神.md
+
+python/kanji tools/congee.txt
+python/kanji tools/fuck.txt
+python/kanji tools/kanji (2023_01_22).txt
+python/kanji tools/kanji_mgmt.py
+python/kanji tools/mese.txt
+unsorted/anki testing.html
+unsorted/furigana.js
+unsorted/seminal vesicle.txt

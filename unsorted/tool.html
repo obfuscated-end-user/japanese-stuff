@@ -152,7 +152,7 @@
                 </tr>
             </table>
             
-            <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just fucks up the quotations section in some pages. -->
+            <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just messes up the quotations section in some pages. -->
             <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br>
             <a href="https://www.drk7.jp/pub/tools/YahooRuby/index.cgi">Alternative (also not by me)</a><br>
             <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>.
@@ -210,7 +210,7 @@
             }
 
             // Remember, if it's a div, then use innerHTML. If it's a textarea, then use value.
-            // Reformats the text to convert some shorthand expressions. I know, stupid fucking function name, should've been the one at the bottom, but whatever. Mainly used for kanji in text.
+            // Reformats the text to convert some shorthand expressions. I know, stupid function name, should've been the one at the bottom, but whatever. Mainly used for kanji in text.
             function reformat(text) {
                 return text.replaceAll("(", "<ruby>").replaceAll(")[", "<rt>").replaceAll("]", "</rt></ruby>").replaceAll("{", "<ruby><b>").replaceAll("}[", "</b><rt>").replaceAll("`", "<b>").replaceAll("~", "</b>").replaceAll("*^", "<i>").replaceAll("^*", "</i>").replaceAll(/(?:\r|\n|\r\n)/g, "<br>");
             }
@@ -321,7 +321,7 @@
                 preview.innerHTML = final;
             }
     
-            // Copies text and puts it in your clipboard. It just fucking works.
+            // Copies text and puts it in your clipboard. It just works.
             function copy(text) {
                 let input = document.createElement("textarea");
                 input.innerHTML = text;
@@ -451,7 +451,7 @@
                 // Make this to right shift + enter later.
                 // IME conflicts with this feature so you need to fix this anomaly ASAP.
                 if (event.keyCode === 13) {
-                    console.log("twat");
+                    console.log("the grass is always greener");
                     document.getElementById("go-button").click();
                 }
             }); */
@@ -477,9 +477,9 @@
                 .addEventListener("keydown", function(event) {
                 event.preventDefault();
                 if (event.keyCode === 16) {
-                    console.log("twat");
+                    console.log("on the other side");
                     if (event.keyCode === 13) {
-                        console.log("wanker");
+                        console.log("foo");
                         document.getElementById("go-button").click();
                     }
                 }
@@ -504,19 +504,23 @@
     the screen on the right contains a search bar that asks for some japanese word and some radio buttons indicating what source to use when searching a word that is based on whatever is on the textbox. disable the search button if the search box is empty. the sources that you should use are wiktionary and jisho for definitions, and some sites like massif for example sentences.
 
     add a button that goes back and forward on the iframe's history (is this even possible?)
-    try to modify the contents of the clipboard like converting all those left facing parentheses to its respective html codes? (no, this would fuck up the kana conversion thing)
+    try to modify the contents of the clipboard like converting all those left facing parentheses to its respective html codes? (no, this would screw up the kana conversion thing)
 
-    it's okay to swear in this document because nobody will take this shit seriously anyway. i write shit code, i expect a lot of bugs. simple. swearing relieves me and makes my frustration go away. just don't swear too much, or else you're gonna sound like you're fucking 7 and play cod idk fuk off bicht
+    make code that generates google search queries, for example:
+    site:en.wiktionary.org "嚼"
+    and some even more specific ones to find japanese alt-forms.
+
+    it's okay to swear in this document because nobody will take this shit seriously anyway. i write shit code, i expect a lot of bugs. simple. swearing relieves me and makes my frustration go away. just don't swear too much, or else you're gonna sound like you're 7 and play cod idk fuk off bicht
 
     2023/03/12
-    make something that automatically makes a verb template on a kanji verb. get the value of the entry on the search box, get the furigana on the readings textbox, and then make a template in the format of (kanji)[furigana]する - &#40;transitive) to < !--verbする- -> (space added because it fucks up the format)
+    make something that automatically makes a verb template on a kanji verb. get the value of the entry on the search box, get the furigana on the readings textbox, and then make a template in the format of (kanji)[furigana]する - &#40;transitive) to < !--verbする- -> (space added because it messes up the format)
 	^ turns out that this is really hard to do
 
     2024/03/04
     add another textbox for the card title and you include whatever is in it to the associated generated card thing you fucking know what i'm talking about
 
     RESOURCES:
-    remember, no retarded jquery shit
+    remember, no antiquated jquery shit
     splitting screen:
         https://www.w3schools.com/howto/howto_css_split_screen.asp
         https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css

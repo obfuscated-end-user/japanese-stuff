@@ -5,7 +5,7 @@
         <title>horizontal to vertical</title>
         <meta charset="utf-8">
         <meta name="description" content="A simple text orientation converter.">
-        <meta name="author" content="lol who the fuck puts their real name on the internet">
+        <meta name="author" content="don't put your real name on the internet bro">
 
         <style>
             body {
@@ -52,7 +52,7 @@
             
 			<textarea id="rawtext" value=""></textarea><br>
             <button type="button" onclick="convertText()">convert</button>
-            <button type="button" onclick="resetText(FUCK)">reset</button>
+            <button type="button" onclick="resetText(foobar)">reset</button>
             <button type="button" onclick="triggerDark()">dark</button><br>
             <button type="button" onclick="changeFont('sansserif')">sans-serif</button>
             <button type="button" onclick="changeFont('serif')">serif</button>
@@ -65,10 +65,8 @@
             <p id="outputtext" lang=ja></p>
         </div>
     </body>
-    <script>
-		// You can use this code as an example for shitty programming.
-		
-        console.log("fuck outta here"); // check if javascript works on this page
+    <script>		
+        console.log("Hello world!"); // check if javascript works on this page
 
         function convertText() {
 			// get whatever is in outputtext, call that string function thing that converts certain halfwidth characters to their fullwidth variants.
@@ -82,10 +80,10 @@
 			outputText.innerHTML = tempText;
 
         }
-        // stolen from the internet, because i can't do shit myself
+        // got this from here, because i can't anything rights
 		// https://ilog4.blogspot.com/2015/09/javascript-convert-full-width-and-half.html
         String.prototype.toFullWidth = function() {
-            return this.replace(/[A-Za-z0-9!?&:;.%$¥@#*^~()\"\\]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
+            return this.replace(/[!-;?-z\"\\^~¥]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
         };
 
         function resetText() {
@@ -109,7 +107,7 @@
                 let randomFont = fontList[Math.floor(Math.random()*fontList.length)];
                 document.getElementById("outputtext").style.fontFamily = randomFont + fallbackSansSerif;
             } else {
-                console.log("enter a valid font style fuckhead (sansserif, serif, casual, handwriting, random)");
+                console.log("enter a valid font style (sansserif, serif, casual, handwriting, random)");
             }
         }
 		
@@ -124,7 +122,7 @@
         // switch between dark mode and vice-versa
         // obviously this doesn't work, write code for this later
         function triggerDark () {
-            console.log('i eat ass');
+            console.log("dark");
         }
 		
 		/*

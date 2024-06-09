@@ -130,7 +130,7 @@
 		}
 		
 		// halfwidth to fullwidth, in case if there's crap in the string
-		//  source: https://blog.yug1224.com/archives/580e07c974d0d51807ee1295/
+		// source: https://blog.yug1224.com/archives/580e07c974d0d51807ee1295/
 		String.prototype.toFullWidth = function() {
             return this.replace(/[A-Za-z0-9!?&:;.%$¥@#*^~()\"\\]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
         };
@@ -158,7 +158,7 @@
 			document.body.appendChild(input);
 			// select all text in "input"
 			input.select();
-			// copy whatever is in "input". i don't know how this knows that it has to grab from that specific textbox but it must be the child index number bullshit again.
+			// copy whatever is in "input". i don't know how this knows that it has to grab from that specific textbox but it must be the child index number thing again.
 			var result = document.execCommand('copy');	// also b in the compressed code
 			// delete "input"
 			document.body.removeChild(input);
