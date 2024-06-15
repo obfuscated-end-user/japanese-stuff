@@ -6,11 +6,12 @@ cwd = os.path.dirname(os.path.realpath(__file__))
 
 kanji_list = json.load(open(cwd + "/kanji.json", encoding="utf8"))
 
-print(len(kanji_list["learnedKanji"]))
+print(f"# of learned kanji: {len(kanji_list['learnedKanji'])}")
+print(f"# of other kanji: {len(kanji_list['otherKanji'])}")
 
 sections = kanji_list.keys()
-garbage = "[0-9A-Za-zぁ-んァ-ン々、。ー０-９Ａ-ｚ]"
-valid_kanji = "[〆一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯豈-龎丽-𪘀]"
+garbage = "[0-9A-Za-zぁ-んァ-ン々・、。ー０-９Ａ-ｚ𛀀-𛃿𛄀-𛄢𚿰-𚿾𛄲-𛅧ㇰ-ㇿ･-ﾟ｡､\s]"
+valid_kanji = "[〆一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝豈-龎丽-𪘀]"
 
 def add_kanji(kanji_string, section):
     if section in sections:
@@ -70,6 +71,7 @@ def extract_kanji(text):
 
 # remove_kanji("日本攜", "learnedKanji")
 # extract_kanji("天気の良い日に稲穂がいっせいに風になびいている景色は大変美しかった。")
+
 # does not work if the first words are in hiragana/katakana
 add_kanji("稲光すなわち永遠なり。", "learnedKanji")
 

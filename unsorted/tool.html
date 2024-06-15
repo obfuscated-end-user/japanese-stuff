@@ -75,6 +75,20 @@
                 border: 1px solid black;
                 border-collapse: collapse;
             }
+
+            /* fix later */
+            .input-boxes-left {
+                float: left;
+                width: 46%;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .input-boxes-right {
+                float: right;
+                width: 46%;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         </style>
     </head>
     <body>
@@ -87,6 +101,8 @@
                 <button type="button" onclick="clearAll(1)">Reset</button>&emsp;
                 <button type="button" onclick="clearAll(0)">Clear</button><br>
             </div>
+            <!-- <div class="input-boxes-left"></div> -->
+            <!-- <div class="input-boxes-right"></div> -->
             <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name">
             Alternative forms&emsp;
             <button type="button" onclick="formatAltForms()">format alternative forms</button><br>
@@ -524,6 +540,8 @@
     splitting screen:
         https://www.w3schools.com/howto/howto_css_split_screen.asp
         https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
+        https://stackoverflow.com/questions/2637696/how-to-place-div-side-by-side
+        https://stackoverflow.com/questions/17217766/two-divs-side-by-side-fluid-display
 
     textarea or "text box"
         disable textarea resizing:
