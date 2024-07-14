@@ -3,178 +3,281 @@
     <head>
         <title>Tool.</title>
         <meta charset="utf-8">
-        <meta name="description" content="Tool for Japanese things">
+        <meta name="description" content="Tool used for creating Anki cards.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             body {
-                text-align: center;
                 font-family: "Yu Gothic", "Noto Sans", Meiryo, Arial, Helvetica, sans-serif;
                 font-size: smaller;
             }
+
             textarea {
-                width: 500px;
-                height: 100px;
+                border-radius: 10px;
+                height: 100%;
                 resize: none;
+                width: 100%;
             }
+
+            button {
+                border-radius: 5px;
+                font-weight: bold;
+            }
+
+            @keyframes light-mode-body {
+                from {background-color: #000;}
+                to {background-color: #fff;}
+            }
+
+            .light-mode, .light-mode textarea {
+                background-color: #fff;
+                color: #000;
+                animation: light-mode-body 0.5s;
+            }
+
+            @keyframes dark-mode-body {
+                from {background-color: #fff;}
+                to {background-color: #000;}
+            }
+
+            .dark-mode, .dark-mode textarea, .dark-mode #search-bar {
+                background-color: #000;
+                color: #fff;
+                animation: dark-mode-body 0.5s;
+            }
+
+            .dark-mode #preview, .dark-mode #modes, .dark-mode #indicator {
+                border: solid 2px #fff;
+            }
+
+            .dark-mode button {
+                background-color: #696969;
+                color: #fff;
+            }
+
+            .dark-mode .search-icons, .dark-mode #github-logo {
+                filter: invert(1);
+            }
+
             /* The two screens */
             /* Left */
             #modes {
-                border: solid 1px black;
-                text-align: left;
-                margin: auto 10%;
+                border: solid 2px #000;
+                border-radius: 10px;
+                margin: 10px;
                 padding: 1.5%;
+                width: 47%;
             }
+
             #anki {
                 height: 100%;
-                width: 50%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                overflow-x: hidden;
-                padding-top: 20px;
                 left: 0;
+                overflow-x: hidden;
                 overflow-y: auto;
+                padding-top: 20px;
+                position: fixed;
+                top: 0;
+                width: 60%;
+                z-index: 1;
             }
-            #alt-forms-textarea, #readings-textarea, #definitions-textarea, #haskanji-textarea, #examples-textarea, #anki-html, #temp-textarea, #search-bar {
+
+            button, #alt-forms-textarea, #readings-textarea, #definitions-textarea, #haskanji-textarea, #examples-textarea, #anki-html, #temp-textarea, #search-bar {
                 font-family: "UDEV Gothic", Consolas, "Courier New", Courier, monospace;
-                font-size: 13px;
+                font-size: 12px;
             }
-            #alt-forms-textarea, #readings-textarea {
-                height: 50px;
-            }
+
             #preview {
-                border: solid 1px black;
-                margin: auto 10%;
+                border: solid 2px #000;
+                border-radius: 10px;
+                font-size: 20px;
+                margin-bottom: 10px;
+                max-height: 300px;
+                overflow-y: auto;
                 padding: 2.5%;
                 text-align: left;
-                font-size: 16px;
             }
+
+            #preview ruby b {
+                color: #f00;
+            }
+
             rt {
                 user-select: none;
             }
+
+            .element-headers {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .input-boxes-left {
+                float: left;
+                margin-left: 20px;
+                margin-top: 5px;
+                min-height: 100vh;
+                padding-bottom: 1%;
+                position: relative;
+                width: 47%;
+            }
+
+            .input-boxes-right {
+                float: right;
+                margin-right: 20px;
+                margin-top: 5px;
+                width: 47%;
+            }
+
+            footer {
+                bottom: 0px;
+                position: absolute;
+                width: 100%;
+            }
+
             /* Right */
             #external {
                 height: 100%;
-                width: 50%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
                 overflow-x: hidden;
-                padding-top: 20px;
-                right: 0;
                 overflow-y: auto;
-            }
-            iframe {
-                height: 90%;
-                width: 90%;
-            }
-            #indicator, td, tr {
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
-                border: 1px solid black;
-                border-collapse: collapse;
+                padding-top: 20px;
+                position: fixed;
+                right: 0;
+                text-align: left;
+                top: 0;
+                width: 40%;
+                z-index: 1;
             }
 
-            /* fix later */
-            .input-boxes-left {
-                float: left;
-                width: 46%;
-                padding-left: 10px;
-                padding-right: 10px;
+            #search-bar {
+                border-radius: 10px;
+                margin-bottom: 1.5%;
+                margin-left: 2.5%;
             }
-            .input-boxes-right {
-                float: right;
-                width: 46%;
-                padding-left: 10px;
-                padding-right: 10px;
+
+            .search-icons {
+                height: 15px;
+                width: 15px;
+            }
+
+            iframe {
+                border-radius: 10px;
+                height: 80%;
+                margin: 2.5%;
+                width: 95%;
+            }
+
+            #indicator, td, tr {
+                margin-left: 2.5%;
+                margin-right: auto;
+                text-align: left;
+            }
+
+            #indicator {
+                border: 2px solid #000;
+                border-radius: 10px;
             }
         </style>
     </head>
-    <body>
+    <body class="light-mode">
         <div id="anki">
             <div id="modes">
-                <input type="radio" id="hiragana-only-radio" name="conversion-mode">Hiragana only<br>
-                <input type="radio" id="regular-word-radio" name="conversion-mode">Regular word<br>
-                <input type="radio" id="kanji-entry-radio" name="conversion-mode">Kanji entry<br>
-                <button type="button" onclick="setCheckboxes()">Set checkboxes</button>&emsp;
-                <button type="button" onclick="clearAll(1)">Reset</button>&emsp;
-                <button type="button" onclick="clearAll(0)">Clear</button><br>
+                <input type="radio" id="hiragana-only-radio" name="conversion-mode">hiragana only<br>
+                <input type="radio" id="regular-word-radio" name="conversion-mode">regular word<br>
+                <input type="radio" id="kanji-entry-radio" name="conversion-mode">kanji entry<br><br>
+                <button type="button" onclick="setCheckboxes()">set checkboxes</button>&emsp;
+                <button type="button" onclick="clearAll(1)">reset</button>&emsp;
+                <button type="button" onclick="clearAll(0)">clear</button>&emsp;
+                <button type="button" id="light-dark-mode-button" onclick="darkMode()">闇</button><br>
             </div>
-            <!-- <div class="input-boxes-left"></div> -->
-            <!-- <div class="input-boxes-right"></div> -->
-            <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name">
-            Alternative forms&emsp;
-            <button type="button" onclick="formatAltForms()">format alternative forms</button><br>
-            <textarea id="alt-forms-textarea" value=""></textarea><br>
 
-            <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name">
-            Readings&emsp;
-            <button type="button" onclick="formatReadings()">format readings</button><br>
-            <textarea id="readings-textarea" value=""></textarea><br>
+            <div class="input-boxes-left">
+                <span class="element-headers">Alternative forms</span><br>
+                <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name">
+                <button type="button" onclick="formatAltForms()">format</button><br>
+                <textarea id="alt-forms-textarea" rows="10" placeholder="Alternative forms of a given entry, separated by fullwidth commas (、). Also referred to as &quot;alt-forms&quot;.&#10;If a form has a fullwidth comma, wrap that entire form in these &quot;boxy&quot; quotation marks (「」).&#10;&#10;Example (entry for 井の中の蛙大海を知らず):&#10;&#10;井の中の蛙大海を知らず、井の内の蛙大海を知らず、「井の中の蛙、大海を知らず」" value=""></textarea><br>
 
-            <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name">
-            Definitions&emsp;
-            <button type="button" onclick="formatDefinitions()">format definitions</button><br>
-            <textarea id="definitions-textarea" rows="100" value=""></textarea><br>
+                <span class="element-headers">Definitions</span><br>
+                <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name">
+                <button type="button" onclick="formatDefinitions()">format</button><br>
+                <textarea id="definitions-textarea" rows="10" placeholder="Dictionary-like definitions of a given entry. You're allowed to combine dictionary entries from whatever sources you find, be it from here or somewhere else." value=""></textarea><br>
 
-            <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name">
-            Words containing this kanji &emsp;
-            <button type="button" onclick="formatWordsContainingThisKanji()">format words containing this kanji</button><br>
-            <textarea id="haskanji-textarea" value=""></textarea><br>
+                <span class="element-headers">Example usage</span><br>
+                <input type="checkbox" id="examples-checkbox" name="examples-checkbox-name">
+                <button type="button" onclick="formatExamples()">format</button><br>
+                <textarea id="examples-textarea" rows="10" placeholder="Sentences or phrases that use the entry. Fullwidth forms of Latin-based characters and numbers are preferred over their halfwidth counterparts.&#10;&#10;Example (entry for 拗れる):&#10;&#10;(下手)[へた]に(口)[くち]を(挟)[はさ]んだら(余計)[よけい]に`こじれて~しまいそうだ。&#10;(人間関係)[にんげんかんけい]は(時間)[じかん]が(経)[た]てば(経)[た]つほど`こじれて~いくものだ。&#10;お(前)[まえ]が(余計)[よけい]な(事)[こと]を(言)[い]うから(話)[はなし]が`こじれた~んだよ！" value=""></textarea>
 
-            <input type="checkbox" id="examples-checkbox" name="examples-checkbox-name">
-            Example usage&emsp;
-            <button type="button" onclick="formatExamples()">format examples</button><br>
-            <textarea id="examples-textarea" value=""></textarea><br>
+                <br><span class="element-headers">Temporary textbox</span>
+                <textarea id="temp-textarea" rows="10" placeholder="Store text in here temporarily. You can use this instead of Notepad (or any text processing software) to prevent yourself from switching back and forth between multiple windows. Text in here will not be included during conversion." value="" lang="ja"></textarea><br><br>
 
-            HTML&emsp;
-            <button type="button" onclick="convertText()">convert</button>&emsp;
-            <button type="button" onclick="copy(ankiHTML.value)">copy</button><br>
-            <textarea id="anki-html" value="" lang="ja" readonly></textarea><br>
+                <footer>
+                    <a href="https://github.com/obfuscated-end-user/Japanese-stuff/blob/master/unsorted/tool.html" title="View source code on GitHub"><img id="github-logo" src="https://github.com/favicon.ico" style="width: 20px; height: 20px;"></a><br>
+                    <strong>© 2022-<span id="copyright-year"></span> <ruby>横浜<rt>よこはま</rt></ruby></strong><br>
+                    <strong>All rights reserved.</strong>
+                </footer>
+            </div>
 
-            Temporary textbox<br>
-            <textarea id="temp-textarea" value="" lang="ja"></textarea><br>
+            <div class="input-boxes-right">
+                <span class="element-headers">Readings</span><br>
+                <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name">
+                <button type="button" onclick="formatReadings()">format</button><br>
+                <textarea id="readings-textarea" rows="10" placeholder="Readings associated with an entry, separated by fullwidth commas (、). In case of single-kanji entries, kun'yomi readings come first rendered in hiragana, followed by on'yomi readings rendered in katakana.&#10;&#10;Example (entry for 命):&#10;&#10;いのち、みこと&#10;メイ、ミョウ" value=""></textarea><br>
 
-            Preview
-            <div id="preview">
-                Previews go in here. You should not be able to see this text in your browser.
-            </div><br><br><br><br><br><br>
+                <span class="element-headers">Words containing this kanji</span><br>
+                <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name">
+                <button type="button" onclick="formatWordsContainingThisKanji()">format</button><br>
+                <textarea id="haskanji-textarea" rows="10" placeholder="Words that contain this kanji. Also referred to as &quot;haskanji&quot;. Must be only included in single-kanji entries, and ignored for all other cases.&#10;&#10;Example (entry for 解):&#10;&#10;(理解)[りかい] - understanding, comprehension&#10;(解凍)[かいとう] - thawing&#10;(解決)[かいけつ] - solution, settlement" value=""></textarea><br>
+
+                <span class="element-headers">HTML</span><br>
+                <button type="button" onclick="convertText()">convert</button> | <button type="button" onclick="copy(ankiHTML.value)">copy</button><br>
+                <textarea id="anki-html" rows="10" placeholder="The resulting HTML code from the other textboxes. The output depends on the checkboxes you checked. You can copy text from here, but you're not allowed to edit it from here.&#10;Click convert to convert the input from other textboxes and combine automatically into HTML. Click copy to put text from here into your clipboard." value="" lang="ja" readonly></textarea><br>
+
+                <span class="element-headers">Preview</span>
+                <div id="preview">
+                    <span class="alt-forms">體外離脫</span><br><br><span class="readings">たいがいりだつ</span><br><br><span class="definitions">an out-of-body experience</span><br><br><span class="examples"><ruby>車<rt>くるま</rt></ruby>が<ruby>谷<rt>たに</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちて<ruby>両親<rt>りょうしん</rt></ruby>を<ruby>亡<rt>な</rt></ruby>くしたんですが、その<ruby>時<rt>とき</rt></ruby>に<ruby>彼女<rt>かのじょ</rt></ruby>は、<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby>ですか？<br><ruby>臨死体験<rt>りんしたいけん</rt></ruby><ruby>中<rt>ちゅう</rt></ruby>には<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby><ruby>現象<rt>げんしょう</rt></ruby>が<ruby>起<rt>お</rt></ruby>こることが<ruby>知<rt>し</rt></ruby>られている。</span>
+                </div><br><br>
+            </div>
         </div>
         <div id="external">
-            <strong>Word to search:</strong> <input type="text" id="search-bar">&nbsp;<button id="go-button" type="button" onclick="searchWord()">Go!</button>
+            <input type="text" id="search-bar" placeholder="e.g. 魑魅魍魎">&nbsp;<button id="go-button" type="button" onclick="searchWord()">search word</button>
             <table id="indicator">
                 <tr>
                     <th>Definitions</th>
                     <td>
-                        <input type="radio" id="wiktionary-english-radio" name="search-mode"><span title="Wiktionary (English)">WE</span>
-                        <input type="radio" id="wiktionary-japanese-radio" name="search-mode"><span title="Wiktionary (Japanese)">WJ</span>
-                        <input type="radio" id="jisho-definitions-radio" name="search-mode"><span title="jisho.org (definitions)">JD</span>
-                        <input type="radio" id="jisho-kanji-radio" name="search-mode"><span title="jisho.org (kanji)">JK</span>
-                        <input type="radio" id="jisho-names-radio" name="search-mode"><span title="jisho.org (names)">JN</span><br>
+                        <input type="radio" id="wiktionary-english-radio" name="search-mode"><span title="Wiktionary (English)"><img class="search-icons" alt="WE" src="https://en.wiktionary.org/favicon.ico"></span>
+                        <input type="radio" id="wiktionary-japanese-radio" name="search-mode"><span title="Wiktionary (Japanese)"><img class="search-icons" alt="WJ" src="https://ja.wiktionary.org/favicon.ico"></span>
+                        <input type="radio" id="jisho-definitions-radio" name="search-mode"><span title="jisho.org (definitions)"><img class="search-icons" alt="JD" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span>
+                        <input type="radio" id="jisho-kanji-radio" name="search-mode"><span title="jisho.org (kanji)"><img class="search-icons" alt="JK" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span>
+                        <input type="radio" id="jisho-names-radio" name="search-mode"><span title="jisho.org (names)"><img class="search-icons" alt="JN" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span><br>
                     </td>
                 </tr>
                 <tr>
-                    <th>Examples</th>
+                    <th>Example sentences</th>
                     <td>
-                        <input type="radio" id="jisho-sentences-radio" name="search-mode"><span title="jisho.org">JS</span>
-                        <input type="radio" id="massif-radio" name="search-mode"><span title="Massif">M</span>
-                        <input type="radio" id="yourei-radio" name="search-mode"><span title="用例">Y</span>
-                        <input type="radio" id="ejje-radio" name="search-mode"><span title="EJJE Weblio">EW</span>
-                        <input type="radio" id="eijirou-radio" name="search-mode"><span title="英辞郎 on the web">ER</span>
-                        <input type="radio" id="wikipedia-jp-radio" name="search-mode"><span title="ウィキペディア日本語版">WJ</span>
-                        <input type="radio" id="furigana-bunko-radio" name="search-mode"><span title="ふりがな文庫">FB</span>
+                        <input type="radio" id="jisho-sentences-radio" name="search-mode"><span title="jisho.org (sentences)"><img class="search-icons" alt="JS" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span>
+                        <input type="radio" id="massif-radio" name="search-mode"><span title="Massif"><img class="search-icons" alt="M" src="https://massif.la/static/favicon_256.png"></span>
+                        <!-- yeah, i know how stupid this looks -->
+                        <input type="radio" id="yourei-radio" name="search-mode"><span title="用例"><img class="search-icons" alt="Y" src="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAAAAAAAAAAAAAAAC0nwQEtJ8EDLSfBBy0nwQwtJ8EFLSfBAAAAAAAAAAAAAAAAAC0nwQUtJ8EOLSfBEC0nwQotJ8EBAAAAAAAAAAAtJ8EJLSfBNi0nwVUtJ8F4LSfBUC0nwQstJ8EAAAAAAAAAAAAtJ8ExLSfBiC0nwZotJ8F4LSfBFAAAAAAAAAAALSfBGy0nwaktJ8G1LSfBhC0nwcwtJ8FvLSfBDC0nwQAAAAAALSfBOC0nwYctJ8GfLSfB6C0nwV0AAAAAAAAAAC0nwRstJ8GuLSfBnS0nwQotJ8FyLSfBzS0nwWktJ8EKLSfBAC0nwRMtJ8EoLSfBJy0nwdotJ8F3AAAAAAAAAAAtJ8EbLSfBri0nwZ4tJ8EALSfBDi0nwXktJ8HFLSfBUC0nwQMtJ8FbLSfBui0nwUUtJ8HZLSfBdwAAAAAAAAAALSfBGy0nwa4tJ8GdLSfBAC0nwQAtJ8EZLSfBqy0nwa4tJ8EeLSfBaS0nwdEtJ8FJLSfB2S0nwXcAAAAALSfBAC0nwRstJ8GtLSfBrC0nwTAtJ8EbLSfBMi0nwaotJ8HgLSfBSC0nwWgtJ8HQLSfBSS0nwdktJ8F3LSfBAC0nwQAtJ8EcLSfBqy0nwb8tJ8GLLSfBly0nwawtJ8G1LSfBxy0nwXktJ8F3LSfBzy0nwUktJ8HZLSfBdy0nwQUtJ8E2LSfBeC0nwaotJ8GnLSfBai0nweQtJ8GmLSfBOC0nwY8tJ8GlLSfBjC0nwc4tJ8FJLSfB2S0nwXctJ8EFLSfBUS0nweEtJ8HULSfBmC0nwSwtJ8HDLSfBfC0nwQAtJ8GCLSfBsy0nwZQtJ8HNLSfBSS0nwdktJ8F3LSfBAS0nwR0tJ8GpLSfB+i0nwZstJ8EKLSfBhS0nwbwtJ8FlLSfBtS0nwbwtJ8GXLSfBzS0nwUktJ8HZLSfBdy0nwQAtJ8ECLSfBPS0nweEtJ8GdLSfBAC0nwV8tJ8HeLSfBsC0nwaYtJ8FmLSfBfS0nwc8tJ8FJLSfB2S0nwXcAAAAALSfBAC0nwRQtJ8GbLSfBsC0nwQotJ8FCLSfBxS0nwXQtJ8EgLSfBDS0nwW0tJ8HQLSfBSS0nwdktJ8F3AAAAAAAAAAAtJ8EDLSfBQC0nwb0tJ8GRLSfBxC0nweMtJ8HJLSfBsC0nwbItJ8GoLSfBoy0nwT0tJ8HZLSfBdwAAAAAAAAAALSfBAC0nwRstJ8GZLSfBsS0nwXItJ8F1LSfBdS0nwXUtJ8F2LSfBRy0nwRotJ8EiLSfB0y0nwWYAAAAAAAAAAAAAAAAtJ8EDLSfBHi0nwTItJ8EKLSfBCi0nwQotJ8EKLSfBCi0nwQUtJ8EALSfBBC0nwTAtJ8EOweAAAMDgAADAYAAAwCAAAMQAAADGAAAAwAAAAMAAAAAAAAAAAIAAAAAAAACEAAAAwAAAAMAAAADgAAAA4AgAAA=="></span>
+                        <input type="radio" id="ejje-radio" name="search-mode"><span title="EJJE Weblio"><img class="search-icons" alt="EW" src="https://ejje.weblio.jp/favicon.ico"></span>
+                        <input type="radio" id="eijirou-radio" name="search-mode"><span title="英辞郎 on the web"><img class="search-icons" alt="ER" src="https://eow.alc.co.jp/favicon.ico"></span>
+                        <input type="radio" id="wikipedia-jp-radio" name="search-mode"><span title="ウィキペディア日本語版"><img class="search-icons" alt="WJ" src="https://ja.wikipedia.org/favicon.ico"></span>
+                        <input type="radio" id="furigana-bunko-radio" name="search-mode"><span title="ふりがな文庫"><img class="search-icons" alt="FB" src="https://furigana.info/favicon.ico"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Format sentences</th>
+                    <td>
+                        <input type="radio" id="drk7jp-radio" name="search-mode"><span title="drk7.jp"><img class="search-icons" alt="D7" src="https://www.drk7.jp/favicon.ico"></span>
                     </td>
                 </tr>
             </table>
             
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just messes up the quotations section in some pages. -->
-            <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br>
-            <a href="https://www.drk7.jp/pub/tools/YahooRuby/index.cgi">Alternative (also not by me)</a><br>
-            <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>.
+            <!-- <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br> -->
+            <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>
         </div>
         <script>
             // LEFT SIDE
+            // Button
+            let lightDarkModeButton = document.getElementById("light-dark-mode-button");
+
             // Textboxes
             let altFormsTextArea = document.getElementById("alt-forms-textarea");
             let readingsTextArea = document.getElementById("readings-textarea");
@@ -349,6 +452,9 @@
                 return result;
             }
 
+            // Copyright year at the bottom of the page. May be inaccurate in like, a few decades. Or even tomorrow.
+            document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
+
             // RIGHT SIDE
             // The search bar to get entries from.
             let searchBar = document.getElementById("search-bar");
@@ -370,6 +476,7 @@
             let eijirouRadio = document.getElementById("eijirou-radio");
             let wikipediaJpRadio = document.getElementById("wikipedia-jp-radio");
             let furiganaBunkoRadio = document.getElementById("furigana-bunko-radio");
+            let drk7jpRadio = document.getElementById("drk7jp-radio");
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             // look for something like 別表記 for alternative forms, and it must be in the 日本語 section
@@ -399,9 +506,11 @@
                     iframe.src = `https://ja.wikipedia.org/w/index.php?search=${word}`;
                 if (furiganaBunkoRadio.checked)
                     iframe.src = `https://furigana.info/w/${word}`;
+                if (drk7jpRadio.checked)
+                    iframe.src = "https://www.drk7.jp/pub/tools/YahooRuby/index.cgi";
             }
 
-            // Check if a URL exists. Unused for now.
+            // Check if a URL exists. Currently unused.
             function urlExists(url) {
                 var http = new XMLHttpRequest();
                 http.open('HEAD', url, false);
@@ -410,7 +519,7 @@
             }
 
             // BOTH SIDES
-            // Clears the values of the objects on screen.
+            // Clears the values of all the objects on screen.
             function clearAll(mode) {
                 // Soft reset, only clear the textboxes.
                 if (mode == 0) {
@@ -434,7 +543,7 @@
                     tempTextArea.value = "";
 
                     ankiHTML.value = "";
-                    preview.innerHTML = "";
+                    // preview.innerHTML = "";
 
                     // Loops through all radio buttons, as if it were a list.
                     for (let radioButton = 0; radioButton < conversionMode.length; ++radioButton)
@@ -502,8 +611,35 @@
             }); */
 
             function darkMode() {
-                // TBD
-                let screen = "dark";
+                /*
+                It's 2024, and these self-righteous, iPhone-wielding, windbags whine about
+                everything if something can't be toggled into dark mode.
+
+                The ancient ones had cleaved a massive rift on the Earth, and spew out a
+                questionable elixir that will cure all ills, the panacea of the so-called,
+                as mystics call it, the "Light mode" epidemic. It was about time that man
+                had come forth on such a subterranean beauty, for the blight, after all
+                those eons, will finally end once and for all.
+                */
+
+                // I have this as a solution. Now shut the fuck up and be happy. I miss those bright-ass screens scorching my eyes.
+                let body = document.body;
+
+                // do something with session storage later
+                // sessionStorage.setItem("dark-mode", true);
+                // && sessionStorage.getItem("dark-mode")
+
+                // content inside iframe is not affected
+                if (document.body.classList.contains("light-mode")) {
+                    body.classList.toggle("dark-mode");
+                    body.classList.toggle("light-mode");
+                    lightDarkModeButton.innerHTML = "光";
+                }
+                else {
+                    body.classList.toggle("light-mode");
+                    body.classList.toggle("dark-mode");
+                    lightDarkModeButton.innerHTML = "闇";
+                }
             }
         </script>
     </body>
@@ -535,45 +671,75 @@
     2024/03/04
     add another textbox for the card title and you include whatever is in it to the associated generated card thing you fucking know what i'm talking about
 
-    RESOURCES:
+    RESOURCES
+    be sure to save all of these at least once on the wayback machine
     remember, no antiquated jquery shit
-    splitting screen:
-        https://www.w3schools.com/howto/howto_css_split_screen.asp
-        https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
+    GeeksforGeeks
+        https://www.geeksforgeeks.org/html-dom-input-checkbox-name-property
+    Mozilla Developer Network (MDN) Docs
+        https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/checkbox
+        https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/invert
+        https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate
+    Stack Overflow
+        https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments
         https://stackoverflow.com/questions/2637696/how-to-place-div-side-by-side
         https://stackoverflow.com/questions/17217766/two-divs-side-by-side-fluid-display
-
-    textarea or "text box"
-        disable textarea resizing:
         https://stackoverflow.com/questions/5235142/how-do-i-disable-the-resizable-property-of-a-textarea
-
-        resize textarea:
         https://stackoverflow.com/questions/3896537/should-i-size-a-textarea-with-css-width-height-or-html-cols-rows-attributes
-
-    radio buttons:
-        https://www.w3schools.com/tags/att_input_type_radio.asp
-        clear all buttons:
-            https://stackoverflow.com/questions/2554116/how-to-clear-radio-button-in-javascript
-
-    checkboxes:
-        https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/checkbox
-        https://www.geeksforgeeks.org/html-dom-input-checkbox-name-property
-        check checkbox state:
-            https://stackoverflow.com/questions/9887360/how-can-i-check-if-a-checkbox-is-checked
-        trigger checkbox state:
-            https://stackoverflow.com/questions/8206565/check-uncheck-checkbox-with-javascript
-    
-    iframes:
+        https://stackoverflow.com/questions/2554116/how-to-clear-radio-button-in-javascript
+        https://stackoverflow.com/questions/9887360/how-can-i-check-if-a-checkbox-is-checked
+        https://stackoverflow.com/questions/8206565/check-uncheck-checkbox-with-javascript
         https://stackoverflow.com/questions/28516561/how-can-i-load-a-webpage-into-a-div-element
-        don't load cookies
-            https://www.w3schools.com/tags/att_iframe_sandbox.asp
-        iframe default page
-            https://stackoverflow.com/questions/38931125/how-to-add-iframe-default-content-page
-        reload iframe content
-            https://stackoverflow.com/questions/86428/what-s-the-best-way-to-reload-refresh-an-iframe
-
-    search function:
+        https://stackoverflow.com/questions/38931125/how-to-add-iframe-default-content-page
+        https://stackoverflow.com/questions/86428/what-s-the-best-way-to-reload-refresh-an-iframe
+        https://stackoverflow.com/questions/11863423/how-do-i-select-an-element-only-when-inside-another-element
         https://stackoverflow.com/questions/155188/trigger-a-button-click-with-javascript-on-the-enter-key-in-a-text-box
+        https://stackoverflow.com/questions/5898656/check-if-an-element-contains-a-class-in-javascript
+        https://stackoverflow.com/questions/38905647/css-scroll-bar-auto-scrolling-with-added-content
+        https://stackoverflow.com/questions/6002254/get-the-current-year-in-javascript
+        https://stackoverflow.com/questions/75978659/what-does-the-message-request-for-font-noto-sans-blocked-at-visibility-level
+        https://stackoverflow.com/questions/15519454/how-to-access-session-variables-and-set-them-in-javascript
+        https://stackoverflow.com/questions/2257631/how-to-create-a-session-using-javascript
+        https://stackoverflow.com/questions/5119041/how-can-i-get-a-web-sites-favicon
+        https://stackoverflow.com/questions/11872404/font-awesome-not-properly-displaying-on-firefox-how-to-vend-via-cdn
+        https://stackoverflow.com/questions/16679146/force-footer-on-bottom-on-pages-with-little-content
+        https://stackoverflow.com/questions/46867358/w3c-font-family-parse-error-open-sans-helvetica-arial-sans-serif
+        https://stackoverflow.com/questions/6494721/override-body-style-for-content-in-an-iframe
+        https://stackoverflow.com/questions/1378260/how-can-i-retrieve-a-website-icon
+        https://stackoverflow.com/questions/36378371/how-to-make-automatic-line-numbers-next-to-an-html-text-box-with-javascript
+        https://stackoverflow.com/questions/16676166/apply-border-radius-to-scrollbars-with-css
+        https://stackoverflow.com/questions/46313294/check-if-the-session-exists-with-javascript
+        https://stackoverflow.com/questions/13325798/invert-colors-of-an-image-in-css-or-javascript
+        https://stackoverflow.com/questions/36512542/edit-css-of-elements-within-iframe
+        https://stackoverflow.com/questions/57419640/fonts-are-blocked-by-firefox-cross-origin-request-blocked-the-same-origin-polic
+        https://stackoverflow.com/questions/71820200/google-fonts-not-showing-on-firefox-duplicated
+        https://stackoverflow.com/questions/217776/how-to-apply-css-to-iframe
+        https://stackoverflow.com/questions/58173994/how-can-i-prevent-iframe-messing-browsers-history-after-interactions-with-it
+        https://stackoverflow.com/questions/108207/how-do-i-make-an-html-text-box-show-a-hint-when-empty
+        https://stackoverflow.com/questions/821359/reload-an-iframe-without-adding-to-the-history
+        https://stackoverflow.com/questions/28137461/remove-history-from-external-iframe-redirects-and-links
+        https://stackoverflow.com/questions/63907168/removing-iframe-affects-the-session-history-in-some-browsers-but-not-in-chrome
+        https://stackoverflow.com/questions/32198016/how-to-check-whether-session-exists-from-javascript
+        https://stackoverflow.com/questions/12539006/tooltips-for-mobile-browsers
+        https://stackoverflow.com/questions/583753/using-css-to-affect-div-style-inside-iframe
+        https://stackoverflow.com/questions/7312623/insert-line-break-inside-placeholder-attribute-of-a-textarea
+    Tutorialspoint
+        https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
+    w3schools
+        https://www.w3schools.com/howto/howto_css_split_screen.asp
+        https://www.w3schools.com/tags/att_input_type_radio.asp
+        https://www.w3schools.com/tags/att_iframe_sandbox.asp
+        https://www.w3schools.com/howto/howto_css_animate_buttons.asp
+        https://www.w3schools.com/css/css3_animations.asp
+        https://www.w3schools.com/css/css_colors_hex.asp
+        https://www.w3schools.com/css/css_colors_keywords.asp
+        https://www.w3schools.com/jsref/prop_win_sessionstorage.asp
+    Other
+        https://dev.to/phuocng/display-the-line-numbers-in-a-text-area-46mk
+        https://www.codeproject.com/Tips/5163219/HTML-Line-Numbering-using-textarea
+        https://docs.wpbeaverbuilder.com/bb-theme/defaults-for-layouts-content/footers/force-footer-to-bottom-on-short-pages
+        https://www.w3.org/wiki/CSS/Properties/color/keywords
 
     link formats:
     replace "term" with your word of choice
