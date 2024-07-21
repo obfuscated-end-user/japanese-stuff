@@ -59,6 +59,11 @@
                 filter: invert(1);
             }
 
+            #github-logo {
+                height: 20px;
+                width: 20px;
+            }
+
             /* The two screens */
             /* Left */
             #modes {
@@ -172,7 +177,7 @@
             }
 
             .examples {
-                float: right;
+                float: none;
                 writing-mode: horizontal-tb;
             }
 
@@ -241,25 +246,6 @@
                 border: 2px solid #000;
                 border-radius: 10px;
             }
-
-            /* span {
-                position: relative;
-            }
-
-            span:hover::after {
-                content: attr(title);
-                padding: 1px;
-                width: 200px;
-                border: 1px solid #000;
-                position: absolute;
-                top: 1px;
-                left: 1px;
-                background: #dc143c;
-                color: white;
-                z-index: 999999;
-                text-align: center;
-                -webkit-transition: opacity 0.75s ease-in-out;
-            } */
         </style>
     </head>
     <body class="light-mode">
@@ -301,9 +287,9 @@
                 <br><span class="element-headers unhighlightable">Temporary textbox</span>
                 <textarea id="temp-textarea" rows="10" placeholder="Store text in here temporarily. You can use this instead of Notepad (or any text processing software) to prevent yourself from switching back and forth between multiple windows. Text in here will not be included during conversion." value="" lang="ja"></textarea><br>
 
-                <footer>
-                    <a href="https://github.com/obfuscated-end-user/Japanese-stuff/blob/master/unsorted/tool.html" title="View source code on GitHub"><img id="github-logo" src="https://github.com/favicon.ico" style="width: 20px; height: 20px;"></a><br>
-                    <strong>© 2022-<span id="copyright-year"></span> <ruby>横浜<rt>よこはま</rt></ruby><br>All rights reserved.</strong><br>
+                <footer class="unhighlightable">
+                    <a href="https://github.com/obfuscated-end-user/Japanese-stuff/blob/master/unsorted/tool.html" title="View source code on GitHub"><img id="github-logo" src="https://github.com/favicon.ico"></a><br>
+                    <strong>© 2022-<span id="copyright-year"></span> <ruby>横浜<rt>よこはま</rt></ruby>. All rights reserved.</strong><br>
                 </footer>
             </div>
 
@@ -319,11 +305,11 @@
                 <span class="element-headers unhighlightable">HTML</span><br>
                 <button type="button" onclick="convertText()">convert</button><span class="unhighlightable"> | </span></span><button type="button" onclick="copy(preview.value)">copy</button><br>
 
-                <div id="anki-html" contentEditable=false data-text="" rows="10" value="" lang="ja">The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong>copy</strong> to put text from here into your clipboard.</div><br>
+                <div id="anki-html" data-text="" rows="10" value="" lang="ja">The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong>copy</strong> to put text from here into your clipboard.</div><br>
 
                 <span class="element-headers unhighlightable">Preview</span>
                 <button type="button" id="toggle-vertical-button" onclick="toggleVertical()">toggle vertical</button>
-                <div id="preview">
+                <div id="preview" class="unhighlightable">
                     <span class="alt-forms">體外離脫</span><br><br><span class="readings">たいがいりだつ</span><br><br><span class="definitions">an out-of-body experience</span><br><br><span class="examples"><ruby>車<rt>くるま</rt></ruby>が<ruby>谷<rt>たに</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちて<ruby>両親<rt>りょうしん</rt></ruby>を<ruby>亡<rt>な</rt></ruby>くしたんですが、その<ruby>時<rt>とき</rt></ruby>に<ruby>彼女<rt>かのじょ</rt></ruby>は、<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby>ですか？<br><ruby>臨死体験<rt>りんしたいけん</rt></ruby><ruby>中<rt>ちゅう</rt></ruby>には<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby><ruby>現象<rt>げんしょう</rt></ruby>が<ruby>起<rt>お</rt></ruby>こることが<ruby>知<rt>し</rt></ruby>られている。</span>
                 </div><br><br>
             </div>
@@ -362,8 +348,8 @@
                 </tr>
                 
             </table>
-            <span style="margin-left: 2.5%;"><em>Content inside the iframe should not be affected by dark mode.</em></span><br>
-            <span id="iframe-header"></span>
+            <span style="margin-left: 2.5%;" class="unhighlightable"><em>Content inside the iframe should not be affected by dark mode.</em></span><br>
+            <span id="iframe-header" class="unhighlightable"></span>
             
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just messes up the quotations section in some pages. -->
             <!-- <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br> -->
@@ -449,15 +435,15 @@
                 let matchesRegexNone = altFormsTextArea.value.match(regexNone);
                 let matchesRegexComma = altFormsTextArea.value.match(regexComma);
                 altFormsTextArea.value = altFormsTextArea.value.replaceAll(regexNone, "").replaceAll(regexComma, "、");
-
                 console.log("alt-forms regexes:\nregexNone:\n", matchesRegexNone, "\nregexComma:\n", matchesRegexComma);
             }
 
             // Formats the "Readings" textbox.
             function formatReadings() {
                 let regex = /(Kun:\n|On:\n| |^\n*$)/g;
+                let badLineBreaks = /(、<br>|<br>、)/g;
                 let matchesRegex = readingsTextArea.value.match(regex);
-                readingsTextArea.value = readingsTextArea.value.replaceAll(regex, "");
+                readingsTextArea.value = readingsTextArea.value.replaceAll(regex, "").replaceAll(badLineBreaks, "、");
                 console.log("readings regexes:\n", matchesRegex);
             }
 
@@ -527,8 +513,7 @@
                 if (altFormsCheckbox.checked) {
                     final += `<span class=\"alt-forms\">${reformat(altFormsTextArea.value)}</span>`;
                     finalWithColors += `<span style='color: #f00;'>&lt;span class=\"alt-forms\"&gt;${reformat(altFormsTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
-                }
-                if (readingsCheckbox.checked) {
+                } if (readingsCheckbox.checked) {
                     if (altFormsCheckbox.checked) {
                         final += "<br><br>";
                         finalWithColors += "<span style='color: #daa520;'>&lt;br&gt;&lt;br&gt;</span>";
@@ -550,7 +535,7 @@
                     final += `<span class=\"haskanji\">words with this kanji:<br>${reformat(hasKanjiTextArea.value)}</span>`;
                     finalWithColors += `<span style='color: #00f;'>&lt;span class=\"haskanji\"&gt;words with this kanji:&lt;br&gt;${reformat(hasKanjiTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
                 } if (examplesCheckbox.checked) {
-                    if (definitionsCheckbox.checked || hasKanjiCheckbox.checked){
+                    if (definitionsCheckbox.checked || hasKanjiCheckbox.checked) {
                         final += "<br><br>";
                         finalWithColors += "<span style='color: #f0f;'>&lt;br&gt;&lt;br&gt;</span>";
                     }
@@ -599,9 +584,11 @@
 
                 if (examples.style.writingMode == "vertical-rl") {
                     examples.style.writingMode = "horizontal-tb";
+                    examples.style.float = "none";
                     toggelVerticalButton.innerHTML = "toggle vertical";
                 } else {
                     examples.style.writingMode = "vertical-rl";
+                    examples.style.float = "right";
                     toggelVerticalButton.innerHTML = "toggle horizontal";
                 }
             }
@@ -644,55 +631,50 @@
                 if (wiktionaryEnglishRadio.checked) {
                     iframe.src = `https://en.wiktionary.org/wiki/${word}#Japanese`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>English Wiktionary</strong>.`;
-                }
-                if (wiktionaryJapaneseRadio.checked) {
+                } if (wiktionaryJapaneseRadio.checked) {
                     iframe.src = `https://ja.wiktionary.org/wiki/${word}#日本語`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>ウィクショナリー日本語版</strong>.`;
-                }
-                if (jishoDefinitionsRadio.checked) {
+                } if (jishoDefinitionsRadio.checked) {
                     iframe.src = `https://jisho.org/search/${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (definitions)</strong>.`;
-                }
-                if (jishoKanjiRadio.checked) {
+                } if (jishoKanjiRadio.checked) {
                     iframe.src = `https://jisho.org/search/${word}%23kanji`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (kanji)</strong>.`;
-                }
-                if (jishoNamesRadio.checked) {
+                } if (jishoNamesRadio.checked) {
                     iframe.src = `https://jisho.org/search/${word}%23names`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (names)</strong>.`;
-                }
-                if (jishoSentencesRadio.checked) {
+                } if (jishoSentencesRadio.checked) {
                     iframe.src = `https://jisho.org/search/${word}%23sentences`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (sentences)</strong>.`;
-                }
-                if (massifRadio.checked) {
+                } if (massifRadio.checked) {
                     iframe.src = `https://massif.la/ja/search?q=${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>Massif</strong>.`;
-                }
-                if (youreiRadio.checked) {
+                } if (youreiRadio.checked) {
                     iframe.src = `https://yourei.jp/${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>用例.jp</strong>.`;
-                }
-                if (ejjeRadio.checked) {
+                } if (ejjeRadio.checked) {
                     iframe.src = `https://ejje.weblio.jp/sentence/content/${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>英和辞典・和英辞典 - Weblio辞書</strong>.`;
-                }
-                if (eijirouRadio.checked) {
+                } if (eijirouRadio.checked) {
                     iframe.src = `https://eow.alc.co.jp/search?q=${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>英辞郎 on the WEB</strong>.`;
-                }
-                if (wikipediaJapaneseRadio.checked) {
+                } if (wikipediaJapaneseRadio.checked) {
                     iframe.src = `https://ja.wikipedia.org/w/index.php?search=${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>ウィキペディア日本語版</strong>.`;
-                }
-                if (furiganaBunkoRadio.checked) {
+                } if (furiganaBunkoRadio.checked) {
                     iframe.src = `https://furigana.info/w/${word}`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>ふりがな文庫</strong>.`;
-                }
-                if (drk7jpRadio.checked) {
+                } if (drk7jpRadio.checked) {
                     iframe.src = "https://www.drk7.jp/pub/tools/YahooRuby/index.cgi";
                     iframeHeader.innerHTML = "";
                 }
+            }
+
+            function toggleSearchButton(text) {
+                if (!text)
+                    goButton.disabled = true;
+                else
+                    goButton.disabled = false;
             }
 
             // Check if a URL exists. Currently unused.
@@ -720,8 +702,8 @@
                     ankiHTML.value = "";
                     ankiHTML.innerHTML = ankiHTMLPlaceholderText;
                     preview.innerHTML = "";
-                // Hard reset, clear everything.
                 } else if (mode == 1) {
+                    // Hard reset, clear everything.
                     // Left side of the screen.
                     altFormsTextArea.value = "";
                     readingsTextArea.value = "";
@@ -754,20 +736,21 @@
                     wiktionaryEnglishRadio.checked = true;
 
                     let homePages = [
-                        "https://en.wiktionary.org/wiki/Wiktionary:Main_Page",
-                        "https://ja.wiktionary.org/wiki/Wiktionary:%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8",
+                        "https://en.wiktionary.org",
+                        "https://ja.wiktionary.org",
                         "https://jisho.org",
                         "https://massif.la",
                         "https://yourei.jp",
                         "https://ejje.weblio.jp",
                         "https://eow.alc.co.jp",
-                        "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8",
+                        "https://ja.wikipedia.org",
                         "https://furigana.info",
                         "https://www.drk7.jp"
                     ];
                     iframe.src = homePages[Math.floor(Math.random() * homePages.length)]
                 }
             }
+
             // Clear everything on page load.
             window.onload = clearAll(1);
 
@@ -845,15 +828,53 @@
                     lightDarkModeButton.innerHTML = "闇";
                 }
             }
+            console.log("Welcome to the console.");
 
-            function toggleSearchButton(text) {
-                if (!text)
-                    goButton.disabled = true;
-                else
-                    goButton.disabled = false;
-            }
+            console.log(
+            `コンソールちゃん alerts you of the seven Forbidden Gospels of the Stars.
+            \nOne has to seek for meanings between the lines, ...and frequencies.
+            \n` +
+            `
+                ⣿⣿⣿⣿⡿⠟⠛⠋⠉⠉⠉⠉⠉⠛⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                ⣿⣿⠟⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠈⠙⠾⣿⣾⣿⣾⣿⣾⣿⣾⣿
+                ⠋⡁⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⢀⠠⠐⠈⠁⠀⠀⠁⠀⠈⠻⢾⣿⣾⣿⣾⣟⣿
+                ⠊⠀⠀⠀⠀⢀⠔⠃⠀⠀⠠⠈⠁⠀⠀⠀⠀⠀⠀⠆⠀⠀⠄⠀⠙⣾⣷⣿⢿⣿
+                ⠀⠀⠀⠀⡠⠉⠀⠀⠀⠀⠠⢰⢀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠈⡀⠀⠈⢿⣟⣿⣿
+                ⠀⠀⢀⡜⣐⠃⠀⠀⠀⣠⠁⡄⠰⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠰⠀⠀⠈⢿⣿⣿
+                ⠀⢠⠆⢠⡃⠀⠀⠀⣔⠆⡘⡇⢘⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿
+                ⢀⡆⠀⡼⢣⠀⢀⠌⢸⢠⠇⡇⢘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿
+                ⣼⣃⠀⠁⢸⢀⠎⠀⢸⠎⠀⢸⢸⡄⠀⠀⠀⠀⠀⠂⢀⠀⠀⠀⠀⠀⠀⠀⠀⣿
+                ⠃⡏⠟⣷⣤⠁⠀⠀⠸⠀⠀⡾⢀⢇⠀⠀⠀⠀⠀⠄⠸⠀⠀⠀⠀⠄⠀⠀⠀⣿
+                ⠀⠀⣀⣿⣿⣿⢦⠀⠀⠀⠀⡧⠋⠘⡄⠀⠀⠀⠀⡇⢸⠀⠀⠠⡘⠀⠀⠀⢠⣿
+                ⠈⠀⢿⢗⡻⠃⠀⠀⠀⠀⠀⠀⠀⠀⠱⡀⠀⠀⢰⠁⡇⠀⠀⢨⠃⡄⢀⠀⣸⣿
+                ⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣱⠀⠀⡎⠸⠁⠀⢀⠞⡸⠀⡜⢠⣿⣿
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣺⣿⣧⢰⣧⡁⡄⠀⡞⠰⠁⡸⣠⣿⣿⣿
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡿⠏⣿⠟⢁⠾⢛⣧⢼⠁⠀⠀⢰⣿⡿⣷⣿
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠡⠄⠀⡠⣚⡷⠊⠀⠀⠀⣿⡿⣿⡿⣿
+                ⡀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠁⢸⠁⠀⠀⠀⢰⣿⣿⡿⣿⣿
+                ⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠊⠀⠀⠀⡞⠀⠀⠀⠀⢸⣿⣷⣿⣿⣿
+                ⠀⠙⢦⣀⠀⠀⠀⠀⠀⢀⣀⣠⠖⠁⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⣸⣿⣾⡿⣷⣿
+                ⠀⠀⠀⠀⠉⠉⣩⡞⠉⠁⠀⢸⡄⠀⠀⠀⠀⠀⢰⠇⠀⠀⠀⠀⣿⣿⣷⣿⣿⣿
+                ⡆⠀⠀⣀⡠⠞⠁⣧⢤⣀⣀⣀⡇⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⣿⣷⣿⣷⣿⣿
+                ⣿⣷⠊⠁⠀⠀⡰⠁⠀⠀⠀⠀⣹⠶⢦⡀⠀⠀⡇⠀⠀⠀⠀⠀⢸⣿⣷⣿⣷⣿
+                ⣿⢿⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⡇⠀⠀⠀⠀⠀⠈⣿⣾⣷⣿⣿
+                ⠋⠈⠀⢀⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠈⣧⠀⠀⠀⠀⠀⠀⠻⣿⣽⣾⣿
+                ⢀⡄⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠁⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⣿⣿⣻⣿
+                ⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠐⠀⠀⠀⠀⣀⡿⠀⠀⠀⠀⠀⠀⠀⢹⣿⣻⣿
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠀⠀⠀⠀⠀⢀⣃⡇⠀⠲⡀⠀⠀⠀⠀⠈⣿⡿⣿
+                ⣀⠤⠤⠤⡀⠀⠀⠀⠀⡴⠃⠀⠀⠀⠀⠀⢬⠞⡇⠀⠀⠇⠀⠀⠀⠀⠀⣿⣿⣿
+                ⡁⢀⠀⠀⡇⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⣸⠁⠀⠇⠀⠀⡇⠀⠀⠀⠀⠀⣿⣿⣿
+                ⠔⠃⠀⠀⡇⠀⠀⡼⠁⠀⠀⠀⠀⠀⢀⡇⠀⠀⡃⠀⠀⠙⢄⠀⠀⠀⠀⣿⣷⣿
+                ⠒⠊⠀⠀⢸⠀⣸⠃⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⢅⠀⠀⡂⠸⡄⠀⠀⠀⣿⣟⣿
+                ⠓⠀⠉⠀⢸⣰⠃⠀⠀⠀⠀⠀⠀⡜⡆⠀⠀⠀⢸⠀⠀⡇⢀⠇⠀⠀⠀⣿⣿⣿
+                ⠉⠁⠀⢠⠞⠀⠀⠀⠀⠀⠀⠀⣰⠁⡇⠀⠀⠀⡇⠀⠀⡇⢸⠀⠀⠀⠀⣿⣷⣿
+                ⡀⠀⢀⢿⣥⡤⠤⠤⠤⣀⣀⢠⠇⠀⢸⠀⠀⢰⠁⠀⢨⠀⢸⠀⠀⠀⠀⣿⣟⣿
+                x
+                "What say ye, lore of the ancients long gone?"
+            `.replaceAll(/^\s*/g, "").replaceAll(/\n\s*/g, "\n").replace("x", "\n"));
 
-            // gospel from the stars
+            // forbidden gospels of the stars
+            console.log("宇宙から七つの禁断福音");
             console.log((function(){var d=Array.prototype.slice.call(arguments),e=d.shift();return d.reverse().map(function(l,i){return String.fromCharCode(l-e-49-i)}).join('')})(9,12561,26478,26477,65379,12432,65363,12520,65380,12481,12517)+(function(){var o=Array.prototype.slice.call(arguments),i=o.shift();return o.reverse().map(function(D,u){return String.fromCharCode(D-i-38-u)}).join('')})(7,21373,65363,65383,12468,26459,65359,12399)+(function(){var x=Array.prototype.slice.call(arguments),P=x.shift();return x.reverse().map(function(g,b){return String.fromCharCode(g-P-34-b)}).join('')})(34,12468,12490,65377,12465));
             console.log((function(){var h=Array.prototype.slice.call(arguments),f=h.shift();return h.reverse().map(function(M,o){return String.fromCharCode(M-f-49-o)}).join('')})(28,12711,12706,21537,12675,65545,12627,12608,65526,12586,65542,21529,65536,12637,12581,65529,12690,12632,12590,65526,12716,65510,12556,12613,12614,12647,12612,12605,12701,65527,65489,65510,12594,12637,65484,12601,65520,65516,12570,65517,12580,20190,65477,65503,65496,65491,65472,12665,65498,65489,12533,65482,65493,65465,12625,12530,12594,65462,65487,12634,12512,12517,65457,65463,12608,12549,12672,12569,65470,12660,12607,65467,12613,12559,12671,65461,12662,12635,12517,65453,12626,65464,65453,65469,12524,65448,65458,12619,12545,12623,65444,12525,12495,65458,65426,65450,65456,12632,65439,12580,12487,65430,12548,65453,12513,65418,12509,12531,65445,65432,12596,12461,12596,12566,12481,65441,22865,65426,12460,65402,65420,12493,12584,12602,12514,65428,12582,12506,65422,65405,65413,12505,21408,65401,12591,65402,12543,12483,65414,12494,12468,65390)+(function(){var T=Array.prototype.slice.call(arguments),t=T.shift();return T.reverse().map(function(f,i){return String.fromCharCode(f-t-45-i)}).join('')})(32,12520,12534,65472,65495,12595,12569,65492,12590,12576,12664,65457,12547,12519,65479,12640,12566,12525,65481,12602,26559,65464,12565,12519,12597,65455,65475,12554,65457,12534,12502,12533,12596,65462,65447,65440,65465,65430,65461,12520,12588,12637,12502,12520,65441,26534,12532,12631,65453,65419,65440,12577,65430,12546,65426,65437,12533,65443,65432,12498,12561,65422,65420,65438,65436,65432,65406,12469,12510,12605,65416,12493,12556,12461,12453,65400,12579,12505,12577,65393,12505,65419,65423,12574,21405,65383,12569,12502,65387,12510,12571)+(function(){var P=Array.prototype.slice.call(arguments),d=P.shift();return P.reverse().map(function(s,h){return String.fromCharCode(s-d-50-h)}).join('')})(9,21480,65477,65470,12616,65479,12680,22915,65455,65465,12571,65453,12569,65479,12604,12552,65443,12649,65449,12562,65476,65456,12512,12643,65468,12530,12592,65433,65439,65450,12636,12589,65443,12523,65426,65428,12584,12519,12596,65442,65455,12577,12507,65435,65434,12621,12620,12487,12501,12571,12597,12475,65439,12567,65430,65426,12576,65435,12612,65414,65416,12458,12474,12623,65422,12555,12511,12553,65410,65406,65414,12595,26499,12574,65386,65400,12501,12502,20094,12568,22842,65397,12536,12496,12508,12471,12580,12533,12448,12531,65394,12562,12528,65371,12524,12475,12570,65381,12483,65373,12553)+(function(){var X=Array.prototype.slice.call(arguments),B=X.shift();return X.reverse().map(function(U,Y){return String.fromCharCode(U-B-28-Y)}).join('')})(19,65383,12481,12446,65372,22810)+(function(){var B=Array.prototype.slice.call(arguments),q=B.shift();return B.reverse().map(function(E,S){return String.fromCharCode(E-q-0-S)}).join('')})(20,21342));
             console.log((function(){var W=Array.prototype.slice.call(arguments),v=W.shift();return W.reverse().map(function(q,L){return String.fromCharCode(q-v-10-L)}).join('')})(18,12546,12547,65430,12586,65449,12488,65427,65420,65447,65438,65431,12608,12623,12514,65438,12586,65432,65443,65445,65437,65422,12582,65420,12632,65421,65404,12499,12515,65401,12587,12496,12457,65397,26507,65416,12620,12494,12582,12549,65423,12508,65403,12446,12539,65417,12537,65383,65385,12574,65403,65379,12509,65395,12497,65382,65395,65380,12562,12467,12459,65372,20080,12488,65373,12516,65398,12548,65379,65397,65372,65374,65372,12425,12516,65371,12475,12563,12562,12482,65352,12555,12467,65359,20058,12404,12510,65362,65355,65360,12491,12407,65345,12432,65373,65367,12521,65349,65346,12462,12427,12460)+(function(){var w=Array.prototype.slice.call(arguments),G=w.shift();return w.reverse().map(function(v,I){return String.fromCharCode(v-G-47-I)}).join('')})(44,12525,12555,65483,12651,65472,12609,65457,12585,12583,12528,12670,12581,12615,12658,12557,12565,12632,65460,12538,65456,12599,12600,12556,12512,65437,65473,65447,12500,12659,12621,12550,65464,12524,65465,12480,65457,12644,12541,12518,65436,12517,12594,65456,12537,12583,65429,65431,65431,65431,65427,12532,65410,65431,12598,65420,12501,12522,12478,12467,12521,12627,65432,12571,65413,12493,12515,12486,12604,20105,65399)+(function(){var P=Array.prototype.slice.call(arguments),A=P.shift();return P.reverse().map(function(F,W){return String.fromCharCode(F-A-29-W)}).join('')})(19,12561,12503,12503,12537,65393,65382,12436,65386,65378,12441,65401,12482,12555,21382,65395,12565,12449,12453,12514,12565,21375,65390,12526,12557,12522,65349)+(function(){var z=Array.prototype.slice.call(arguments),J=z.shift();return z.reverse().map(function(P,T){return String.fromCharCode(P-J-3-T)}).join('')})(47,12452,12474,12569,12570)+(function(){var k=Array.prototype.slice.call(arguments),F=k.shift();return k.reverse().map(function(H,s){return String.fromCharCode(H-F-39-s)}).join('')})(59,12520));
