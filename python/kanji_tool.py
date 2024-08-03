@@ -73,7 +73,7 @@ def extract_kanji(text):
 # extract_kanji("天気の良い日に稲穂がいっせいに風になびいている景色は大変美しかった。")
 
 # does not work if the first words are in hiragana/katakana
-add_kanji("稲光すなわち永遠なり。", "learnedKanji")
+add_kanji("車軸、鏡像、高潔", "learnedKanji")
 
 # do not uncomment
 """ out_file = open(cwd + "/python/kanji tools/test/test1.json", "w", encoding="utf-8") 
