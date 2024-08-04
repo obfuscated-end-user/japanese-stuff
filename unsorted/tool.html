@@ -225,11 +225,12 @@
 
             #iframe-header {
                 margin-left: 2.5%;
+                display: none;
             }
 
-            iframe {
+            #external-content {
                 border-radius: 10px;
-                height: 79.5%;
+                height: 77.5%;
                 margin: 2.5%;
                 margin-top: 0.25%;
                 width: 95%;
@@ -255,7 +256,7 @@
                 <input type="radio" id="regular-word-radio" name="conversion-mode">regular word<br>
                 <input type="radio" id="kanji-entry-radio" name="conversion-mode">kanji entry<br><br>
                 <button type="button" onclick="setCheckboxes()">set checkboxes</button>&emsp;
-                <button type="button" onclick="clearAll(1)">reset</button>&emsp;
+                <button type="button" onclick="clearAll(1); playClickSound();">reset</button>&emsp;
                 <button type="button" onclick="clearAll(0)">clear</button>&emsp;
                 <button type="button" id="light-dark-mode-button" onclick="toggleDarkMode()">闇</button><br>
             </div>
@@ -350,12 +351,13 @@
                 
             </table>
             <span style="margin-left: 2.5%;" class="unhighlightable"><em>Content inside the iframe should not be affected by dark mode.</em></span><br>
-            <span id="iframe-header" class="unhighlightable"></span>
+            <span style="margin-left: 2.5%;" class="unhighlightable">If the content below does not load properly, <strong style="color: red;">DO NOT</strong> click "Try again" to prevent unexpected behavior.<span id="iframe-header" class="unhighlightable"><br></span></span>
             
             <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just messes up the quotations section in some pages. -->
             <!-- <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br> -->
             
             <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>
+            <audio id="audio" src="https://www.soundjay.com/buttons/button-28.mp3"></audio
         </div>
         <script>
             // LEFT SIDE
@@ -402,6 +404,7 @@
 
             // Sets the checkboxes depending on what radio button is selected from the three.
             function setCheckboxes() {
+                playClickSound();
                 if (hiraganaOnly.checked) {
                     altFormsCheckbox.checked = true;
                     readingsCheckbox.checked = false;
@@ -431,6 +434,7 @@
 
             // Formats the "Alternative forms" textbox.
             function formatAltForms() {
+                playClickSound();
                 let regexNone = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()/g;
                 let regexComma = /(?:\r|\n|\r\n)|,/g;
                 let matchesRegexNone = altFormsTextArea.value.match(regexNone);
@@ -441,6 +445,7 @@
 
             // Formats the "Readings" textbox.
             function formatReadings() {
+                playClickSound();
                 let regex = /(Kun:\n|On:\n| |^\n*$)/g;
                 let badLineBreaks = /(、<br>|<br>、)/g;
                 let matchesRegex = readingsTextArea.value.match(regex);
@@ -448,25 +453,9 @@
                 console.log("readings regexes:\n", matchesRegex);
             }
 
-            // Formats the "Words containing this kanji" textbox.
-            function formatWordsContainingThisKanji() {
-                let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
-                let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
-                let regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
-                let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
-                let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
-                let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
-                let regexQm = /[“|”]/g;
-                let regexIl = /\(<i>/g;
-                let regexIr = /<\/i>\)/g;
-                let regexMoreDef = /(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g;
-                let regexItalics = /(<i>|<\/i>)/g;
-                
-                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replaceAll("(<i>", "&#40;").replaceAll("<br>(", "<br>&#40;").replaceAll("<br>&#40;<i>", " ;; &#40;").replaceAll(regexItalics, "");
-            }
-
             // Formats the "Definitions" textbox.
             function formatDefinitions() {
+                playClickSound();
                 // i did it separately instead of something like ([\(\{\[\]]) because i need different html codes for each of these
                 // U+200B is a zero-width space, mostly coming from copying text on jisho.org
 			    // also put something like this on words containing this kanji box
@@ -489,10 +478,33 @@
                 let keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
                 for (let i = 0; i < keywords.length; ++i)
                     definitionsTextArea.value = definitionsTextArea.value.replaceAll(keywords[i], `*^${keywords[i].toLowerCase()}^*`);
+
+                // TBD
+                let matchesRegexLp = definitionsTextArea.value.match(regexLp);
+                console.log("alt-forms regexes:\nmatchesRegexLp:\n", matchesRegexLp);
+            }
+
+            // Formats the "Words containing this kanji" textbox.
+            function formatWordsContainingThisKanji() {
+                playClickSound();
+                let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
+                let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
+                let regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
+                let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
+                let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
+                let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
+                let regexQm = /[“|”]/g;
+                let regexIl = /\(<i>/g;
+                let regexIr = /<\/i>\)/g;
+                let regexMoreDef = /(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g;
+                let regexItalics = /(<i>|<\/i>)/g;
+                
+                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replaceAll("(<i>", "&#40;").replaceAll("<br>(", "<br>&#40;").replaceAll("<br>&#40;<i>", " ;; &#40;").replaceAll(regexItalics, "");
             }
 
             // Formats the "Example usage" textbox.
             function formatExamples() {
+                playClickSound();
                 examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]").replaceAll("()[]", "").replaceAll("{}[]", "").replaceAll("<b>", "`").replaceAll("</b>", "~").replaceAll("(<rb>", "(").replaceAll("</rb>)", ")");
 
                 // TBD
@@ -508,6 +520,7 @@
     
             // Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
             function convertText() {
+                playClickSound();
                 let final = "";
                 let finalWithColors = "";
 
@@ -551,6 +564,7 @@
     
             // Copies text and puts it in your clipboard. It just works.
             function copy(text) {
+                playClickSound();
                 let input = document.createElement("textarea");
                 input.innerHTML = text;
                 document.body.appendChild(input);
@@ -581,6 +595,7 @@
 
             // Changes the orientation of the example sentences in the preview below.
             function toggleVertical() {
+                playClickSound();
                 let examples = document.getElementsByClassName("examples")[0];
 
                 if (examples.style.writingMode == "vertical-rl") {
@@ -627,8 +642,10 @@
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             // look for something like 別表記 for alternative forms, and it must be in the 日本語 section
             function searchWord() {
+                playClickSound();
                 let word = searchBar.value;
-                let showingResultsForWord = `Showing results for <strong>"${word}"</strong> in`;
+                let showingResultsForWord = `<br>Showing results for <strong>"${word}"</strong> in`;
+                iframeHeader.style.display = "block ruby";
                 if (wiktionaryEnglishRadio.checked) {
                     iframe.src = `https://en.wiktionary.org/wiki/${word}#Japanese`;
                     iframeHeader.innerHTML = `${showingResultsForWord} <strong>English Wiktionary</strong>.`;
@@ -687,12 +704,23 @@
             }
 
             // BOTH SIDES
+
+            // Play a :click" sound when the user clicks on a button.
+            function playClickSound() {
+                let audio = document.getElementById("audio");
+                // makes the sound play multiple times if you spam click
+                audio.pause();
+                audio.currentTime = 0;
+                audio.play();
+            }
+
             // Clears the values of all the objects on screen.
             function clearAll(mode) {
                 // Soft reset, only clear the textboxes.
                 let ankiHTMLPlaceholderText = "The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong>copy</strong> to put text from here into your clipboard.";
 
                 if (mode == 0) {
+                    playClickSound();
                     altFormsTextArea.value = "";
                     readingsTextArea.value = "";
                     definitionsTextArea.value = "";
@@ -797,6 +825,7 @@
             }); */
 
             function toggleDarkMode() {
+                playClickSound();
                 /*
                 It's 2024, and these self-righteous, iPhone-wielding, windbags whine about
                 everything if something can't be toggled into dark mode.
@@ -926,6 +955,8 @@
         https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
         https://developer.mozilla.org/en-US/docs/Web/API/Element/append
         https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+        https://developer.mozilla.org/ja/docs/Web/API/HTMLMediaElement/play
+        https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek
     Stack Overflow
         https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments
         https://stackoverflow.com/questions/2637696/how-to-place-div-side-by-side
@@ -996,6 +1027,9 @@
         ps://stackoverflow.com/questions/9150796/change-how-fast-title-attributes-tooltip-appears
         https://stackoverflow.com/questions/18729338/how-to-make-a-div-appear-on-top-of-everything-else-on-the-screen
         https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+        https://stackoverflow.com/questions/18826147/javascript-audio-play-on-click
+        https://stackoverflow.com/questions/31715188/buttons-click-sounds
+        https://stackoverflow.com/questions/14834520/html5-audio-stop-function
     Tutorialspoint
         https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
     w3schools
