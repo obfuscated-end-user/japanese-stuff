@@ -305,7 +305,7 @@
                 <textarea id="haskanji-textarea" rows="10" placeholder="Words that contain this kanji. Also referred to as &quot;haskanji&quot;. Must be only included in single-kanji entries, and ignored for all other cases.&#10;&#10;Example (entry for 解):&#10;&#10;(理解)[りかい] - understanding, comprehension&#10;(解凍)[かいとう] - thawing&#10;(解決)[かいけつ] - solution, settlement" value=""></textarea><br>
 
                 <span class="element-headers unhighlightable">HTML</span><br>
-                <button type="button" onclick="convertText()">convert</button><span class="unhighlightable"> | </span></span><button type="button" onclick="copy(preview.value)">copy</button><br>
+                <button type="button" onclick="convertText()">convert</button><span class="unhighlightable"> | </span><button type="button" onclick="copy(preview.value)">copy</button><br>
 
                 <div id="anki-html" data-text="" rows="10" value="" lang="ja">The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong>copy</strong> to put text from here into your clipboard.</div><br>
 
@@ -357,7 +357,7 @@
             <!-- <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br> -->
             
             <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>
-            <audio id="audio" src="https://www.soundjay.com/buttons/button-28.mp3"></audio
+            <audio id="audio" src="https://www.soundjay.com/buttons/button-28.mp3"></audio>
         </div>
         <script>
             // LEFT SIDE
@@ -499,7 +499,7 @@
                 let regexMoreDef = /(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g;
                 let regexItalics = /(<i>|<\/i>)/g;
                 
-                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replaceAll("(<i>", "&#40;").replaceAll("<br>(", "<br>&#40;").replaceAll("<br>&#40;<i>", " ;; &#40;").replaceAll(regexItalics, "");
+                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replaceAll("(<i>", "&#40;").replaceAll("<br>(", "<br>&#40;").replaceAll("<br>&#40;<i>", " ;; &#40;").replaceAll(regexItalics, "").replaceAll("‐", "-");
             }
 
             // Formats the "Example usage" textbox.
