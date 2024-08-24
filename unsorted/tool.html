@@ -426,6 +426,18 @@
                 }
             }
 
+            function formatGeneric(element, obj) {
+                // console.log("obj", obj);
+                let str = element.value;
+                for (x in obj) {
+                    console.log("before", str);
+                    str = str.replaceAll(new RegExp(x, "g"), obj[x]);
+                    console.log("after", str);
+                }
+                // console.log("s", s);
+                return str;
+            }
+
             // Remember, if it's a div, then use innerHTML. If it's a textarea, then use value.
             // Reformats the text to convert some shorthand expressions. I know, stupid function name, should've been the one at the bottom, but whatever. Mainly used for kanji in text.
             function reformat(text) {
@@ -439,8 +451,22 @@
                 let regexComma = /(?:\r|\n|\r\n)|,/g;
                 let matchesRegexNone = altFormsTextArea.value.match(regexNone);
                 let matchesRegexComma = altFormsTextArea.value.match(regexComma);
+
+                // NOT FINAL
+                regexes = {
+                    "(?:\r|\n|\r\n)|," : "、",
+                    "( |[A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ].*|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|[()])" : "",
+                };
+                // regexes[/( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()/] = "";
+                // regexes[/(?:\r|\n|\r\n)|,/] = "、";
+
                 altFormsTextArea.value = altFormsTextArea.value.replaceAll(regexNone, "").replaceAll(regexComma, "、");
-                console.log("alt-forms regexes:\nregexNone:\n", matchesRegexNone, "\nregexComma:\n", matchesRegexComma);
+
+                // NOT FINAL
+                // altFormsTextArea.value = formatGeneric(altFormsTextArea, regexes);
+                // console.log("alt-forms regexes:\nregexNone:\n", matchesRegexNone, "\nregexComma:\n", matchesRegexComma);
+                // console.log("formatGeneric", formatGeneric(altFormsTextArea, regexes));
+                // console.log("altFormsTextArea.value", altFormsTextArea.value);/
             }
 
             // Formats the "Readings" textbox.
@@ -957,6 +983,7 @@
         https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
         https://developer.mozilla.org/ja/docs/Web/API/HTMLMediaElement/play
         https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
     Stack Overflow
         https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments
         https://stackoverflow.com/questions/2637696/how-to-place-div-side-by-side
@@ -1030,6 +1057,17 @@
         https://stackoverflow.com/questions/18826147/javascript-audio-play-on-click
         https://stackoverflow.com/questions/31715188/buttons-click-sounds
         https://stackoverflow.com/questions/14834520/html5-audio-stop-function
+        https://stackoverflow.com/questions/16576983/replace-multiple-characters-in-one-replace-call
+        https://stackoverflow.com/questions/19030397/syntaxerror-unterminated-parenthetical-for-validating-the-local-file-path
+        https://stackoverflow.com/questions/7365027/how-to-use-a-regexp-literal-as-object-key
+        https://stackoverflow.com/questions/75247972/changes-in-values-will-not-be-reflected-outside-of-function
+        https://stackoverflow.com/questions/1518511/how-do-i-pass-an-html-element-as-an-argument-to-a-javascript-function
+        https://stackoverflow.com/questions/47384766/passing-html-value-into-javascript-function
+        https://stackoverflow.com/questions/4173391/getting-dom-element-value-using-pure-javascript
+        https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+        https://stackoverflow.com/questions/57910429/syntaxerror-unterminated-parenthetical-how-to-handle
+        https://stackoverflow.com/questions/3777630/unterminated-parenthetical-error-with-a-regular-expression-in-javascript
+        https://stackoverflow.com/questions/30225552/regex-for-diacritics
     Tutorialspoint
         https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
     w3schools

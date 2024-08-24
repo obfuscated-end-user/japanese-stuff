@@ -1,6 +1,6 @@
 import re
 
-sample_text1="琴瑟相和、近親相姦、魑魅魍魎、百戦錬磨、躊躇逡巡、弩級戦艦、近親相姦、敬天愛人、作画崩壊、管弦楽団、疾風怒濤、棘皮動物、糶糴売買、戦災孤児、絶体絶命、慇懃無礼、七不思議、帝国主義、磊磊落落、体外離脱、閲覧注意、有耶無耶、航空母艦、阿鼻叫喚、天上天下、八紘一宇、自己矛盾"
+sample_text1="琴瑟相和、近親相姦、魑魅魍魎、百戦錬磨、躊躇逡巡、弩級戦艦、敬天愛人、作画崩壊、管弦楽団、疾風怒濤、棘皮動物、糶糴売買、戦災孤児、絶体絶命、慇懃無礼、七不思議、帝国主義、磊磊落落、体外離脱、閲覧注意、有耶無耶、航空母艦、阿鼻叫喚、天上天下、八紘一宇、自己矛盾、花鳥風月、跳梁跋扈、阿諛追従、鰥寡孤独、曖昧模糊"
 
 # text=input("Enter Japanese words separated by \"、\": ")
 def word_split1(text):
@@ -9,14 +9,14 @@ def word_split1(text):
 
 def word_split2(text):
     """Same as above, but without the Anki stuff."""
-    word_list=text.split("、")
-    final=""
+    word_list = text.split("、")
+    final = ""
     for word in word_list:
         if re.search("[々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ]", word):
             final += word + "[<-]|"
         else:
             final += word + "|"
-    final=re.sub("\|$", "", final)
+    final = re.sub("\|$", "", final)
     return "\"front:re:(" + final + ")\""
 
 def word_split3(text):
@@ -25,11 +25,11 @@ def word_split3(text):
 
 kanji="倪懼眄蟒臙閻侠龜沫驍牒瑞鍼灸俎鍮耽梁撞諮穂尉塑墾曹某殉窯艇帥迭卸畔丙輿膏鞠魯孟吻啄"
 def kanji_separator(text):
-    result=""
-    char_list=list(text)
+    result = ""
+    char_list = list(text)
     for char in char_list:
         result += char + "、"
-    result=result[:-1]
+    result = result[:-1]
     return result
 
 def word_count(text: str):

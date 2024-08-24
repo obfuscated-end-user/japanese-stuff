@@ -27,7 +27,7 @@ def add_kanji(kanji_string, section):
                     added_kanji.append(kanji)
                     kanji_list[section] += kanji
         else:
-            print("String contains non-kanji characters")
+            print("String contains invalid characters")
         if added_kanji:
             print(f"Added these kanji:\n{''.join(added_kanji)}")
         if kanji_not_added:
@@ -49,7 +49,7 @@ def remove_kanji(kanji_string, section):
                 else:
                     kanji_not_removed.append(kanji)
         else:
-            print("String contains non-kanji characters")
+            print("String contains invalid characters")
         if removed_kanji:
             print(f"Removed these kanji:\n{''.join(removed_kanji)}")
         if kanji_not_removed:
@@ -65,7 +65,7 @@ def extract_kanji(text):
         for kanji in kanji_list_from_string:
             added_kanji.append(kanji)
     else:
-        print("String contains non-kanji characters")
+        print("String contains invalid characters")
     if added_kanji:
         print(f"{''.join(added_kanji)}")
 

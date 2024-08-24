@@ -1,0 +1,90 @@
+<div id="front" lang="ja">
+	{{Front}}
+</div>
+
+<hr id=answer>
+
+<div id="back" lang="ja">
+	{{Back}}
+</div>
+
+<script type="text/javascript">
+	// fonts used for randomization. must be prepended with an underscore "_", in the collection.media folder, and not be an opentype font file (.otf).
+    // slightly more than the ones used on the front
+	var typefaces = [
+        "_HanaMinA",
+		"_yumin",
+		"_meiryo",
+		"_ipaexg",
+		"_ipaexm",
+		"_TakaoPMincho",
+		"_TakaoExMincho",
+		"_BIZ-UDGothicR",
+		"_BIZ-UDMinchoM",
+		"_UDDigiKyokashoN-R",
+		"_YOzK",
+		"_YuGothR",
+		"_851MkPOP_100",
+		"_AP",
+		"_APT",
+		"_dartsfont",
+		"_DotGothic16-Regular",
+		"_FUTENE",
+		"_Hosohuwafont",
+		"_irohamaru-mikami-Regular",
+		"_KanjiStrokeOrders_v4004",
+		"_KiwiMaru-Regular",
+		"_KosugiMaru-Regular",
+		"_moonp",
+		"_Mplus1-Regular",
+		"_mplus-2p-regular",
+		"_Mplus2-Regular",
+		"_seap",
+		"_ShigotoMemogaki-Regular-1-01",
+		"_SoukouMincho",
+		"_umeboshi_",
+		"_unifont_jp-14001",
+		"_Yuzu_PenJin_M",
+		"_Yuzu_PenJin_P",
+		"_ZenAntique-Regular",
+		"_ZenAntiqueSoft-Regular",
+		"_ZenKakuGothicAntique-Regular"
+    ];
+
+	// this is needed here because front side is still on the screen when you "flip" the card.
+	var front = document.getElementById("front");
+	var frontTypeface = typefaces[Math.floor(Math.random() * typefaces.length)]
+	front.style.cssText = `font-family: ${frontTypeface}, _meiryo, sans-serif; font-size: 300%; text-align: center; writing-mode: vertical-rl; margin: 0 auto; display: block;`;
+
+	// examples
+	examples = document.getElementsByClassName("examples")[0];
+	var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
+	examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;`;
+
+	// windows. comment this out if view from android app is broken.
+	var windows = document.getElementsByClassName("win").length > 0;
+	if (windows) {
+        var examplesWindows = document.getElementsByClassName("examples")[0];
+        examplesWindows.style.cssText = "font-family: 'Noto Serif JP', Meiryo, Arial, sans-serif;"
+
+        var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
+        examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; 		margin: 0px; padding: 0px; height: 75%; width: 100%;}`;
+	}
+
+	// randomize writing orientation (horizontal or vertical)
+	var writingDirection = Math.random() < 0.5;
+	if (writingDirection)
+		examples.style.writingMode = front.style.writingMode = "horizontal-tb";
+	else
+		examples.style.writingMode = front.style.writingMode = "vertical-rl";
+
+	// randomize if furigana should appear
+	var appearFurigana = Math.random() < 0.5;
+    var rubyText = document.getElementsByTagName("rt");
+	for (i = 0; i < rubyText.length; i++) {
+		if (appearFurigana)
+			rubyText[i].style.display = "ruby-text";
+		else
+			rubyText[i].style.display = "none";
+	}
+</script>

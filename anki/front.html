@@ -1,0 +1,81 @@
+<div id="front" lang="ja">
+	{{Front}}
+</div>
+
+<script type="text/javascript">
+	// fonts to be used on cards
+	var typefaces = [
+		"_HanaMinA",
+		"_yumin",
+		"_meiryo",
+		"_ipaexg",
+		"_ipaexm",
+		"_TakaoPMincho",
+		"_TakaoExMincho",
+		"_BIZ-UDGothicR",
+		"_BIZ-UDMinchoM",
+		"_UDDigiKyokashoN-R",
+		"_YOzK",
+		"_YuGothR",
+		"_851MkPOP_100",
+		"_AP",
+		"_APT",
+		"_DotGothic16-Regular",
+		"_FUTENE",
+		"_irohamaru-mikami-Regular",
+		"_KanjiStrokeOrders_v4004",
+		"_KiwiMaru-Regular",
+		"_KosugiMaru-Regular",
+		"_moonp",
+		"_Mplus1-Regular",
+		"_mplus-2p-regular",
+		"_Mplus2-Regular",
+		"_seap",
+		"_SoukouMincho",
+		"_umeboshi_",
+		"_unifont_jp-14001",
+		"_ZenAntique-Regular",
+		"_ZenAntiqueSoft-Regular",
+		"_ZenKakuGothicAntique-Regular"
+	];
+
+	typeface = typefaces[Math.floor(Math.random() * typefaces.length)],
+	front = document.getElementById('front');
+	front.style.cssText = `font-family:` + typeface + `, _meiryo, sans-serif; font-size: 300%; text-align: center; writing-mode: vertical-rl; margin: 0 auto; display: block;}`;
+
+	// windows. comment this out if view from android app is broken.
+	/*
+	var windows = document.getElementsByClassName("win");
+	for (i = 0; i < windows.length; ++i) {
+		windows[i].style.cssText = "font-family: "Noto Serif JP", Meiryo, Arial, sans-serif;"
+	}
+	*/
+
+	// randomize if furigana should appear
+	var appearFurigana = Math.random() < 0.5, rubyText = document.getElementsByTagName("rt");
+	for (i = 0; i < rubyText.length; i++) {
+		if (appearFurigana == true)
+			rubyText[i].style.display = "ruby-text";
+		else
+			rubyText[i].style.display = "none";
+	}
+
+	// randomize writing orientation (horizontal or vertical)
+	var writingDirectionNew = Math.random() < 0.5;
+	if (writingDirectionNew == true)
+		front.style.writingMode = "horizontal-tb";
+	else
+		front.style.writingMode = "vertical-rl";
+
+	// removes the 100ms fade delay shit
+	// https://www.reddit.com/r/medicalschoolanki/comments/g3lnwh/how_to_remove_the_animation_fade_100ms_from_anki
+	qFade = 100;
+	if (typeof anki !== 'undefined')
+		anki.qFade = qFade;
+</script>
+
+<!--
+Make these:
+	print out the font name for debug purposes (probably the index too)
+	make the probability values carry on even after the back side is revealed
+-->
