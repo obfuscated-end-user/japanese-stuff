@@ -65,6 +65,7 @@ https://www.comico.jp/
 [NEUT](https://neutmagazine.com) - news. site looks like shit though.  
 [Ameba](https://official.ameba.jp)  
 [ITmedia](https://www.itmedia.co.jp) - tech  
+[goo ニュース](https://news.goo.ne.jp) - news  
 
 ### blogs (fix these later, some don't even look like blogs)
 [ほぼ日刊イトイ新聞](https://www.1101.com/home.html)  
