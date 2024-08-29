@@ -1,22 +1,20 @@
 # Japanese resources list
 **TBD**
 ## Resource sites
-[Yookoso](https://www.yookoso.com/)  
-[Guide to Japanese](http://guidetojapanese.org/learn/resources/)  
-[Team Japanese](https://teamjapanese.com/free-websites-japanese-reading-practice-every-level/)  
+[Yookoso](https://www.yookoso.com)  
+[Guide to Japanese](http://guidetojapanese.org/learn/resources)  
+[Team Japanese](https://teamjapanese.com/free-websites-japanese-reading-practice-every-level)  
 [random](http://www17408ui.sakura.ne.jp/tatsum/project/Yomimono/Yomimono-ippai/index.html)
 
 ## Reading material (easy)
-[NHK NEWS EASY](https://www3.nhk.or.jp/news/easy/)  
-[NHK Easier](https://nhkeasier.com/) - same as above, but better(?) site  
-[和タのＣ](http://watanoc.com/)  
-[はてなブログ](http://hatenablog.com/)  
+[NHK NEWS EASY](https://www3.nhk.or.jp/news/easy)  
+[NHK Easier](https://nhkeasier.com) - same as above, but better(?) site  
+[和タのＣ](http://watanoc.com)  
+[はてなブログ](http://hatenablog.com)  
 [アメーバブログ](https://ameblo.jp)  
-[福娘](http://hukumusume.com/douwa/) - poetry for kids  
-[たどく](https://tadoku.org/japanese/)  
-[aozora bunko books part 1](http://pastebin.com/7JPrM5zu)  
-[aozora bunko books part 2](http://pastebin.com/JAsJHvtN)  
-[aozora bunko books part 3](http://pastebin.com/ZGmwg3w7)  
+[福娘](http://hukumusume.com/douwa) - poetry for kids  
+[たどく](https://tadoku.org/japanese)  
+Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.com/JAsJHvtN), [3](http://pastebin.com/ZGmwg3w7)  
 [MATCHA (easy)](https://matcha-jp.com/easy)  
 [MATCHA (easy manga)](https://matcha-jp.com/easy/manga)  
 [スローコミュニケーション](https://slow-communication.jp)  
@@ -24,15 +22,15 @@
 [ひろがる](https://hirogaru-nihongo.jp)  
 [EASY JAPANESE](https://easyjapanese.net)  
 [Joi Japonin](https://joi-japonin.blogspot.com)  
-[Joi Japonin (newer)](https://www.japonin.com/free-learning-tools/teachers-blog.html)
+[Joi Japonin (newer)](https://www.japonin.com/free-learning-tools/teachers-blog.html)  
 [Gakken キッズネット](https://kids.gakken.co.jp)
 
 ## manga
-https://gitmind.com/app/doc/ba5b7264f8029f079c47cf624cb91b91
-https://www.s-manga.net/index.html
-https://www.comico.jp/
+[link](https://gitmind.com/app/doc/ba5b7264f8029f079c47cf624cb91b91)  
+[S-MANGA](https://www.s-manga.net/index.html)  
+[comico](https://www.comico.jp)
 
-## Hard (assume native level-type shit)
+## Hard (assume native level-type material)
 ### Websites
 [Japanese subreddits](https://www.reddit.com/r/newsokur/wiki/subreddits_jp)  
 [NHK News](https://www3.nhk.or.jp/news)  
@@ -52,7 +50,7 @@ https://www.comico.jp/
 [現代ビジネス](https://gendai.ismedia.jp) - business things  
 [DIAMOND online](https://diamond.jp) - news  
 [1000文字小説](https://www.1000moji.com) - short stories in 1000 characters  
-[MADAME RIRI](https://www.madameriri.com) - news? what the fuck is this  
+[MADAME RIRI](https://www.madameriri.com) - news?  
 [ImpressWatch](https://www.watch.impress.co.jp)  
 [Togetter](https://togetter.com) - collects tweets  
 [Animelon](https://animelon.com) - watch anime with japanese subs  
@@ -61,18 +59,18 @@ https://www.comico.jp/
 [アンサイクロペディア](https://ja.uncyclopedia.info) - detailed articles about japan written by professionally trained journalists. highly recommended for advanced learners.  
 [小説を読もう！](https://yomou.syosetu.com) - read (light) novels  
 [withnews](https://withnews.jp)  
-[新R25](https://r25.jp) - shit  
-[NEUT](https://neutmagazine.com) - news. site looks like shit though.  
+[新R25](https://r25.jp)  
+[NEUT](https://neutmagazine.com) - news  
 [Ameba](https://official.ameba.jp)  
 [ITmedia](https://www.itmedia.co.jp) - tech  
 [goo ニュース](https://news.goo.ne.jp) - news  
 
 ### blogs (fix these later, some don't even look like blogs)
 [ほぼ日刊イトイ新聞](https://www.1101.com/home.html)  
-[あにこ便](http://anicobin.ldblog.jp) - otaku blog shit - アニメオタクについてのクソブログ  
+[あにこ便](http://anicobin.ldblog.jp) - otaku blog - アニメオタクについてのブログ  
 [Paleolithic Man](https://yuchrszk.blogspot.com) - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。  
 [engadget](https://japanese.engadget.com) - blog about gadgets (doesn't work? redirects to english site)  
-[贈る言葉情報館](https://okurukotoba.tokyo) - blog about random shit  
+[贈る言葉情報館](https://okurukotoba.tokyo) - blog about random stuff  
 [QuizKnock](https://web.quizknock.com)  
 [Bushikaku](https://www.bushikaku.net) - travel blog (?)  
 [たびこふれ](https://tabicoffret.com) - travel blog  
@@ -96,22 +94,22 @@ https://www.comico.jp/
 [LOVE FM](https://lovefm.co.jp/yasashii_nihongo/blogs/podcast)
 
 ### download sites
-[Nyaa](https://nyaa.si) - anime and typical weeb shit  
+[Nyaa](https://nyaa.si) - anime and typical weeb junk  
 [Sukebei](https://sukebei.nyaa.si) - like nyaa, but nsfw  
 [JAPAN ENCODINGS](https://japanencodings.blogspot.com) - western movies with japanese dubs  
-[悪戯ネコ](https://itazuraneko.neocities.org) - has many crap, includes subtitles  
+[悪戯ネコ](https://itazuraneko.neocities.org) - has many stuff, includes subtitles (DEAD)  
 [Kitsunekko](https://kitsunekko.net) - subtitles  
 [DLRaw](https://dlraw.net) - raw manga ddl  
-[NATIVELY](https://learnnatively.com) - get books by difficulty - NO FUCK THIS SITE  
+[NATIVELY](https://learnnatively.com) - get books by difficulty (don't) 
 
 ### miscellaneous
 [you can [not] learn japanese](https://djtguide.neocities.org) - massive list of resources  
 [ニュー速R 日本語スレタイ簡易検索](http://downto.web.fc2.com/redd/jpsearch.html) - r/newsokur search in japanese  
-[Handwritten kanji recognition](https://kanji.sljfaq.org/) - search kanji by handwriting  
+[Handwritten kanji recognition](https://kanji.sljfaq.org) - search kanji by handwriting  
 [IMABI](https://www.imabi.net) - more detailed explanations for grammar. full of technical jargon.  
 [An Introduction to Japanese](https://pomax.github.io/nrGrammar) - somewhat like this ^  
 [アニメ・マンガの日本語](http://anime-manga.jp) - use this when you're reading manga and come across something you don't understand. 邪王真眼は最強。  
-[J-Lyric.net](https://j-lyric.net) - japanese lyric site mostly for japanese songs. it doesn't have that "no-copy" protection bullshit that every fucking japanese lyric site supposedly has.  
+[J-Lyric.net](https://j-lyric.net) - japanese lyric site mostly for japanese songs. it doesn't have that "no-copy" protection that every japanese lyric site supposedly has.  
 [LYRICAL NONSENSE](https://www.lyrical-nonsense.com) - another japanese lyric site  
 [話術.com](https://wajyutu.com) - find a phrase related to some topic  
 [例文.jp](http://例文.jp) - example sentences  
@@ -138,14 +136,14 @@ https://www.comico.jp/
 [ことわざ・四字熟語・難読漢字　学習小辞典](https://play.google.com/store/apps/details?id=jp.co.pit.tit3&hl=ja) - OFFLINE ANDROID DICTIONARY  
 [Read Your Level](http://readyourlevel.jamesknelson.com/browse) - read books (?) according to your "level" (dead link)  
 [創作に使えるかもしれない用語集](https://kakkoii-yougosyuu.com) - sorted vocabulary list  
-[NHK高校講座](https://www.nhk.or.jp/kokokoza/radio/r2_genbun) - listening crap  
-[jpdb.io](https://jpdb.io) - has a lot of shit  
+[NHK高校講座](https://www.nhk.or.jp/kokokoza/radio/r2_genbun) - listen (DEAD)  
+[jpdb.io](https://jpdb.io) - has a lot of stuff  
 [Self Taught Japanese - Japanese Study Resource List](https://selftaughtjapanese.com/2017/02/19/japanese-resource-list) - resource list  
 [r/LearnJapanese - Longer articles/passage length native material?](https://www.reddit.com/r/LearnJapanese/comments/df7jcr/longer_articlespassage_length_native_material) - resource list  
-[Nihonku](https://jp.nihonku.com) - what the fuck  
-[Jim Breen's Japanese Page](http://nihongo.monash.edu/japanese.html) - check later, looks old as shit though  
-[Kanji Composition Search Tool](http://kanji.wareya.moe) - find kanji by radical, and also includes the (mostly obscure) cjk abcdefg shit  
-[tanos.co.uk](http://www.tanos.co.uk/jlpt) - JLPT shit  
+[Nihonku](https://jp.nihonku.com) - what  
+[Jim Breen's Japanese Page](http://nihongo.monash.edu/japanese.html) - check later, looks old though  
+[Kanji Composition Search Tool](http://kanji.wareya.moe) - find kanji by radical, and also includes the (mostly obscure) cjk abcdefg characters  
+[tanos.co.uk](http://www.tanos.co.uk/jlpt) - JLPT  
 [漢字辞典ネット・難読漢字](http://www.kanjijiten.net/nandoku) - hard to read kanji / 難読漢字  
 [ニコニコ大百科](https://dic.nicovideo.jp) - niconico dictionary (kinda like japanese knowyourmeme but not really)  
 [Japanese with Anime](https://www.japanesewithanime.com) - learn japanese with anime and manga panels  
@@ -158,7 +156,7 @@ https://www.comico.jp/
 [Japanese Meta Stack Exchange - Resources for learning Japanese](https://japanese.meta.stackexchange.com/questions/756/resources-for-learning-japanese/2196)  
 [GenshinDictionary](https://genshin-dictionary.com/en) - genshin translations (english, chinese, japanese)
 
-## SPECFIC TO FINDING EXAMPLES
+### find japanese language examples
 [例文](http://例文.jp) - example sentences  
 [Yourei](http://yourei.jp) - same as above  
 [nlb.ninjal.ac.jp](http://nlb.ninjal.ac.jp/search) - example sentences with search by pattern (dead)  
@@ -167,14 +165,14 @@ https://www.comico.jp/
 [Search Japanese sentences with native audio!](https://sentencesearch.neocities.org) - sentences  
 [Youglish](https://youglish.com/japanese) - sentences  
 [JLPT Grammar List](https://jlptgrammarlist.neocities.org) - grammar sorted by n-level  
-[日本語文法辞典](https://japbase.neocities.org) - same as above, but has more details (HAS JAP IN URL WHAT THE FUCK RACIST FUCKS)
+[日本語文法辞典](https://japbase.neocities.org) - same as above, but has more details
 
-SPECIFIC TO SUBS  
+### japanese subtitles 
 [Kitsunekko](https://kitsunekko.net)  
-[Itazuraneko](https://itazuraneko.neocities.org/library/sub.html)  
+[Itazuraneko](https://itazuraneko.neocities.org/library/sub.html) (DEAD)  
 [JP subtitles (GitHub)](https://github.com/Matchoo95/JP-Subtitles)  
 [JP movie subtitles (GitHub)](https://github.com/eurusdagr/Japanese-Movies-Subtitles)  
 [Animelon](https://animelon.com) - stream anime with jp subs, not a sub download site
 
-FUCK THAT JAPANESE GUY YUTA  
-[his shitty site](https://members.japanesevocabularyshortcut.com/spage/course-open-trial.html?dfp=3xYy87X3xq)
+Don't use That Japanese Guy Yuta's stuff.  
+[his site](https://members.japanesevocabularyshortcut.com/spage/course-open-trial.html?dfp=3xYy87X3xq)
