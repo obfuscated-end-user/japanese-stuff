@@ -155,6 +155,8 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [小学生のうちに覚えたい四字熟語の一覧表](http://dorilu.net/itiran4zyukugo.htm) - yojijukugo  
 [Japanese Meta Stack Exchange - Resources for learning Japanese](https://japanese.meta.stackexchange.com/questions/756/resources-for-learning-japanese/2196)  
 [GenshinDictionary](https://genshin-dictionary.com/en) - genshin translations (english, chinese, japanese)
+[drk7.jp: 漢字ふりがな付与ツール V2](https://www.drk7.jp/pub/tools/YahooRuby/index.cgi) - append furigana on jp sentence/phrase  
+[AccessReading: 文章にルビを振る](https://accessreading.org/furigana)
 
 ### find japanese language examples
 [例文](http://例文.jp) - example sentences  
