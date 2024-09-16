@@ -9,7 +9,7 @@ count: 1930
 ## [CJK Compatibility](https://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs)
 Most of these are [kyūjitai](https://en.wikipedia.org/wiki/Ky%C5%ABjitai) forms of common kanji. Some of these may not display correctly.  
 者難器勤視突類海祖著廊都福憎殺贈署免臭梅層練虜神既社卑朗祈煮逸漢塚節芽墨懲侮隆欄祥喝頻諸繁嘆謁契勉蓮敏館祉周隣旅僧碑祝渚褐彫謹靖琢賓慨晴塀羽禍蘭暑猪糖寧遼精蘒飯  
-諭輸城冬
+諭輸城冬炭 
 ## Not learned yet
 ### grades 1-6
 (none)
