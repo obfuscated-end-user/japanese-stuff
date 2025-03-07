@@ -1,4 +1,5 @@
 # Unicode test page
+This file is large, it may take a while to fully load the contents.
 
 ## [Hiragana](https://en.wikipedia.org/wiki/Hiragana_(Unicode_block)) (93)
 ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚゛゜ゝゞゟ
@@ -58,6 +59,7 @@
 # Relevant Wikipedia articles
 * [Biangbiang noodles](https://en.wikipedia.org/wiki/Biangbiang_noodles)
 * [Chinese characters](https://en.wikipedia.org/wiki/Chinese_characters)
+* [Chinese characters of Empress Wu](https://en.wikipedia.org/wiki/Chinese_characters_of_Empress_Wu)
 * [Chữ Nôm](https://en.wikipedia.org/wiki/Chữ_Nôm)
 * [CJK characters](https://en.wikipedia.org/wiki/CJK_characters)
 * [CJK Unified Ideographs](https://en.wikipedia.org/wiki/CJK_Unified_Ideographs)
@@ -67,6 +69,7 @@
 * [Hanja](https://en.wikipedia.org/wiki/Hanja)
 * [Hentaigana](https://en.wikipedia.org/wiki/Hentaigana)
 * [Kanji](https://en.wikipedia.org/wiki/Kanji)
+* [Libian](https://en.wikipedia.org/wiki/Libian)
 * [Sawndip](https://en.wikipedia.org/wiki/Sawndip)
 * [Taito (kanji)](https://en.wikipedia.org/wiki/Taito_(kanji))
 * [Unicode](https://en.wikipedia.org/wiki/Unicode)
@@ -74,6 +77,9 @@
 * [忍びいろは (ja)](https://ja.wikipedia.org/wiki/%E5%BF%8D%E3%81%B3%E3%81%84%E3%82%8D%E3%81%AF)
 * [難読漢字 (ja)](https://ja.wikipedia.org/wiki/%E9%9B%A3%E8%AA%AD%E6%BC%A2%E5%AD%97)
 * [烏八臼 (ja)](https://ja.wikipedia.org/wiki/%E7%83%8F%E5%85%AB%E8%87%BC)
+* [イン (仏字) (ja)](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3_(%E4%BB%8F%E5%AD%97))
+* [理義字 (ja)](https://ja.wikipedia.org/wiki/%E7%90%86%E7%BE%A9%E5%AD%97)
+* [在留カード及び特別永住者証明書における正字 (ja)](https://ja.wikipedia.org/wiki/%E5%9C%A8%E7%95%99%E3%82%AB%E3%83%BC%E3%83%89%E5%8F%8A%E3%81%B3%E7%89%B9%E5%88%A5%E6%B0%B8%E4%BD%8F%E8%80%85%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%AD%A3%E5%AD%97)
 * [𱟛 (zh)](https://zh.wikipedia.org/wiki/%F0%B1%9F%9B)
 
 What a stupid obsession.

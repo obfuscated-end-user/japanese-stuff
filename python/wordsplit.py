@@ -26,11 +26,10 @@ def word_split3(text):
     # "alt-forms">[A-Za-z0-9ぁ-んァ-ン一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ、「」]*</span>
     return "\"back:re:(.alt-forms.>|、)(" + text.replace("、", "|") + ")\""
 
-def kanji_separator(text):
+def separate_kanji(text: str):
     result = ""
-    char_list = list(text)
-    for char in char_list:
-        result += char + "、"
+    for char in text:
+        result = result + char + "、"
     result = result[:-1]
     return result
 
@@ -45,11 +44,18 @@ def find_duplicates(text: str):
     result = result[:-1]
     return result
 
+def separate_kanji(text: str):
+    result = ""
+    for char in text:
+        result = result + char + "、"
+    result = result[:-1]
+    return result
+
 
 text1=word_split1(sample_text1)
 text2=word_split2(sample_text1)
 text3=word_split3(sample_text1)
 with open("python\output.txt", "w", encoding="utf-8") as out:
     text=text2
-    out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}\nseparated kanji:\n{kanji_separator(kanji)}\nduplicate words:\n{find_duplicates(dupes)}")
+    out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}\nseparated kanji:\n{separate_kanji(kanji)}\nduplicate words:\n{find_duplicates(dupes)}")
     print("done!")
