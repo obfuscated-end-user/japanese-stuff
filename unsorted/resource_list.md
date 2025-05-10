@@ -2,8 +2,9 @@
 **TBD**
 ## Resource sites
 [Yookoso](https://www.yookoso.com)  
-[Guide to Japanese](http://guidetojapanese.org/learn/resources)  
+[Tae Kim's Guide to Japanese](http://guidetojapanese.org/learn/resources)  
 [Team Japanese](https://teamjapanese.com/free-websites-japanese-reading-practice-every-level)  
+[Japanese Language Stack Exchange](https://japanese.stackexchange.com)  
 [random](http://www17408ui.sakura.ne.jp/tatsum/project/Yomimono/Yomimono-ippai/index.html)
 
 ## Reading material (easy)
@@ -14,7 +15,6 @@
 [アメーバブログ](https://ameblo.jp)  
 [福娘](http://hukumusume.com/douwa) - poetry for kids  
 [たどく](https://tadoku.org/japanese)  
-Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.com/JAsJHvtN), [3](http://pastebin.com/ZGmwg3w7)  
 [MATCHA (easy)](https://matcha-jp.com/easy)  
 [MATCHA (easy manga)](https://matcha-jp.com/easy/manga)  
 [スローコミュニケーション](https://slow-communication.jp)  
@@ -25,13 +25,16 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [Joi Japonin (newer)](https://www.japonin.com/free-learning-tools/teachers-blog.html)  
 [Gakken キッズネット](https://kids.gakken.co.jp)
 
-## manga
+## Manga
 [link](https://gitmind.com/app/doc/ba5b7264f8029f079c47cf624cb91b91)  
 [S-MANGA](https://www.s-manga.net/index.html)  
 [comico](https://www.comico.jp)
 
-## Hard (assume native level-type material)
+## Hard (assume native level-type stuff)
 ### Websites
+[青空文庫](https://www.aozora.gr.jp) - japanese project gutenberg  
+Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.com/JAsJHvtN), [3](http://pastebin.com/ZGmwg3w7)  
+[Japanese subreddits](https://www.reddit.com/r/newsokur/wiki/subreddits_jp)  
 [Japanese subreddits](https://www.reddit.com/r/newsokur/wiki/subreddits_jp)  
 [NHK News](https://www3.nhk.or.jp/news)  
 [ロケットニュース24](https://rocketnews24.com)  
@@ -64,8 +67,21 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [Ameba](https://official.ameba.jp)  
 [ITmedia](https://www.itmedia.co.jp) - tech  
 [goo ニュース](https://news.goo.ne.jp) - news  
+[BBCニュース](https://www.bbc.com/japanese) - news  
+[Google ニュース](https://news.google.com/home?edchanged=1&hl=ja&gl=JP&ceid=JP:ja) - news  
+[CNN.co.jp](https://www.cnn.co.jp) - news  
+[朝日新聞](http://www.asahi.com) - news  
+[讀賣新聞オンライン](https://www.yomiuri.co.jp) - news  
+[FNNプライムオンライン](https://www.fnn.jp) - news  
+[TBS NEWS DIG](https://newsdig.tbs.co.jp) - news  
+[SBS日本語](https://www.sbs.com.au/language/japanese/ja) - news  
+[虚構新聞](https://kyoko-np.net/) - satirical news site, like The Onion  
+[National Geographic](https://natgeo.nikkeibp.co.jp)  
+[Yahoo! 知恵袋](https://chiebukuro.yahoo.co.jp) - q&a  
+[ファミ通.com](https://www.famitsu.com) - video game news  
+[音楽ナタリー](https://natalie.mu/music) - music news  
 
-### blogs (fix these later, some don't even look like blogs)
+### Blogs (fix these later, some don't even look like blogs)
 [ほぼ日刊イトイ新聞](https://www.1101.com/home.html)  
 [あにこ便](http://anicobin.ldblog.jp) - otaku blog - アニメオタクについてのブログ  
 [Paleolithic Man](https://yuchrszk.blogspot.com) - blogs, mostly about health - ブログ、健康とスポーツの記事が多いだと思う。  
@@ -86,14 +102,24 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [言葉拾い](http://kotobahiroi.seesaa.net) - blog  
 [めざせ日本語教師～ｵﾝﾗｲﾝ日本語Tutorのよもやま日記～](https://mischabt.hatenablog.com) - blog  
 
-### dictionaries
+### Dictionaries
+[jisho](https://jisho.org) - jp to en  
+[Wiktionary (English)](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) - jp to en  
+[Wiktionary (Japanese)](https://ja.wiktionary.org/wiki/Wiktionary:%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8) - jp to jp  
 [goo辞書](https://dictionary.goo.ne.jp) - jp to jp  
 [語源由来辞典](https://gogen-yurai.jp) - jp etymologies in jp  
+[WordReference.com](https://www.wordreference.com) - jp to en & en to jp  
+[Honyaku Star](http://honyakustar.com) - dictionary for translators  
+[JLect](https://www.jlect.com/index.php) - japanese dialect dictionanry (jp to en)  
+[TMDict](https://www.tmdict.com/ja) - dictionary for works by [Type-Moon](https://en.wikipedia.org/wiki/Type-Moon) (fate, shit like that)  
+[字源](https://jigen.net) - kanji etymology  
+[漢字ペディア](https://www.kanjipedia.jp) - kanji etymology  
+[TAKOBOTO](https://takoboto.jp/bunpo) - grammar points  
 
-### podcasts
+### Podcasts
 [LOVE FM](https://lovefm.co.jp/yasashii_nihongo/blogs/podcast)
 
-### download sites
+### Download sites
 [Nyaa](https://nyaa.si) - anime and typical weeb junk  
 [Sukebei](https://sukebei.nyaa.si) - like nyaa, but nsfw  
 [JAPAN ENCODINGS](https://japanencodings.blogspot.com) - western movies with japanese dubs  
@@ -102,7 +128,7 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [DLRaw](https://dlraw.net) - raw manga ddl  
 [NATIVELY](https://learnnatively.com) - get books by difficulty (don't) 
 
-### miscellaneous
+### Miscellaneous
 [you can [not] learn japanese](https://djtguide.neocities.org) - massive list of resources  
 [ニュー速R 日本語スレタイ簡易検索](http://downto.web.fc2.com/redd/jpsearch.html) - r/newsokur search in japanese  
 [Handwritten kanji recognition](https://kanji.sljfaq.org) - search kanji by handwriting  
@@ -111,9 +137,6 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [アニメ・マンガの日本語](http://anime-manga.jp) - use this when you're reading manga and come across something you don't understand. 邪王真眼は最強。  
 [J-Lyric.net](https://j-lyric.net) - japanese lyric site mostly for japanese songs. it doesn't have that "no-copy" protection that every japanese lyric site supposedly has.  
 [LYRICAL NONSENSE](https://www.lyrical-nonsense.com) - another japanese lyric site  
-[話術.com](https://wajyutu.com) - find a phrase related to some topic  
-[例文.jp](http://例文.jp) - example sentences  
-[用例.jp](http://yourei.jp) - example sentences  
 [ビジネスメールの書き方](http://email.chottu.net) - how to write formal letters  
 [あのときの王子くん](https://www.aozora.gr.jp/cards/001265/files/46817_24670.html) - 星の王子さまクソ版  
 [Genki Study Resources](https://sethclydesdale.github.io/genki-study-resources) - all genki activities  
@@ -147,21 +170,33 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [漢字辞典ネット・難読漢字](http://www.kanjijiten.net/nandoku) - hard to read kanji / 難読漢字  
 [ニコニコ大百科](https://dic.nicovideo.jp) - niconico dictionary (kinda like japanese knowyourmeme but not really)  
 [Japanese with Anime](https://www.japanesewithanime.com) - learn japanese with anime and manga panels  
-[Learn Japanese Adventure](https://www.learn-japanese-adventure.com/japanese-words.html)
-[Japan Foundation](https://www.jpf.go.jp/e/project/japanese/education/resource/index.html)
+[Learn Japanese Adventure](https://www.learn-japanese-adventure.com/japanese-words.html)  
+[Japan Foundation](https://www.jpf.go.jp/e/project/japanese/education/resource/index.html)  
 [おもしろい読みの漢字](http://www17.plala.or.jp/u-ho/zatugaku2.html) - weird kanji (DEAD)  
 [DEAD](https://web.archive.org/web/20190331004617/http://f9305710.hide-yoshi.net/henkanji.html) - also that ^  
 [常用漢字表の音訓索引](https://www.bunka.go.jp/kokugo_nihongo/sisaku/joho/joho/kijun/naikaku/kanji/joyokanjisakuin/index.html) - also that, but not really ^  
 [小学生のうちに覚えたい四字熟語の一覧表](http://dorilu.net/itiran4zyukugo.htm) - yojijukugo  
 [Japanese Meta Stack Exchange - Resources for learning Japanese](https://japanese.meta.stackexchange.com/questions/756/resources-for-learning-japanese/2196)  
-[GenshinDictionary](https://genshin-dictionary.com/en) - genshin translations (english, chinese, japanese)
+[GenshinDictionary](https://genshin-dictionary.com/en) - genshin translations (english, chinese, japanese)  
 [drk7.jp: 漢字ふりがな付与ツール V2](https://www.drk7.jp/pub/tools/YahooRuby/index.cgi) - append furigana on jp sentence/phrase  
 [AccessReading: 文章にルビを振る](https://accessreading.org/furigana)
+[Yomitan](https://yomitan.wiki) - browser popup dictionary  
+[Yomitan (GitHub repository)](https://github.com/yomidevs/yomitan)  
+[Yomitan dictionaries](https://yomitan.wiki/dictionaries) - dictionaries you can import for yomitan  
+[夏目漱石資料デジタルアーカイブ](https://www.kanabun.or.jp/souseki)  
+[違いがわかる事典](https://chigai-allguide.com) - mistakes and differences guide  
+[意味の違い](https://eigobu.jp/magazine/category/difference) - mistakes and differences guide  
+[漢字の成り立ち辞典](%E5%A2%97%E6%AE%96%E9%9B%A3%E8%AA%AD%E6%BC%A2%E5%AD%97%E8%BE%9E%E5%85%B8.com) - mistakes and differences guide  
+[カラーセラピーライフ](https://www.i-iro.com/dic) - colors  
+[JLPT Grammar List](https://jlptgrammarlist.neocities.org)  
+[音楽理論](https://ongakuriron.com) - music theory  
+[2chまとめ](http://2chmm.com)  
 
-### find japanese language examples
+### Find Japanese language examples
 [例文](http://例文.jp) - example sentences  
 [Yourei](http://yourei.jp) - same as above  
 [nlb.ninjal.ac.jp](http://nlb.ninjal.ac.jp/search) - example sentences with search by pattern (dead)  
+[話術.com](https://wajyutu.com) - find a phrase related to some topic  
 [j-nihongo](https://j-nihongo.com) - grammar points with example sentences; do something in google like: "term site:j-nihongo.com"  
 [Massif](https://massif.la/ja) - find sentences  
 [Search Japanese sentences with native audio!](https://sentencesearch.neocities.org) - sentences  
@@ -169,12 +204,12 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [JLPT Grammar List](https://jlptgrammarlist.neocities.org) - grammar sorted by n-level  
 [日本語文法辞典](https://japbase.neocities.org) - same as above, but has more details
 
-### japanese subtitles 
+### Japanese subtitles 
 [Kitsunekko](https://kitsunekko.net)  
 [Itazuraneko](https://itazuraneko.neocities.org/library/sub.html) (DEAD)  
 [JP subtitles (GitHub)](https://github.com/Matchoo95/JP-Subtitles)  
 [JP movie subtitles (GitHub)](https://github.com/eurusdagr/Japanese-Movies-Subtitles)  
 [Animelon](https://animelon.com) - stream anime with jp subs, not a sub download site
 
-Don't use That Japanese Guy Yuta's stuff.  
+Don't use That Japanese Man Yuta's stuff.  
 [his site](https://members.japanesevocabularyshortcut.com/spage/course-open-trial.html?dfp=3xYy87X3xq)
