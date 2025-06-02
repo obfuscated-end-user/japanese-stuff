@@ -146,14 +146,14 @@
                 min-height: 100vh;
                 padding-bottom: 1%;
                 position: relative;
-                width: 47%;
+                width: calc(46% - 5px);
             }
 
             .input-boxes-right {
                 float: right;
                 margin-right: 20px;
                 margin-top: 5px;
-                width: 47%;
+                width: calc(46% - 5px);
             }
 
             footer {
@@ -252,9 +252,9 @@
     <body class="light-mode">
         <div id="anki">
             <div id="modes" class="unhighlightable">
-                <input type="radio" id="hiragana-only-radio" name="conversion-mode">hiragana only<br>
-                <input type="radio" id="regular-word-radio" name="conversion-mode">regular word<br>
-                <input type="radio" id="kanji-entry-radio" name="conversion-mode">kanji entry<br><br>
+                <input type="radio" id="hiragana-only-radio" name="conversion-mode"><label for="hiragana-only-radio">hiragana only</label><br>
+                <input type="radio" id="regular-word-radio" name="conversion-mode"><label for="regular-word-radio">regular word</label><br>
+                <input type="radio" id="kanji-entry-radio" name="conversion-mode"><label for="kanji-entry-radio">kanji entry</label><br><br>
                 <button type="button" onclick="setCheckboxes()">set checkboxes</button>&emsp;
                 <button type="button" onclick="clearAll(1); playClickSound();">reset</button>&emsp;
                 <button type="button" onclick="clearAll(0)">clear</button>&emsp;
@@ -262,8 +262,8 @@
             </div>
 
             <div class="input-boxes-left">
-                <span class="element-headers unhighlightable" id="alt-forms-header">Alternative forms</span><br>
-                <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, altFormsHeader, '#f00');"><button type="button" onclick="formatAltForms()">format</button>
+                <span class="element-headers unhighlightable" id="alt-forms-header"><label for="alt-forms-checkbox">Alternative forms</label></span><br>
+                <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, headers.altForms, '#f00');"><button type="button" onclick="formatAltForms()">format</button>
                 <span id="variation-selectors" class="unhighlightable">
                     <button type="button" onclick="copy(variationSelectorsDropdown.options[variationSelectorsDropdown.selectedIndex].innerHTML)">copy</button>
                     <select id="variation-selectors-dropdown" title="Select variation selector...">
@@ -278,16 +278,16 @@
                 </span><br>
                 <textarea id="alt-forms-textarea" rows="10" placeholder="Alternative forms of a given entry, separated by fullwidth commas (、). Also referred to as &quot;alt-forms&quot;.&#10;If a form has a fullwidth comma, wrap that entire form in these &quot;boxy&quot; quotation marks (「」).&#10;&#10;Example (entry for 井の中の蛙大海を知らず):&#10;&#10;井の中の蛙大海を知らず、井の内の蛙大海を知らず、「井の中の蛙、大海を知らず」" value=""></textarea><br>
 
-                <span class="element-headers unhighlightable" id="definitions-header">Definitions</span><br>
-                <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name" onclick="toggleHeaderColor(event, definitionsHeader, '#32cd32');"><button type="button" onclick="formatDefinitions()">format</button><br>
+                <span class="element-headers unhighlightable" id="definitions-header"><label for="definitions-checkbox">Definitions</label></span><br>
+                <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name" onclick="toggleHeaderColor(event, headers.definitions, '#32cd32');"><button type="button" onclick="formatDefinitions()">format</button><br>
                 <textarea id="definitions-textarea" rows="10" placeholder="Dictionary-like definitions of a given entry. You're allowed to combine dictionary entries from whatever sources you find, be it from here or somewhere else." value=""></textarea><br>
 
-                <span class="element-headers unhighlightable" id="examples-header">Example usage</span><br>
-                <input type="checkbox" id="examples-checkbox" name="examples-checkbox-name" onclick="toggleHeaderColor(event, examplesHeader, '#f0f');"><button type="button" onclick="formatExamples()">format</button><br>
+                <span class="element-headers unhighlightable" id="examples-header"><label for="examples-checkbox">Example usage</label></span><br>
+                <input type="checkbox" id="examples-checkbox" name="examples-checkbox-name" onclick="toggleHeaderColor(event, headers.examples, '#f0f');"><button type="button" onclick="formatExamples()">format</button><br>
                 <textarea id="examples-textarea" rows="10" placeholder="Sentences or phrases that use the entry. Fullwidth forms of Latin-based characters and numbers are preferred over their halfwidth counterparts.&#10;&#10;Example (entry for 拗れる):&#10;&#10;(下手)[へた]に(口)[くち]を(挟)[はさ]んだら(余計)[よけい]に`こじれて~しまいそうだ。&#10;(人間関係)[にんげんかんけい]は(時間)[じかん]が(経)[た]てば(経)[た]つほど`こじれて~いくものだ。&#10;お(前)[まえ]が(余計)[よけい]な(事)[こと]を(言)[い]うから(話)[はなし]が`こじれた~んだよ！" value=""></textarea>
 
                 <br><span class="element-headers unhighlightable">Temporary textbox</span>
-                <textarea id="temp-textarea" rows="10" placeholder="Store text in here temporarily. You can use this instead of Notepad (or any text processing software) to prevent yourself from switching back and forth between multiple windows. Text in here will not be included during conversion." value="" lang="ja"></textarea><br>
+                <textarea id="temp-textarea" rows="10" placeholder="Store text in here temporarily. You can use this instead of Notepad (or any other text processing software) to prevent yourself from switching back and forth between multiple windows. Text in here will not be included during conversion." value="" lang="ja"></textarea><br>
 
                 <footer class="unhighlightable">
                     <a href="https://github.com/obfuscated-end-user/Japanese-stuff/blob/master/unsorted/tool.html" title="View source code on GitHub"><img id="github-logo" src="https://github.com/favicon.ico"></a><br>
@@ -296,12 +296,12 @@
             </div>
 
             <div class="input-boxes-right">
-                <span class="element-headers unhighlightable" id="readings-header">Readings</span><br>
-                <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, readingsHeader, '#daa520');"><button type="button" onclick="formatReadings()">format</button><br>
+                <span class="element-headers unhighlightable" id="readings-header"><label for="readings-checkbox">Readings</label></span><br>
+                <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, headers.readings, '#daa520');"><button type="button" onclick="formatReadings()">format</button><br>
                 <textarea id="readings-textarea" rows="10" placeholder="Readings associated with an entry, separated by fullwidth commas (、). In case of single-kanji entries, kun'yomi readings come first rendered in hiragana, followed by on'yomi readings rendered in katakana.&#10;&#10;Example (entry for 命):&#10;&#10;いのち、みこと&#10;メイ、ミョウ" value=""></textarea><br>
 
-                <span class="element-headers unhighlightable" id="haskanji-header">Words containing this kanji</span><br>
-                <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name" onclick="toggleHeaderColor(event, hasKanjiHeader, '#00f');"><button type="button" onclick="formatWordsContainingThisKanji()">format</button><br>
+                <span class="element-headers unhighlightable" id="haskanji-header"><label for="haskanji-checkbox">Words containing this kanji</label></span><br>
+                <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name" onclick="toggleHeaderColor(event, headers.hasKanji, '#00f');"><button type="button" onclick="formatWordsContainingThisKanji()">format</button><br>
                 <textarea id="haskanji-textarea" rows="10" placeholder="Words that contain this kanji. Also referred to as &quot;haskanji&quot;. Must be only included in single-kanji entries, and ignored for all other cases.&#10;&#10;Example (entry for 解):&#10;&#10;(理解)[りかい] - understanding, comprehension&#10;(解凍)[かいとう] - thawing&#10;(解決)[かいけつ] - solution, settlement" value=""></textarea><br>
 
                 <span class="element-headers unhighlightable">HTML</span><br>
@@ -366,35 +366,43 @@
             let lightDarkModeButton = document.getElementById("light-dark-mode-button");
 
             // Textboxes
-            let altFormsTextArea = document.getElementById("alt-forms-textarea");
-            let readingsTextArea = document.getElementById("readings-textarea");
-            let definitionsTextArea = document.getElementById("definitions-textarea");
-            let hasKanjiTextArea = document.getElementById("haskanji-textarea");
-            let examplesTextArea = document.getElementById("examples-textarea");
-            let tempTextArea = document.getElementById("temp-textarea");
+            const textAreas = {
+                altForms:       document.getElementById("alt-forms-textarea"),
+                readings:       document.getElementById("readings-textarea"),
+                definitions:    document.getElementById("definitions-textarea"),
+                hasKanji:       document.getElementById("haskanji-textarea"),
+                examples:       document.getElementById("examples-textarea"),
+                temp:           document.getElementById("temp-textarea"),
+            };
 
             // Headers
-            let altFormsHeader = document.getElementById("alt-forms-header");
-            let readingsHeader = document.getElementById("readings-header");
-            let definitionsHeader = document.getElementById("definitions-header");
-            let hasKanjiHeader = document.getElementById("haskanji-header");
-            let examplesHeader = document.getElementById("examples-header");
+            const headers = {
+                altForms:       document.getElementById("alt-forms-header"),
+                readings:       document.getElementById("readings-header"),
+                definitions:    document.getElementById("definitions-header"),
+                hasKanji:       document.getElementById("haskanji-header"),
+                examples:       document.getElementById("examples-header"),
+            };
     
             // Read-only HTML code generated from the fields above.
             let ankiHTML = document.getElementById("anki-html");
     
-            // Radio buttons
-            let conversionMode = document.getElementsByName("conversion-mode");
-            let hiraganaOnly = document.getElementById("hiragana-only-radio");
-            let regularWord = document.getElementById("regular-word-radio");
-            let kanjiEntry = document.getElementById("kanji-entry-radio");
+            // Radio preset buttons
+            const radioPresets = {
+                conversionMode: document.getElementsByName("conversion-mode"),
+                hiraganaOnly:   document.getElementById("hiragana-only-radio"),
+                regularWord:    document.getElementById("regular-word-radio"),
+                kanjiEntry:     document.getElementById("kanji-entry-radio"),
+            };
     
             // Checkboxes
-            let altFormsCheckbox = document.getElementById("alt-forms-checkbox");
-            let readingsCheckbox = document.getElementById("readings-checkbox");
-            let definitionsCheckbox = document.getElementById("definitions-checkbox");
-            let hasKanjiCheckbox = document.getElementById("haskanji-checkbox");
-            let examplesCheckbox = document.getElementById("examples-checkbox");
+            const checkboxes = {
+                altForms:       document.getElementById("alt-forms-checkbox"),
+                readings:       document.getElementById("readings-checkbox"),
+                definitions:    document.getElementById("definitions-checkbox"),
+                hasKanji:       document.getElementById("haskanji-checkbox"),
+                examples:       document.getElementById("examples-checkbox"),
+            };
 
             // Select (dropdown)
             let variationSelectorsDropdown = document.getElementById("variation-selectors-dropdown");
@@ -406,25 +414,15 @@
             // Sets the checkboxes depending on what radio button is selected from the three.
             function setCheckboxes() {
                 playClickSound();
-                if (hiraganaOnly.checked) {
-                    altFormsCheckbox.checked = true;
-                    readingsCheckbox.checked = false;
-                    definitionsCheckbox.checked = true;
-                    hasKanjiCheckbox.checked = false;
-                    examplesCheckbox.checked = true;
-                } else if (regularWord.checked) {
-                    altFormsCheckbox.checked = true;
-                    readingsCheckbox.checked = true;
-                    definitionsCheckbox.checked = true;
-                    hasKanjiCheckbox.checked = false;
-                    examplesCheckbox.checked = true;
-                } else if (kanjiEntry.checked) {
-                    altFormsCheckbox.checked = true;
-                    readingsCheckbox.checked = true;
-                    definitionsCheckbox.checked = true;
-                    hasKanjiCheckbox.checked = true;
-                    examplesCheckbox.checked = true;
-                }
+                if (radioPresets.hiraganaOnly.checked) {
+                    Object.values(checkboxes).forEach(cb => cb.checked = true);
+                    checkboxes.readings.checked = false;
+                    checkboxes.hasKanji.checked = false;
+                } else if (radioPresets.regularWord.checked) {
+                    Object.values(checkboxes).forEach(cb => cb.checked = true);
+                    checkboxes.hasKanji.checked = false;
+                } else if (radioPresets.kanjiEntry.checked)
+                    Object.values(checkboxes).forEach(cb => cb.checked = true);
             }
 
             function formatGeneric(element, obj) {
@@ -442,97 +440,138 @@
             // Remember, if it's a div, then use innerHTML. If it's a textarea, then use value.
             // Reformats the text to convert some shorthand expressions. I know, stupid function name, should've been the one at the bottom, but whatever. Mainly used for kanji in text.
             function reformat(text) {
-                return text.replaceAll("(", "<ruby>").replaceAll(")[", "<rt>").replaceAll("]", "</rt></ruby>").replaceAll("{", "<ruby><b>").replaceAll("}[", "</b><rt>").replaceAll("`", "<b>").replaceAll("~", "</b>").replaceAll("*^", "<i>").replaceAll("^*", "</i>").replaceAll(/(?:\r|\n|\r\n)/g, "<br>");
+                return text.replace(/(\(|\)\[|\]|\{|\}\[|`|~|\*\^|\^\*|\r?\n)/g, match => {
+                    switch (match) {
+                        case "(":   return "<ruby>";
+                        case ")[":  return "<rt>";
+                        case "]":   return "</rt></ruby>";
+                        case "{":   return "<ruby><b>";
+                        case "}[":  return "</b><rt>";
+                        case "`":   return "<b>";
+                        case "~":   return "</b>";
+                        case "*^":  return "<i>";
+                        case "^*":  return "</i>";
+                        case "\n":
+                        case "\r\n":
+                            return "<br>";
+                    }
+                });
             }
 
             // Formats the "Alternative forms" textbox.
             function formatAltForms() {
                 playClickSound();
-                let regexNone = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()/g;
-                let regexComma = /(?:\r|\n|\r\n)|,/g;
-                let matchesRegexNone = altFormsTextArea.value.match(regexNone);
-                let matchesRegexComma = altFormsTextArea.value.match(regexComma);
-
-                // NOT FINAL
-                regexes = {
-                    "(?:\r|\n|\r\n)|," : "、",
-                    "( |[A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ].*|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|[()])" : "",
-                };
-                // regexes[/( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()/] = "";
-                // regexes[/(?:\r|\n|\r\n)|,/] = "、";
-
-                altFormsTextArea.value = altFormsTextArea.value.replaceAll(regexNone, "").replaceAll(regexComma, "、");
-
-                // NOT FINAL
-                // altFormsTextArea.value = formatGeneric(altFormsTextArea, regexes);
-                // console.log("alt-forms regexes:\nregexNone:\n", matchesRegexNone, "\nregexComma:\n", matchesRegexComma);
-                // console.log("formatGeneric", formatGeneric(altFormsTextArea, regexes));
-                // console.log("altFormsTextArea.value", altFormsTextArea.value);/
+                const textArea = textAreas.altForms;
+                const text = textArea.value;
+                // 々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝
+                // /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()|(?:\r\n|\r|\n|,)/g - OLD
+                // js keeps fucking up astral plane surrogate pairs idk
+                const combinedRegex = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝]*】|\u200b|\(\w*.*\w|\()|(?:\r\n|\r|\n|,)/gu;
+                const formattedText = text.replace(combinedRegex, (match, group1) => {
+                    if (group1 !== undefined)
+                        return "";
+                    return "、";
+                });
+                textArea.value = formattedText;
             }
 
             // Formats the "Readings" textbox.
             function formatReadings() {
                 playClickSound();
-                let regex = /(Kun:\n|On:\n| |^\n*$)/g;
-                let badLineBreaks = /(、<br>|<br>、)/g;
-                let matchesRegex = readingsTextArea.value.match(regex);
-                readingsTextArea.value = readingsTextArea.value.replaceAll(regex, "").replaceAll(badLineBreaks, "、");
-                console.log("readings regexes:\n", matchesRegex);
+                let input = textAreas.readings.value;
+                input = input.replace(/^(Kun:|On:)?\s*([\s\S]*?)(?=^(Kun:|On:)?|$)/gm, (_, prefix, text) => {
+                    text = text.replace(/、\s+/g, "、");
+                    text = text.replace(/\s+-/g, "-");
+                    text = text.replace(/-\s+/g, "-");
+                    text = text.trim();
+                    return text;
+                });
+                input = input.replace(/、<br>|<br>、/g, "、");
+                textAreas.readings.value = input;
+                console.log("formatted readings:\n", input);
             }
 
             // Formats the "Definitions" textbox.
             function formatDefinitions() {
                 playClickSound();
-                // i did it separately instead of something like ([\(\{\[\]]) because i need different html codes for each of these
-                // U+200B is a zero-width space, mostly coming from copying text on jisho.org
-			    // also put something like this on words containing this kanji box
-			    // also something that catches "<br>(", '("', "short for"
-                // for '("', use the 3rd entry on 根本 on wikt
-                // try to console.log() what was removed (use the match() method)
-                // obviously there are better ways to do this instead of these clunky ass regexes
-                let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
-                let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
-                let regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
-                let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
-                let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
-                let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
-                let regexQm = /[“|”]/g;
-                let regexSpacing = /(?<=[A-Za-z(&])\n(?=[\n&(])/g;
-                let regexTrailingWs = /^\n$/g;
+                let text = textAreas.definitions.value;
 
-                definitionsTextArea.value = definitionsTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexSpacing, "\n\n").replaceAll(regexTrailingWs, "").replaceAll("<!---->", "");
+                const charMap = {
+                    "(": "&#40;",
+                    "[": "&#91;",
+                    "]": "&#93;",
+                    "{": "&#123;",
+                    "“": "\"",
+                    "”": "\""
+                };
 
-                let keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
-                for (let i = 0; i < keywords.length; ++i)
-                    definitionsTextArea.value = definitionsTextArea.value.replaceAll(keywords[i], `*^${keywords[i].toLowerCase()}^*`);
+                const regexChar = /(\(|\[|\]|\{|\“|\”)/g;
+                text = text.replace(regexChar, (match) => charMap[match]);
 
-                // TBD
-                let matchesRegexLp = definitionsTextArea.value.match(regexLp);
+                text = text
+                    .replace(/[\u200b]/g, "")
+                    .replace(/^\s*/gm, "")
+                    .replace(/\n\s*(?=[&|(\w*.*\w\)])/g, "\n")
+                    .replace(/\n\s*(?=[&|]|\(\w*.*\w\))/g, "\n\n")
+                    .replace(/^\n$/gm, "")
+                    .replace(/\<!---->/g, "")   // instead of "<", i made it "\<", which shuts the linter up
+                    .replace(/<a hidden=""><\/a>/g, "");
+
+                // wiktionary shenanigans
+                const keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
+                keywords.forEach(kw => {
+                    const kwRegex = new RegExp(kw, "g");
+                    text = text.replace(kwRegex, `*^${kw.toLowerCase()}^*`);
+                });
+
+                textAreas.definitions.value = text;
+                const matchesRegexLp = text.match(/((\()(?=[*"\w])|(?<=<br>)(\())/g);
                 console.log("alt-forms regexes:\nmatchesRegexLp:\n", matchesRegexLp);
             }
 
             // Formats the "Words containing this kanji" textbox.
             function formatWordsContainingThisKanji() {
                 playClickSound();
-                let regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
-                let regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
-                let regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
-                let regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
-                let regexNone = /([\u200b]|^\s*|^\s*(?=[.*\n]))/g;
-                let regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
-                let regexQm = /[“|”]/g;
-                let regexIl = /\(<i>/g;
-                let regexIr = /<\/i>\)/g;
-                let regexMoreDef = /(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g;
-                let regexItalics = /(<i>|<\/i>)/g;
-                
-                hasKanjiTextArea.value = hasKanjiTextArea.value.replaceAll(regexLp, "&#40;").replaceAll(regexLs, "&#91;").replaceAll(regexRs, "&#93;").replaceAll(regexLc, "&#123;").replaceAll(regexQm, "\"").replaceAll(regexNone, "").replaceAll(regexNewline, "\n").replaceAll(regexIl, "&#40;").replaceAll(regexIr, ")").replaceAll(regexMoreDef, " ;; ").replaceAll("(<i>", "&#40;").replaceAll("<br>(", "<br>&#40;").replaceAll("<br>&#40;<i>", " ;; &#40;").replaceAll(regexItalics, "").replaceAll("‐", "-");
+                let text = textAreas.hasKanji.value;
+
+                text = text
+                    .replace(/((\()(?=[*"\w])|(?<=<br>)(\())/g, "&#40;")
+                    .replace(/((\[)(?=[*"\w])|(?<=<br>)(\[))/g, "&#91;")
+                    .replace(/((\])(?=[*"\w])|(?<=<br>)(\]))/g, "&#93;")
+                    .replace(/((\{)(?=[*"\w])|(?<=<br>)(\{))/g, "&#123;")
+                    .replace(/[“”]/g, "\"")
+                    .replace(/[\u200b]|^\s*|^\s*(?=[.*\n])/gm, "")
+                    .replace(/(\n\s*)(?=[&|(\w*.*\w\)])/g, "\n")
+                    .replace(/\(<i>/g, "&#40;")
+                    .replace(/<\/i>\)/g, ")")
+                    .replace(/(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g, " ;; ")
+                    .replace(/(<i>|<\/i>)/g, "")
+                    .replace(/‐/g, "-");
+
+                text = text.replace(/<br>\(/g, "<br>&#40;").replace(/<br>&#40;<i>/g, " ;; &#40;");
+                textAreas.hasKanji.value = text;
             }
 
             // Formats the "Example usage" textbox.
             function formatExamples() {
                 playClickSound();
-                examplesTextArea.value = examplesTextArea.value.replaceAll("<rp>(</rp>", "").replaceAll("<rp>)</rp>", "").replaceAll("<br />", "").replaceAll("<ruby>", "(").replaceAll("<rt>", ")[").replaceAll("</rt></ruby>", "]").replaceAll("()[]", "").replaceAll("{}[]", "").replaceAll("<b>", "`").replaceAll("</b>", "~").replaceAll("(<rb>", "(").replaceAll("</rb>)", ")");
+                const replacements = {
+                    "<rp>(</rp>":   "",
+                    "<rp>)</rp>":   "",
+                    "<br />":       "",
+                    "<ruby>":       "(",
+                    "<rt>":         ")[",
+                    "</rt></ruby>": "]",
+                    "()[]":         "",
+                    "{}[]":         "",
+                    "<b>":          "`",
+                    "</b>":         "~",
+                    "(<rb>":        "(",
+                    "</rb>)":       ")"
+                };
+
+                const pattern = new RegExp(Object.keys(replacements).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+                textAreas.examples.value = textAreas.examples.value.replace(pattern, match => replacements[match]);
 
                 // TBD
                 // add an option that adds boldface to the target word, mostly likely:
@@ -544,69 +583,67 @@
                 // console.log(test1);
                 // console.log(test2);
             }
-    
+
             // Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
             function convertText() {
                 playClickSound();
                 let final = "";
                 let finalWithColors = "";
+                const config = [
+                    { key: "altForms", className: "alt-forms", color: "#f00" },
+                    { key: "readings", className: "readings", color: "#daa520" },
+                    { key: "definitions", className: "definitions", color: "#32cd32" },
+                    { key: "hasKanji", className: "haskanji", color: "#00f", prefix: "words with this kanji:<br>" },
+                    { key: "examples", className: "examples", color: "#f0f" },
+                ];
 
-                if (altFormsCheckbox.checked) {
-                    final += `<span class=\"alt-forms\">${reformat(altFormsTextArea.value)}</span>`;
-                    finalWithColors += `<span style='color: #f00;'>&lt;span class=\"alt-forms\"&gt;${reformat(altFormsTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
-                } if (readingsCheckbox.checked) {
-                    if (altFormsCheckbox.checked) {
-                        final += "<br><br>";
-                        finalWithColors += "<span style='color: #daa520;'>&lt;br&gt;&lt;br&gt;</span>";
+                let firstAdded = false;
+
+                for (const { key, className, color, prefix="" } of config) {
+                    if (checkboxes[key].checked) {
+                        if (firstAdded) {
+                            final += "<br><br>";
+                            finalWithColors += `<span style='color: ${color};'>&lt;br&gt;&lt;br&gt;</span>`;
+                        }
+                        const rawText = textAreas[key].value;
+                        const reformatted = reformat(rawText);
+                        const escaped = reformatted.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+                        final += `<span class="${className}">${prefix}${reformatted}</span>`;
+                        finalWithColors += `<span style='color: ${color};'>&lt;span class="${className}"&gt;${escaped ? prefix.replace(/<br>/g, "&lt;br&gt;") : ""}${escaped}&lt;/span&gt;</span>`;
+                        firstAdded = true;
                     }
-                    final += `<span class=\"readings\">${reformat(readingsTextArea.value)}</span>`;
-                    finalWithColors += `<span style='color: #daa520;'>&lt;span class=\"readings\"&gt;${reformat(readingsTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
-                } if (definitionsCheckbox.checked) {
-                    if (readingsCheckbox.checked || altFormsCheckbox.checked) {
-                        final += "<br><br>";
-                        finalWithColors += "<span style='color: #32cd32;'>&lt;br&gt;&lt;br&gt;</span>";
-                    }
-                    final += `<span class=\"definitions\">${reformat(definitionsTextArea.value)}</span>`;
-                    finalWithColors += `<span style='color: #32cd32;'>&lt;span class=\"definitions\"&gt;${reformat(definitionsTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
-                } if (hasKanjiCheckbox.checked) {
-                    if (definitionsCheckbox.checked) {
-                        final += "<br><br>";
-                        finalWithColors += "<span style='color: #00f;'>&lt;br&gt;&lt;br&gt;</span>";
-                    }
-                    final += `<span class=\"haskanji\">words with this kanji:<br>${reformat(hasKanjiTextArea.value)}</span>`;
-                    finalWithColors += `<span style='color: #00f;'>&lt;span class=\"haskanji\"&gt;words with this kanji:&lt;br&gt;${reformat(hasKanjiTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
-                } if (examplesCheckbox.checked) {
-                    if (definitionsCheckbox.checked || hasKanjiCheckbox.checked) {
-                        final += "<br><br>";
-                        finalWithColors += "<span style='color: #f0f;'>&lt;br&gt;&lt;br&gt;</span>";
-                    }
-                    final += `<span class=\"examples\">${reformat(examplesTextArea.value)}</span>`;
-                    finalWithColors += `<span style='color: #f0f;'>&lt;span class=\"examples\"&gt;${reformat(examplesTextArea.value).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}&lt;/span&gt;</span>`;
                 }
 
                 ankiHTML.innerHTML = finalWithColors;
                 preview.innerHTML = final;
                 preview.value = final;
             }
+
     
             // Copies text and puts it in your clipboard. It just works.
             function copy(text) {
                 playClickSound();
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text);
+                    return true;
+                }
                 let input = document.createElement("textarea");
-                input.innerHTML = text;
+                input.value = text;
+                input.style.position = "fixed";
+                input.style.left = "-9999px";   // yeet it off the screen to the left
                 document.body.appendChild(input);
                 input.select();
                 let result = document.execCommand("copy");
                 document.body.removeChild(input);
-
                 return result;
             }
 
+
             // The default ticked checkboxes.
-            altFormsHeader.style.color = "#f00";
-            readingsHeader.style.color = "#daa520";
-            definitionsHeader.style.color = "#32cd32";
-            examplesHeader.style.color = "#f0f";
+            headers.altForms.style.color = "#f00";
+            headers.readings.style.color = "#daa520";
+            headers.definitions.style.color = "#32cd32";
+            headers.examples.style.color = "#f0f";
 
             // Changes the color of an associated header text to a specified color.
             function toggleHeaderColor(e, header, color) {
@@ -624,17 +661,12 @@
             function toggleVertical() {
                 playClickSound();
                 let examples = document.getElementsByClassName("examples")[0];
-
-                if (examples.style.writingMode == "vertical-rl") {
-                    examples.style.writingMode = "horizontal-tb";
-                    examples.style.float = "none";
-                    toggelVerticalButton.innerHTML = "toggle vertical";
-                } else {
-                    examples.style.writingMode = "vertical-rl";
-                    examples.style.float = "right";
-                    toggelVerticalButton.innerHTML = "toggle horizontal";
-                }
+                let isVertical = examples.style.writingMode === "vertical-rl";
+                examples.style.writingMode = isVertical ? "horizontal-tb" : "vertical-rl";
+                examples.style.float = isVertical ? "none" : "right";
+                toggelVerticalButton.innerHTML = isVertical ? "toggle vertical" : "toggle horizontal";
             }
+
 
             // Copyright year at the bottom of the page. May be inaccurate in like, a few decades. Or even tomorrow.
             document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
@@ -648,70 +680,55 @@
             let iframeHeader = document.getElementById("iframe-header");
 
             // The iframe that contains the website.
-            let iframe = document.getElementById("external-content");
+            const iframe = document.getElementById("external-content");
             
             // Radio buttons for modifying the search destination.
-            let searchMode = document.getElementsByName("search-mode");
-            let wiktionaryEnglishRadio = document.getElementById("wiktionary-english-radio");
-            let wiktionaryJapaneseRadio = document.getElementById("wiktionary-japanese-radio");
-            let jishoDefinitionsRadio = document.getElementById("jisho-definitions-radio");
-            let jishoKanjiRadio = document.getElementById("jisho-kanji-radio");
-            let jishoNamesRadio = document.getElementById("jisho-names-radio");
-            let jishoSentencesRadio = document.getElementById("jisho-sentences-radio");
-            let massifRadio = document.getElementById("massif-radio");
-            let youreiRadio = document.getElementById("yourei-radio");
-            let ejjeRadio = document.getElementById("ejje-radio");
-            let eijirouRadio = document.getElementById("eijirou-radio");
-            let wikipediaJapaneseRadio = document.getElementById("wikipedia-japanese-radio");
-            let furiganaBunkoRadio = document.getElementById("furigana-bunko-radio");
-            let drk7jpRadio = document.getElementById("drk7jp-radio");
+            const radioSearchOptions = {
+                searchMode:         document.getElementsByName("search-mode"),
+                wiktionaryEnglish:  document.getElementById("wiktionary-english-radio"),
+                wiktionaryJapanese: document.getElementById("wiktionary-japanese-radio"),
+                jishoDefinitions:   document.getElementById("jisho-definitions-radio"),
+                jishoKanji:         document.getElementById("jisho-kanji-radio"),
+                jishoNames:         document.getElementById("jisho-names-radio"),
+                jishoSentences:     document.getElementById("jisho-sentences-radio"),
+                massif:             document.getElementById("massif-radio"),
+                yourei:             document.getElementById("yourei-radio"),
+                ejje:               document.getElementById("ejje-radio"),
+                eijirou:            document.getElementById("eijirou-radio"),
+                wikipediaJapanese:  document.getElementById("wikipedia-japanese-radio"),
+                furiganaBunko:      document.getElementById("furigana-bunko-radio"),
+                drk7jp:             document.getElementById("drk7jp-radio"),
+            }
 
             // Searches a word using a value from the search bar. This also reloads the iframe after being called.
             // look for something like 別表記 for alternative forms, and it must be in the 日本語 section
             function searchWord() {
                 playClickSound();
                 let word = searchBar.value;
-                let showingResultsForWord = `<br>Showing results for <strong>"${word}"</strong> in`;
                 iframeHeader.style.display = "block ruby";
-                if (wiktionaryEnglishRadio.checked) {
-                    iframe.src = `https://en.wiktionary.org/wiki/${word}#Japanese`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>English Wiktionary</strong>.`;
-                } if (wiktionaryJapaneseRadio.checked) {
-                    iframe.src = `https://ja.wiktionary.org/wiki/${word}#日本語`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>ウィクショナリー日本語版</strong>.`;
-                } if (jishoDefinitionsRadio.checked) {
-                    iframe.src = `https://jisho.org/search/${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (definitions)</strong>.`;
-                } if (jishoKanjiRadio.checked) {
-                    iframe.src = `https://jisho.org/search/${word}%23kanji`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (kanji)</strong>.`;
-                } if (jishoNamesRadio.checked) {
-                    iframe.src = `https://jisho.org/search/${word}%23names`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (names)</strong>.`;
-                } if (jishoSentencesRadio.checked) {
-                    iframe.src = `https://jisho.org/search/${word}%23sentences`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>jisho.org (sentences)</strong>.`;
-                } if (massifRadio.checked) {
-                    iframe.src = `https://massif.la/ja/search?q=${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>Massif</strong>.`;
-                } if (youreiRadio.checked) {
-                    iframe.src = `https://yourei.jp/${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>用例.jp</strong>.`;
-                } if (ejjeRadio.checked) {
-                    iframe.src = `https://ejje.weblio.jp/sentence/content/${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>英和辞典・和英辞典 - Weblio辞書</strong>.`;
-                } if (eijirouRadio.checked) {
-                    iframe.src = `https://eow.alc.co.jp/search?q=${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>英辞郎 on the WEB</strong>.`;
-                } if (wikipediaJapaneseRadio.checked) {
-                    iframe.src = `https://ja.wikipedia.org/w/index.php?search=${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>ウィキペディア日本語版</strong>.`;
-                } if (furiganaBunkoRadio.checked) {
-                    iframe.src = `https://furigana.info/w/${word}`;
-                    iframeHeader.innerHTML = `${showingResultsForWord} <strong>ふりがな文庫</strong>.`;
-                } if (drk7jpRadio.checked) {
-                    iframe.src = "https://www.drk7.jp/pub/tools/YahooRuby/index.cgi";
-                    iframeHeader.innerHTML = "";
+
+                const sources = [
+                    { option: radioSearchOptions.wiktionaryEnglish, url: `https://en.wiktionary.org/wiki/${word}#Japanese`, label: "English Wiktionary" },
+                    { option: radioSearchOptions.wiktionaryJapanese, url: `https://ja.wiktionary.org/wiki/${word}#日本語`, label: "ウィクショナリー日本語版" },
+                    { option: radioSearchOptions.jishoDefinitions, url: `https://jisho.org/search/${word}`, label: "jisho.org (definitions)" },
+                    { option: radioSearchOptions.jishoKanji, url: `https://jisho.org/search/${word}%23kanji`, label: "jisho.org (kanji)" },
+                    { option: radioSearchOptions.jishoNames, url: `https://jisho.org/search/${word}%23names`, label: "jisho.org (names)" },
+                    { option: radioSearchOptions.jishoSentences, url: `https://jisho.org/search/${word}%23sentences`, label: "jisho.org (sentences)" },
+                    { option: radioSearchOptions.massif, url: `https://massif.la/ja/search?q=${word}`, label: "Massif" },
+                    { option: radioSearchOptions.yourei, url: `https://yourei.jp/${word}`, label: "用例.jp" },
+                    { option: radioSearchOptions.ejje, url: `https://ejje.weblio.jp/sentence/content/${word}`, label: "英和辞典・和英辞典 - Weblio辞書" },
+                    { option: radioSearchOptions.eijirou, url: `https://eow.alc.co.jp/search?q=${word}`, label: "英辞郎 on the WEB" },
+                    { option: radioSearchOptions.wikipediaJapanese, url: `https://ja.wikipedia.org/w/index.php?search=${word}`, label: "ウィキペディア日本語版" },
+                    { option: radioSearchOptions.furiganaBunko, url: `https://furigana.info/w/${word}`, label: "ふりがな文庫" },
+                    { option: radioSearchOptions.drk7jp, url: "https://www.drk7.jp/pub/tools/YahooRuby/index.cgi", label: "" },
+                ];
+
+                for (const { option, url, label } of sources) {
+                    if (option.checked) {
+                        iframe.src = url;
+                        iframeHeader.innerHTML = label ? `<br>Showing results for <strong>"${word}"</strong> in <strong>${label}</strong>.` : "";
+                        break;
+                    }
                 }
             }
 
@@ -731,8 +748,7 @@
             }
 
             // BOTH SIDES
-
-            // Play a :click" sound when the user clicks on a button.
+            // Play a "click" sound when the user clicks on a button.
             function playClickSound() {
                 let audio = document.getElementById("audio");
                 // makes the sound play multiple times if you spam click
@@ -748,12 +764,7 @@
 
                 if (mode == 0) {
                     playClickSound();
-                    altFormsTextArea.value = "";
-                    readingsTextArea.value = "";
-                    definitionsTextArea.value = "";
-                    hasKanjiTextArea.value = "";
-                    examplesTextArea.value = "";
-                    tempTextArea.value = "";
+                    Object.values(textAreas).forEach(ta => ta.value = "");
 
                     ankiHTML.value = "";
                     ankiHTML.innerHTML = ankiHTMLPlaceholderText;
@@ -761,37 +772,28 @@
                 } else if (mode == 1) {
                     // Hard reset, clear everything.
                     // Left side of the screen.
-                    altFormsTextArea.value = "";
-                    readingsTextArea.value = "";
-                    definitionsTextArea.value = "";
-                    hasKanjiTextArea.value = "";
-                    examplesTextArea.value = "";
-                    tempTextArea.value = "";
+                    Object.values(textAreas).forEach(ta => ta.value = "");
 
                     ankiHTML.value = "";
                     ankiHTML.innerHTML = ankiHTMLPlaceholderText;
-                    // preview.innerHTML = "";
 
                     // Loops through all radio buttons, as if it were a list.
-                    for (let radioButton = 0; radioButton < conversionMode.length; ++radioButton)
-                        conversionMode[radioButton].checked = false;
-                    regularWord.checked = true;
+                    for (let radioButton = 0; radioButton < radioPresets.conversionMode.length; ++radioButton)
+                        radioPresets.conversionMode[radioButton].checked = false;
+                    radioPresets.regularWord.checked = true;
     
-                    altFormsCheckbox.checked = true;
-                    readingsCheckbox.checked = true;
-                    definitionsCheckbox.checked = true;
-                    hasKanjiCheckbox.checked = false;
-                    examplesCheckbox.checked = true;
+                    Object.values(checkboxes).forEach(cb => cb.checked = true);
+                    checkboxes.hasKanji.checked = false;
 
                     // Right side of the screen.
                     searchBar.value = "";
                     iframeHeader.innerHTML = "";
 
-                    for (let radioButton = 0; radioButton < searchMode.length; ++radioButton)
-                        searchMode[radioButton].checked = false;
-                    wiktionaryEnglishRadio.checked = true;
+                    for (let radioButton = 0; radioButton < radioSearchOptions.searchMode.length; ++radioButton)
+                        radioSearchOptions.searchMode[radioButton].checked = false;
+                    radioSearchOptions.wiktionaryEnglish.checked = true;
 
-                    let homePages = [
+                    const homePages = [
                         "https://en.wiktionary.org",
                         "https://ja.wiktionary.org",
                         "https://jisho.org",
@@ -888,7 +890,7 @@
             console.log("Welcome to the console.");
 
             console.log(
-            `コンソールちゃん alerts you of the seven Forbidden Gospels of the Stars.
+            `コンソールちゃん alerts you of the Seven Forbidden Gospels of the Stars.
             \nOne has to seek for meanings between the lines, ...and frequencies.
             \n` +
             `
@@ -985,6 +987,12 @@
         https://developer.mozilla.org/ja/docs/Web/API/HTMLMediaElement/play
         https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek
         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+        https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clipboard
+        https://developer.mozilla.org/en-US/docs/Web/CSS/resize
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+        https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
     Stack Overflow
         https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments
         https://stackoverflow.com/questions/2637696/how-to-place-div-side-by-side
@@ -1069,6 +1077,13 @@
         https://stackoverflow.com/questions/57910429/syntaxerror-unterminated-parenthetical-how-to-handle
         https://stackoverflow.com/questions/3777630/unterminated-parenthetical-error-with-a-regular-expression-in-javascript
         https://stackoverflow.com/questions/30225552/regex-for-diacritics
+        https://stackoverflow.com/questions/51805395/navigator-clipboard-is-undefined
+        https://stackoverflow.com/questions/12894169/what-is-the-html-for-attribute-in-label
+        https://stackoverflow.com/questions/4005614/elseif-syntax-in-javascript
+        https://stackoverflow.com/questions/42501428/using-calc-with-a-dynamic-value
+        https://stackoverflow.com/questions/22893866/css-dynamically-calculate-width
+        https://stackoverflow.com/questions/12896985/regex-modifier-u-in-javascript
+        https://stackoverflow.com/questions/17727884/range-out-of-order-in-character-class-in-javascript
     Tutorialspoint
         https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css
     w3schools

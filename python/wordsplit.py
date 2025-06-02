@@ -15,7 +15,7 @@ def word_split2(text):
     word_list = text.split("、")
     final = ""
     for word in word_list:
-        if re.search("[々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ]", word):
+        if re.search("[々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝０-９Ａ-ｚ]", word):
             final += word + "[<-]|"
         else:
             final += word + "|"
