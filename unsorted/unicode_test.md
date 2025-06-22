@@ -1,5 +1,5 @@
 # Unicode test page
-This file is large, it may take a while to fully load the contents.
+This file is quite large, it may take a while to fully load the contents.
 
 ## [Hiragana](https://en.wikipedia.org/wiki/Hiragana_(Unicode_block)) (93)
 ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚゛゜ゝゞゟ
