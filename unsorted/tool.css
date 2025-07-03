@@ -1,245 +1,245 @@
 body {
-    font-family: "Yu Gothic", "Noto Sans", Meiryo, Arial, Helvetica, sans-serif;
-    font-size: smaller;
+	font-family: "Yu Gothic", "Noto Sans", Meiryo, Arial, Helvetica, sans-serif;
+	font-size: smaller;
 }
 
 textarea {
-    border-radius: 10px;
-    height: 100%;
-    resize: none;
-    width: 100%;
+	border-radius: 10px;
+	height: 100%;
+	resize: none;
+	width: 100%;
 }
 
 button, select {
-    border-radius: 5px;
-    font-weight: bold;
+	border-radius: 5px;
+	font-weight: bold;
 }
 
 @keyframes light-mode-body {
-    from {background-color: #000;}
-    to {background-color: #fff;}
+	from {background-color: #000;}
+	to {background-color: #fff;}
 }
 
 .light-mode, .light-mode textarea {
-    background-color: #fff;
-    color: #000;
-    animation: light-mode-body 0.5s;
+	background-color: #fff;
+	color: #000;
+	animation: light-mode-body 0.5s;
 }
 
 @keyframes dark-mode-body {
-    from {background-color: #fff;}
-    to {background-color: #000;}
+	from {background-color: #fff;}
+	to {background-color: #000;}
 }
 
 .dark-mode, .dark-mode textarea, .dark-mode #search-bar {
-    background-color: #000;
-    color: #fff;
-    animation: dark-mode-body 0.5s;
+	background-color: #000;
+	color: #fff;
+	animation: dark-mode-body 0.5s;
 }
 
 .dark-mode #preview, .dark-mode #modes, .dark-mode #indicator, .dark-mode #anki-html {
-    border: solid 2px #fff;
+	border: solid 2px #fff;
 }
 
 .dark-mode button, .dark-mode select, .dark-mode select option {
-    background: #696969;
-    color: #fff;
-    animation: 0.5s;
+	background: #696969;
+	color: #fff;
+	animation: 0.5s;
 }
 
 .dark-mode .search-icons, .dark-mode #github-logo {
-    filter: invert(1);
+	filter: invert(1);
 }
 
 #github-logo {
-    height: 20px;
-    width: 20px;
+	height: 20px;
+	width: 20px;
 }
 
 /* The two screens */
 /* Left */
 #modes {
-    border: solid 2px #000;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 1%;
-    width: 47%;
+	border: solid 2px #000;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 1%;
+	width: 47%;
 }
 
 #anki {
-    height: 100%;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-top: 20px;
-    position: fixed;
-    top: 0;
-    width: 60%;
-    z-index: 1;
+	height: 100%;
+	left: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-top: 20px;
+	position: fixed;
+	top: 0;
+	width: 60%;
+	z-index: 1;
 }
 
 button, #alt-forms-textarea, #readings-textarea, #definitions-textarea, #haskanji-textarea, #examples-textarea, #anki-html, #temp-textarea, #search-bar {
-    font-family: "UDEV Gothic", Consolas, "Courier New", Courier, monospace;
-    font-size: 12px;
+	font-family: "UDEV Gothic", Consolas, "Courier New", Courier, monospace;
+	font-size: 12px;
 }
 
 button {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 #alt-forms-textarea {
-    color: #f00;
+	color: #f00;
 }
 
 #readings-textarea {
-    color: #daa520;
+	color: #daa520;
 }
 
 #definitions-textarea {
-    color: #32cd32;
+	color: #32cd32;
 }
 
 #haskanji-textarea {
-    color: #00f;
+	color: #00f;
 }
 
 #examples-textarea {
-    color: #f0f;
+	color: #f0f;
 }
 
 #preview {
-    border: solid 2px #000;
-    border-radius: 10px;
-    font-size: 20px;
-    margin-bottom: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding: 2.5%;
-    text-align: left;
+	border: solid 2px #000;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	max-height: 300px;
+	overflow-y: auto;
+	padding: 2.5%;
+	text-align: left;
 }
 
 #preview b {
-    color: #f00;
+	color: #f00;
 }
 
 rt, .unhighlightable {
-    user-select: none;
+	user-select: none;
 }
 
 .element-headers {
-    font-size: 15px;
-    font-weight: bold;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .input-boxes-left {
-    float: left;
-    margin-left: 20px;
-    margin-top: 5px;
-    min-height: 100vh;
-    padding-bottom: 1%;
-    position: relative;
-    width: calc(46% - 5px);
+	float: left;
+	margin-left: 20px;
+	margin-top: 5px;
+	min-height: 100vh;
+	padding-bottom: 1%;
+	position: relative;
+	width: calc(46% - 5px);
 }
 
 .input-boxes-right {
-    float: right;
-    margin-right: 20px;
-    margin-top: 5px;
-    width: calc(46% - 5px);
+	float: right;
+	margin-right: 20px;
+	margin-top: 5px;
+	width: calc(46% - 5px);
 }
 
 footer {
-    bottom: 0px;
-    position: fixed;
-    width: 100%;
+	bottom: 0px;
+	position: fixed;
+	width: 100%;
 }
 
 #anki-html {
-    border: solid 2px #000;
-    border-radius: 10px;
-    display: inline-block;
-    height: 12em;
-    overflow: auto;
-    padding: 2px;
-    width: 100%;
+	border: solid 2px #000;
+	border-radius: 10px;
+	display: inline-block;
+	height: 12em;
+	overflow: auto;
+	padding: 2px;
+	width: 100%;
 }
 
 [contentEditable=false]:empty:not(:focus):before {
-    content: attr(data-text)
+	content: attr(data-text)
 }
 
 .examples {
-    float: none;
-    writing-mode: horizontal-tb;
+	float: none;
+	writing-mode: horizontal-tb;
 }
 
 #toggle-vertical-button {
-    float: right;
+	float: right;
 }
 
 #variation-selectors {
-    float: right;
+	float: right;
 }
 
 .help-link {
-    font-weight: bold;
-    text-decoration: none;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 /* Right */
 #external {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-top: 20px;
-    position: fixed;
-    right: 0;
-    text-align: left;
-    top: 0;
-    width: 40%;
-    z-index: 1;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-top: 20px;
+	position: fixed;
+	right: 0;
+	text-align: left;
+	top: 0;
+	width: 40%;
+	z-index: 1;
 }
 
 #search-bar {
-    border-radius: 10px;
-    margin-bottom: 1.5%;
-    margin-left: 2.5%;
+	border-radius: 10px;
+	margin-bottom: 1.5%;
+	margin-left: 2.5%;
 }
 
 #go-button:disabled {
-    cursor: not-allowed;
+	cursor: not-allowed;
 }
 
 .search-icons {
-    height: 15px;
-    width: 15px;
+	height: 15px;
+	width: 15px;
 }
 
 #iframe-header {
-    margin-left: 2.5%;
-    display: none;
+	margin-left: 2.5%;
+	display: none;
 }
 
 #external-content {
-    border-radius: 10px;
-    height: 77.5%;
-    margin: 2.5%;
-    margin-top: 0.25%;
-    width: 95%;
+	border-radius: 10px;
+	height: 77.5%;
+	margin: 2.5%;
+	margin-top: 0.25%;
+	width: 95%;
 }
 
 #indicator, td, tr {
-    margin-left: 2.5%;
-    margin-right: auto;
-    text-align: left;
-    width: 75%;
+	margin-left: 2.5%;
+	margin-right: auto;
+	text-align: left;
+	width: 75%;
 }
 
 #indicator {
-    border: 2px solid #000;
-    border-radius: 10px;
+	border: 2px solid #000;
+	border-radius: 10px;
 }
 
 #notice1, #notice2, #iframe-header {
-    margin-left: 2.5%;
+	margin-left: 2.5%;
 }

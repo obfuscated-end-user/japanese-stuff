@@ -1,335 +1,353 @@
 // VARIABLES
-const a = document.createElement("a");                              // Temporary element used for language switch.
+const a = document.createElement("a");								// Temporary element used for language switch.
 a.style.display = "none";
 
-const u = document.getElementsByClassName("unhighlightable")[0];    // For appending the temporary element.
-const ankiHTML = document.getElementById("anki-html");              // Read-only HTML code generated from the fields above.
-const preview = document.getElementById("preview");                 // Preview box at the bottom of the left side of the page.
-const disclaimer = document.getElementById("disclaimer");           // "I apologize if the UI is a bit confusing..."
-const notice1 = document.getElementById("notice1");                 // "Content inside iframe should not be affected..."
-const notice2 = document.getElementById("notice2");                 // "If the content below..."
-const searchBar = document.getElementById("search-bar");            // The search bar to get entries from.
-const iframeHeader = document.getElementById("iframe-header");      // The header above the iframe that shows what is being searched by the user.
-const iframe = document.getElementById("external-content");         // The iframe on the right side of the page.
-const body = document.body;                                         // body
-const allRightsReserved = document.getElementById("all-rights-reserved");   // "All rights reserved." at the bottom of the left side of the page.
-const variationSelectorsDropdown = document.getElementById("variation-selectors-dropdown"); // Select variation selector dropdown list.
+const u = document.getElementsByClassName("unhighlightable")[0];	// For appending the temporary element.
+const ankiHTML = document.getElementById("anki-html");				// Read-only HTML code generated from the fields above.
+const preview = document.getElementById("preview");					// Preview box at the bottom of the left side of the page.
+const disclaimer = document.getElementById("disclaimer");			// "I apologize if the UI is a bit confusing..."
+const notice1 = document.getElementById("notice1");					// "Content inside iframe should not be affected..."
+const notice2 = document.getElementById("notice2");					// "If the content below..."
+const searchBar = document.getElementById("search-bar");			// The search bar to get entries from.
+const iframeHeader = document.getElementById("iframe-header");		// The header above the iframe that shows what is being searched by the user.
+const iframe = document.getElementById("external-content");			// The iframe on the right side of the page.
+const body = document.body;											// body
+const allRightsReserved = document.getElementById("all-rights-reserved");	// "All rights reserved." at the bottom of the left side of the page.
+const variationSelectorsDropdown = document.getElementById("variation-selectors-dropdown");	// Select variation selector dropdown list.
 
 // Preset radio buttons.
 const radioPresets = {
-    conversionMode: document.getElementsByName("conversion-mode"),
-    hiraganaOnly:   document.getElementById("hiragana-only-radio"),
-    regularWord:    document.getElementById("regular-word-radio"),
-    kanjiEntry:     document.getElementById("kanji-entry-radio"),
+	conversionMode:	document.getElementsByName("conversion-mode"),
+	hiraganaOnly:	document.getElementById("hiragana-only-radio"),
+	regularWord:	document.getElementById("regular-word-radio"),
+	kanjiEntry:		document.getElementById("kanji-entry-radio"),
 };
 
 // Labels for the preset radio buttons.
 const radioPresetsLabels = {
-    hiraganaOnly:   document.getElementById("hiragana-only-radio-label"),
-    regularWord:    document.getElementById("regular-word-radio-label"),
-    kanjiEntry:     document.getElementById("kanji-entry-radio-label")
+	hiraganaOnly:	document.getElementById("hiragana-only-radio-label"),
+	regularWord:	document.getElementById("regular-word-radio-label"),
+	kanjiEntry:		document.getElementById("kanji-entry-radio-label")
 };
 
 // Options.
 const topSectionButtons = {
-    setPreset:      document.getElementById("set-preset-button"),
-    reset:          document.getElementById("reset-button"),
-    clear:          document.getElementById("clear-button"),
-    switchLanguage: document.getElementById("switch-language-button"),
-    lightDarkMode:  document.getElementById("light-dark-mode-button")
+	setPreset:		document.getElementById("set-preset-button"),
+	reset:			document.getElementById("reset-button"),
+	clear:			document.getElementById("clear-button"),
+	switchLanguage:	document.getElementById("switch-language-button"),
+	lightDarkMode:	document.getElementById("light-dark-mode-button")
 };
 
 // Textboxes for the user to type in.
 const textAreas = {
-    altForms:       document.getElementById("alt-forms-textarea"),
-    readings:       document.getElementById("readings-textarea"),
-    definitions:    document.getElementById("definitions-textarea"),
-    hasKanji:       document.getElementById("haskanji-textarea"),
-    examples:       document.getElementById("examples-textarea"),
-    temp:           document.getElementById("temp-textarea")
+	altForms:		document.getElementById("alt-forms-textarea"),
+	readings:		document.getElementById("readings-textarea"),
+	definitions:	document.getElementById("definitions-textarea"),
+	hasKanji:		document.getElementById("haskanji-textarea"),
+	examples:		document.getElementById("examples-textarea"),
+	temp:			document.getElementById("temp-textarea")
 };
 
 // Headers. The colored text above each element in textAreas ^.
 const headers = {
-    altForms:       document.getElementById("alt-forms-header"),
-    readings:       document.getElementById("readings-header"),
-    definitions:    document.getElementById("definitions-header"),
-    hasKanji:       document.getElementById("haskanji-header"),
-    examples:       document.getElementById("examples-header"),
-    temp:           document.getElementById("temporary-header"),
-    preview:        document.getElementById("preview-header")
+	altForms:		document.getElementById("alt-forms-header"),
+	readings:		document.getElementById("readings-header"),
+	definitions:	document.getElementById("definitions-header"),
+	hasKanji:		document.getElementById("haskanji-header"),
+	examples:		document.getElementById("examples-header"),
+	temp:			document.getElementById("temporary-header"),
+	preview:		document.getElementById("preview-header")
 };
 
 // Checkboxes for each header.
 const checkboxes = {
-    altForms:       document.getElementById("alt-forms-checkbox"),
-    readings:       document.getElementById("readings-checkbox"),
-    definitions:    document.getElementById("definitions-checkbox"),
-    hasKanji:       document.getElementById("haskanji-checkbox"),
-    examples:       document.getElementById("examples-checkbox"),
+	altForms:	 	document.getElementById("alt-forms-checkbox"),
+	readings:		document.getElementById("readings-checkbox"),
+	definitions:	document.getElementById("definitions-checkbox"),
+	hasKanji:		document.getElementById("haskanji-checkbox"),
+	examples:		document.getElementById("examples-checkbox"),
 };
 
 // Other buttons not contained in previous Objects.
 // otherButtons.format and otherButtons.copy are containers with multiple buttons.
 const otherButtons = {
-    format:         document.getElementsByClassName("format-buttons"),
-    copy:           document.getElementsByClassName("copy-buttons"),
-    convertText:    document.getElementById("convert-text-button"),
-    toggleVertical: document.getElementById("toggle-vertical-button"),
-    search:         document.getElementById("search-button"),
+	format:			document.getElementsByClassName("format-buttons"),
+	copy:			document.getElementsByClassName("copy-buttons"),
+	convertText:	document.getElementById("convert-text-button"),
+	toggleVertical: document.getElementById("toggle-vertical-button"),
+	search:			document.getElementById("search-button"),
 };
 
 // Table headers on the right side of the page.
 const tableHeaders = {
-    definitions:        document.getElementById("definitions-table-header"),
-    exampleSentences:   document.getElementById("example-sentences-table-header"),
-    formatSentences:    document.getElementById("format-sentences-table-header"),
+	definitions:		document.getElementById("definitions-table-header"),
+	exampleSentences:	document.getElementById("example-sentences-table-header"),
+	formatSentences:	document.getElementById("format-sentences-table-header"),
 };
 
 // Radio buttons for modifying the search destination.
 const radioSearchOptions = {
-    searchMode:         document.getElementsByName("search-mode"),
-    wiktionaryEnglish:  document.getElementById("wiktionary-english-radio"),
-    wiktionaryJapanese: document.getElementById("wiktionary-japanese-radio"),
-    jishoDefinitions:   document.getElementById("jisho-definitions-radio"),
-    jishoKanji:         document.getElementById("jisho-kanji-radio"),
-    jishoNames:         document.getElementById("jisho-names-radio"),
-    jishoSentences:     document.getElementById("jisho-sentences-radio"),
-    massif:             document.getElementById("massif-radio"),
-    yourei:             document.getElementById("yourei-radio"),
-    ejje:               document.getElementById("ejje-radio"),
-    eijirou:            document.getElementById("eijirou-radio"),
-    wikipediaJapanese:  document.getElementById("wikipedia-japanese-radio"),
-    furiganaBunko:      document.getElementById("furigana-bunko-radio"),
-    drk7jp:             document.getElementById("drk7jp-radio"),
+	searchMode:			document.getElementsByName("search-mode"),
+	wiktionaryEnglish:	document.getElementById("wiktionary-english-radio"),
+	wiktionaryJapanese:	document.getElementById("wiktionary-japanese-radio"),
+	jishoDefinitions:	document.getElementById("jisho-definitions-radio"),
+	jishoKanji:			document.getElementById("jisho-kanji-radio"),
+	jishoNames:			document.getElementById("jisho-names-radio"),
+	jishoSentences:		document.getElementById("jisho-sentences-radio"),
+	massif:				document.getElementById("massif-radio"),
+	yourei:				document.getElementById("yourei-radio"),
+	ejje:				document.getElementById("ejje-radio"),
+	eijirou:			document.getElementById("eijirou-radio"),
+	wikipediaJapanese:	document.getElementById("wikipedia-japanese-radio"),
+	furiganaBunko:		document.getElementById("furigana-bunko-radio"),
+	drk7jp:				document.getElementById("drk7jp-radio"),
 };
 
 // LEFT SIDE
 // Sets the checkboxes depending on what radio button is selected from the three.
 function setCheckboxes() {
-    playClickSound();
-    if (radioPresets.hiraganaOnly.checked) {
-        Object.values(checkboxes).forEach(cb => cb.checked = true);
-        checkboxes.readings.checked = false;
-        checkboxes.hasKanji.checked = false;
-    } else if (radioPresets.regularWord.checked) {
-        Object.values(checkboxes).forEach(cb => cb.checked = true);
-        checkboxes.hasKanji.checked = false;
-    } else if (radioPresets.kanjiEntry.checked)
-        Object.values(checkboxes).forEach(cb => cb.checked = true);
+	playClickSound();
+	if (radioPresets.hiraganaOnly.checked) {
+		Object.values(checkboxes).forEach(cb => cb.checked = true);
+		checkboxes.readings.checked = false;
+		checkboxes.hasKanji.checked = false;
+	} else if (radioPresets.regularWord.checked) {
+		Object.values(checkboxes).forEach(cb => cb.checked = true);
+		checkboxes.hasKanji.checked = false;
+	} else if (radioPresets.kanjiEntry.checked)
+		Object.values(checkboxes).forEach(cb => cb.checked = true);
 }
 
 function formatGeneric(element, obj) {
-    // console.log("obj", obj);
-    let str = element.value;
-    for (x in obj) {
-        console.log("before", str);
-        str = str.replaceAll(new RegExp(x, "g"), obj[x]);
-        console.log("after", str);
-    }
-    // console.log("s", s);
-    return str;
+	// console.log("obj", obj);
+	let str = element.value;
+	for (x in obj) {
+		console.log("before", str);
+		str = str.replaceAll(new RegExp(x, "g"), obj[x]);
+		console.log("after", str);
+	}
+	// console.log("s", s);
+	return str;
 }
 
-// Remember, if it's a div, then use innerHTML. If it's a textarea, then use value.
-// Reformats the text to convert some shorthand expressions. I know, stupid function name, should've been the one at the bottom, but whatever. Mainly used for kanji in text.
+// Remember, if it's a div, then use innerHTML. If it's a textarea, then use
+// value. Reformats the text to convert some shorthand expressions. I know,
+// stupid function name, should've been the one at the bottom, but whatever.
+// Mainly used for kanji in text.
 function reformat(text) {
-    return text.replace(/(\(|\)\[|\]|\{|\}\[|`|~|\*\^|\^\*|\r?\n)/g, match => {
-        switch (match) {
-            case "(":   return "<ruby>";
-            case ")[":  return "<rt>";
-            case "]":   return "</rt></ruby>";
-            case "{":   return "<ruby><b>";
-            case "}[":  return "</b><rt>";
-            case "`":   return "<b>";
-            case "~":   return "</b>";
-            case "*^":  return "<i>";
-            case "^*":  return "</i>";
-            case "\n":
-            case "\r\n":
-                return "<br>";
-        }
-    });
+	return text.replace(/(\(|\)\[|\]|\{|\}\[|`|~|\*\^|\^\*|\r?\n)/g, match => {
+		switch (match) {
+			case "(":	return "<ruby>";
+			case ")[":	return "<rt>";
+			case "]":	return "</rt></ruby>";
+			case "{":	return "<ruby><b>";
+			case "}[":	return "</b><rt>";
+			case "`":	return "<b>";
+			case "~":	return "</b>";
+			case "*^":	return "<i>";
+			case "^*":	return "</i>";
+			case "\n":
+			case "\r\n":
+				return "<br>";
+		}
+	});
 }
 
 // Formats the "Alternative forms" textbox.
 function formatAltForms() {
-    playClickSound();
-    const textArea = textAreas.altForms;
-    const text = textArea.value;
-    // 々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝
-    // /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()|(?:\r\n|\r|\n|,)/g - OLD
-    const combinedRegex = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝]*】|\u200b|\(\w*.*\w|\()|(?:\r\n|\r|\n|,)/gu;
-    const formattedText = text.replace(combinedRegex, (_, g) => {
-        if (g !== undefined)
-            return "";
-        return "、";
-    });
-    textArea.value = formattedText;
+	playClickSound();
+	const textArea = textAreas.altForms;
+	const text = textArea.value;
+	// 々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝
+	// /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン一-鿿]*】|\u200b|\(\w*.*\w|\()|(?:\r\n|\r|\n|,)/g - OLD
+	const combinedRegex = /( |\(\w*.*\w\)|【[０-９Ａ-ｚぁ-んァ-ン々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝]*】|\u200b|\(\w*.*\w|\()|(?:\r\n|\r|\n|,)/gu;
+	const formattedText = text.replace(combinedRegex, (_, g) => {
+		if (g !== undefined)
+			return "";
+		return "、";
+	});
+	textArea.value = formattedText;
 }
 
 // Formats the "Readings" textbox.
 function formatReadings() {
-    playClickSound();
-    let input = textAreas.readings.value;
-    input = input.replace(/^(Kun:|On:)?\s*([\s\S]*?)(?=^(Kun:|On:)?|$)/gm, (_, prefix, t) => {
-        t = t.replace(/、\s+/g, "、");
-        t = t.replace(/\s+-/g, "-");
-        t = t.replace(/-\s+/g, "-");
-        t = t.trim();
-        return t;
-    });
-    input = input.replace(/、<br>|<br>、/g, "、");
-    textAreas.readings.value = input;
-    console.log("formatted readings:\n", input);
+	playClickSound();
+	let input = textAreas.readings.value;
+	input = input.replace(
+		/^(Kun:|On:)?\s*([\s\S]*?)(?=^(Kun:|On:)?|$)/gm, (_, prefix, t) => {
+			t = t.replace(/、\s+/g, "、");
+			t = t.replace(/\s+-/g, "-");
+			t = t.replace(/-\s+/g, "-");
+			t = t.trim();
+			return t;
+		}
+	);
+	input = input.replace(/、<br>|<br>、/g, "、");
+	textAreas.readings.value = input;
+	console.log("formatted readings:\n", input);
 }
 
 // Formats the "Definitions" textbox.
 function formatDefinitions() {
-    playClickSound();
+	playClickSound();
 
-    // Define regexes as in the second function
-    const regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
-    const regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
-    const regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
-    const regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
-    const regexNone = /[\u200b]|^\s*|^\s*(?=[.*\n])/g;
-    const regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
-    const regexQm = /[“”]/g;
-    const regexSpacing = /(?<=[A-Za-z(&])\n(?=[\n&(])/g;
-    const regexTrailingWs = /^\n$/g;
+	// Define regexes as in the second function
+	const regexLp = /((\()(?=[*"\w])|(?<=<br>)(\())/g;
+	const regexLs = /((\[)(?=[*"\w])|(?<=<br>)(\[))/g;
+	const regexRs = /((\])(?=[*"\w])|(?<=<br>)(\]))/g;
+	const regexLc = /((\{)(?=[*"\w])|(?<=<br>)(\{))/g;
+	const regexNone = /[\u200b]|^\s*|^\s*(?=[.*\n])/g;
+	const regexNewline = /(\n\s*)(?=[&|(\w*.*\w\)])/g;
+	const regexQm = /[“”]/g;
+	const regexSpacing = /(?<=[A-Za-z(&])\n(?=[\n&(])/g;
+	const regexTrailingWs = /^\n$/g;
 
-    let t = textAreas.definitions.value;
+	let t = textAreas.definitions.value;
 
-    t = t
-        .replaceAll(regexLp, "&#40;")
-        .replaceAll(regexLs, "&#91;")
-        .replaceAll(regexRs, "&#93;")
-        .replaceAll(regexLc, "&#123;")
-        .replaceAll(regexQm, "\"")
-        .replaceAll(regexNone, "")
-        .replaceAll(regexNewline, "\n")
-        .replaceAll(regexSpacing, "\n\n")
-        .replaceAll(regexTrailingWs, "")
-        .replaceAll("<!---->", "")
-        .replaceAll("<a hidden=\"\"></a>", "");
+	t = t
+		.replaceAll(regexLp, "&#40;")
+		.replaceAll(regexLs, "&#91;")
+		.replaceAll(regexRs, "&#93;")
+		.replaceAll(regexLc, "&#123;")
+		.replaceAll(regexQm, "\"")
+		.replaceAll(regexNone, "")
+		.replaceAll(regexNewline, "\n")
+		.replaceAll(regexSpacing, "\n\n")
+		.replaceAll(regexTrailingWs, "")
+		.replaceAll("<!---->", "")
+		.replaceAll("<a hidden=\"\"></a>", "");
 
-    const keywords = ["Short for", "Alternative spelling of", "Synonym of", "Clipping of"];
-    keywords.forEach(kw => {
-        t = t.replaceAll(kw, `*^${kw.toLowerCase()}^*`);
-    });
+	const keywords = [
+		"Short for",
+		"Alternative spelling of",
+		"Synonym of",
+		"Clipping of"
+	];
 
-    textAreas.definitions.value = t;
+	keywords.forEach(kw => {
+		t = t.replaceAll(kw, `*^${kw.toLowerCase()}^*`);
+	});
 
-    // const matchesRegexLp = text.match(regexLp);
-    // console.log("alt-forms regexes:\nmatchesRegexLp:\n", matchesRegexLp);
+	textAreas.definitions.value = t;
+
+	// const matchesRegexLp = text.match(regexLp);
+	// console.log("alt-forms regexes:\nmatchesRegexLp:\n", matchesRegexLp);
 }
 
 // Formats the "Words containing this kanji" textbox.
 function formatWordsContainingThisKanji() {
-    playClickSound();
-    let text = textAreas.hasKanji.value;
+	playClickSound();
+	let text = textAreas.hasKanji.value;
 
-    text = text
-        .replace(/((\()(?=[*"\w])|(?<=<br>)(\())/g, "&#40;")
-        .replace(/((\[)(?=[*"\w])|(?<=<br>)(\[))/g, "&#91;")
-        .replace(/((\])(?=[*"\w])|(?<=<br>)(\]))/g, "&#93;")
-        .replace(/((\{)(?=[*"\w])|(?<=<br>)(\{))/g, "&#123;")
-        .replace(/[“”]/g, "\"")
-        .replace(/[\u200b]|^\s*|^\s*(?=[.*\n])/gm, "")
-        .replace(/(\n\s*)(?=[&|(\w*.*\w\)])/g, "\n")
-        .replace(/\(<i>/g, "&#40;")
-        .replace(/<\/i>\)/g, ")")
-        .replace(/(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g, " ;; ")
-        .replace(/(<i>|<\/i>)/g, "")
-        .replace(/‐/g, "-");
+	text = text
+		.replace(/((\()(?=[*"\w])|(?<=<br>)(\())/g, "&#40;")
+		.replace(/((\[)(?=[*"\w])|(?<=<br>)(\[))/g, "&#91;")
+		.replace(/((\])(?=[*"\w])|(?<=<br>)(\]))/g, "&#93;")
+		.replace(/((\{)(?=[*"\w])|(?<=<br>)(\{))/g, "&#123;")
+		.replace(/[“”]/g, "\"")
+		.replace(/[\u200b]|^\s*|^\s*(?=[.*\n])/gm, "")
+		.replace(/(\n\s*)(?=[&|(\w*.*\w\)])/g, "\n")
+		.replace(/\(<i>/g, "&#40;")
+		.replace(/<\/i>\)/g, ")")
+		.replace(/(?<=[\w)\]])(<br>|<br><br>)(?=[\w(\[])/g, " ;; ")
+		.replace(/(<i>|<\/i>)/g, "")
+		.replace(/‐/g, "-");
 
-    text = text.replace(/<br>\(/g, "<br>&#40;").replace(/<br>&#40;<i>/g, " ;; &#40;");
-    textAreas.hasKanji.value = text;
+	text = text.replace(/<br>\(/g, "<br>&#40;")
+		.replace(/<br>&#40;<i>/g, " ;; &#40;");
+	textAreas.hasKanji.value = text;
 }
 
 // Formats the "Example usage" textbox.
 function formatExamples() {
-    playClickSound();
-    const replacements = {
-        "<ruby><rb>":               "(",
-        "</rb><rp>(</rp><rt>":      ")[",
-        "</rt><rp>)</rp></ruby>":   "]",
-        "<ruby>":                   "(",
-        "<rt>":                     ")[",
-        "</rt></ruby>":             "]",
-        "()[]":                     "",
-        "{}[]":                     "",
-        "<b>":                      "`",
-        "</b>":                     "~",
-        "(<rb>":                    "(",
-        "</rb>)":                   ")"
-    };
+	playClickSound();
+	const replacements = {
+		"<ruby><rb>":				"(",
+		"</rb><rp>(</rp><rt>":		")[",
+		"</rt><rp>)</rp></ruby>":	"]",
+		"<ruby>":					"(",
+		"<rt>":						")[",
+		"</rt></ruby>":				"]",
+		"()[]":						"",
+		"{}[]":						"",
+		"<b>":					 	"`",
+		"</b>":						"~",
+		"(<rb>":					"(",
+		"</rb>)":					")"
+	};
 
-    const pattern = new RegExp(Object.keys(replacements).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
-    textAreas.examples.value = textAreas.examples.value.replace(pattern, match => replacements[match]);
+	const pattern = new RegExp(
+		Object.keys(replacements).map(
+			k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+		).join('|'), 'g'
+	);
+	textAreas.examples.value = textAreas.examples.value.replace(
+		pattern, match => replacements[match]
+	);
 
-    // TBD
-    // add an option that adds boldface to the target word, mostly likely:
-    // 1. get the word on the search bar
-    // 2. use regex magic to apply bold tags on the example sentences textbox, based on what was on the search bar
-    // 3. try to format empty "containers", e.g. ()[] and {}[]
-    // let test1 = searchBar.value;
-    // let test2 = examplesTextArea.value;
-    // console.log(test1);
-    // console.log(test2);
+	// TBD
+	// add an option that adds boldface to the target word, mostly likely:
+	// 1. get the word on the search bar
+	// 2. use regex magic to apply bold tags on the example sentences textbox, based on what was on the search bar
+	// 3. try to format empty "containers", e.g. ()[] and {}[]
+	// let test1 = searchBar.value;
+	// let test2 = examplesTextArea.value;
+	// console.log(test1);
+	// console.log(test2);
 }
 
-// Adds all of text in the textboxes into one big string, and put it in the HTML box and the preview box below.
+// Adds all of text in the textboxes into one big string, and put it in the HTML
+// box and the preview box below.
 function convertText() {
-    playClickSound();
-    let final = "";
-    let finalWithColors = "";
-    const config = [
-        { key: "altForms", className: "alt-forms", color: "#f00" },
-        { key: "readings", className: "readings", color: "#daa520" },
-        { key: "definitions", className: "definitions", color: "#32cd32" },
-        { key: "hasKanji", className: "haskanji", color: "#00f", prefix: "words with this kanji:<br>" },
-        { key: "examples", className: "examples", color: "#f0f" },
-    ];
+	playClickSound();
+	let final = "";
+	let finalWithColors = "";
+	const config = [
+		{ key: "altForms", className: "alt-forms", color: "#f00" },
+		{ key: "readings", className: "readings", color: "#daa520" },
+		{ key: "definitions", className: "definitions", color: "#32cd32" },
+		{ key: "hasKanji", className: "haskanji", color: "#00f", prefix: "words with this kanji:<br>" },
+		{ key: "examples", className: "examples", color: "#f0f" },
+	];
 
-    let firstAdded = false;
+	let firstAdded = false;
 
-    for (const { key, className, color, prefix="" } of config) {
-        if (checkboxes[key].checked) {
-            if (firstAdded) {
-                final += "<br><br>";
-                finalWithColors += `<span style='color: ${color};'>&lt;br&gt;&lt;br&gt;</span>`;
-            }
-            const rawText = textAreas[key].value;
-            const reformatted = reformat(rawText);
-            const escaped = reformatted.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-            final += `<span class="${className}">${prefix}${reformatted}</span>`;
-            finalWithColors += `<span style='color: ${color};'>&lt;span class="${className}"&gt;${escaped ? prefix.replace(/<br>/g, "&lt;br&gt;") : ""}${escaped}&lt;/span&gt;</span>`;
-            firstAdded = true;
-        }
-    }
+	for (const { key, className, color, prefix="" } of config) {
+		if (checkboxes[key].checked) {
+			if (firstAdded) {
+				final += "<br><br>";
+				finalWithColors += `<span style='color: ${color};'>&lt;br&gt;&lt;br&gt;</span>`;
+			}
+			const rawText = textAreas[key].value;
+			const reformatted = reformat(rawText);
+			const escaped = reformatted.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+			final += `<span class="${className}">${prefix}${reformatted}</span>`;
+			finalWithColors += `<span style='color: ${color};'>&lt;span class="${className}"&gt;${escaped ? prefix.replace(/<br>/g, "&lt;br&gt;") : ""}${escaped}&lt;/span&gt;</span>`;
+			firstAdded = true;
+		}
+	}
 
-    ankiHTML.innerHTML = finalWithColors;
-    preview.innerHTML = final;
-    preview.value = final;
+	ankiHTML.innerHTML = finalWithColors;
+	preview.innerHTML = final;
+	preview.value = final;
 }
 
 // Copies text to the clipboard.
 async function copy(text) {
-    playClickSound();
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        try {
-            await navigator.clipboard.writeText(text);
-            return true;
-        } catch (err) {
-            console.error("EPIC FAIL: ", err);
-            return false;
-        }
-    } else {
-        console.warn("not supported :(");
-        return false;
-    }
+	playClickSound();
+	if (navigator.clipboard && navigator.clipboard.writeText) {
+		try {
+			await navigator.clipboard.writeText(text);
+			return true;
+		} catch (err) {
+			console.error("EPIC FAIL: ", err);
+			return false;
+		}
+	} else {
+		console.warn("not supported :(");
+		return false;
+	}
 }
 
 // The default ticked checkboxes.
@@ -340,289 +358,300 @@ headers.examples.style.color = "#f0f";
 
 // Changes the color of an associated header text to a specified color.
 function toggleHeaderColor(e, header, color) {
-    header.style.color = e.currentTarget.checked ? color : (body.classList.contains("light-mode") ? "#000" : "#fff");
+	header.style.color = e.currentTarget.checked ? color :
+		(body.classList.contains("light-mode") ? "#000" : "#fff");
 }
 
 // Changes the orientation of the example sentences in the preview below.
 function toggleVertical() {
-    playClickSound();
-    const examples = document.getElementsByClassName("examples")[0];
-    if (examples) {
-        const isVertical = examples.style.writingMode === "vertical-rl";
+	playClickSound();
+	const examples = document.getElementsByClassName("examples")[0];
+	if (examples) {
+		const isVertical = examples.style.writingMode === "vertical-rl";
 
-        examples.style.writingMode = isVertical ? "horizontal-tb" : "vertical-rl";
-        examples.style.float = isVertical ? "none" : "right";
+		examples.style.writingMode = isVertical ? "horizontal-tb" : "vertical-rl";
+		examples.style.float = isVertical ? "none" : "right";
 
-        const isHorizontal = examples.style.writingMode === "horizontal-tb";
+		const isHorizontal = examples.style.writingMode === "horizontal-tb";
 
-        otherButtons.toggleVertical.innerHTML = u.contains(a) ? (isHorizontal ? "縦 （↓）" : "横 （→）") : (isHorizontal ? "vertical （↓）" : "horizontal （→）");
-    }
-    
+		otherButtons.toggleVertical.innerHTML = u.contains(a) ? (isHorizontal ?
+			"縦 （↓）" : "横 （→）") : (isHorizontal ?
+				"vertical （↓）" : "horizontal （→）"
+			);
+	}
+	
 }
 
-// Copyright year at the bottom of the page. May be inaccurate in like, a few decades. Or even tomorrow.
+// Copyright year at the bottom of the page. May be inaccurate in like, a few
+// decades. Or even tomorrow.
 document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
 
 // RIGHT SIDE
 // for the iframe header thing at the right
 function getSourceOptions() {
-    return [
-        { option: radioSearchOptions.wiktionaryEnglish, url: `https://en.wiktionary.org/wiki/${searchBar.value}#Japanese`, label: "English Wiktionary" },
-        { option: radioSearchOptions.wiktionaryJapanese, url: `https://ja.wiktionary.org/wiki/${searchBar.value}#日本語`, label: "ウィクショナリー日本語版" },
-        { option: radioSearchOptions.jishoDefinitions, url: `https://jisho.org/search/${searchBar.value}`, label: "jisho.org (definitions)" },
-        { option: radioSearchOptions.jishoKanji, url: `https://jisho.org/search/${searchBar.value}%23kanji`, label: "jisho.org (kanji)" },
-        { option: radioSearchOptions.jishoNames, url: `https://jisho.org/search/${searchBar.value}%23names`, label: "jisho.org (names)" },
-        { option: radioSearchOptions.jishoSentences, url: `https://jisho.org/search/${searchBar.value}%23sentences`, label: "jisho.org (sentences)" },
-        { option: radioSearchOptions.massif, url: `https://massif.la/ja/search?q=${searchBar.value}`, label: "Massif" },
-        { option: radioSearchOptions.yourei, url: `https://yourei.jp/${searchBar.value}`, label: "用例.jp" },
-        { option: radioSearchOptions.ejje, url: `https://ejje.weblio.jp/sentence/content/${searchBar.value}`, label: "英和辞典・和英辞典 - Weblio辞書" },
-        { option: radioSearchOptions.eijirou, url: `https://eow.alc.co.jp/search?q=${searchBar.value}`, label: "英辞郎 on the WEB" },
-        { option: radioSearchOptions.wikipediaJapanese, url: `https://ja.wikipedia.org/w/index.php?search=${searchBar.value}`, label: "ウィキペディア日本語版" },
-        { option: radioSearchOptions.furiganaBunko, url: `https://furigana.info/w/${searchBar.value}`, label: "ふりがな文庫" },
-        { option: radioSearchOptions.drk7jp, url: "https://www.drk7.jp/pub/tools/YahooRuby/index.cgi", label: "" },
-    ];
+	return [
+		{ option: radioSearchOptions.wiktionaryEnglish, url: `https://en.wiktionary.org/wiki/${searchBar.value}#Japanese`, label: "English Wiktionary" },
+		{ option: radioSearchOptions.wiktionaryJapanese, url: `https://ja.wiktionary.org/wiki/${searchBar.value}#日本語`, label: "ウィクショナリー日本語版" },
+		{ option: radioSearchOptions.jishoDefinitions, url: `https://jisho.org/search/${searchBar.value}`, label: "jisho.org (definitions)" },
+		{ option: radioSearchOptions.jishoKanji, url: `https://jisho.org/search/${searchBar.value}%23kanji`, label: "jisho.org (kanji)" },
+		{ option: radioSearchOptions.jishoNames, url: `https://jisho.org/search/${searchBar.value}%23names`, label: "jisho.org (names)" },
+		{ option: radioSearchOptions.jishoSentences, url: `https://jisho.org/search/${searchBar.value}%23sentences`, label: "jisho.org (sentences)" },
+		{ option: radioSearchOptions.massif, url: `https://massif.la/ja/search?q=${searchBar.value}`, label: "Massif" },
+		{ option: radioSearchOptions.yourei, url: `https://yourei.jp/${searchBar.value}`, label: "用例.jp" },
+		{ option: radioSearchOptions.ejje, url: `https://ejje.weblio.jp/sentence/content/${searchBar.value}`, label: "英和辞典・和英辞典 - Weblio辞書" },
+		{ option: radioSearchOptions.eijirou, url: `https://eow.alc.co.jp/search?q=${searchBar.value}`, label: "英辞郎 on the WEB" },
+		{ option: radioSearchOptions.wikipediaJapanese, url: `https://ja.wikipedia.org/w/index.php?search=${searchBar.value}`, label: "ウィキペディア日本語版" },
+		{ option: radioSearchOptions.furiganaBunko, url: `https://furigana.info/w/${searchBar.value}`, label: "ふりがな文庫" },
+		{ option: radioSearchOptions.drk7jp, url: "https://www.drk7.jp/pub/tools/YahooRuby/index.cgi", label: "" },
+	];
 }
 
 // DO NOT USE
 // give yourself imaginary points for at least trying to make this behemoth work
 function highlightWord(sentence, targetWord) {
-    const tokenRegex = /\(([^)]+)\)\[([^\]]+)\]|([^\(\)]+)/g;
-    let tokens = [];
-    let match;
+	const tokenRegex = /\(([^)]+)\)\[([^\]]+)\]|([^\(\)]+)/g;
+	let tokens = [];
+	let match;
 
-    while ((match = tokenRegex.exec(sentence)) !== null) {
-        if (match[1] !== undefined && match[2] !== undefined)
-            tokens.push({ type: "ruby", kanji: match[1], furigana: match[2] });
-        else if (match[3] !== undefined)
-            tokens.push({ type: "text", text: match[3] });
-    }
+	while ((match = tokenRegex.exec(sentence)) !== null) {
+		if (match[1] !== undefined && match[2] !== undefined)
+			tokens.push({ type: "ruby", kanji: match[1], furigana: match[2] });
+		else if (match[3] !== undefined)
+			tokens.push({ type: "text", text: match[3] });
+	}
 
-    const kanjiStem = targetWord.match(/[\p{Script=Han}]+/u);
-    if (kanjiStem)
-        return sentence;
+	const kanjiStem = targetWord.match(/[\p{Script=Han}]+/u);
+	if (kanjiStem)
+		return sentence;
 
-    const stem = kanjiStem[0];
+	const stem = kanjiStem[0];
 
-    // FUCK
-    let resultTokens = tokens.map( t => {
-        if (t.type === "ruby" && t.kanji === stem) {
-            return {
-                type: "ruby",
-                kanji: `<b>${t.kanji}</b>`,
-                furigana: `<b>${t.furigana}</b>`
-            };
-        }
+	// FUCK
+	let resultTokens = tokens.map( t => {
+		if (t.type === "ruby" && t.kanji === stem) {
+			return {
+				type: "ruby",
+				kanji: `<b>${t.kanji}</b>`,
+				furigana: `<b>${t.furigana}</b>`
+			};
+		}
 
-        return t;
-    });
+		return t;
+	});
 
-    let surface = tokens.map(t => t.type === "ruby" ? t.kanji : t.text).join("");
-    let startIndex = surface.indexOf(targetWord);
+	let surface = tokens.map(t => t.type === "ruby" ? t.kanji : t.text).join("");
+	let startIndex = surface.indexOf(targetWord);
 
-    if (startIndex === -1)
-        return sentence;
+	if (startIndex === -1)
+		return sentence;
 
-    let endIndex = startIndex + targetWord.length;
-    let pos = 0;
-    let highlightedTokens = [];
+	let endIndex = startIndex + targetWord.length;
+	let pos = 0;
+	let highlightedTokens = [];
 
-    for (let token of tokens) {
-        if (token.type === "ruby") {
-            let tokenLen = token.kanji.length;
-            let tokenStart = pos;
-            let tokenEnd = pos + tokenLen;
+	for (let token of tokens) {
+		if (token.type === "ruby") {
+			let tokenLen = token.kanji.length;
+			let tokenStart = pos;
+			let tokenEnd = pos + tokenLen;
 
-            if (tokenEnd <= startIndex || tokenStart >= endIndex)
-                highlightedTokens.push(token);
-            else {
-                let overlapStart = Math.max(startIndex, tokenStart) - tokenStart;
-                let overlapEnd = Math.min(endIndex, tokenEnd) - tokenStart;
-                let beforeKanji = token.kanji.slice(0, overlapStart);
-                let highlightKanji = token.kanji.slice(overlapStart, overlapEnd);
-                let afterKanji = token.kanji.slice(overlapEnd);
-                let furigana = token.furigana;
-                let beforeFuri = "";
-                let highlightFuri = furigana;
-                let afterFuri = "";
+			if (tokenEnd <= startIndex || tokenStart >= endIndex)
+				highlightedTokens.push(token);
+			else {
+				let overlapStart = Math.max(startIndex, tokenStart) - tokenStart;
+				let overlapEnd = Math.min(endIndex, tokenEnd) - tokenStart;
+				let beforeKanji = token.kanji.slice(0, overlapStart);
+				let highlightKanji = token.kanji.slice(overlapStart, overlapEnd);
+				let afterKanji = token.kanji.slice(overlapEnd);
+				let furigana = token.furigana;
+				let beforeFuri = "";
+				let highlightFuri = furigana;
+				let afterFuri = "";
 
-                if (furigana.length === tokenLen) {
-                    beforeFuri = furigana.slice(0, overlapStart);
-                    highlightFuri = furigana.slice(overlapStart, overlapEnd);
-                    afterFuri = furigana.slice(overlapEnd);
-                }
+				if (furigana.length === tokenLen) {
+					beforeFuri = furigana.slice(0, overlapStart);
+					highlightFuri = furigana.slice(overlapStart, overlapEnd);
+					afterFuri = furigana.slice(overlapEnd);
+				}
 
-                if (beforeKanji.length > 0)
-                    highlightedTokens.push({ type: "ruby", kanji: beforeKanji, furigana: beforeFuri });
+				if (beforeKanji.length > 0)
+					highlightedTokens.push({ type: "ruby", kanji: beforeKanji, furigana: beforeFuri });
 
-                if (highlightKanji.length > 0) {
-                    highlightedTokens.push({
-                        type: "ruby",
-                        kanji: `<b>${highlightKanji}</b>`,
-                        furigana: `<b>${highlightFuri}</b>`
-                    });
-                }
+				if (highlightKanji.length > 0) {
+					highlightedTokens.push({
+						type: "ruby",
+						kanji: `<b>${highlightKanji}</b>`,
+						furigana: `<b>${highlightFuri}</b>`
+					});
+				}
 
-                if (afterKanji.length > 0)
-                    highlightedTokens.push({ type: "ruby", kanji: afterKanji, furigana: afterFuri });
-            }
+				if (afterKanji.length > 0)
+					highlightedTokens.push({ type: "ruby", kanji: afterKanji, furigana: afterFuri });
+			}
 
-            pos += tokenLen;
-        } else {
-            let tokenLen = token.text.length;
-            let tokenStart = pos;
-            let tokenEnd = pos + tokenLen;
+			pos += tokenLen;
+		} else {
+			let tokenLen = token.text.length;
+			let tokenStart = pos;
+			let tokenEnd = pos + tokenLen;
 
-            if (tokenEnd <= startIndex || tokenStart >= endIndex)
-                highlightedTokens.push(token);
-            else {
-                let overlapStart = Math.max(startIndex, tokenStart) - tokenStart;
-                let overlapEnd = Math.min(endIndex, tokenEnd) - tokenStart;
-                let beforeText = token.text.slice(0, overlapStart);
-                let highlightText = token.text.slice(overlapStart, overlapEnd);
-                let afterText = token.text.slice(overlapEnd);
+			if (tokenEnd <= startIndex || tokenStart >= endIndex)
+				highlightedTokens.push(token);
+			else {
+				let overlapStart = Math.max(startIndex, tokenStart) - tokenStart;
+				let overlapEnd = Math.min(endIndex, tokenEnd) - tokenStart;
+				let beforeText = token.text.slice(0, overlapStart);
+				let highlightText = token.text.slice(overlapStart, overlapEnd);
+				let afterText = token.text.slice(overlapEnd);
 
-                if (beforeText.length > 0)
-                    highlightedTokens.push({ type: "text", text: beforeText });
-                if (highlightText.length > 0)
-                    highlightedTokens.push({ type: "text", text: `<b>${highlightText}</b>` });
-                if (afterText.length > 0)
-                    highlightedTokens.push({ type: "text", text: afterText });
-            }
+				if (beforeText.length > 0)
+					highlightedTokens.push({ type: "text", text: beforeText });
+				if (highlightText.length > 0)
+					highlightedTokens.push({ type: "text", text: `<b>${highlightText}</b>` });
+				if (afterText.length > 0)
+					highlightedTokens.push({ type: "text", text: afterText });
+			}
 
-            pos += tokenLen;
-        }
-    }
+			pos += tokenLen;
+		}
+	}
 
-    let result = highlightedTokens.map(t => {
-        if (t.type === "ruby")
-            return `(${t.kanji})[${t.furigana}]`;
-        else
-            return t.text;
-    }).join("");
+	let result = highlightedTokens.map(t => {
+		if (t.type === "ruby")
+			return `(${t.kanji})[${t.furigana}]`;
+		else
+			return t.text;
+	}).join("");
 
-    return result;
+	return result;
 }
 
 function highlightWord2(entry) {
-    // let entry = searchBar.value;
-    // console.log(`${entry} ALL CAPS STRING EASILY VISIBLE ON THE CONSOLE`);
-    let sentenceWithHighlightedWord = "";
+	// let entry = searchBar.value;
+	// console.log(`${entry} ALL CAPS STRING EASILY VISIBLE ON THE CONSOLE`);
+	let sentenceWithHighlightedWord = "";
 
-    hiraganaConjugations = {
-        suru: [],
-        ka: [],
-        sa: [],
-        ta: [],
-        na: [],
-        ha: [],
-        ma: [],
-        ya: [],
-        ra: ["る", "れ", "られる", "れる", "ろう", "らない", "らなかった", "ります", "った", "って", "れば"],
-        wa: [],
-    };
+	hiraganaConjugations = {
+		suru: [],
+		ka: [],
+		sa: [],
+		ta: [],
+		na: [],
+		ha: [],
+		ma: [],
+		ya: [],
+		ra: ["る", "れ", "られる", "れる", "ろう", "らない", "らなかった", "ります", "った", "って", "れば"],
+		wa: [],
+	};
 
-    return sentenceWithHighlightedWord;
+	return sentenceWithHighlightedWord;
 
-    /*
-    1. get entry from textbox/textarea
-    2. if entry is a verb mixed with hiragana/katakana:
-        make a list of all the possible verb conjugations for each kana ending
-        else, ignore this part and move on if the entry to be highlighted is all kanji
-    3. construct regexes
-    4. make the appropriate replacements in the target input area
-    */
+	/*
+	1. get entry from textbox/textarea
+	2. if entry is a verb mixed with hiragana/katakana:
+		make a list of all the possible verb conjugations for each kana ending
+		else, ignore this part and move on if the entry to be highlighted is all kanji
+	3. construct regexes
+	4. make the appropriate replacements in the target input area
+	*/
 }
 
 // Searches a word using a value from the search bar. This also reloads the iframe after being called.
 // look for something like 別表記 for alternative forms, and it must be in the 日本語 section
 function searchWord() {
-    playClickSound();
-    iframeHeader.style.display = "block ruby";
-    const sourcesOptionsLocal = getSourceOptions();
+	playClickSound();
+	iframeHeader.style.display = "block ruby";
+	const sourcesOptionsLocal = getSourceOptions();
 
-    for (const { option, url, label } of sourcesOptionsLocal) {
-        if (option.checked) {
-            iframe.src = url;
-            if (label) {
-                iframeHeader.innerHTML = u.contains(a)
-                    ? `<br><strong>「${searchBar.value}」</strong>の検索結果を<strong>${label}</strong>で表示しています。`
-                    : `<br>Showing results for <strong>"${searchBar.value}"</strong> in <strong>${label}</strong>.`;
-            } else
-                iframeHeader.innerHTML = "";
-            break;
-        }
-    }
+	for (const { option, url, label } of sourcesOptionsLocal) {
+		if (option.checked) {
+			iframe.src = url;
+			if (label) {
+				iframeHeader.innerHTML = u.contains(a)
+					? `<br><strong>「${searchBar.value}」</strong>の検索結果を<strong>${label}</strong>で表示しています。`
+					: `<br>Showing results for <strong>"${searchBar.value}"</strong> in <strong>${label}</strong>.`;
+			} else
+				iframeHeader.innerHTML = "";
+			break;
+		}
+	}
 }
 
 function toggleSearchButton(text) {
-    otherButtons.search.disabled = !text ? true : false;
+	otherButtons.search.disabled = !text ? true : false;
 }
 
 // Check if a URL exists. Currently unused.
 function urlExists(url) {
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    return http.status != 404;
+	var http = new XMLHttpRequest();
+	http.open('HEAD', url, false);
+	http.send();
+	return http.status != 404;
 }
 
 // BOTH SIDES
 // Play a "click" sound when the user clicks on a button.
 function playClickSound() {
-    let audio = document.getElementById("audio");
-    // makes the sound play multiple times if you spam click
-    audio.pause();
-    audio.currentTime = 0;
-    audio.play();
+	let audio = document.getElementById("audio");
+	// makes the sound play multiple times if you spam click
+	audio.pause();
+	audio.currentTime = 0;
+	audio.play();
 }
 
 // Clears the values of all the objects on screen.
 function clearAll(mode) {
-    // Soft reset, only clear the textboxes.
-    let ankiHTMLPlaceholderText = !u.contains(a) ? "The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong style='color: red;'>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong style='color: red;'>copy</strong> to put text from here into your clipboard." : "他のテキストボックスから生成されたＨＴＭＬコードです。出力内容はチェックしたチェックボックスによって変わります。ここからテキストをコピーすることはできますが、編集はできません。<br>「<strong style='color:red;'>変換</strong>」をクリックすると、他のテキストボックスの入力を取得して自動的にＨＴＭＬコードにまとめます。「<strong style='color:red;'>コピー</strong>」をクリックすると、ここにあるテキストをクリップボードにコピーします。";
+	// Soft reset, only clear the textboxes.
+	let ankiHTMLPlaceholderText = !u.contains(a) ? "The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong style='color: red;'>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong style='color: red;'>copy</strong> to put text from here into your clipboard." : "他のテキストボックスから生成されたＨＴＭＬコードです。出力内容はチェックしたチェックボックスによって変わります。ここからテキストをコピーすることはできますが、編集はできません。<br>「<strong style='color:red;'>変換</strong>」をクリックすると、他のテキストボックスの入力を取得して自動的にＨＴＭＬコードにまとめます。「<strong style='color:red;'>コピー</strong>」をクリックすると、ここにあるテキストをクリップボードにコピーします。";
 
-    if (mode == 0) {
-        playClickSound();
-        Object.values(textAreas).forEach(ta => ta.value = "");
+	if (mode == 0) {
+		playClickSound();
+		Object.values(textAreas).forEach(ta => ta.value = "");
 
-        ankiHTML.value = "";
-        ankiHTML.innerHTML = ankiHTMLPlaceholderText;
-        preview.innerHTML = "";
-    } else if (mode == 1) {
-        // Hard reset, clear everything.
-        // Left side of the screen.
-        Object.values(textAreas).forEach(ta => ta.value = "");
+		ankiHTML.value = "";
+		ankiHTML.innerHTML = ankiHTMLPlaceholderText;
+		preview.innerHTML = "";
+	} else if (mode == 1) {
+		// Hard reset, clear everything.
+		// Left side of the screen.
+		Object.values(textAreas).forEach(ta => ta.value = "");
 
-        ankiHTML.value = "";
-        ankiHTML.innerHTML = ankiHTMLPlaceholderText;
+		ankiHTML.value = "";
+		ankiHTML.innerHTML = ankiHTMLPlaceholderText;
 
-        Object.values(radioPresets.conversionMode).forEach(rb => rb.checked = false);
-        radioPresets.regularWord.checked = true;
+		Object.values(radioPresets.conversionMode).forEach(
+			rb => rb.checked = false
+		);
+		radioPresets.regularWord.checked = true;
 
-        Object.values(checkboxes).forEach(rb => rb.checked = true);
-        checkboxes.hasKanji.checked = false;
+		Object.values(checkboxes).forEach(
+			rb => rb.checked = true
+		);
+		checkboxes.hasKanji.checked = false;
 
-        // Right side of the screen.
-        searchBar.value = "";
-        iframeHeader.innerHTML = "";
+		// Right side of the screen.
+		searchBar.value = "";
+		iframeHeader.innerHTML = "";
 
-        Object.values(radioSearchOptions.searchMode).forEach(rb => rb.checked = false);
-        radioSearchOptions.wiktionaryEnglish.checked = true;
+		Object.values(radioSearchOptions.searchMode).forEach(
+			rb => rb.checked = false
+		);
+		radioSearchOptions.wiktionaryEnglish.checked = true;
 
-        const homePages = [
-            "en.wiktionary.org",
-            "ja.wiktionary.org",
-            "jisho.org",
-            "massif.la",
-            "yourei.jp",
-            "ejje.weblio.jp",
-            "eow.alc.co.jp",
-            "ja.wikipedia.org",
-            "furigana.info",
-            "www.drk7.jp"
-        ];
-        iframe.src = `https://${homePages[Math.floor(Math.random() * homePages.length)]}`;
-    }
+		const homePages = [
+			"en.wiktionary.org",
+			"ja.wiktionary.org",
+			"jisho.org",
+			"massif.la",
+			"yourei.jp",
+			"ejje.weblio.jp",
+			"eow.alc.co.jp",
+			"ja.wikipedia.org",
+			"furigana.info",
+			"www.drk7.jp"
+		];
+		iframe.src = `https://${homePages[Math.floor(Math.random() * homePages.length)]}`;
+	}
 }
 
 // Clear everything on page load.
@@ -630,183 +659,194 @@ window.onload = clearAll(1);
 searchBar.value = "魑魅魍魎";
 
 function enterSearchBar(e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        if (searchBar.value.trim())
-            otherButtons.search.click();
-    }
+	if (e.key === "Enter") {
+		e.preventDefault();
+		if (searchBar.value.trim())
+			otherButtons.search.click();
+	}
 }
 
 // Invoke search button after pressing Enter.
 searchBar.addEventListener("keydown", e => enterSearchBar(e));
 
 Object.values(radioSearchOptions).forEach(rb => {
-    if (!rb[0])
-        rb.addEventListener("keydown", e => enterSearchBar(e));
+	if (!rb[0])
+		rb.addEventListener("keydown", e => enterSearchBar(e));
 });
 
 function toggleDarkMode() {
-    playClickSound();
-    /*
-    It's 2024, and these self-righteous, iPhone-wielding, windbags whine about
-    everything if something can't be toggled into dark mode.
+	playClickSound();
+	/*
+	It's 2024, and these self-righteous, iPhone-wielding, windbags whine about
+	everything if something can't be toggled into dark mode.
 
-    The ancient ones have cleaved a massive rift on the Earth, and spew out a
-    questionable elixir that will cure all ills, the panacea of the so-called,
-    as mystics call it, the "Light Mode" epidemic. Millions have succumbed from
-    its deleterious maladies it brings, with kindreds being a few steps near 
-    from Death's door. It was about time that man had come forth on such a 
-    subterranean beauty, for the blight, after all these eons, will finally
-    end once and for all.
-    
-    I have this as a solution. Now shut the fuck up and be happy.
-    I miss those bright-ass screens scorching my eyes.
-    */
+	The ancient ones have cleaved a massive rift on the Earth, and spew out a
+	questionable elixir that will cure all ills, the panacea of the so-called,
+	as mystics call it, the "Light Mode" epidemic. Millions have succumbed from
+	its deleterious maladies it brings, with kindreds being a few steps near 
+	from Death's door. It was about time that man had come forth on such a 
+	subterranean beauty, for the blight, after all these eons, will finally
+	end once and for all.
+	
+	I have this as a solution. Now shut the fuck up and be happy.
+	I miss those bright-ass screens scorching my eyes.
+	*/
 
-    body.classList.toggle("dark-mode");
-    body.classList.toggle("light-mode");
+	body.classList.toggle("dark-mode");
+	body.classList.toggle("light-mode");
 
-    // do something with session storage later
-    // sessionStorage.setItem("dark-mode", true);
-    // && sessionStorage.getItem("dark-mode")
+	// do something with session storage later
+	// sessionStorage.setItem("dark-mode", true);
+	// && sessionStorage.getItem("dark-mode")
 
-    if (body.classList.contains("light-mode")) {
-        topSectionButtons.lightDarkMode.innerHTML = u.contains(a) ? "光" : "☀️";
-        topSectionButtons.lightDarkMode.title = u.contains(a) ? "ライトモード" : "light mode";
-    } else {
-        topSectionButtons.lightDarkMode.innerHTML = u.contains(a) ? "闇" : "🌙";
-        topSectionButtons.lightDarkMode.title = u.contains(a) ? "ダークモード" : "dark mode";
-    }
+	if (body.classList.contains("light-mode")) {
+		topSectionButtons.lightDarkMode.innerHTML = u.contains(a) ? "光" : "☀️";
+		topSectionButtons.lightDarkMode.title = u.contains(a) ? "ライトモード" :
+			"light mode";
+	} else {
+		topSectionButtons.lightDarkMode.innerHTML = u.contains(a) ? "闇" : "🌙";
+		topSectionButtons.lightDarkMode.title = u.contains(a) ? "ダークモード" :
+			"dark mode";
+	}
 }
 
 let examples = document.getElementsByClassName("examples")[0];
 examples.style.writingMode = "horizontal-tb";
 
 function switchLanguage() {
-    function setInnerHTML(obj, texts) {
-        for (const key in texts)
-            if (obj[key] !== undefined) obj[key].innerHTML = texts[key];
-    }
-    function setPlaceholders(obj, texts) {
-        for (const key in texts)
-            if (obj[key] !== undefined) obj[key].placeholder = texts[key];
-    }
-    playClickSound();
-    topSectionButtons.switchLanguage.disabled = true;
-    if (u.contains(a)) {
-        document.title = "Anki tool.";
-        disclaimer.innerHTML = "I apologize if the UI is a bit confusing. I made this for my own use only.";
-        setInnerHTML(radioPresetsLabels, {
-            hiraganaOnly:   "hiragana only",
-            regularWord:    "regular word",
-            kanjiEntry:     "kanji entry"
-        });
-        setInnerHTML(topSectionButtons, {
-            setPreset:      "set preset",
-            reset:          "reset",
-            clear:          "clear",
-            switchLanguage: "日本語",
-            lightDarkMode: body.classList.contains("light-mode") ? "🌙" : "☀️"
-        });
-        topSectionButtons.lightDarkMode.title = body.classList.contains("light-mode") ? "dark mode" : "light mode";
-        setInnerHTML(headers, {
-            altForms:       "<label for='alt-forms-checkbox'>Alternative forms</label>",
-            readings:       "<label for='readings-checkbox'>Readings</label>",
-            definitions:    "<label for='definitions-checkbox'>Definition</label>",
-            hasKanji:       "<label for='haskanji-checkbox'>Words containing this kanji</label>",
-            examples:       "<label for='examples-checkbox'>Examples</label>",
-            temp:           "Temporary textbox",
-            preview:        "Preview"
-        });
-        otherButtons.convertText.innerHTML = "convert";
-        Object.values(otherButtons.format).forEach(e => e.innerHTML = "format");
-        Object.values(otherButtons.copy).forEach(e => e.innerHTML = "copy");
-        setPlaceholders(textAreas, {
-            altForms: "Alternative forms of a given entry, separated by fullwidth commas (、). Also referred to as \"alt-forms\".\nIf a form has a fullwidth comma, wrap that entire form in these \"boxy\" quotation marks (「」).\n\nExample (entry for 井の中の蛙大海を知らず):\n\n井の中の蛙大海を知らず、井の内の蛙大海を知らず、「井の中の蛙、大海を知らず」",
-            readings: "Readings associated with an entry, separated by fullwidth commas (、). In case of single-kanji entries, kun'yomi readings come first rendered in hiragana, followed by on'yomi readings rendered in katakana.\n\nExample (entry for 命):\n\nいのち、みこと\nメイ、ミョウ",
-            definitions: "Dictionary-like definitions of a given entry. You're allowed to combine dictionary entries from whatever sources you find, be it from here or somewhere else.",
-            hasKanji: "Words that contain this kanji. Also referred to as \"haskanji\". Must be only included in single-kanji entries, and ignored for all other cases.\n\nExample (entry for 解):\n\n(理解)[りかい] - understanding, comprehension\n(解凍)[かいとう] - thawing\n(解決)[かいけつ] - solution, settlement",
-            examples: "Sentences or phrases that use the entry. Fullwidth forms of Latin-based characters and numbers are preferred over their halfwidth counterparts.\n\nExample (entry for 拗れる):\n\n(下手)[へた]に(口)[くち]を(挟)[はさ]んだら(余計)[よけい]に`こじれて~しまいそうだ。\n(人間関係)[にんげんかんけい]は(時間)[じかん]が(経)[た]てば(経)[た]つほど`こじれて~いくものだ。\nお(前)[まえ]が(余計)[よけい]な(事)[こと]を(言)[い]うから(話)[はなし]が`こじれた~んだよ！",
-            temp: "Store text in here temporarily. You can use this instead of Notepad (or any other text processing software) to prevent yourself from switching back and forth between multiple windows. Text in here will not be included during conversion."
-        });
-        ankiHTML.innerHTML = "The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong style='color:red;'>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong style='color:red;'>copy</strong> to put text from here into your clipboard.";
-        otherButtons.toggleVertical.innerHTML = examples.style.writingMode === "horizontal-tb" ? "vertical （↓）" : "horizontal （→）";
-        allRightsReserved.innerHTML = ". All rights reserved.";
-        otherButtons.search.innerHTML = "search";
-        setInnerHTML(tableHeaders, {
-            definitions:        "Definitions",
-            exampleSentences:   "Example sentences",
-            formatSentences:    "Format sentences"
-        });
-        notice1.innerHTML = "<em>Content inside the iframe should not be affected by dark mode.</em>";
-        notice2.innerHTML = "If the content below does not load properly, <strong style='color: red;'>DO NOT</strong> click \"Try again\" to prevent unexpected behavior.";
-        getSourceOptions();
-        for (const { option, _, label } of getSourceOptions()) {
-            if (option.checked)
-                iframeHeader.innerHTML = label ? "<br>Showing results for <strong>\"" + searchBar.value + "\"</strong> in <strong>" + label + "</strong>." : "";
-        }
-        u.removeChild(a);
-    } else {
-        // 海外で見つけた変な日本語っぽい。ゲロ。
-        document.title = "Ankiツール。";
-        disclaimer.innerHTML = "使いにくくてすみません。もともと自分だけが使うつもりで作ったものです。";
-        setInnerHTML(radioPresetsLabels, {
-            hiraganaOnly:   "ひらがなだけ",
-            regularWord:    "単語",
-            kanjiEntry:     "漢字"
-        });
-        setInnerHTML(topSectionButtons, {
-            setPreset:      "セット",
-            reset:          "リセット",
-            clear:          "クリア",
-            switchLanguage: "English",
-            lightDarkMode: body.classList.contains("light-mode") ? "闇" : "光"
-        });
-        topSectionButtons.lightDarkMode.title = body.classList.contains("light-mode") ? "ダークモード" : "ライトモード";
-        setInnerHTML(headers, {
-            altForms:       "<label for='alt-forms-checkbox'>別表記・異体字</label>",
-            readings:       "<label for='readings-checkbox'>読み・発音</label>",
-            definitions:    "<label for='definitions-checkbox'>定義・語義・意味</label>",
-            hasKanji:       "<label for='haskanji-checkbox'>この漢字を含む単語</label>",
-            examples:       "<label for='examples-checkbox'>例文・使用例</label>",
-            temp:           "仮のテキストボックス",
-            preview:        "プレビュー"
-        });
-        otherButtons.convertText.innerHTML = "変換";
-        Object.values(otherButtons.format).forEach(e => e.innerHTML = "フォーマット");
-        Object.values(otherButtons.copy).forEach(e => e.innerHTML = "コピー");
-        setPlaceholders(textAreas, {
-            altForms: "与えられた見出し語の別表記は、全角読点（、）で区切ります。これらは「alt-forms」とも呼ばれます。\nもし表記の中に全角読点が含まれる場合は、その表記全体を引用符（「」）で囲みます。\n\n例（「井の中の蛙大海を知らず」の見出し語の場合）：\n\n井の中の蛙大海を知らず、井の内の蛙大海を知らず、「井の中の蛙、大海を知らず」",
-            readings: "見出し語に関連する読みは、全角読点（、）で区切ります。単一漢字の見出し語の場合は、まずひらがなで書かれた訓読みが来て、その後にカタカナで書かれた音読みが続きます。\n\n例（「命」の見出し語の場合）：\n\nいのち、みこと\nメイ、ミョウ",
-            definitions: "与えられた見出し語の辞書的な定義です。ここや他のどこからでも見つけた辞書の定義を組み合わせて使って構いません。",
-            hasKanji: "この漢字を含む単語です。（haskanji）とも呼ばれます。単一漢字の見出し語にのみ含め、それ以外の場合は使わないでください。\n\n例（「解」の見出し語の場合）：\n\n(理解)[りかい] - understanding, comprehension\n(解凍)[かいとう] - thawing\n(解決)[かいけつ] - solution, settlement",
-            examples: "見出し語を使った文やフレーズです。半角のラテン文字や数字よりも全角が推奨されます。\n\n例（「拗れる」の見出し語の場合）：\n\n(下手)[へた]に(口)[くち]を(挟)[はさ]んだら(余計)[よけい]に`こじれて~しまいそうだ。\n(人間関係)[にんげんかんけい]は(時間)[じかん]が(経)[た]てば(経)[た]つほど`こじれて~いくものだ。\nお(前)[まえ]が(余計)[よけい]な(事)[こと]を(言)[い]うから(話)[はなし]が`こじれた~んだよ！",
-            temp: "ここにテキストを一時的に保存します。メモ帳や他のテキスト処理ソフトを使う代わりに、複数のウィンドウを行き来する手間を省けます。\nここにあるテキストは変換時に含まれません。"
-        });
-        ankiHTML.innerHTML = "他のテキストボックスから生成されたＨＴＭＬコードです。出力内容はチェックしたチェックボックスによって変わります。ここからテキストをコピーすることはできますが、編集はできません。<br>「<strong style='color:red;'>変換</strong>」をクリックすると、他のテキストボックスの入力を取得して自動的にＨＴＭＬコードにまとめます。「<strong style='color:red;'>コピー</strong>」をクリックすると、ここにあるテキストをクリップボードにコピーします。";
-        otherButtons.toggleVertical.innerHTML = examples.style.writingMode === "horizontal-tb" ? "縦 （↓）" : "横 （→）";
-        allRightsReserved.innerHTML = "。無断転載禁止。";
-        otherButtons.search.innerHTML = "検索";
-        setInnerHTML(tableHeaders, {
-            definitions:        "定義・語義・意味",
-            exampleSentences:   "例文・使用例",
-            formatSentences:    "例文フォーマット"
-        });
-        notice1.innerHTML = "<em>iframe内のコンテンツはダークモードの影響を受けるべきではありません。</em>";
-        notice2.innerHTML = "以下の内容が読み込まれない場合は、<strong style='color: red;'>絶対に</strong>「再試行」をクリックしないでください。予期せぬエラーを防ぐためです。";
-        getSourceOptions();
-        for (const { option, _, label } of getSourceOptions()) {
-            if (option.checked)
-                iframeHeader.innerHTML = label ? "<br><strong>「" + searchBar.value + "」</strong>の検索結果を<strong>" + label + "</strong>で表示しています。" : "";
-        }
-        u.appendChild(a);
-    }
-    topSectionButtons.switchLanguage.disabled = false;
+	function setInnerHTML(obj, texts) {
+		for (const key in texts)
+			if (obj[key] !== undefined) obj[key].innerHTML = texts[key];
+	}
+	function setPlaceholders(obj, texts) {
+		for (const key in texts)
+			if (obj[key] !== undefined) obj[key].placeholder = texts[key];
+	}
+	playClickSound();
+	topSectionButtons.switchLanguage.disabled = true;
+	if (u.contains(a)) {
+		document.title = "Anki tool.";
+		disclaimer.innerHTML = "I apologize if the UI is a bit confusing. I made this for my own use only.";
+		setInnerHTML(radioPresetsLabels, {
+			hiraganaOnly:	"hiragana only",
+			regularWord:	"regular word",
+			kanjiEntry:		"kanji entry"
+		});
+		setInnerHTML(topSectionButtons, {
+			setPreset:		"set preset",
+			reset:			"reset",
+			clear:			"clear",
+			switchLanguage:	"日本語",
+			lightDarkMode:	body.classList.contains("light-mode") ? "🌙" : "☀️"
+		});
+		topSectionButtons.lightDarkMode.title = body.classList
+			.contains("light-mode") ? "dark mode" : "light mode";
+		setInnerHTML(headers, {
+			altForms:		"<label for='alt-forms-checkbox'>Alternative forms</label>",
+			readings:		"<label for='readings-checkbox'>Readings</label>",
+			definitions:	"<label for='definitions-checkbox'>Definition</label>",
+			hasKanji:		"<label for='haskanji-checkbox'>Words containing this kanji</label>",
+			examples:		"<label for='examples-checkbox'>Examples</label>",
+			temp:			"Temporary textbox",
+			preview:		"Preview"
+		});
+		otherButtons.convertText.innerHTML = "convert";
+		Object.values(otherButtons.format).forEach(e => e.innerHTML = "format");
+		Object.values(otherButtons.copy).forEach(e => e.innerHTML = "copy");
+		setPlaceholders(textAreas, {
+			altForms: "Alternative forms of a given entry, separated by fullwidth commas (、). Also referred to as \"alt-forms\".\nIf a form has a fullwidth comma, wrap that entire form in these \"boxy\" quotation marks (「」).\n\nExample (entry for 井の中の蛙大海を知らず):\n\n井の中の蛙大海を知らず、井の内の蛙大海を知らず、「井の中の蛙、大海を知らず」",
+			readings: "Readings associated with an entry, separated by fullwidth commas (、). In case of single-kanji entries, kun'yomi readings come first rendered in hiragana, followed by on'yomi readings rendered in katakana.\n\nExample (entry for 命):\n\nいのち、みこと\nメイ、ミョウ",
+			definitions: "Dictionary-like definitions of a given entry. You're allowed to combine dictionary entries from whatever sources you find, be it from here or somewhere else.",
+			hasKanji: "Words that contain this kanji. Also referred to as \"haskanji\". Must be only included in single-kanji entries, and ignored for all other cases.\n\nExample (entry for 解):\n\n(理解)[りかい] - understanding, comprehension\n(解凍)[かいとう] - thawing\n(解決)[かいけつ] - solution, settlement",
+			examples: "Sentences or phrases that use the entry. Fullwidth forms of Latin-based characters and numbers are preferred over their halfwidth counterparts.\n\nExample (entry for 拗れる):\n\n(下手)[へた]に(口)[くち]を(挟)[はさ]んだら(余計)[よけい]に`こじれて~しまいそうだ。\n(人間関係)[にんげんかんけい]は(時間)[じかん]が(経)[た]てば(経)[た]つほど`こじれて~いくものだ。\nお(前)[まえ]が(余計)[よけい]な(事)[こと]を(言)[い]うから(話)[はなし]が`こじれた~んだよ！",
+			temp: "Store text in here temporarily. You can use this instead of Notepad (or any other text processing software) to prevent yourself from switching back and forth between multiple windows. Text in here will not be included during conversion."
+		});
+		ankiHTML.innerHTML = "The resulting HTML code from the other textboxes. The output depends on the checkboxes you ticked. You can copy text from here, but you're not allowed to edit it from here.<br>Click <strong style='color:red;'>convert</strong> to get the input from other textboxes and combine them automatically into HTML code. Click <strong style='color:red;'>copy</strong> to put text from here into your clipboard.";
+		otherButtons.toggleVertical.innerHTML = examples.style.writingMode === "horizontal-tb" ? "vertical （↓）" : "horizontal （→）";
+		allRightsReserved.innerHTML = ". All rights reserved.";
+		otherButtons.search.innerHTML = "search";
+		setInnerHTML(tableHeaders, {
+			definitions:		"Definitions",
+			exampleSentences:	"Example sentences",
+			formatSentences:	"Format sentences"
+		});
+		notice1.innerHTML = "<em>Content inside the iframe should not be affected by dark mode.</em>";
+		notice2.innerHTML = "If the content below does not load properly, <strong style='color: red;'>DO NOT</strong> click \"Try again\" to prevent unexpected behavior.";
+		getSourceOptions();
+		for (const { option, _, label } of getSourceOptions()) {
+			if (option.checked)
+				iframeHeader.innerHTML = label ? "<br>Showing results for <strong>\"" + searchBar.value + "\"</strong> in <strong>" + label + "</strong>." : "";
+		}
+		u.removeChild(a);
+	} else {
+		// 海外で見つけた変な日本語っぽい。ゲロ。
+		document.title = "Ankiツール。";
+		disclaimer.innerHTML = "使いにくくてすみません。もともと自分だけが使うつもりで作ったものです。";
+		setInnerHTML(radioPresetsLabels, {
+			hiraganaOnly:	"ひらがなだけ",
+			regularWord:	"単語",
+			kanjiEntry:		"漢字"
+		});
+		setInnerHTML(topSectionButtons, {
+			setPreset:		"セット",
+			reset:			"リセット",
+			clear:			"クリア",
+			switchLanguage:	"English",
+			lightDarkMode: body.classList.contains("light-mode") ? "闇" : "光"
+		});
+		topSectionButtons.lightDarkMode.title = body.classList
+			.contains("light-mode") ? "ダークモード" : "ライトモード";
+		setInnerHTML(headers, {
+			altForms:		"<label for='alt-forms-checkbox'>別表記・異体字</label>",
+			readings:		"<label for='readings-checkbox'>読み・発音</label>",
+			definitions:	"<label for='definitions-checkbox'>定義・語義・意味</label>",
+			hasKanji:		"<label for='haskanji-checkbox'>この漢字を含む単語</label>",
+			examples:		"<label for='examples-checkbox'>例文・使用例</label>",
+			temp:			"仮のテキストボックス",
+			preview:		"プレビュー"
+		});
+		otherButtons.convertText.innerHTML = "変換";
+		Object.values(otherButtons.format).forEach(
+			e => e.innerHTML = "フォーマット"
+		);
+		Object.values(otherButtons.copy).forEach(
+			e => e.innerHTML = "コピー"
+		);
+		setPlaceholders(textAreas, {
+			altForms: "与えられた見出し語の別表記は、全角読点（、）で区切ります。これらは「alt-forms」とも呼ばれます。\nもし表記の中に全角読点が含まれる場合は、その表記全体を引用符（「」）で囲みます。\n\n例（「井の中の蛙大海を知らず」の見出し語の場合）：\n\n井の中の蛙大海を知らず、井の内の蛙大海を知らず、「井の中の蛙、大海を知らず」",
+			readings: "見出し語に関連する読みは、全角読点（、）で区切ります。単一漢字の見出し語の場合は、まずひらがなで書かれた訓読みが来て、その後にカタカナで書かれた音読みが続きます。\n\n例（「命」の見出し語の場合）：\n\nいのち、みこと\nメイ、ミョウ",
+			definitions: "与えられた見出し語の辞書的な定義です。ここや他のどこからでも見つけた辞書の定義を組み合わせて使って構いません。",
+			hasKanji: "この漢字を含む単語です。（haskanji）とも呼ばれます。単一漢字の見出し語にのみ含め、それ以外の場合は使わないでください。\n\n例（「解」の見出し語の場合）：\n\n(理解)[りかい] - understanding, comprehension\n(解凍)[かいとう] - thawing\n(解決)[かいけつ] - solution, settlement",
+			examples: "見出し語を使った文やフレーズです。半角のラテン文字や数字よりも全角が推奨されます。\n\n例（「拗れる」の見出し語の場合）：\n\n(下手)[へた]に(口)[くち]を(挟)[はさ]んだら(余計)[よけい]に`こじれて~しまいそうだ。\n(人間関係)[にんげんかんけい]は(時間)[じかん]が(経)[た]てば(経)[た]つほど`こじれて~いくものだ。\nお(前)[まえ]が(余計)[よけい]な(事)[こと]を(言)[い]うから(話)[はなし]が`こじれた~んだよ！",
+			temp: "ここにテキストを一時的に保存します。メモ帳や他のテキスト処理ソフトを使う代わりに、複数のウィンドウを行き来する手間を省けます。\nここにあるテキストは変換時に含まれません。"
+		});
+		ankiHTML.innerHTML = "他のテキストボックスから生成されたＨＴＭＬコードです。出力内容はチェックしたチェックボックスによって変わります。ここからテキストをコピーすることはできますが、編集はできません。<br>「<strong style='color:red;'>変換</strong>」をクリックすると、他のテキストボックスの入力を取得して自動的にＨＴＭＬコードにまとめます。「<strong style='color:red;'>コピー</strong>」をクリックすると、ここにあるテキストをクリップボードにコピーします。";
+		otherButtons.toggleVertical.innerHTML = examples.style.writingMode ===
+			"horizontal-tb" ? "縦 （↓）" : "横 （→）";
+		allRightsReserved.innerHTML = "。無断転載禁止。";
+		otherButtons.search.innerHTML = "検索";
+		setInnerHTML(tableHeaders, {
+			definitions:		"定義・語義・意味",
+			exampleSentences:	"例文・使用例",
+			formatSentences:	"例文フォーマット"
+		});
+		notice1.innerHTML = "<em>iframe内のコンテンツはダークモードの影響を受けるべきではありません。</em>";
+		notice2.innerHTML = "以下の内容が読み込まれない場合は、<strong style='color: red;'>絶対に</strong>「再試行」をクリックしないでください。予期せぬエラーを防ぐためです。";
+		getSourceOptions();
+		for (const { option, _, label } of getSourceOptions()) {
+			if (option.checked)
+				iframeHeader.innerHTML = label ? "<br><strong>「"
+				+ searchBar.value + "」</strong>の検索結果を<strong>"
+				+ label + "</strong>で表示しています。" : "";
+		}
+		u.appendChild(a);
+	}
+	topSectionButtons.switchLanguage.disabled = false;
 }
 // looks goofy but don't remove
 // you start at `a` existing in the DOM
-switchLanguage();   // 日本語
-switchLanguage();   // and to English back again
+switchLanguage();	// 日本語
+switchLanguage();	// and to English back again
 
 console.log("Welcome to the console.");
 
@@ -815,42 +855,42 @@ console.log(
 \nOne has to seek for meanings between the lines, ...and frequencies.
 \n` +
 `
-    ⣿⣿⣿⣿⡿⠟⠛⠋⠉⠉⠉⠉⠉⠛⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-    ⣿⣿⠟⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠈⠙⠾⣿⣾⣿⣾⣿⣾⣿⣾⣿
-    ⠋⡁⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⢀⠠⠐⠈⠁⠀⠀⠁⠀⠈⠻⢾⣿⣾⣿⣾⣟⣿
-    ⠊⠀⠀⠀⠀⢀⠔⠃⠀⠀⠠⠈⠁⠀⠀⠀⠀⠀⠀⠆⠀⠀⠄⠀⠙⣾⣷⣿⢿⣿
-    ⠀⠀⠀⠀⡠⠉⠀⠀⠀⠀⠠⢰⢀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠈⡀⠀⠈⢿⣟⣿⣿
-    ⠀⠀⢀⡜⣐⠃⠀⠀⠀⣠⠁⡄⠰⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠰⠀⠀⠈⢿⣿⣿
-    ⠀⢠⠆⢠⡃⠀⠀⠀⣔⠆⡘⡇⢘⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿
-    ⢀⡆⠀⡼⢣⠀⢀⠌⢸⢠⠇⡇⢘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿
-    ⣼⣃⠀⠁⢸⢀⠎⠀⢸⠎⠀⢸⢸⡄⠀⠀⠀⠀⠀⠂⢀⠀⠀⠀⠀⠀⠀⠀⠀⣿
-    ⠃⡏⠟⣷⣤⠁⠀⠀⠸⠀⠀⡾⢀⢇⠀⠀⠀⠀⠀⠄⠸⠀⠀⠀⠀⠄⠀⠀⠀⣿
-    ⠀⠀⣀⣿⣿⣿⢦⠀⠀⠀⠀⡧⠋⠘⡄⠀⠀⠀⠀⡇⢸⠀⠀⠠⡘⠀⠀⠀⢠⣿
-    ⠈⠀⢿⢗⡻⠃⠀⠀⠀⠀⠀⠀⠀⠀⠱⡀⠀⠀⢰⠁⡇⠀⠀⢨⠃⡄⢀⠀⣸⣿
-    ⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣱⠀⠀⡎⠸⠁⠀⢀⠞⡸⠀⡜⢠⣿⣿
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣺⣿⣧⢰⣧⡁⡄⠀⡞⠰⠁⡸⣠⣿⣿⣿
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡿⠏⣿⠟⢁⠾⢛⣧⢼⠁⠀⠀⢰⣿⡿⣷⣿
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠡⠄⠀⡠⣚⡷⠊⠀⠀⠀⣿⡿⣿⡿⣿
-    ⡀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠁⢸⠁⠀⠀⠀⢰⣿⣿⡿⣿⣿
-    ⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠊⠀⠀⠀⡞⠀⠀⠀⠀⢸⣿⣷⣿⣿⣿
-    ⠀⠙⢦⣀⠀⠀⠀⠀⠀⢀⣀⣠⠖⠁⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⣸⣿⣾⡿⣷⣿
-    ⠀⠀⠀⠀⠉⠉⣩⡞⠉⠁⠀⢸⡄⠀⠀⠀⠀⠀⢰⠇⠀⠀⠀⠀⣿⣿⣷⣿⣿⣿
-    ⡆⠀⠀⣀⡠⠞⠁⣧⢤⣀⣀⣀⡇⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⣿⣷⣿⣷⣿⣿
-    ⣿⣷⠊⠁⠀⠀⡰⠁⠀⠀⠀⠀⣹⠶⢦⡀⠀⠀⡇⠀⠀⠀⠀⠀⢸⣿⣷⣿⣷⣿
-    ⣿⢿⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⡇⠀⠀⠀⠀⠀⠈⣿⣾⣷⣿⣿
-    ⠋⠈⠀⢀⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠈⣧⠀⠀⠀⠀⠀⠀⠻⣿⣽⣾⣿
-    ⢀⡄⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠁⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⣿⣿⣻⣿
-    ⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠐⠀⠀⠀⠀⣀⡿⠀⠀⠀⠀⠀⠀⠀⢹⣿⣻⣿
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠀⠀⠀⠀⠀⢀⣃⡇⠀⠲⡀⠀⠀⠀⠀⠈⣿⡿⣿
-    ⣀⠤⠤⠤⡀⠀⠀⠀⠀⡴⠃⠀⠀⠀⠀⠀⢬⠞⡇⠀⠀⠇⠀⠀⠀⠀⠀⣿⣿⣿
-    ⡁⢀⠀⠀⡇⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⣸⠁⠀⠇⠀⠀⡇⠀⠀⠀⠀⠀⣿⣿⣿
-    ⠔⠃⠀⠀⡇⠀⠀⡼⠁⠀⠀⠀⠀⠀⢀⡇⠀⠀⡃⠀⠀⠙⢄⠀⠀⠀⠀⣿⣷⣿
-    ⠒⠊⠀⠀⢸⠀⣸⠃⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⢅⠀⠀⡂⠸⡄⠀⠀⠀⣿⣟⣿
-    ⠓⠀⠉⠀⢸⣰⠃⠀⠀⠀⠀⠀⠀⡜⡆⠀⠀⠀⢸⠀⠀⡇⢀⠇⠀⠀⠀⣿⣿⣿
-    ⠉⠁⠀⢠⠞⠀⠀⠀⠀⠀⠀⠀⣰⠁⡇⠀⠀⠀⡇⠀⠀⡇⢸⠀⠀⠀⠀⣿⣷⣿
-    ⡀⠀⢀⢿⣥⡤⠤⠤⠤⣀⣀⢠⠇⠀⢸⠀⠀⢰⠁⠀⢨⠀⢸⠀⠀⠀⠀⣿⣟⣿
-    x
-    "What say ye, lore of the ancients long gone?"
+	⣿⣿⣿⣿⡿⠟⠛⠋⠉⠉⠉⠉⠉⠛⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+	⣿⣿⠟⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠈⠙⠾⣿⣾⣿⣾⣿⣾⣿⣾⣿
+	⠋⡁⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⢀⠠⠐⠈⠁⠀⠀⠁⠀⠈⠻⢾⣿⣾⣿⣾⣟⣿
+	⠊⠀⠀⠀⠀⢀⠔⠃⠀⠀⠠⠈⠁⠀⠀⠀⠀⠀⠀⠆⠀⠀⠄⠀⠙⣾⣷⣿⢿⣿
+	⠀⠀⠀⠀⡠⠉⠀⠀⠀⠀⠠⢰⢀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠈⡀⠀⠈⢿⣟⣿⣿
+	⠀⠀⢀⡜⣐⠃⠀⠀⠀⣠⠁⡄⠰⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠰⠀⠀⠈⢿⣿⣿
+	⠀⢠⠆⢠⡃⠀⠀⠀⣔⠆⡘⡇⢘⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿
+	⢀⡆⠀⡼⢣⠀⢀⠌⢸⢠⠇⡇⢘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿
+	⣼⣃⠀⠁⢸⢀⠎⠀⢸⠎⠀⢸⢸⡄⠀⠀⠀⠀⠀⠂⢀⠀⠀⠀⠀⠀⠀⠀⠀⣿
+	⠃⡏⠟⣷⣤⠁⠀⠀⠸⠀⠀⡾⢀⢇⠀⠀⠀⠀⠀⠄⠸⠀⠀⠀⠀⠄⠀⠀⠀⣿
+	⠀⠀⣀⣿⣿⣿⢦⠀⠀⠀⠀⡧⠋⠘⡄⠀⠀⠀⠀⡇⢸⠀⠀⠠⡘⠀⠀⠀⢠⣿
+	⠈⠀⢿⢗⡻⠃⠀⠀⠀⠀⠀⠀⠀⠀⠱⡀⠀⠀⢰⠁⡇⠀⠀⢨⠃⡄⢀⠀⣸⣿
+	⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣱⠀⠀⡎⠸⠁⠀⢀⠞⡸⠀⡜⢠⣿⣿
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣺⣿⣧⢰⣧⡁⡄⠀⡞⠰⠁⡸⣠⣿⣿⣿
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡿⠏⣿⠟⢁⠾⢛⣧⢼⠁⠀⠀⢰⣿⡿⣷⣿
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠡⠄⠀⡠⣚⡷⠊⠀⠀⠀⣿⡿⣿⡿⣿
+	⡀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠁⢸⠁⠀⠀⠀⢰⣿⣿⡿⣿⣿
+	⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠊⠀⠀⠀⡞⠀⠀⠀⠀⢸⣿⣷⣿⣿⣿
+	⠀⠙⢦⣀⠀⠀⠀⠀⠀⢀⣀⣠⠖⠁⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⣸⣿⣾⡿⣷⣿
+	⠀⠀⠀⠀⠉⠉⣩⡞⠉⠁⠀⢸⡄⠀⠀⠀⠀⠀⢰⠇⠀⠀⠀⠀⣿⣿⣷⣿⣿⣿
+	⡆⠀⠀⣀⡠⠞⠁⣧⢤⣀⣀⣀⡇⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⣿⣷⣿⣷⣿⣿
+	⣿⣷⠊⠁⠀⠀⡰⠁⠀⠀⠀⠀⣹⠶⢦⡀⠀⠀⡇⠀⠀⠀⠀⠀⢸⣿⣷⣿⣷⣿
+	⣿⢿⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⡇⠀⠀⠀⠀⠀⠈⣿⣾⣷⣿⣿
+	⠋⠈⠀⢀⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠈⣧⠀⠀⠀⠀⠀⠀⠻⣿⣽⣾⣿
+	⢀⡄⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠁⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⣿⣿⣻⣿
+	⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠐⠀⠀⠀⠀⣀⡿⠀⠀⠀⠀⠀⠀⠀⢹⣿⣻⣿
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠀⠀⠀⠀⠀⢀⣃⡇⠀⠲⡀⠀⠀⠀⠀⠈⣿⡿⣿
+	⣀⠤⠤⠤⡀⠀⠀⠀⠀⡴⠃⠀⠀⠀⠀⠀⢬⠞⡇⠀⠀⠇⠀⠀⠀⠀⠀⣿⣿⣿
+	⡁⢀⠀⠀⡇⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⣸⠁⠀⠇⠀⠀⡇⠀⠀⠀⠀⠀⣿⣿⣿
+	⠔⠃⠀⠀⡇⠀⠀⡼⠁⠀⠀⠀⠀⠀⢀⡇⠀⠀⡃⠀⠀⠙⢄⠀⠀⠀⠀⣿⣷⣿
+	⠒⠊⠀⠀⢸⠀⣸⠃⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⢅⠀⠀⡂⠸⡄⠀⠀⠀⣿⣟⣿
+	⠓⠀⠉⠀⢸⣰⠃⠀⠀⠀⠀⠀⠀⡜⡆⠀⠀⠀⢸⠀⠀⡇⢀⠇⠀⠀⠀⣿⣿⣿
+	⠉⠁⠀⢠⠞⠀⠀⠀⠀⠀⠀⠀⣰⠁⡇⠀⠀⠀⡇⠀⠀⡇⢸⠀⠀⠀⠀⣿⣷⣿
+	⡀⠀⢀⢿⣥⡤⠤⠤⠤⣀⣀⢠⠇⠀⢸⠀⠀⢰⠁⠀⢨⠀⢸⠀⠀⠀⠀⣿⣟⣿
+	x
+	"What say ye, lore of the ancients long gone?"
 `.replaceAll(/^\s*/g, "").replaceAll(/\n\s*/g, "\n").replace("x", "\n"));
 
 // forbidden gospels of the stars

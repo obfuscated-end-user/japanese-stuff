@@ -132,8 +132,8 @@
 		// halfwidth to fullwidth, in case if there's crap in the string
 		// source: https://blog.yug1224.com/archives/580e07c974d0d51807ee1295/
 		String.prototype.toFullWidth = function() {
-            return this.replace(/[A-Za-z0-9!?&:;.%$¥@#*^~()\"\\]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
-        };
+			return this.replace(/[A-Za-z0-9!?&:;.%$¥@#*^~()\"\\]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
+		};
 		
 		/* use this later
 			// halfwidth to fullwidth conversion	

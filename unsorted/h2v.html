@@ -1,74 +1,74 @@
 <!doctype html>
 
 <html lang="en">
-    <head>
-        <title>horizontal to vertical</title>
-        <meta charset="utf-8">
-        <meta name="description" content="A simple text orientation converter.">
-        <meta name="author" content="don't put your real name on the internet bro">
+	<head>
+		<title>horizontal to vertical</title>
+		<meta charset="utf-8">
+		<meta name="description" content="A simple text orientation converter.">
+		<meta name="author" content="don't put your real name on the internet bro">
 
-        <style>
-            body {
-                text-align: center;
-            }
-            .textbox {
-                border: 1px solid black;
-                margin: 100px;
+		<style>
+			body {
+				text-align: center;
+			}
+			.textbox {
+				border: 1px solid black;
+				margin: 100px;
 				margin-bottom: 20px;
-            }
-            .output {
-                /*border: 1px solid black;*/
-                margin: 20px 100px 10px;
+			}
+			.output {
+				/*border: 1px solid black;*/
+				margin: 20px 100px 10px;
 				/* margin: 100px; */
-                text-align: left;
+				text-align: left;
 				overflow-x: auto;
-            }
-            /* input[type="text"] */ textarea {
-                width: 1000px;
-                height: 100px;
-            }
-            #outputtext {
-                font-family: "Yu Gothic", Meiryo, "MS Gothic", Arial, sans-serif;
-                font-size: 30px;
+			}
+			/* input[type="text"] */ textarea {
+				width: 1000px;
+				height: 100px;
+			}
+			#outputtext {
+				font-family: "Yu Gothic", Meiryo, "MS Gothic", Arial, sans-serif;
+				font-size: 30px;
 				font-weight: normal;
-                writing-mode: vertical-rl;
-                text-align: left;
-                text-orientation: mixed;
-                /*margin-left: -5%; 90, 80%
-                margin-right: auto;
-                margin-bottom: 10%;
+				writing-mode: vertical-rl;
+				text-align: left;
+				text-orientation: mixed;
+				/*margin-left: -5%; 90, 80%
+				margin-right: auto;
+				margin-bottom: 10%;
 				margin: auto, 5%, auto, 10%;*/
 				/* position: relative;
 				left: 50%; */
 				border: 1px solid black;
 				padding: 30px;
-            }
-        </style>
-    </head>
+			}
+		</style>
+	</head>
 
-    <body>
-        <div class="textbox">
+	<body>
+		<div class="textbox">
 		<!-- <input type="text" id="rawtext" value=""> -->
-            
+			
 			<textarea id="rawtext" value=""></textarea><br>
-            <button type="button" onclick="convertText()">convert</button>
-            <button type="button" onclick="resetText(foobar)">reset</button>
-            <button type="button" onclick="triggerDark()">dark</button><br>
-            <button type="button" onclick="changeFont('sansserif')">sans-serif</button>
-            <button type="button" onclick="changeFont('serif')">serif</button>
-            <button type="button" onclick="changeFont('casual')">casual</button>
-            <button type="button" onclick="changeFont('handwriting')">handwriting</button>
-            <button type="button" onclick="changeFont('random')">random</button><br>
+			<button type="button" onclick="convertText()">convert</button>
+			<button type="button" onclick="resetText(foobar)">reset</button>
+			<button type="button" onclick="triggerDark()">dark</button><br>
+			<button type="button" onclick="changeFont('sansserif')">sans-serif</button>
+			<button type="button" onclick="changeFont('serif')">serif</button>
+			<button type="button" onclick="changeFont('casual')">casual</button>
+			<button type="button" onclick="changeFont('handwriting')">handwriting</button>
+			<button type="button" onclick="changeFont('random')">random</button><br>
 			<button type="button" onclick="triggerBold()">bold or regular</button>
-        </div>
-        <div class="output">
-            <p id="outputtext" lang=ja></p>
-        </div>
-    </body>
-    <script>		
-        console.log("Hello world!"); // check if javascript works on this page
+		</div>
+		<div class="output">
+			<p id="outputtext" lang=ja></p>
+		</div>
+	</body>
+	<script>		
+		console.log("Hello world!"); // check if javascript works on this page
 
-        function convertText() {
+		function convertText() {
 			// get whatever is in outputtext, call that string function thing that converts certain halfwidth characters to their fullwidth variants.
 			let outputBox = document.getElementsByClassName("output");
 			let outputText = document.getElementById("outputtext");
@@ -79,37 +79,37 @@
 			tempText = tempText.replaceAll("<ｂｒ>", "<br>");
 			outputText.innerHTML = tempText;
 
-        }
-        // got this from here, because i can't anything rights
+		}
+		// got this from here, because i can't anything rights
 		// https://ilog4.blogspot.com/2015/09/javascript-convert-full-width-and-half.html
-        String.prototype.toFullWidth = function() {
-            return this.replace(/[!-;?-z\"\\^~¥]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
-        };
+		String.prototype.toFullWidth = function() {
+			return this.replace(/[!-;?-z\"\\^~¥]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);});
+		};
 
-        function resetText() {
-            document.getElementById("outputtext").innerHTML = "テキストボックスで入力して下さい。";
-            document.getElementById("rawtext").value = "";
-        }
+		function resetText() {
+			document.getElementById("outputtext").innerHTML = "テキストボックスで入力して下さい。";
+			document.getElementById("rawtext").value = "";
+		}
 
-        function changeFont(type) {
+		function changeFont(type) {
 			let fallbackSansSerif = ", 'MS Gothic', Meiryo, Arial, sans-serif";
 			let fallbackSerif = ", 'MS Mincho', Times, sans-serif";
-            if (type == "sansserif"){
-                document.getElementById("outputtext").style.fontFamily = "Yu Gothic" + fallbackSansSerif;
-            } else if (type == "serif") {
-                document.getElementById("outputtext").style.fontFamily = "Yu Mincho" + fallbackSerif;
-            } else if (type == "casual") {
-                document.getElementById("outputtext").style.fontFamily = "UD Digi Kyokasho NP-R" + fallbackSansSerif;
-            } else if (type == "handwriting") {
-                document.getElementById("outputtext").style.fontFamily = "umeboshi" + fallbackSansSerif;
-            } else if (type == "random") {
-                let fontList = ["Yu Gothic", "Yu Mincho", "UD Digi Kyokasho NP-R", "umeboshi", "MS Gothic", "Meiryo", "MS Mincho"];
-                let randomFont = fontList[Math.floor(Math.random()*fontList.length)];
-                document.getElementById("outputtext").style.fontFamily = randomFont + fallbackSansSerif;
-            } else {
-                console.log("enter a valid font style (sansserif, serif, casual, handwriting, random)");
-            }
-        }
+			if (type == "sansserif"){
+				document.getElementById("outputtext").style.fontFamily = "Yu Gothic" + fallbackSansSerif;
+			} else if (type == "serif") {
+				document.getElementById("outputtext").style.fontFamily = "Yu Mincho" + fallbackSerif;
+			} else if (type == "casual") {
+				document.getElementById("outputtext").style.fontFamily = "UD Digi Kyokasho NP-R" + fallbackSansSerif;
+			} else if (type == "handwriting") {
+				document.getElementById("outputtext").style.fontFamily = "umeboshi" + fallbackSansSerif;
+			} else if (type == "random") {
+				let fontList = ["Yu Gothic", "Yu Mincho", "UD Digi Kyokasho NP-R", "umeboshi", "MS Gothic", "Meiryo", "MS Mincho"];
+				let randomFont = fontList[Math.floor(Math.random()*fontList.length)];
+				document.getElementById("outputtext").style.fontFamily = randomFont + fallbackSansSerif;
+			} else {
+				console.log("enter a valid font style (sansserif, serif, casual, handwriting, random)");
+			}
+		}
 		
 		function triggerBold(){
 			if (document.getElementById("outputtext").style.fontWeight == "normal") {
@@ -119,14 +119,14 @@
 			}
 		}
 
-        // switch between dark mode and vice-versa
-        // obviously this doesn't work, write code for this later
-        function triggerDark () {
-            console.log("dark");
-        }
+		// switch between dark mode and vice-versa
+		// obviously this doesn't work, write code for this later
+		function triggerDark () {
+			console.log("dark");
+		}
 		
 		/*
-        "h2v (smaller).html" does the exact same thing as this file, except that it is smaller in terms of file size.
+		"h2v (smaller).html" does the exact same thing as this file, except that it is smaller in terms of file size.
 		css:
 			id:
 				#outputtext - a
@@ -158,5 +158,5 @@
 				triggerBold() - t
 				toFullWidth() - u
 		*/
-    </script>
+	</script>
 </html>

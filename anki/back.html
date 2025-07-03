@@ -10,9 +10,9 @@
 
 <script type="text/javascript">
 	// fonts used for randomization. must be prepended with an underscore "_", in the collection.media folder, and not be an opentype font file (.otf).
-    // slightly more than the ones used on the front
+	// slightly more than the ones used on the front
 	var typefaces = [
-        "_HanaMinA",
+		"_HanaMinA",
 		"_yumin",
 		"_meiryo",
 		"_ipaexg",
@@ -49,7 +49,7 @@
 		"_ZenAntique-Regular",
 		"_ZenAntiqueSoft-Regular",
 		"_ZenKakuGothicAntique-Regular"
-    ];
+	];
 
 	// this is needed here because front side is still on the screen when you "flip" the card.
 	var front = document.getElementById("front");
@@ -64,11 +64,11 @@
 	// windows. comment this out if view from android app is broken.
 	var windows = document.getElementsByClassName("win").length > 0;
 	if (windows) {
-        var examplesWindows = document.getElementsByClassName("examples")[0];
-        examplesWindows.style.cssText = "font-family: 'Noto Serif JP', Meiryo, Arial, sans-serif;"
+		var examplesWindows = document.getElementsByClassName("examples")[0];
+		examplesWindows.style.cssText = "font-family: 'Noto Serif JP', Meiryo, Arial, sans-serif;"
 
-        var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
-        examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;`;
+		var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
+		examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;`;
 	}
 
 	// randomize writing orientation (horizontal or vertical)
@@ -80,7 +80,7 @@
 
 	// randomize if furigana should appear
 	var appearFurigana = Math.random() < 0.5;
-    var rubyText = document.getElementsByTagName("rt");
+	var rubyText = document.getElementsByTagName("rt");
 	for (i = 0; i < rubyText.length; i++) {
 		if (appearFurigana)
 			rubyText[i].style.display = "ruby-text";

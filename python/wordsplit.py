@@ -7,55 +7,55 @@ dupes = "ああ、ああ、あい、あお、ぞう、漢字、漢字"
 
 # text=input("Enter Japanese words separated by \"、\": ")
 def word_split1(text):
-    """Returns a word search thing for Anki."""
-    return "\"front:re:(" + text.replace("、", "|") + ")\""
+	"""Returns a word search thing for Anki."""
+	return "\"front:re:(" + text.replace("、", "|") + ")\""
 
 def word_split2(text):
-    """Same as above, but without the Anki stuff."""
-    word_list = text.split("、")
-    final = ""
-    for word in word_list:
-        if re.search("[々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝０-９Ａ-ｚ]", word):
-            final += word + "[<-]|"
-        else:
-            final += word + "|"
-    final = re.sub("\|$", "", final)
-    return "\"front:re:(" + final + ")\""
+	"""Same as above, but without the Anki stuff."""
+	word_list = text.split("、")
+	final = ""
+	for word in word_list:
+		if re.search("[々一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝０-９Ａ-ｚ]", word):
+			final += word + "[<-]|"
+		else:
+			final += word + "|"
+	final = re.sub("\|$", "", final)
+	return "\"front:re:(" + final + ")\""
 
 def word_split3(text):
-    # "alt-forms">[A-Za-z0-9ぁ-んァ-ン一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ、「」]*</span>
-    return "\"back:re:(.alt-forms.>|、)(" + text.replace("、", "|") + ")\""
+	# "alt-forms">[A-Za-z0-9ぁ-んァ-ン一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯０-９Ａ-ｚ、「」]*</span>
+	return "\"back:re:(.alt-forms.>|、)(" + text.replace("、", "|") + ")\""
 
 def separate_kanji(text: str):
-    result = ""
-    for char in text:
-        result = result + char + "、"
-    result = result[:-1]
-    return result
+	result = ""
+	for char in text:
+		result = result + char + "、"
+	result = result[:-1]
+	return result
 
 def word_count(text: str):
-    return len(text.split("、"))
+	return len(text.split("、"))
 
 def find_duplicates(text: str):
-    result = ""
-    duplicates = [item for item, count in collections.Counter(text.split("、")).items() if count > 1]
-    for term in duplicates:
-        result += term  + "、"
-    result = result[:-1]
-    return result
+	result = ""
+	duplicates = [item for item, count in collections.Counter(text.split("、")).items() if count > 1]
+	for term in duplicates:
+		result += term  + "、"
+	result = result[:-1]
+	return result
 
 def separate_kanji(text: str):
-    result = ""
-    for char in text:
-        result = result + char + "、"
-    result = result[:-1]
-    return result
+	result = ""
+	for char in text:
+		result = result + char + "、"
+	result = result[:-1]
+	return result
 
 
 text1=word_split1(sample_text1)
 text2=word_split2(sample_text1)
 text3=word_split3(sample_text1)
 with open("python\output.txt", "w", encoding="utf-8") as out:
-    text=text2
-    out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}\nseparated kanji:\n{separate_kanji(kanji)}\nduplicate words:\n{find_duplicates(dupes)}")
-    print("done!")
+	text=text2
+	out.writelines(f"regex:\n{text2[11:-2]}\nanki regex:\n{text2}\nalt-forms:\n{text3}\nword count: {word_count(sample_text1)}\nseparated kanji:\n{separate_kanji(kanji)}\nduplicate words:\n{find_duplicates(dupes)}")
+	print("done!")

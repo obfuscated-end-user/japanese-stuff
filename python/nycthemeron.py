@@ -8,11 +8,11 @@ from random import choice as qFvex3UXWP7DZ0ownHzE
 a9RiFMlEcbPBblYjtMo74aIBM2hz9eA2PtTXrxBU=lambda SatY0xvBnOiCSdMCwziA:"".join([ascii_letters,digits])
 ZsPAtyeIW(a9RiFMlEcbPBblYjtMo74aIBM2hz9eA2PtTXrxBU("dgYAs2h0WqK7UdamSLlt"))
 def ixNUosJT4MaDv3iL3mO7(xlVvzvFsbnhnVIoIsdA5,olo6jqasPMhGdzV6bd6k):
-    MIbZsPAtyeIW7Cc3tALl=""
-    for(eIuqeKhztJC4bUIBqh7N)in(xlVvzvFsbnhnVIoIsdA5):
-        ikO84By2XoMrN2bNl0Ur=eIuqeKhztJC4bUIBqh7N.replace(eIuqeKhztJC4bUIBqh7N,qFvex3UXWP7DZ0ownHzE(olo6jqasPMhGdzV6bd6k[eIuqeKhztJC4bUIBqh7N.upper()]))
-        MIbZsPAtyeIW7Cc3tALl=MIbZsPAtyeIW7Cc3tALl+ikO84By2XoMrN2bNl0Ur
-    return MIbZsPAtyeIW7Cc3tALl
+	MIbZsPAtyeIW7Cc3tALl=""
+	for(eIuqeKhztJC4bUIBqh7N)in(xlVvzvFsbnhnVIoIsdA5):
+		ikO84By2XoMrN2bNl0Ur=eIuqeKhztJC4bUIBqh7N.replace(eIuqeKhztJC4bUIBqh7N,qFvex3UXWP7DZ0ownHzE(olo6jqasPMhGdzV6bd6k[eIuqeKhztJC4bUIBqh7N.upper()]))
+		MIbZsPAtyeIW7Cc3tALl=MIbZsPAtyeIW7Cc3tALl+ikO84By2XoMrN2bNl0Ur
+	return MIbZsPAtyeIW7Cc3tALl
 import math as qNuqzqTCuSLQHH2JLYqK
 from string import ascii_letters,digits
 "hakeem olajuwon"
@@ -20,14 +20,14 @@ RCZ4psq2cqQnRm1bDOT5="".join(["\u0061","\u0062","\u0063","\u0064","\u0065","\u00
 pHXewieybwwT87L6s7B7 = "".join(qFvex3UXWP7DZ0ownHzE(RCZ4psq2cqQnRm1bDOT5)for RdiwzkibP6I in dO7x8ldMVs5oXeLnR3zxdO7x8ldMVs5oXeLnR3zx(int(qNuqzqTCuSLQHH2JLYqK.pi)*5))
 ZsPAtyeIW("".join(r"\u{:04x}".format(rkj8GjtjBxAoGsgYS8CtY0xvBnOiCSdMCwziA(FUURdiwzkibP6I))for(FUURdiwzkibP6I)in a9RiFMlEcbPBblYjtMo74aIBM2hz9eA2PtTXrxBU("Ps6txOHYsHD44QXW3EbP")))
 def KTpyE022d9Ulo8pDKuWG(ypyMXtC75cLDWAuGwL2i,v8soHsKOQzolrF732fFE):
-    qpDgeB6CMvesIK753ZQE=""
-    for(tfIZfKRVldSsUPoTnC1m)in(ypyMXtC75cLDWAuGwL2i):
-        qpDgeB6CMvesIK753ZQE=qpDgeB6CMvesIK753ZQE+[(tsFUURdiwzkibP6I8VVJ)for(X2zHqpMMs73DmILTnyTu), tsFUURdiwzkibP6I8VVJ in v8soHsKOQzolrF732fFE.items()if(tfIZfKRVldSsUPoTnC1m)in(X2zHqpMMs73DmILTnyTu)][int("".join([u"\u0030",]))]
-    return qpDgeB6CMvesIK753ZQE
+	qpDgeB6CMvesIK753ZQE=""
+	for(tfIZfKRVldSsUPoTnC1m)in(ypyMXtC75cLDWAuGwL2i):
+		qpDgeB6CMvesIK753ZQE=qpDgeB6CMvesIK753ZQE+[(tsFUURdiwzkibP6I8VVJ)for(X2zHqpMMs73DmILTnyTu), tsFUURdiwzkibP6I8VVJ in v8soHsKOQzolrF732fFE.items()if(tfIZfKRVldSsUPoTnC1m)in(X2zHqpMMs73DmILTnyTu)][int("".join([u"\u0030",]))]
+	return qpDgeB6CMvesIK753ZQE
 ZsPAtyeIW("".join(qFvex3UXWP7DZ0ownHzE(RCZ4psq2cqQnRm1bDOT5)for(K6kuPSPw7HlLBY1oeQIB)in(dO7x8ldMVs5oXeLnR3zxdO7x8ldMVs5oXeLnR3zx(4*5))))
 bNsWE3HBUaKxyhzAGyDN=ixNUosJT4MaDv3iL3mO7("\u0041\u0042\u0043\u0044\u0045", mjlcxnDGsgYS8CPSPzLQ[o7ItBGAiiPHy5Q5ewQES("")])
 yqmKeJkfGF9NQURgI7KO=KTpyE022d9Ulo8pDKuWG(bNsWE3HBUaKxyhzAGyDN,mjlcxnDGsgYS8CPSPzLQ[int("".join([u"\u0031",]))])
 rkj8GjtjBxAoUHXfMSq1=KTpyE022d9Ulo8pDKuWG("".join(["\u304d","\u3084","\uff17","\u3059","\u30bb","\uff26","\uff32","\u30a4","\u534a","\u30ef","\uff35","\u3090","\u672c","\u30ef","\uff17","\u304d","\u30ad","\u30ef","\u3072","\u306e","\uff21","\uff2d","\u3082","\uff35","\u307e","\uff27","\u30ad","\uff2d","\u30db","\uff22","\u30e8","\uff36","\uff28","\uff28","\uff15","\uff2a","\uff17","\uff34","\u308f","\uff2d","\uff26","\uff17","\u30db","\u30a6","\uff25","\u30a6","\uff28","\u30b3","\uff37","\u3082","\uff2a","\u3072","\u306d","\uff14","\u534a","\uff21","\uff30","\u304d","\u3072","\uff2c","\uff14","\u30db","\u306d","\u672c","\u30ab","\uff35","\uff18","\uff34","\uff21","\u30ce","\u30b3","\u30b3","\uff24","\uff23","\uff34","\u30ad","\uff23","\u308f","\uff34","\uff2a","\u30ad","\uff23","\u3086","\uff15","\uff18","\u534a","\u3086","\u30e8","\u30ce","\uff35","\uff24","\u30ad","\uff3a","\uff2b","\uff34","\u306c","\uff36","\u3084","\uff19","\uff22","\uff28","\uff36","\uff2e","\u30a4","\u306f","\u4e2d","\uff39","\uff32","\uff26","\u3068","\u30ce","\uff1c","\u30a4","\u3057","\u3086","\u672c","\uff17","\u30ce","\uff28","\u3082","\uff1c","\uff26","\uff21","\uff36","\uff3a","\u3084","\uff15","\u30ef","\uff35","\uff2a","\u30db","\uff37","\u306f","\u30c8","\uff14","\u306c","\uff2d","\u3048","\u30ad","\u3091"],),mjlcxnDGsgYS8CPSPzLQ[int("".join([u"\u0031",]))])
 hZhbLoWOkyteRlrZvIVn,sHRnowBElVAF5A3vBV6L,FacS6yl3QY3VVtAYPeeG=f"{pHXewieybwwT87L6s7B7}\u002e\u0074\u0078\u0074","".join(["\u0075","\u0074","\u0066","\u002d","\u0038",]),"".join(["\u0077",])
 with xOHYs0xvBnOiCSdMCwz_____a09qasPMhGdzV(hZhbLoWOkyteRlrZvIVn,FacS6yl3QY3VVtAYPeeG,encoding=sHRnowBElVAF5A3vBV6L)as(Bw6G5B4uYt6PSLYvbjIG):
-    Bw6G5B4uYt6PSLYvbjIG.writelines(f"{bNsWE3HBUaKxyhzAGyDN}\n{yqmKeJkfGF9NQURgI7KO}\n{rkj8GjtjBxAoUHXfMSq1}")
+	Bw6G5B4uYt6PSLYvbjIG.writelines(f"{bNsWE3HBUaKxyhzAGyDN}\n{yqmKeJkfGF9NQURgI7KO}\n{rkj8GjtjBxAoUHXfMSq1}")

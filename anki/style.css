@@ -1,41 +1,41 @@
 /* affects all elements. front, back, whatever.*/
 .card {
-    /* font-family: _NotoSerifJP-Regular, arial; */
-    /* font-family: Meiryo; remove this if it fucks up the look on mobile */
-    font-size: 120%;
-    color: black;
-    /*background-color: white;*/
-    margin: 20px;
-    /*text-align: justify;*/
-    hyphens: auto;
+	/* font-family: _NotoSerifJP-Regular, arial; */
+	/* font-family: Meiryo; remove this if it fucks up the look on mobile */
+	font-size: 120%;
+	color: black;
+	/*background-color: white;*/
+	margin: 20px;
+	/*text-align: justify;*/
+	hyphens: auto;
 }
 
 .win .card {
-    font-family: "Noto Serif JP", Meiryo, Arial, sans-serif;
-    font-size: 155%;
+	font-family: "Noto Serif JP", Meiryo, Arial, sans-serif;
+	font-size: 155%;
 }
 
 .win .front {
-    font-family: "Noto Serif JP", Meiryo, sans-serif;
+	font-family: "Noto Serif JP", Meiryo, sans-serif;
 }
 
 .win .six-or-more {
-    font-size: 100%;
-    margin: 10px 0px 10px 0px;
+	font-size: 100%;
+	margin: 10px 0px 10px 0px;
 }
 
 .win .alt-forms {
-    font-family: "Noto Serif JP", "Noto Emoji", Meiryo, sans-serif;
+	font-family: "Noto Serif JP", "Noto Emoji", Meiryo, sans-serif;
 }
 
 .win .readings {
-    font-family: "Noto Serif JP", Meiryo, sans-serif;
+	font-family: "Noto Serif JP", Meiryo, sans-serif;
 }
 
 .win .examples {
-    font-family: "Noto Serif JP", Meiryo, sans-serif;
-    font-size: 30px;
-    font-weight: 500;
+	font-family: "Noto Serif JP", Meiryo, sans-serif;
+	font-size: 30px;
+	font-weight: 500;
 }
 
 .win .back {
@@ -43,38 +43,38 @@
 }
 
 b {
-    color: red;
+	color: red;
 }
 
 /* the part that is first shown when you open the card */
 .front {
-    font-family: arial;
-    font-size: 300%;
-    text-align: center;
-    writing-mode: vertical-rl;
-    margin: 0 auto;
-    display: block;
-    overflow: auto;
+	font-family: arial;
+	font-size: 300%;
+	text-align: center;
+	writing-mode: vertical-rl;
+	margin: 0 auto;
+	display: block;
+	overflow: auto;
 }
 
 /* For Japanese entries */
 /* alternative forms of a word. may be in kanji, hiragana, katakana, or mixed (hiragana, katakana and kanji). */
 .alt-forms {
-    font-size: 30px;
-    font-family: _yumin, _HanaMinB, Arial, sans-serif;
+	font-size: 30px;
+	font-family: _yumin, _HanaMinB, Arial, sans-serif;
 }
 
 /* examples using the word */
 .examples {
-    font-family: _yumin;
-    writing-mode: vertical-rl;
-    text-align: left;
-    margin: 0px; 
-    padding: 0px;
-    height: 75%;
-    width: 100%;
-    font-size: 23px;
-    overflow-x: auto;
+	font-family: _yumin;
+	writing-mode: vertical-rl;
+	text-align: left;
+	margin: 0px; 
+	padding: 0px;
+	height: 75%;
+	width: 100%;
+	font-size: 23px;
+	overflow-x: auto;
 }
 
 ruby {
@@ -82,59 +82,59 @@ ruby {
 }
 
 rt {
-    font-size: 60%;
-    display: ruby-text; /* This being "display: block;" caused the whole fuck-up you waited so long to fix. */
-    user-select: none;
+	font-size: 60%;
+	display: ruby-text; /* This being "display: block;" caused the whole fuck-up you waited so long to fix. */
+	user-select: none;
 }
 
 
 /* kana on the individual kana deck. do not remove, even that you don't use that deck anymore. */
 .kana {
-    font-size: 200%;
+	font-size: 200%;
 }
 
 /* For 8 or more ruby characters */
 .longruby {
-    font-size: 35%;
-    text-align: center;
-    color: black;
-    vertical-align: sup;
+	font-size: 35%;
+	text-align: center;
+	color: black;
+	vertical-align: sup;
 }
 
 /* images used on cards (only on back side) */
 .image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85%;
-    text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 85%;
+	text-align: center;
 }
 
 /* used whenever a word on the front side does not fit perfectly on the screen (it breaks and goes over to the next line). does not necessarily have to be 6, it's just that your current phone can only fit a max of 6 characters on the screen*/
 .six-or-more {
-    font-size: 55%;
-    margin: 10px 0px 10px 0px;
+	font-size: 55%;
+	margin: 10px 0px 10px 0px;
 }
 
 /* For English entries */
 /* word on front side */
 .english-word {
-    font-size: 30px;
-    margin: 20px;
-    text-align: center;
+	font-size: 30px;
+	margin: 20px;
+	text-align: center;
 }
 
 /* entries on the back side */
 .english-back {
-    font-size: 14px;
-    margin: 20px;
-    text-align: justify;
-    hyphens: auto;
+	font-size: 14px;
+	margin: 20px;
+	text-align: justify;
+	hyphens: auto;
 }
 
 /* source of where the sentence quoted is from*/
 .source {
-    font-size: 10px;
+	font-size: 10px;
 }
 
 /* for font randomization */

@@ -14,60 +14,60 @@ garbage = "[0-9A-Za-zぁ-んァ-ン々・、。ー０-９Ａ-ｚ𛀀-𛃿𛄀-�
 valid_kanji = "[〆一-鿿㐀-䶿𠀀-𪛟𪜀-𫜹𫝀-𫠝𫠠-𬺡𬺰-𮯠𰀀-𱍊𱍐-𲎯𮯰-𮹝豈-龎丽-𪘀]"
 
 def add_kanji(kanji_string, section):
-    if section in sections:
-        added_kanji = []
-        kanji_not_added = []
-        kanji_string = re.sub(garbage, "", kanji_string)
-        if re.match(valid_kanji, kanji_string):
-            kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
-            for kanji in kanji_list_from_string:
-                if kanji in kanji_list[section]:
-                    kanji_not_added.append(kanji)
-                else:
-                    added_kanji.append(kanji)
-                    kanji_list[section] += kanji
-        else:
-            print("String contains invalid characters")
-        if added_kanji:
-            print(f"Added these kanji:\n{''.join(added_kanji)}")
-        if kanji_not_added:
-            print(f"Did not add these kanji:\n{''.join(kanji_not_added)}")
-    else:
-        print(f"Invalid section: \"{section}\"")
+	if section in sections:
+		added_kanji = []
+		kanji_not_added = []
+		kanji_string = re.sub(garbage, "", kanji_string)
+		if re.match(valid_kanji, kanji_string):
+			kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
+			for kanji in kanji_list_from_string:
+				if kanji in kanji_list[section]:
+					kanji_not_added.append(kanji)
+				else:
+					added_kanji.append(kanji)
+					kanji_list[section] += kanji
+		else:
+			print("String contains invalid characters")
+		if added_kanji:
+			print(f"Added these kanji:\n{''.join(added_kanji)}")
+		if kanji_not_added:
+			print(f"Did not add these kanji:\n{''.join(kanji_not_added)}")
+	else:
+		print(f"Invalid section: \"{section}\"")
 
 def remove_kanji(kanji_string, section):
-    if section in sections:
-        removed_kanji = []
-        kanji_not_removed = []
-        kanji_string = re.sub(garbage, "", kanji_string)
-        if re.match(valid_kanji, kanji_string):
-            kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
-            for kanji in kanji_list_from_string:
-                if kanji in kanji_list[section]:
-                    removed_kanji.append(kanji)
-                    kanji_list[section] = re.sub(f"[{kanji}]", "", kanji_list[section])
-                else:
-                    kanji_not_removed.append(kanji)
-        else:
-            print("String contains invalid characters")
-        if removed_kanji:
-            print(f"Removed these kanji:\n{''.join(removed_kanji)}")
-        if kanji_not_removed:
-            print(f"Did not remove these kanji:\n{''.join(kanji_not_removed)}")
-    else:
-        print(f"Invalid section: \"{section}\"")
+	if section in sections:
+		removed_kanji = []
+		kanji_not_removed = []
+		kanji_string = re.sub(garbage, "", kanji_string)
+		if re.match(valid_kanji, kanji_string):
+			kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
+			for kanji in kanji_list_from_string:
+				if kanji in kanji_list[section]:
+					removed_kanji.append(kanji)
+					kanji_list[section] = re.sub(f"[{kanji}]", "", kanji_list[section])
+				else:
+					kanji_not_removed.append(kanji)
+		else:
+			print("String contains invalid characters")
+		if removed_kanji:
+			print(f"Removed these kanji:\n{''.join(removed_kanji)}")
+		if kanji_not_removed:
+			print(f"Did not remove these kanji:\n{''.join(kanji_not_removed)}")
+	else:
+		print(f"Invalid section: \"{section}\"")
 
 def extract_kanji(text):
-    added_kanji = []
-    kanji_string = re.sub(garbage, "", text)
-    if re.match(valid_kanji, kanji_string):
-        kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
-        for kanji in kanji_list_from_string:
-            added_kanji.append(kanji)
-    else:
-        print("String contains invalid characters")
-    if added_kanji:
-        print(f"{''.join(added_kanji)}")
+	added_kanji = []
+	kanji_string = re.sub(garbage, "", text)
+	if re.match(valid_kanji, kanji_string):
+		kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
+		for kanji in kanji_list_from_string:
+			added_kanji.append(kanji)
+	else:
+		print("String contains invalid characters")
+	if added_kanji:
+		print(f"{''.join(added_kanji)}")
 
 # remove_kanji("日本攜", "learnedKanji")
 # extract_kanji("天気の良い日に稲穂がいっせいに風になびいている景色は大変美しかった。")

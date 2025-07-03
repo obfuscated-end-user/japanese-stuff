@@ -181,9 +181,9 @@ remember, no antiquated jquery shit
 replace "term" with your word of choice
 * wiktionary: https://en.wiktionary.org/wiki/term#Japanese
 * jisho: https://jisho.org/search/term - i used search instead of the word page itself because of alternative forms
-    - names: https://jisho.org/search/term %23names
-    - kanji https://jisho.org/search/term %23kanji
-    - sentences: https://jisho.org/search/term %23sentences
+	- names: https://jisho.org/search/term %23names
+	- kanji https://jisho.org/search/term %23kanji
+	- sentences: https://jisho.org/search/term %23sentences
 * massif: https://massif.la/ja/search?q=term
 * yourei (ADD THIS ;; ADDED 2022/10/30): https://yourei.jp/term
 * https://qiita.com/fubarworld2/items/9da655df4d6d69750c06

@@ -1,127 +1,127 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <title>Anki tool.</title>
-        <meta charset="utf-8">
-        <meta name="description" content="Tool used for creating Anki cards.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="tool.css">
-        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3553/3553141.png">
-    </head>
-    <body class="light-mode">
-        <div id="anki">
-            <div id="modes" class="unhighlightable">
-                <strong id="disclaimer"></strong><br>
-                <input type="radio" id="hiragana-only-radio" name="conversion-mode"><label id="hiragana-only-radio-label" for="hiragana-only-radio"></label><br>
-                <input type="radio" id="regular-word-radio" name="conversion-mode"><label id="regular-word-radio-label" for="regular-word-radio"></label><br>
-                <input type="radio" id="kanji-entry-radio" name="conversion-mode"><label id="kanji-entry-radio-label" for="kanji-entry-radio"></label><br>
-                <button type="button" id="set-preset-button" onclick="setCheckboxes()"></button> ・ 
-                <button type="button" id="reset-button" onclick="clearAll(1); playClickSound();"></button> ・ 
-                <button type="button" id="clear-button" onclick="clearAll(0)">clear</button> ・
-                <button type="button" id="switch-language-button" onclick="switchLanguage()"></button> ・ 
-                <button type="button" id="light-dark-mode-button" onclick="toggleDarkMode()" title="dark mode"></button><br>
-            </div>
+	<head>
+		<title>Anki tool.</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Tool used for creating Anki cards.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="tool.css">
+		<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3553/3553141.png">
+	</head>
+	<body class="light-mode">
+		<div id="anki">
+			<div id="modes" class="unhighlightable">
+				<strong id="disclaimer"></strong><br>
+				<input type="radio" id="hiragana-only-radio" name="conversion-mode"><label id="hiragana-only-radio-label" for="hiragana-only-radio"></label><br>
+				<input type="radio" id="regular-word-radio" name="conversion-mode"><label id="regular-word-radio-label" for="regular-word-radio"></label><br>
+				<input type="radio" id="kanji-entry-radio" name="conversion-mode"><label id="kanji-entry-radio-label" for="kanji-entry-radio"></label><br>
+				<button type="button" id="set-preset-button" onclick="setCheckboxes()"></button> ・ 
+				<button type="button" id="reset-button" onclick="clearAll(1); playClickSound();"></button> ・ 
+				<button type="button" id="clear-button" onclick="clearAll(0)">clear</button> ・
+				<button type="button" id="switch-language-button" onclick="switchLanguage()"></button> ・ 
+				<button type="button" id="light-dark-mode-button" onclick="toggleDarkMode()" title="dark mode"></button><br>
+			</div>
 
-            <div class="input-boxes-left">
-                <span class="element-headers unhighlightable" id="alt-forms-header"><label for="alt-forms-checkbox"></label></span><br>
-                <input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, headers.altForms, '#f00');"><button class="format-buttons" type="button" onclick="formatAltForms()"></button>
-                <span id="variation-selectors" class="unhighlightable">
-                    <button type="button" class="copy-buttons" onclick="copy(variationSelectorsDropdown.options[variationSelectorsDropdown.selectedIndex].text.replace(/&amp;/g, '&'))"></button>
-                    <select id="variation-selectors-dropdown" title="Select variation selector...">
-                        <option value="&#xE0100;" selected>&amp;#xE0100;</option>
-                        <option value="&#xE0101;">&amp;#xE0101;</option>
-                        <option value="&#xE0102;">&amp;#xE0102;</option>
-                        <option value="&#xE0103;">&amp;#xE0103;</option>
-                        <option value="&#xE0104;">&amp;#xE0104;</option>
-                        <option value="&#xE0105;">&amp;#xE0105;</option>
-                    </select>
-                    <a class="help-link" title="Wikipedia: Variation_Selectors_(Unicode_block)" href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)" target="_blank" rel="noopener noreferrer">(？)</a>
-                </span><br>
-                <textarea id="alt-forms-textarea" rows="10" placeholder="" value=""></textarea><br>
+			<div class="input-boxes-left">
+				<span class="element-headers unhighlightable" id="alt-forms-header"><label for="alt-forms-checkbox"></label></span><br>
+				<input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, headers.altForms, '#f00');"><button class="format-buttons" type="button" onclick="formatAltForms()"></button>
+				<span id="variation-selectors" class="unhighlightable">
+					<button type="button" class="copy-buttons" onclick="copy(variationSelectorsDropdown.options[variationSelectorsDropdown.selectedIndex].text.replace(/&amp;/g, '&'))"></button>
+					<select id="variation-selectors-dropdown" title="Select variation selector...">
+						<option value="&#xE0100;" selected>&amp;#xE0100;</option>
+						<option value="&#xE0101;">&amp;#xE0101;</option>
+						<option value="&#xE0102;">&amp;#xE0102;</option>
+						<option value="&#xE0103;">&amp;#xE0103;</option>
+						<option value="&#xE0104;">&amp;#xE0104;</option>
+						<option value="&#xE0105;">&amp;#xE0105;</option>
+					</select>
+					<a class="help-link" title="Wikipedia: Variation_Selectors_(Unicode_block)" href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)" target="_blank" rel="noopener noreferrer">(？)</a>
+				</span><br>
+				<textarea id="alt-forms-textarea" rows="10" placeholder="" value=""></textarea><br>
 
-                <span class="element-headers unhighlightable" id="definitions-header"><label for="definitions-checkbox"></label></span><br>
-                <input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name" onclick="toggleHeaderColor(event, headers.definitions, '#32cd32');"><button class="format-buttons" type="button" onclick="formatDefinitions()"></button><br>
-                <textarea id="definitions-textarea" rows="10" placeholder="" value=""></textarea><br>
+				<span class="element-headers unhighlightable" id="definitions-header"><label for="definitions-checkbox"></label></span><br>
+				<input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name" onclick="toggleHeaderColor(event, headers.definitions, '#32cd32');"><button class="format-buttons" type="button" onclick="formatDefinitions()"></button><br>
+				<textarea id="definitions-textarea" rows="10" placeholder="" value=""></textarea><br>
 
-                <span class="element-headers unhighlightable" id="examples-header"><label for="examples-checkbox"></label></span><br>
-                <input type="checkbox" id="examples-checkbox" name="examples-checkbox-name" onclick="toggleHeaderColor(event, headers.examples, '#f0f');"><button class="format-buttons" type="button" onclick="formatExamples()"></button><br>
-                <textarea id="examples-textarea" rows="10" placeholder="" value=""></textarea>
+				<span class="element-headers unhighlightable" id="examples-header"><label for="examples-checkbox"></label></span><br>
+				<input type="checkbox" id="examples-checkbox" name="examples-checkbox-name" onclick="toggleHeaderColor(event, headers.examples, '#f0f');"><button class="format-buttons" type="button" onclick="formatExamples()"></button><br>
+				<textarea id="examples-textarea" rows="10" placeholder="" value=""></textarea>
 
-                <!-- make this align with the preview textbox -->
-                <br><span id="temporary-header" class="element-headers unhighlightable"></span>
-                <textarea id="temp-textarea" rows="10" placeholder="" value="" lang="ja"></textarea><br>
+				<!-- make this align with the preview textbox -->
+				<br><span id="temporary-header" class="element-headers unhighlightable"></span>
+				<textarea id="temp-textarea" rows="10" placeholder="" value="" lang="ja"></textarea><br>
 
-                <footer class="unhighlightable">
-                    <a href="https://github.com/obfuscated-end-user/Japanese-stuff/blob/master/unsorted/tool.html" title="View source code on GitHub"><img id="github-logo" src="https://github.com/favicon.ico"></a><br>
-                    <strong>© 2022-<span id="copyright-year"></span> <ruby title="Yokohama">横浜<rt>よこはま</rt></ruby><span id="all-rights-reserved"></span></strong><br>
-                </footer>
-            </div>
+				<footer class="unhighlightable">
+					<a href="https://github.com/obfuscated-end-user/Japanese-stuff/blob/master/unsorted/tool.html" title="View source code on GitHub"><img id="github-logo" src="https://github.com/favicon.ico"></a><br>
+					<strong>© 2022-<span id="copyright-year"></span> <ruby title="Yokohama">横浜<rt>よこはま</rt></ruby><span id="all-rights-reserved"></span></strong><br>
+				</footer>
+			</div>
 
-            <div class="input-boxes-right">
-                <span class="element-headers unhighlightable" id="readings-header"><label for="readings-checkbox"></label></span><br>
-                <input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, headers.readings, '#daa520');"><button class="format-buttons" type="button" onclick="formatReadings()"></button><br>
-                <textarea id="readings-textarea" rows="10" placeholder="" value=""></textarea><br>
+			<div class="input-boxes-right">
+				<span class="element-headers unhighlightable" id="readings-header"><label for="readings-checkbox"></label></span><br>
+				<input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, headers.readings, '#daa520');"><button class="format-buttons" type="button" onclick="formatReadings()"></button><br>
+				<textarea id="readings-textarea" rows="10" placeholder="" value=""></textarea><br>
 
-                <span class="element-headers unhighlightable" id="haskanji-header"><label for="haskanji-checkbox"></label></span><br>
-                <input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name" onclick="toggleHeaderColor(event, headers.hasKanji, '#00f');"><button class="format-buttons" type="button" onclick="formatWordsContainingThisKanji()"></button><br>
-                <textarea id="haskanji-textarea" rows="10" placeholder="" value=""></textarea><br>
+				<span class="element-headers unhighlightable" id="haskanji-header"><label for="haskanji-checkbox"></label></span><br>
+				<input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name" onclick="toggleHeaderColor(event, headers.hasKanji, '#00f');"><button class="format-buttons" type="button" onclick="formatWordsContainingThisKanji()"></button><br>
+				<textarea id="haskanji-textarea" rows="10" placeholder="" value=""></textarea><br>
 
-                <span class="element-headers unhighlightable">HTML</span><br>
-                <button type="button" id="convert-text-button" onclick="convertText()"></button><span class="unhighlightable"> <span class="unhighlightable">・</span> </span><button type="button" class="copy-buttons" onclick="copy(preview.value)"></button><br>
+				<span class="element-headers unhighlightable">HTML</span><br>
+				<button type="button" id="convert-text-button" onclick="convertText()"></button><span class="unhighlightable"> <span class="unhighlightable">・</span> </span><button type="button" class="copy-buttons" onclick="copy(preview.value)"></button><br>
 
-                <div id="anki-html" data-text="" rows="10" value="" lang="ja"></div><br>
+				<div id="anki-html" data-text="" rows="10" value="" lang="ja"></div><br>
 
-                <span id="preview-header" class="element-headers unhighlightable"></span>
-                <button type="button" id="toggle-vertical-button" onclick="toggleVertical()"></button>
-                <div id="preview" class="unhighlightable">
-                    <span class="alt-forms">體外離脫</span><br><br><span class="readings">たいがいりだつ</span><br><br><span class="definitions">an out-of-body experience</span><br><br><span class="examples"><ruby>車<rt>くるま</rt></ruby>が<ruby>谷<rt>たに</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちて<ruby>両親<rt>りょうしん</rt></ruby>を<ruby>亡<rt>な</rt></ruby>くしたんですが、その<ruby>時<rt>とき</rt></ruby>に<ruby>彼女<rt>かのじょ</rt></ruby>は、<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby>ですか？<br><ruby>臨死体験<rt>りんしたいけん</rt></ruby><ruby>中<rt>ちゅう</rt></ruby>には<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby><ruby>現象<rt>げんしょう</rt></ruby>が<ruby>起<rt>お</rt></ruby>こることが<ruby>知<rt>し</rt></ruby>られている。</span>
-                </div><br><br>
-            </div>
-        </div>
-        <div id="external">
-            <input type="text" id="search-bar" placeholder="e.g. 魑魅魍魎" value="魑魅魍魎" onchange="toggleSearchButton(this.value)">&nbsp;<button id="search-button" type="button" onclick="searchWord()"></button>
-            <table id="indicator" class="unhighlightable">
-                <tr>
-                    <th id="definitions-table-header"></th>
-                    <td>
-                        <input type="radio" id="wiktionary-english-radio" name="search-mode"><label for="wiktionary-english-radio"><span title="Wiktionary (English)"><img class="search-icons" alt="WE" src="https://en.wiktionary.org/favicon.ico"></span></label>
-                        <input type="radio" id="wiktionary-japanese-radio" name="search-mode"><label for="wiktionary-japanese-radio"><span title="ウィクショナリー日本語版"><img class="search-icons" alt="WJ" src="https://ja.wiktionary.org/favicon.ico"></span></label>
-                        <input type="radio" id="jisho-definitions-radio" name="search-mode"><label for="jisho-definitions-radio"><span title="jisho.org (definitions)"><img class="search-icons" alt="JD" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label>
-                        <input type="radio" id="jisho-kanji-radio" name="search-mode"><label for="jisho-kanji-radio"><span title="jisho.org (kanji)"><img class="search-icons" alt="JK" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label>
-                        <input type="radio" id="jisho-names-radio" name="search-mode"><label for="jisho-names-radio"><span title="jisho.org (names)"><img class="search-icons" alt="JN" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label><br>
-                    </td>
-                </tr>
-                <tr>
-                    <th id="example-sentences-table-header"></th>
-                    <td>
-                        <input type="radio" id="jisho-sentences-radio" name="search-mode"><label for="jisho-sentences-radio"><span title="jisho.org (sentences)"><img class="search-icons" alt="JS" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label>
-                        <input type="radio" id="massif-radio" name="search-mode"><label for="massif-radio"><span title="Massif"><img class="search-icons" alt="M" src="https://massif.la/static/favicon_256.png"></span></label>
-                        <!-- yeah, i know how stupid this looks -->
-                        <input type="radio" id="yourei-radio" name="search-mode"><label for="yourei-radio"><span title="用例"><img class="search-icons" alt="Y" src="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAAAAAAAAAAAAAAAC0nwQEtJ8EDLSfBBy0nwQwtJ8EFLSfBAAAAAAAAAAAAAAAAAC0nwQUtJ8EOLSfBEC0nwQotJ8EBAAAAAAAAAAAtJ8EJLSfBNi0nwVUtJ8F4LSfBUC0nwQstJ8EAAAAAAAAAAAAtJ8ExLSfBiC0nwZotJ8F4LSfBFAAAAAAAAAAALSfBGy0nwaktJ8G1LSfBhC0nwcwtJ8FvLSfBDC0nwQAAAAAALSfBOC0nwYctJ8GfLSfB6C0nwV0AAAAAAAAAAC0nwRstJ8GuLSfBnS0nwQotJ8FyLSfBzS0nwWktJ8EKLSfBAC0nwRMtJ8EoLSfBJy0nwdotJ8F3AAAAAAAAAAAtJ8EbLSfBri0nwZ4tJ8EALSfBDi0nwXktJ8HFLSfBUC0nwQMtJ8FbLSfBui0nwUUtJ8HZLSfBdwAAAAAAAAAALSfBGy0nwa4tJ8GdLSfBAC0nwQAtJ8EZLSfBqy0nwa4tJ8EeLSfBaS0nwdEtJ8FJLSfB2S0nwXcAAAAALSfBAC0nwRstJ8GtLSfBrC0nwTAtJ8EbLSfBMi0nwaotJ8HgLSfBSC0nwWgtJ8HQLSfBSS0nwdktJ8F3LSfBAC0nwQAtJ8EcLSfBqy0nwb8tJ8GLLSfBly0nwawtJ8G1LSfBxy0nwXktJ8F3LSfBzy0nwUktJ8HZLSfBdy0nwQUtJ8E2LSfBeC0nwaotJ8GnLSfBai0nweQtJ8GmLSfBOC0nwY8tJ8GlLSfBjC0nwc4tJ8FJLSfB2S0nwXctJ8EFLSfBUS0nweEtJ8HULSfBmC0nwSwtJ8HDLSfBfC0nwQAtJ8GCLSfBsy0nwZQtJ8HNLSfBSS0nwdktJ8F3LSfBAS0nwR0tJ8GpLSfB+i0nwZstJ8EKLSfBhS0nwbwtJ8FlLSfBtS0nwbwtJ8GXLSfBzS0nwUktJ8HZLSfBdy0nwQAtJ8ECLSfBPS0nweEtJ8GdLSfBAC0nwV8tJ8HeLSfBsC0nwaYtJ8FmLSfBfS0nwc8tJ8FJLSfB2S0nwXcAAAAALSfBAC0nwRQtJ8GbLSfBsC0nwQotJ8FCLSfBxS0nwXQtJ8EgLSfBDS0nwW0tJ8HQLSfBSS0nwdktJ8F3AAAAAAAAAAAtJ8EDLSfBQC0nwb0tJ8GRLSfBxC0nweMtJ8HJLSfBsC0nwbItJ8GoLSfBoy0nwT0tJ8HZLSfBdwAAAAAAAAAALSfBAC0nwRstJ8GZLSfBsS0nwXItJ8F1LSfBdS0nwXUtJ8F2LSfBRy0nwRotJ8EiLSfB0y0nwWYAAAAAAAAAAAAAAAAtJ8EDLSfBHi0nwTItJ8EKLSfBCi0nwQotJ8EKLSfBCi0nwQUtJ8EALSfBBC0nwTAtJ8EOweAAAMDgAADAYAAAwCAAAMQAAADGAAAAwAAAAMAAAAAAAAAAAIAAAAAAAACEAAAAwAAAAMAAAADgAAAA4AgAAA=="></span></label>
-                        <input type="radio" id="ejje-radio" name="search-mode"><label for="ejje-radio"><span title="EJJE Weblio"><img class="search-icons" alt="EW" src="https://ejje.weblio.jp/favicon.ico"></span></label>
-                        <input type="radio" id="eijirou-radio" name="search-mode"><label for="eijirou-radio"><span title="英辞郎 on the web"><img class="search-icons" alt="ER" src="https://eow.alc.co.jp/favicon.ico"></span></label>
-                        <input type="radio" id="wikipedia-japanese-radio" name="search-mode"><label for="wikipedia-japanese-radio"><span title="ウィキペディア日本語版"><img class="search-icons" alt="WJ" src="https://ja.wikipedia.org/favicon.ico"></span></label>
-                        <input type="radio" id="furigana-bunko-radio" name="search-mode"><label for="furigana-bunko-radio"><span title="ふりがな文庫"><img class="search-icons" alt="FB" src="https://furigana.info/favicon.ico"></span></label>
-                    </td>
-                </tr>
-                <tr>
-                    <th id="format-sentences-table-header"></th>
-                    <td>
-                        <!-- make this a button instead -->
-                        <input type="radio" id="drk7jp-radio" name="search-mode"><label for="drk7jp-radio"><span title="drk7.jp"><img class="search-icons" alt="D7" src="https://www.drk7.jp/favicon.ico"></span></label>
-                    </td>
-                </tr>
-            </table>
-            <span id="notice1" class="unhighlightable"></span><br>
-            <span id="notice2" class="unhighlightable"></span><br>
-            <span id="iframe-header" class="unhighlightable"></span>
-            
-            <!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just messes up the quotations section in some pages. -->
-            <!-- <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br> -->
-            
-            <iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>
-            <audio id="audio" src="https://www.soundjay.com/buttons/button-28.mp3"></audio>
-        </div>
-        <script type="text/javascript" src="tool.js"></script>
-    </body>
+				<span id="preview-header" class="element-headers unhighlightable"></span>
+				<button type="button" id="toggle-vertical-button" onclick="toggleVertical()"></button>
+				<div id="preview" class="unhighlightable">
+					<span class="alt-forms">體外離脫</span><br><br><span class="readings">たいがいりだつ</span><br><br><span class="definitions">an out-of-body experience</span><br><br><span class="examples"><ruby>車<rt>くるま</rt></ruby>が<ruby>谷<rt>たに</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちて<ruby>両親<rt>りょうしん</rt></ruby>を<ruby>亡<rt>な</rt></ruby>くしたんですが、その<ruby>時<rt>とき</rt></ruby>に<ruby>彼女<rt>かのじょ</rt></ruby>は、<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby>ですか？<br><ruby>臨死体験<rt>りんしたいけん</rt></ruby><ruby>中<rt>ちゅう</rt></ruby>には<ruby><b>体外離脱</b><rt>たいがいりだつ</rt></ruby><ruby>現象<rt>げんしょう</rt></ruby>が<ruby>起<rt>お</rt></ruby>こることが<ruby>知<rt>し</rt></ruby>られている。</span>
+				</div><br><br>
+			</div>
+		</div>
+		<div id="external">
+			<input type="text" id="search-bar" placeholder="e.g. 魑魅魍魎" value="魑魅魍魎" onchange="toggleSearchButton(this.value)">&nbsp;<button id="search-button" type="button" onclick="searchWord()"></button>
+			<table id="indicator" class="unhighlightable">
+				<tr>
+					<th id="definitions-table-header"></th>
+					<td>
+						<input type="radio" id="wiktionary-english-radio" name="search-mode"><label for="wiktionary-english-radio"><span title="Wiktionary (English)"><img class="search-icons" alt="WE" src="https://en.wiktionary.org/favicon.ico"></span></label>
+						<input type="radio" id="wiktionary-japanese-radio" name="search-mode"><label for="wiktionary-japanese-radio"><span title="ウィクショナリー日本語版"><img class="search-icons" alt="WJ" src="https://ja.wiktionary.org/favicon.ico"></span></label>
+						<input type="radio" id="jisho-definitions-radio" name="search-mode"><label for="jisho-definitions-radio"><span title="jisho.org (definitions)"><img class="search-icons" alt="JD" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label>
+						<input type="radio" id="jisho-kanji-radio" name="search-mode"><label for="jisho-kanji-radio"><span title="jisho.org (kanji)"><img class="search-icons" alt="JK" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label>
+						<input type="radio" id="jisho-names-radio" name="search-mode"><label for="jisho-names-radio"><span title="jisho.org (names)"><img class="search-icons" alt="JN" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label><br>
+					</td>
+				</tr>
+				<tr>
+					<th id="example-sentences-table-header"></th>
+					<td>
+						<input type="radio" id="jisho-sentences-radio" name="search-mode"><label for="jisho-sentences-radio"><span title="jisho.org (sentences)"><img class="search-icons" alt="JS" src="https://assets.jisho.org/assets/favicon-062c4a0240e1e6d72c38aa524742c2d558ee6234497d91dd6b75a182ea823d65.ico"></span></label>
+						<input type="radio" id="massif-radio" name="search-mode"><label for="massif-radio"><span title="Massif"><img class="search-icons" alt="M" src="https://massif.la/static/favicon_256.png"></span></label>
+						<!-- yeah, i know how stupid this looks -->
+						<input type="radio" id="yourei-radio" name="search-mode"><label for="yourei-radio"><span title="用例"><img class="search-icons" alt="Y" src="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAAAAAAAAAAAAAAAC0nwQEtJ8EDLSfBBy0nwQwtJ8EFLSfBAAAAAAAAAAAAAAAAAC0nwQUtJ8EOLSfBEC0nwQotJ8EBAAAAAAAAAAAtJ8EJLSfBNi0nwVUtJ8F4LSfBUC0nwQstJ8EAAAAAAAAAAAAtJ8ExLSfBiC0nwZotJ8F4LSfBFAAAAAAAAAAALSfBGy0nwaktJ8G1LSfBhC0nwcwtJ8FvLSfBDC0nwQAAAAAALSfBOC0nwYctJ8GfLSfB6C0nwV0AAAAAAAAAAC0nwRstJ8GuLSfBnS0nwQotJ8FyLSfBzS0nwWktJ8EKLSfBAC0nwRMtJ8EoLSfBJy0nwdotJ8F3AAAAAAAAAAAtJ8EbLSfBri0nwZ4tJ8EALSfBDi0nwXktJ8HFLSfBUC0nwQMtJ8FbLSfBui0nwUUtJ8HZLSfBdwAAAAAAAAAALSfBGy0nwa4tJ8GdLSfBAC0nwQAtJ8EZLSfBqy0nwa4tJ8EeLSfBaS0nwdEtJ8FJLSfB2S0nwXcAAAAALSfBAC0nwRstJ8GtLSfBrC0nwTAtJ8EbLSfBMi0nwaotJ8HgLSfBSC0nwWgtJ8HQLSfBSS0nwdktJ8F3LSfBAC0nwQAtJ8EcLSfBqy0nwb8tJ8GLLSfBly0nwawtJ8G1LSfBxy0nwXktJ8F3LSfBzy0nwUktJ8HZLSfBdy0nwQUtJ8E2LSfBeC0nwaotJ8GnLSfBai0nweQtJ8GmLSfBOC0nwY8tJ8GlLSfBjC0nwc4tJ8FJLSfB2S0nwXctJ8EFLSfBUS0nweEtJ8HULSfBmC0nwSwtJ8HDLSfBfC0nwQAtJ8GCLSfBsy0nwZQtJ8HNLSfBSS0nwdktJ8F3LSfBAS0nwR0tJ8GpLSfB+i0nwZstJ8EKLSfBhS0nwbwtJ8FlLSfBtS0nwbwtJ8GXLSfBzS0nwUktJ8HZLSfBdy0nwQAtJ8ECLSfBPS0nweEtJ8GdLSfBAC0nwV8tJ8HeLSfBsC0nwaYtJ8FmLSfBfS0nwc8tJ8FJLSfB2S0nwXcAAAAALSfBAC0nwRQtJ8GbLSfBsC0nwQotJ8FCLSfBxS0nwXQtJ8EgLSfBDS0nwW0tJ8HQLSfBSS0nwdktJ8F3AAAAAAAAAAAtJ8EDLSfBQC0nwb0tJ8GRLSfBxC0nweMtJ8HJLSfBsC0nwbItJ8GoLSfBoy0nwT0tJ8HZLSfBdwAAAAAAAAAALSfBAC0nwRstJ8GZLSfBsS0nwXItJ8F1LSfBdS0nwXUtJ8F2LSfBRy0nwRotJ8EiLSfB0y0nwWYAAAAAAAAAAAAAAAAtJ8EDLSfBHi0nwTItJ8EKLSfBCi0nwQotJ8EKLSfBCi0nwQUtJ8EALSfBBC0nwTAtJ8EOweAAAMDgAADAYAAAwCAAAMQAAADGAAAAwAAAAMAAAAAAAAAAAIAAAAAAAACEAAAAwAAAAMAAAADgAAAA4AgAAA=="></span></label>
+						<input type="radio" id="ejje-radio" name="search-mode"><label for="ejje-radio"><span title="EJJE Weblio"><img class="search-icons" alt="EW" src="https://ejje.weblio.jp/favicon.ico"></span></label>
+						<input type="radio" id="eijirou-radio" name="search-mode"><label for="eijirou-radio"><span title="英辞郎 on the web"><img class="search-icons" alt="ER" src="https://eow.alc.co.jp/favicon.ico"></span></label>
+						<input type="radio" id="wikipedia-japanese-radio" name="search-mode"><label for="wikipedia-japanese-radio"><span title="ウィキペディア日本語版"><img class="search-icons" alt="WJ" src="https://ja.wikipedia.org/favicon.ico"></span></label>
+						<input type="radio" id="furigana-bunko-radio" name="search-mode"><label for="furigana-bunko-radio"><span title="ふりがな文庫"><img class="search-icons" alt="FB" src="https://furigana.info/favicon.ico"></span></label>
+					</td>
+				</tr>
+				<tr>
+					<th id="format-sentences-table-header"></th>
+					<td>
+						<!-- make this a button instead -->
+						<input type="radio" id="drk7jp-radio" name="search-mode"><label for="drk7jp-radio"><span title="drk7.jp"><img class="search-icons" alt="D7" src="https://www.drk7.jp/favicon.ico"></span></label>
+					</td>
+				</tr>
+			</table>
+			<span id="notice1" class="unhighlightable"></span><br>
+			<span id="notice2" class="unhighlightable"></span><br>
+			<span id="iframe-header" class="unhighlightable"></span>
+			
+			<!--the sandbox="allow-same-origin" thing allows me to load the page as if it were in incognito mode. allow-scripts just messes up the quotations section in some pages. -->
+			<!-- <a href="https://ruby.suki2.net">Sentence fixer (not by me) (DOWN)</a><br> -->
+			
+			<iframe id="external-content" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe><br>
+			<audio id="audio" src="https://www.soundjay.com/buttons/button-28.mp3"></audio>
+		</div>
+		<script type="text/javascript" src="tool.js"></script>
+	</body>
 </html>

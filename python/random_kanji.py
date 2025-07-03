@@ -26,17 +26,17 @@ CJK_EXTENSION_I: {len(CJK_EXTENSION_I)}
 """)
 
 def random_kanji():
-    return choice(CJK_UNIFIED_IDEOGRAPHS + CJK_EXTENSION_A + CJK_EXTENSION_B + CJK_EXTENSION_C + CJK_EXTENSION_D + CJK_EXTENSION_E + CJK_EXTENSION_F + CJK_EXTENSION_G + CJK_EXTENSION_H + CJK_EXTENSION_I)
+	return choice(CJK_UNIFIED_IDEOGRAPHS + CJK_EXTENSION_A + CJK_EXTENSION_B + CJK_EXTENSION_C + CJK_EXTENSION_D + CJK_EXTENSION_E + CJK_EXTENSION_F + CJK_EXTENSION_G + CJK_EXTENSION_H + CJK_EXTENSION_I)
 
 def concatenate_results(num):
-    assert(num >= 1)
-    results = ""
-    for _ in range(num):
-        results = results + random_kanji()
-    return results
+	assert(num >= 1)
+	results = ""
+	for _ in range(num):
+		results = results + random_kanji()
+	return results
 
 continue_generation = "y"
 while continue_generation != "n":
-    num = input("how many kanji: ")
-    print(concatenate_results(int(num)))
-    continue_generation = input("n to exit, anything else to continue: ").lower()
+	num = input("how many kanji: ")
+	print(concatenate_results(int(num)))
+	continue_generation = input("n to exit, anything else to continue: ").lower()
