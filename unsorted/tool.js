@@ -379,7 +379,6 @@ function toggleVertical() {
 				"vertical （↓）" : "horizontal （→）"
 			);
 	}
-	
 }
 
 // Copyright year at the bottom of the page. May be inaccurate in like, a few
