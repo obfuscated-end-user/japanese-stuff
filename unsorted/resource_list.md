@@ -191,6 +191,7 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [JLPT Grammar List](https://jlptgrammarlist.neocities.org)  
 [音楽理論](https://ongakuriron.com) - music theory  
 [2chまとめ](http://2chmm.com)  
+[K'sBookshelf](https://ksbookshelf.com)  
 
 ### Find Japanese language examples
 [例文](http://例文.jp) - example sentences  
