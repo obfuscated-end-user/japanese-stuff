@@ -192,6 +192,7 @@ Aozora Bunko books part [1](http://pastebin.com/7JPrM5zu), [2](http://pastebin.c
 [音楽理論](https://ongakuriron.com) - music theory  
 [2chまとめ](http://2chmm.com)  
 [K'sBookshelf](https://ksbookshelf.com)  
+[漢字にまつわるいろいろ](http://pyrite.s54.xrea.com)  
 
 ### Find Japanese language examples
 [例文](http://例文.jp) - example sentences  
