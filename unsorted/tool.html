@@ -24,7 +24,7 @@
 
 			<div class="input-boxes-left">
 				<span class="element-headers unhighlightable" id="alt-forms-header"><label for="alt-forms-checkbox"></label></span><br>
-				<input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, headers.altForms, '#f00');"><button class="format-buttons" type="button" onclick="formatAltForms()"></button>
+				<input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, headers.altForms, '#f00');"><button class="format-buttons" type="button" onclick="formatAltForms()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.altForms.value)"></button>
 				<span id="variation-selectors" class="unhighlightable">
 					<button type="button" class="copy-buttons" onclick="copy(variationSelectorsDropdown.options[variationSelectorsDropdown.selectedIndex].text.replace(/&amp;/g, '&'))"></button>
 					<select id="variation-selectors-dropdown" title="Select variation selector...">
@@ -40,11 +40,11 @@
 				<textarea id="alt-forms-textarea" rows="10" placeholder="" value=""></textarea><br>
 
 				<span class="element-headers unhighlightable" id="definitions-header"><label for="definitions-checkbox"></label></span><br>
-				<input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name" onclick="toggleHeaderColor(event, headers.definitions, '#32cd32');"><button class="format-buttons" type="button" onclick="formatDefinitions()"></button><br>
+				<input type="checkbox" id="definitions-checkbox" name="definitions-checkbox-name" onclick="toggleHeaderColor(event, headers.definitions, '#32cd32');"><button class="format-buttons" type="button" onclick="formatDefinitions()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.definitions.value)"></button><br>
 				<textarea id="definitions-textarea" rows="10" placeholder="" value=""></textarea><br>
 
 				<span class="element-headers unhighlightable" id="examples-header"><label for="examples-checkbox"></label></span><br>
-				<input type="checkbox" id="examples-checkbox" name="examples-checkbox-name" onclick="toggleHeaderColor(event, headers.examples, '#f0f');"><button class="format-buttons" type="button" onclick="formatExamples()"></button><span class="unhighlightable"> <span class="unhighlightable">・</span> </span><button type="button" class="copy-buttons" onclick="copy(textAreas.examples.value)"></button><br>
+				<input type="checkbox" id="examples-checkbox" name="examples-checkbox-name" onclick="toggleHeaderColor(event, headers.examples, '#f0f');"><button class="format-buttons" type="button" onclick="formatExamples()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.examples.value)"></button><br>
 				<textarea id="examples-textarea" rows="10" placeholder="" value=""></textarea>
 
 				<!-- make this align with the preview textbox -->
@@ -59,15 +59,15 @@
 
 			<div class="input-boxes-right">
 				<span class="element-headers unhighlightable" id="readings-header"><label for="readings-checkbox"></label></span><br>
-				<input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, headers.readings, '#daa520');"><button class="format-buttons" type="button" onclick="formatReadings()"></button><br>
+				<input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, headers.readings, '#daa520');"><button class="format-buttons" type="button" onclick="formatReadings()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.readings.value)"></button><br>
 				<textarea id="readings-textarea" rows="10" placeholder="" value=""></textarea><br>
 
 				<span class="element-headers unhighlightable" id="haskanji-header"><label for="haskanji-checkbox"></label></span><br>
-				<input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name" onclick="toggleHeaderColor(event, headers.hasKanji, '#00f');"><button class="format-buttons" type="button" onclick="formatWordsContainingThisKanji()"></button><br>
+				<input type="checkbox" id="haskanji-checkbox" name="haskanji-checkbox-name" onclick="toggleHeaderColor(event, headers.hasKanji, '#00f');"><button class="format-buttons" type="button" onclick="formatWordsContainingThisKanji()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.hasKanji.value)"></button><br>
 				<textarea id="haskanji-textarea" rows="10" placeholder="" value=""></textarea><br>
 
 				<span class="element-headers unhighlightable">HTML</span><br>
-				<button type="button" id="convert-text-button" onclick="convertText()"></button><span class="unhighlightable"> <span class="unhighlightable">・</span> </span><button type="button" class="copy-buttons" onclick="copy(preview.value)"></button><br>
+				<button type="button" id="convert-text-button" onclick="convertText()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(preview.value)"></button><br>
 
 				<div id="anki-html" data-text="" rows="10" value="" lang="ja"></div><br>
 
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		<div id="external">
-			<input type="text" id="search-bar" placeholder="e.g. 魑魅魍魎" value="魑魅魍魎" onchange="toggleSearchButton(this.value)">&nbsp;<button id="search-button" type="button" onclick="searchWord()"></button>
+			<input type="text" id="search-bar" placeholder="e.g. 魑魅魍魎" value="魑魅魍魎" onchange="toggleSearchButton(this.value)">&nbsp;<button id="search-button" type="button" onclick="searchWord()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(searchBar.value)"></button>
 			<table id="indicator" class="unhighlightable">
 				<tr>
 					<th id="definitions-table-header"></th>
