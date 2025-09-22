@@ -19,7 +19,8 @@ def add_kanji(kanji_string, section):
 		kanji_not_added = []
 		kanji_string = re.sub(garbage, "", kanji_string)
 		if re.match(valid_kanji, kanji_string):
-			kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
+			kanji_list_from_string = list(dict.fromkeys(
+				[char for char in kanji_string]))
 			for kanji in kanji_list_from_string:
 				if kanji in kanji_list[section]:
 					kanji_not_added.append(kanji)
@@ -35,17 +36,23 @@ def add_kanji(kanji_string, section):
 	else:
 		print(f"Invalid section: \"{section}\"")
 
+
 def remove_kanji(kanji_string, section):
 	if section in sections:
 		removed_kanji = []
 		kanji_not_removed = []
 		kanji_string = re.sub(garbage, "", kanji_string)
 		if re.match(valid_kanji, kanji_string):
-			kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
+			kanji_list_from_string = list(dict.fromkeys(
+				[char for char in kanji_string]))
 			for kanji in kanji_list_from_string:
 				if kanji in kanji_list[section]:
 					removed_kanji.append(kanji)
-					kanji_list[section] = re.sub(f"[{kanji}]", "", kanji_list[section])
+					kanji_list[section] = re.sub(
+						f"[{kanji}]",
+						"",
+						kanji_list[section]
+					)
 				else:
 					kanji_not_removed.append(kanji)
 		else:
@@ -57,11 +64,13 @@ def remove_kanji(kanji_string, section):
 	else:
 		print(f"Invalid section: \"{section}\"")
 
+
 def extract_kanji(text):
 	added_kanji = []
 	kanji_string = re.sub(garbage, "", text)
 	if re.match(valid_kanji, kanji_string):
-		kanji_list_from_string = list(dict.fromkeys([char for char in kanji_string]))
+		kanji_list_from_string = list(dict.fromkeys(
+			[char for char in kanji_string]))
 		for kanji in kanji_list_from_string:
 			added_kanji.append(kanji)
 	else:
@@ -69,8 +78,6 @@ def extract_kanji(text):
 	if added_kanji:
 		print(f"{''.join(added_kanji)}")
 
-# remove_kanji("日本攜", "learnedKanji")
-# extract_kanji("天気の良い日に稲穂がいっせいに風になびいている景色は大変美しかった。")
 
 # does not work if the first words are in hiragana/katakana
 add_kanji("稲光すなわち永遠なり。", "learnedKanji")
