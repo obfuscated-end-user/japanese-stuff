@@ -10,6 +10,7 @@ def word_split1(text):
 	"""Returns a word search thing for Anki."""
 	return "\"front:re:(" + text.replace("、", "|") + ")\""
 
+
 def word_split2(text):
 	"""Same as above, but without the Anki stuff."""
 	word_list = text.split("、")
@@ -25,8 +26,10 @@ def word_split2(text):
 	final = re.sub("\|$", "", final)
 	return "\"front:re:(" + final + ")\""
 
+
 def word_split3(text):
 	return "\"back:re:(.alt-forms.>|、)(" + text.replace("、", "|") + ")\""
+
 
 def separate_kanji(text: str):
 	result = ""
@@ -35,8 +38,10 @@ def separate_kanji(text: str):
 	result = result[:-1]
 	return result
 
+
 def word_count(text: str):
 	return len(text.split("、"))
+
 
 def find_duplicates(text: str):
 	result = ""
@@ -46,6 +51,7 @@ def find_duplicates(text: str):
 		result += term  + "、"
 	result = result[:-1]
 	return result
+
 
 def separate_kanji(text: str):
 	result = ""

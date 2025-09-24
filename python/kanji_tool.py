@@ -83,6 +83,11 @@ def extract_kanji(text):
 add_kanji("稲光すなわち永遠なり。", "learnedKanji")
 
 # do not uncomment
-""" out_file = open(cwd + "/python/kanji tools/test/test1.json", "w", encoding="utf-8") 
+"""
+out_file = open(
+	cwd + "/python/kanji tools/test/test1.json",
+	"w", encoding="utf-8"
+) 
 json.dump(kanji_list, out_file, indent=6, ensure_ascii=False) 
-out_file.close() """
+out_file.close()
+"""
