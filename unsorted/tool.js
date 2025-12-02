@@ -216,6 +216,7 @@ function formatDefinitions() {
 		.replaceAll(regexSpacing, "\n\n")
 		.replaceAll(regexTrailingWs, "")
 		.replaceAll("<!---->", "")
+		.replaceAll("(<i>", "&#40;<i>")
 		.replaceAll("<a hidden=\"\"></a>", "");
 
 	const keywords = [
