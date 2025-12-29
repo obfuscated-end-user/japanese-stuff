@@ -1,16 +1,18 @@
+<!-- EDIT ON A TEXT EDITOR, NOT IN ANKI -->
 <div id="front" lang="ja">
-	{{Front}}
+	{{furigana:Front}}
 </div>
 
 <hr id=answer>
 
 <div id="back" lang="ja">
-	{{Back}}
+	{{furigana::Back}}
 </div>
 
 <script type="text/javascript">
-	// fonts used for randomization. must be prepended with an underscore "_", in the collection.media folder, and not be an opentype font file (.otf).
-	// slightly more than the ones used on the front
+	// fonts used for randomization. must be prepended with an underscore "_",
+	// in the collection.media folder, and not be an opentype font file (.otf).
+	// slightly more than the ones used on the front.
 	var typefaces = [
 		"_HanaMinA",
 		"_yumin",
@@ -27,10 +29,10 @@
 		"_851MkPOP_100",
 		"_AP",
 		"_APT",
-		"_dartsfont",
+		"_dartsfont", // not on front
 		"_DotGothic16-Regular",
 		"_FUTENE",
-		"_Hosohuwafont",
+		"_Hosohuwafont",	// not on front
 		"_irohamaru-mikami-Regular",
 		"_KanjiStrokeOrders_v4004",
 		"_KiwiMaru-Regular",
@@ -40,51 +42,124 @@
 		"_mplus-2p-regular",
 		"_Mplus2-Regular",
 		"_seap",
-		"_ShigotoMemogaki-Regular-1-01",
+		"_ShigotoMemogaki-Regular-1-01",	// not on front
 		"_SoukouMincho",
 		"_umeboshi_",
 		"_unifont_jp-14001",
-		"_Yuzu_PenJin_M",
-		"_Yuzu_PenJin_P",
+		"_Yuzu_PenJin_M",	// not on front
+		"_Yuzu_PenJin_P",	// not on front
 		"_ZenAntique-Regular",
 		"_ZenAntiqueSoft-Regular",
 		"_ZenKakuGothicAntique-Regular"
 	];
 
-	// this is needed here because front side is still on the screen when you "flip" the card.
+	// this is needed here because front side is still on the screen when you
+	// "flip" the card.
 	var front = document.getElementById("front");
-	var frontTypeface = typefaces[Math.floor(Math.random() * typefaces.length)]
+	var frontTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
 	front.style.cssText = `font-family: ${frontTypeface}, _meiryo, sans-serif; font-size: 300%; text-align: center; writing-mode: vertical-rl; margin: 0 auto; display: block;`;
 
 	// examples
 	examples = document.getElementsByClassName("examples")[0];
-	var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
+	var examplesTypeface =
+		typefaces[Math.floor(Math.random() * typefaces.length)];
 	examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;`;
 
 	// windows. comment this out if view from android app is broken.
 	var windows = document.getElementsByClassName("win").length > 0;
 	if (windows) {
 		var examplesWindows = document.getElementsByClassName("examples")[0];
-		examplesWindows.style.cssText = "font-family: 'Noto Serif JP', Meiryo, Arial, sans-serif;"
+		examplesWindows.style.cssText =
+			"font-family: 'Noto Serif JP', Meiryo, Arial, sans-serif;"
 
-		var examplesTypeface = typefaces[Math.floor(Math.random() * typefaces.length)];
-		examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;`;
+		var examplesTypeface =
+			typefaces[Math.floor(Math.random() * typefaces.length)];
+		examples.style.cssText = `font-family: ${examplesTypeface}, _meiryo, sans-serif; writing-mode: vertical-rl; text-align: left; margin: 0px; padding: 0px; height: 75%; width: 100%;}`;
 	}
 
-	// randomize writing orientation (horizontal or vertical)
-	var writingDirection = Math.random() < 0.5;
-	if (writingDirection)
-		examples.style.writingMode = front.style.writingMode = "horizontal-tb";
-	else
-		examples.style.writingMode = front.style.writingMode = "vertical-rl";
+	// randomly dictate all japanese sentences' orientation
+	examples.style.writingMode =
+		Math.random() < 0.5 ? "horizontal-tb" : "vertical-rl";
 
 	// randomize if furigana should appear
+	// you need to store the variable appearFurigana here to apply it on all
+	// cases
 	var appearFurigana = Math.random() < 0.5;
-	var rubyText = document.getElementsByTagName("rt");
-	for (i = 0; i < rubyText.length; i++) {
-		if (appearFurigana)
-			rubyText[i].style.display = "ruby-text";
-		else
-			rubyText[i].style.display = "none";
+	if (!appearFurigana) {
+		examples.classList.add("hide-furigana");
 	}
+
+	// add buttons for examples section if it exists
+	(function() {
+		var examples = document.getElementsByClassName("examples")[0];
+		if (examples) {
+			var front = document.getElementById("front");
+			var buttonContainer = document.createElement("div");
+			buttonContainer.style.cssText =
+				"text-align: center; margin-bottom: 10px; padding: 10px;";			
+			// toggle button
+			var toggleBtn = document.createElement("button");
+			toggleBtn.textContent = "H↔V";
+			toggleBtn.classList.add("ex-btns");
+			// store original style
+			var originalStyle = toggleBtn.style.cssText;
+			// set initial state
+			var currentMode = examples.style.writingMode;
+			toggleBtn.textContent =
+				currentMode === "horizontal-tb" ? "V↔H" : "H↔V";
+			toggleBtn.onclick = function() {
+				var isHorizontal = examples.style.writingMode === "horizontal-tb";
+				var newMode = isHorizontal ? 'vertical-rl' : 'horizontal-tb';
+				examples.style.writingMode = newMode;
+				// set this if you want
+				// if (front)
+				// 	front.style.writingMode = newMode;
+				// haptic feedback, vibrate device if possible (phone for ex.)
+				if (navigator.vibrate)
+					navigator.vibrate(50);
+				var flashText = newMode === "horizontal-tb" ? "V↔H" : "H↔V";
+				var flashBg =
+					newMode === "horizontal-tb" ? "#e3f2fd" : "#f3e5f5";
+				toggleBtn.textContent = flashText;
+				toggleBtn.style.background = flashBg;
+				setTimeout(() => {
+					toggleBtn.textContent
+						= newMode === "horizontal-tb" ? "V↔H" : "H↔V";
+					toggleBtn.style.cssText = originalStyle;
+				}, 200);
+			};
+			// font button
+			var fontBtn = document.createElement("button");
+			fontBtn.textContent = "Aa";
+			fontBtn.classList.add("ex-btns");
+			fontBtn.onclick = function() {
+				var randomFont =
+					typefaces[Math.floor(Math.random() * typefaces.length)];
+				examples.style.fontFamily =
+					randomFont + ", _meiryo, sans-serif";
+				// haptic feedback
+				if (navigator.vibrate)
+					navigator.vibrate(50);
+			};
+			// furigana button (doesn't work)
+			var furiganaBtn = document.createElement("button");
+			furiganaBtn.textContent = appearFurigana ? "漢" : "あ";
+			furiganaBtn.classList.add("ex-btns");
+			furiganaBtn.onclick = function() {
+				appearFurigana = !appearFurigana;
+				// var appearFurigana = Math.random() < 0.5;
+				examples.classList.toggle("hide-furigana");
+				furiganaBtn.textContent = appearFurigana ? "漢" : "あ";
+				// haptic feedback
+				if (navigator.vibrate)
+					navigator.vibrate(50);
+			};
+			buttonContainer.appendChild(toggleBtn);
+			buttonContainer.appendChild(fontBtn);
+			buttonContainer.appendChild(furiganaBtn);
+			// insert buttons above examples
+			examples.parentNode.insertBefore(buttonContainer, examples);
+		}
+	})();
+
 </script>

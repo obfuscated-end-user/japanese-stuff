@@ -1,5 +1,5 @@
 <div id="front" lang="ja">
-	{{Front}}
+	{{furigana:Front}}
 </div>
 
 <script type="text/javascript">
@@ -52,25 +52,19 @@
 	*/
 
 	// randomize if furigana should appear
-	var appearFurigana = Math.random() < 0.5, rubyText = document.getElementsByTagName("rt");
-	for (i = 0; i < rubyText.length; i++) {
-		if (appearFurigana == true)
-			rubyText[i].style.display = "ruby-text";
-		else
-			rubyText[i].style.display = "none";
-	}
+	var appearFurigana = Math.random() < 0.5;
+	var rubyText = document.getElementsByTagName("rt");
+	for (i = 0; i < rubyText.length; i++)
+		rubyText[i].style.display = appearFurigana ? "ruby-text" : "none";
 
 	// randomize writing orientation (horizontal or vertical)
-	var writingDirectionNew = Math.random() < 0.5;
-	if (writingDirectionNew == true)
-		front.style.writingMode = "horizontal-tb";
-	else
-		front.style.writingMode = "vertical-rl";
+	front.style.writingMode =
+		Math.random() < 0.5 ? "horizontal-tb" : "vertical-rl";
 
 	// removes the 100ms fade delay shit
 	// https://www.reddit.com/r/medicalschoolanki/comments/g3lnwh/how_to_remove_the_animation_fade_100ms_from_anki
 	qFade = 100;
-	if (typeof anki !== 'undefined')
+	if (typeof anki !== "undefined")
 		anki.qFade = qFade;
 </script>
 
