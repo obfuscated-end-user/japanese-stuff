@@ -72,6 +72,7 @@ This file is quite large, it may take a while to fully load the contents.
 * [Hentaigana](https://en.wikipedia.org/wiki/Hentaigana)
 * [Kanji](https://en.wikipedia.org/wiki/Kanji)
 * [Libian](https://en.wikipedia.org/wiki/Libian)
+* [Liding](https://en.wikipedia.org/wiki/Liding)
 * [Sawndip](https://en.wikipedia.org/wiki/Sawndip)
 * [Taito (kanji)](https://en.wikipedia.org/wiki/Taito_(kanji))
 * [Unicode](https://en.wikipedia.org/wiki/Unicode)

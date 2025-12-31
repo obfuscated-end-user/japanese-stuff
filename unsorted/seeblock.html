@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CJK Unicode Block Viewer</title>
+	<style>
+		body {
+			font-family: "Segoe UI", Roboto, sans-serif;
+			margin: 0 10% auto;
+			padding: 20px;
+			background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+			min-height: 100vh;
+		}
+		h1 {
+			color: #2c3e50;
+			text-align: center;
+			font-size: 2.2em;
+			margin-bottom: 10px;
+			text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		}
+		h2 {
+			color: #34495e;
+			border-bottom: 2px solid #3498db;
+			padding-bottom: 8px;
+			margin-bottom: 15px;
+		}
+		.legend {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 12px;
+			margin-bottom: 25px;
+			background: white;
+			padding: 20px;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		}
+		.legend-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 10px;
+			border-radius: 8px;
+			transition: transform 0.2s;
+		}
+		.legend-item:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+		}
+		.legend-color {
+			width: 24px;
+			height: 24px;
+			border-radius: 4px;
+			border: 2px solid rgba(255,255,255,0.8);
+			box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+		}
+		.count-badge {
+			background: rgba(52,152,219,0.2);
+			color: #2980b9;
+			border-radius: 12px;
+			padding: 4px 8px;
+			font-size: 0.85em;
+			font-weight: 600;
+			min-width: 28px;
+			text-align: center;
+		}
+		.controls {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+		#convert-btn, #sample-text-btn {
+			background: linear-gradient(135deg, #3498db, #2980b9);
+			color: white;
+			border: none;
+			padding: 12px 24px;
+			font-size: 16px;
+			font-weight: 600;
+			border-radius: 25px;
+			cursor: pointer;
+			transition: all 0.3s;
+			box-shadow: 0 4px 12px rgba(52,152,219,0.4);
+		}
+		#convert-btn:hover, #sample-text-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(52,152,219,0.6);
+		}
+		#input-text {
+			width: auto;
+			padding: 15px;
+			font-family: monospace;
+			font-size: 14px;
+			border: 2px solid #ddd;
+			border-radius: 10px;
+			resize: none;
+			transition: border-color 0.3s;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+			height: 100px;
+		}
+		#input-text:focus {
+			outline: none;
+			border-color: #3498db;
+			box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+		}
+		#preview { 
+			font-family: "Yu Mincho", "Times New Roman", times, serif; 
+			font-size: 25px; 
+			line-height: 1.6;
+			min-height: 120px;
+			padding: 60px;
+			background: white;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+			white-space: pre-wrap;
+			word-break: normal;
+			position: relative;
+			z-index: 0;
+		}
+
+		.cjk-unified  { color: #c91c14; } /* 0°  Darker red */
+		.cjk-a		{ color: #e55f2b; } /* 30° Darker orange */
+		.cjk-b		{ color: #e6b922; } /* 60° Darker yellow */
+		.cjk-c		{ color: #8ed022; } /* 90° Darker chartreuse */
+		.cjk-d		{ color: #1dba50; } /* 120° Darker lime */
+		.cjk-e		{ color: #1db9a3; } /* 150° Darker spring green */
+		.cjk-f		{ color: #1678c6; } /* 180° Darker cyan */
+		.cjk-g		{ color: #2c4dd9; } /* 210° Darker azure */
+		.cjk-h		{ color: #6d2ad9; } /* 240° Darker blue */
+		.cjk-i		{ color: #b82ad9; } /* 270° Darker violet */
+		.cjk-j		{ color: #d92a8f; } /* 300° Darker magenta */
+		.cjk-compat   { color: #e55f5f; } /* 330° Darker rose */
+		.non-cjk { color: #000; }
+
+		@media (max-width: 600px) {
+			.legend { grid-template-columns: 1fr; }
+			body { padding: 10px; margin: 0 5% auto; }
+		}
+		#preview a { 
+			text-decoration: none; 
+			display: inline-block;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			line-height: 1.6;
+			transform-origin: center;
+			position: relative;
+		}
+		#preview a:hover { 
+			font-weight: 700 !important; 
+			transform: scale(2);
+			z-index: 9999 !important;
+			-webkit-text-stroke: 2px #000 !important;
+			paint-order: stroke fill;
+			position: relative;
+		}
+		#preview a:not(:hover) { 
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			transform: scale(1);
+		}
+		a.cjk-unified:hover, a.cjk-a:hover, a.cjk-b:hover, 
+		a.cjk-c:hover, a.cjk-d:hover, a.cjk-e:hover, 
+		a.cjk-f:hover, a.cjk-g:hover, a.cjk-h:hover, 
+		a.cjk-i:hover, a.cjk-j:hover, a.cjk-compat:hover {
+			font-weight: 800 !important;
+		}
+		#back-to-top {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			background: linear-gradient(135deg, #3498db, #2980b9);
+			color: white;
+			border: none;
+			border-radius: 50%;
+			width: 60px;
+			height: 60px;
+			font-size: 24px;
+			cursor: pointer;
+			box-shadow: 0 4px 12px rgba(52,152,219,0.4);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(20px);
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			z-index: 1000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#back-to-top.show {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+		#back-to-top:hover {
+			transform: translateY(-4px) scale(1.05);
+			box-shadow: 0 6px 20px rgba(52,152,219,0.6);
+			background: linear-gradient(135deg, #2980b9, #1f5f8b);
+		}
+		@media (max-width: 600px) {
+			#back-to-top {
+				bottom: 20px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+				font-size: 20px;
+			}
+		}
+		#font-selector {
+			padding: 8px 12px;
+			border-radius: 6px;
+			border: 2px solid #ddd;
+			font-size: 14px;
+			background: #fff;
+			min-width: 180px;
+		}
+		#font-selector:focus {
+			outline: none;
+			border-color: #3498db;
+			box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+		}
+		#random-font-btn {
+			background: linear-gradient(135deg, #f39c12, #e67e22);
+			color: white;
+			border: none;
+			padding: 10px 16px;
+			font-size: 14px;
+			font-weight: 600;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.3s;
+			box-shadow: 0 2px 8px rgba(243,156,18,0.4);
+		}
+		#random-font-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(243,156,18,0.6);
+		}
+		.controls {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>CJK Unicode Block Viewer</h1>
+	<p>Most characters are in CJK Unified Ideographs, and rarely other blocks.</p>
+	<h2>Legend</h2>
+	<div class="legend">
+		<div class="legend-item" data-block="cjk-unified">
+			<div class="legend-color" style="background: #c91c14;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs">CJK UI (4E00-9FFF)</a>
+			<span class="count-badge" data-count="cjk-unified">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-a">
+			<div class="legend-color" style="background: #e55f2b;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_A" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension A">CJK A (3400-4DBF)</a>
+			<span class="count-badge" data-count="cjk-a">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-b">
+			<div class="legend-color" style="background: #e6b922;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_B" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension B">CJK B (20000-2A6DF)</a>
+			<span class="count-badge" data-count="cjk-b">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-c">
+			<div class="legend-color" style="background: #8ed022;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_C" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension C">CJK C (2A700-2B73F)</a>
+			<span class="count-badge" data-count="cjk-c">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-d">
+			<div class="legend-color" style="background: #1dba50;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_D" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension D">CJK D (2B740-2B81F)</a>
+			<span class="count-badge" data-count="cjk-d">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-e">
+			<div class="legend-color" style="background: #1db9a3;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_E" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension E">CJK E (2B820-2CEAF)</a>
+			<span class="count-badge" data-count="cjk-e">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-f">
+			<div class="legend-color" style="background: #1678c6;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_F" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension F">CJK F (2CEB0-2EBEF)</a>
+			<span class="count-badge" data-count="cjk-f">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-g">
+			<div class="legend-color" style="background: #2c4dd9;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_G" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension G">CJK G (30000-3134F)</a>
+			<span class="count-badge" data-count="cjk-g">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-h">
+			<div class="legend-color" style="background: #6d2ad9;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_H" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension H">CJK H (31350-323AF)</a>
+			<span class="count-badge" data-count="cjk-h">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-i">
+			<div class="legend-color" style="background: #b82ad9;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_I" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension I">CJK I (2EBF0-2EE5F)</a>
+			<span class="count-badge" data-count="cjk-i">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-j">
+			<div class="legend-color" style="background: #d92a8f;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_J" target="_blank" rel="noopener noreferrer" title="CJK Unified Ideographs Extension J">CJK J (323B0-32E9F)</a>
+			<span class="count-badge" data-count="cjk-j">0</span>
+		</div>
+		<div class="legend-item" data-block="cjk-compat">
+			<div class="legend-color" style="background: #e55f5f;"></div>
+			<a href="https://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs" target="_blank" rel="noopener noreferrer" title="CJK Compatibility">CJK Comp. (F900-FAFF, 2F800-2FA1F)</a>
+			<span class="count-badge" data-count="cjk-compat">0</span>
+		</div>
+	</div>
+
+	<div class="controls">
+		<div class="control-row">
+			<select id="font-selector" aria-label="Choose preview font"></select>
+			<button id="random-font-btn" title="Pick random font">🎲</button>
+			<input type="button" value="Convert" id="convert-btn"/>
+			<input type="button" value="Sample text" id="sample-text-btn"/>
+		</div>
+
+		<textarea id="input-text" placeholder="enter 漢字"></textarea>
+	</div>
+
+	<div id="preview">Click "Convert" to see colored CJK characters by Unicode block!</div>
+	<button id="back-to-top" title="Back to top">↑</button>
+	<script>
+		const ranges = {
+			"cjk-unified": [[0x4e00, 0x9fff]],
+			"cjk-a": [[0x3400, 0x4dbf]],
+			"cjk-b": [[0x20000, 0x2a6df]],
+			"cjk-c": [[0x2a700, 0x2b73f]],
+			"cjk-d": [[0x2b740, 0x2b81f]],
+			"cjk-e": [[0x2b820, 0x2ceaf]],
+			"cjk-f": [[0x2ceb0, 0x2ebef]],
+			"cjk-g": [[0x30000, 0x3134f]],
+			"cjk-h": [[0x31350, 0x323af]],
+			"cjk-i": [[0x2ebf0, 0x2ee5f]],
+			"cjk-j": [[0x323b0, 0x3347f]],
+			"cjk-compat": [[0xf900, 0xfaff], [0x2f800, 0x2fa1f]]
+		};
+		document.getElementById("convert-btn").addEventListener("click", function() {
+			const input = document.getElementById("input-text").value;
+			const preview = document.getElementById("preview");
+			let html = "";
+
+			// this is for counting how many chars are in each block
+			const counters = {};
+			[
+				"cjk-unified", "cjk-a", "cjk-b", "cjk-c", "cjk-d", 
+				"cjk-e", "cjk-f", "cjk-g", "cjk-h", "cjk-i", "cjk-j",
+				"cjk-compat"
+			].forEach(block => {
+				counters[block] = 0;
+			});
+
+
+			// add a check to see if a character within a block is an unassigned
+			// codepoint
+			for (let char of input) {
+				const codePoint = char.codePointAt(0);
+				let className = "non-cjk";
+				let isCJK = false;
+				// check each block using ranges object
+				for (const [blockName, blockRanges] of Object.entries(ranges)) {
+					for (const [start, end] of blockRanges) {
+						if (codePoint >= start && codePoint <= end) {
+							className = blockName;
+							isCJK = true;
+							break;
+						}
+					}
+					if (isCJK)
+						break;
+				}
+
+				if (isCJK) {
+					counters[className]++;
+					html += `<a class="${className}" title="U+${codePoint.toString(16).toUpperCase().padStart(4, "0")}, ${className.toUpperCase()}" href="https://ctext.org/dictionary.pl?if=en&char=${encodeURIComponent(char)}" target="_blank" rel="noopener noreferrer">${char}</a>`;
+					// html += `<a class="${className}" title="U+${codePoint.toString(16).toUpperCase().padStart(4, "0")}, ${className.toUpperCase()}" href="https://en.wiktionary.org/wiki/${encodeURIComponent(char)}" target="_blank" rel="noopener noreferrer">${char}</a>`;
+					// html += `<a class="${className}" title="U+${codePoint.toString(16).toUpperCase().padStart(4, "0")}, ${className.toUpperCase()}" href="https://www.youtube.com/results?search_query=${encodeURIComponent(char)}" target="_blank" rel="noopener noreferrer">${char}</a>`;
+				} else
+					html += `<span class="non-cjk" title="U+${codePoint.toString(16).toUpperCase().padStart(4, "0")}">${char}</span>`;
+			}
+
+			Object.keys(counters).forEach(block => {
+				const badge = document.querySelector(`[data-count="${block}"]`);
+				if (badge) {
+					badge.textContent = `${counters[block]}`;
+					if (counters[block] > 0) {
+						badge.style.background = "rgba(46,204,113,0.3)";
+						badge.style.color = "#27ae60";
+					} else {
+						badge.style.background = "rgba(52,152,219,0.2)";
+						badge.style.color = "#2980b9";
+					}
+				}
+			});
+
+			preview.innerHTML = html || "No characters to display.";
+		});
+
+		const backToTopBtn = document.getElementById("back-to-top");
+		window.addEventListener("scroll", () => {
+			if (window.pageYOffset > 300)
+				backToTopBtn.classList.add("show");
+			else
+				backToTopBtn.classList.remove("show");
+		});
+
+		backToTopBtn.addEventListener("click", () => {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			});
+		});
+
+		let fonts = [
+			// web-safe fonts
+			// fix the warnings in firefox such as:
+			// "Request for font "Roboto" blocked at visibility level 2 (requires 3)"
+			{ label: 'Default (Yu Mincho)', value: '"Yu Mincho", "Times New Roman", "Plangothic P2", serif' },
+			{ label: 'Noto Serif JP', value: '"Noto Serif JP", Georgia, "Plangothic P2", serif' },
+			{ label: 'Noto Sans JP', value: '"Noto Sans JP", Arial, "Plangothic P2", sans-serif' },
+			{ label: 'Georgia', value: 'Georgia, "Times New Roman", "Plangothic P2", serif' },
+			{ label: 'Arial', value: 'Arial, Helvetica, "Plangothic P2", sans-serif' },
+			{ label: 'Hiragino Sans', value: '"Hiragino Sans", "Plangothic P2", sans-serif' },
+			{ label: 'Hiragino Mincho', value: '"Hiragino Mincho", "Plangothic P2", serif' },
+			{ label: 'Tahoma', value: 'Tahoma, Geneva, "Plangothic P2", sans-serif' },
+			{ label: 'Verdana', value: 'Verdana, Geneva, "Plangothic P2", sans-serif' },
+
+			// more shit
+			{ label: 'HanaMinA', value: '"HanaMinA", "Plangothic P2", serif' },
+			{ label: 'HanaMinB', value: '"HanaMinB", "Plangothic P2", serif' },
+			{ label: 'Meiryo', value: '"Meiryo", "Plangothic P2", sans-serif' },
+			{ label: 'IPAexGothic', value: '"IPAexGothic", "Plangothic P2", sans-serif' },
+			{ label: 'IPAexMincho', value: '"IPAexMincho", "Plangothic P2", serif' },
+			{ label: 'TakaoPMincho', value: '"TakaoPMincho", "Plangothic P2", serif' },
+			{ label: 'TakaoExMincho', value: '"TakaoExMincho", "Plangothic P2", serif' },
+			{ label: 'BIZ UDGothic', value: '"BIZ UDGothic", "Plangothic P2", sans-serif' },
+			{ label: 'BIZ UDMincho Medium', value: '"BIZ UDMincho Medium", "Plangothic P2", serif' },
+			{ label: 'UD Digi Kyokasho N-R', value: '"UD Digi Kyokasho N-R", "Plangothic P2", serif' },
+			{ label: 'YOzFontK', value: '"YOzFontK", "Plangothic P2", sans-serif' },
+			// { label: 'Yu Goth Regular', value: '"_YuGothR", sans-serif' },
+			{ label: '851MkPOP', value: '"851MkPOP", "Plangothic P2", sans-serif' },
+			{ label: 'apricotJapanesefont', value: '"apricotJapanesefont", "Plangothic P2", sans-serif' },
+			{ label: 'apricotJapanesefontT', value: '"apricotJapanesefontT", "Plangothic P2", sans-serif' },
+			{ label: 'DotGothic16', value: '"DotGothic16", "Plangothic P2", monospace' },
+			{ label: 'FUTENE', value: '"FUTENE", "Plangothic P2", sans-serif' },
+			{ label: 'irohamaru mikami Regular', value: '"irohamaru mikami Regular", "Plangothic P2", cursive' },
+			{ label: 'Kiwi Maru', value: '"Kiwi Maru", "Plangothic P2", serif' },
+			{ label: 'Kosugi Maru', value: '"Kosugi Maru", "Plangothic P2", sans-serif' },
+			{ label: 'S2G Moon font-PRO', value: '"S2G Mooon font-PRO", "Plangothic P2", serif' },
+			{ label: 'Mplus 1', value: '"Mplus 1", "Plangothic P2", sans-serif' },
+			{ label: 'M + 2p', value: '"M + 2p", "Plangothic P2", sans-serif' },
+			{ label: 'Mplus 2', value: '"Mplus 2", "Plangothic P2", sans-serif' },
+			{ label: 'S2G Sea font-PRO', value: '"S2G Sea font-PRO", "Plangothic P2", sans-serif' },
+			{ label: 'SoukouMincho', value: '"SoukouMincho", "Plangothic P2", serif' },
+			{ label: 'umeboshi', value: '"umeboshi", "Plangothic P2", cursive' },
+			{ label: 'Unifont-JP', value: '"Unifont-JP", "Plangothic P2", monospace' },
+			{ label: 'Zen Antique', value: '"Zen Antique", "Plangothic P2", serif' },
+			{ label: 'Zen Antique Soft', value: '"Zen Antique Soft", "Plangothic P2", serif' },
+			{ label: 'Zen Kaku Gothic Antique', value: '"Zen Kaku Gothic Antique", "Plangothic P2", sans-serif' },
+			{ label: 'DartsFont', value: '"DartsFont", "Plangothic P2", sans-serif' },
+			{ label: 'HosofuwaFont', value: '"HosofuwaFont", "Plangothic P2", sans-serif' },
+			{ label: 'ShigotoMemogaki', value: '"ShigotoMemogaki", "Plangothic P2", sans-serif' },
+			{ label: 'Yuzu PenJiN [M]', value: '"Yuzu PenJiN [M]", "Plangothic P2", sans-serif' },
+			{ label: 'Yuzu PenJiN [P]', value: '"Yuzu PenJiN [P]", "Plangothic P2", sans-serif' },
+		].sort((a, b) => a.label.localeCompare(b.label));
+
+		const fontSelector = document.getElementById("font-selector");
+		const randomFontBtn = document.getElementById("random-font-btn");
+		const preview = document.getElementById("preview");
+
+		// populate <select> from fonts array
+		fontSelector.innerHTML = "";	// clear existing
+		fonts.forEach(font => {
+			const option = document.createElement("option");
+			option.value = font.value;
+			option.textContent = font.label;
+			if (font.label === "Default (Yu Mincho)")
+				option.selected = true;
+			fontSelector.appendChild(option);
+		});
+
+		function applyPreviewFont() {
+			preview.style.fontFamily = fontSelector.value || fonts[0].value;
+		}
+
+		fontSelector.addEventListener("change", applyPreviewFont);
+		randomFontBtn.addEventListener("click", function() {
+			const randomIndex = Math.floor(Math.random() * fonts.length);
+			fontSelector.value = fonts[randomIndex].value;
+			fontSelector.dispatchEvent(new Event("change")); // trigger update
+		});
+
+		// too niche of a use case for this to have a function but i care just
+		// because
+		fontSelector.addEventListener("keydown", function(event) {
+			const options = Array.from(this.options);
+			const currentIndex = this.selectedIndex;
+			const totalOptions = options.length;
+			if (event.key === "ArrowDown") {
+				event.preventDefault();
+				this.selectedIndex = (currentIndex + 1) % totalOptions;
+				this.dispatchEvent(new Event("change"));
+			} else if (event.key === "ArrowUp") {
+				event.preventDefault();
+				this.selectedIndex = (currentIndex - 1 + totalOptions)
+					% totalOptions;
+				this.dispatchEvent(new Event("change"));
+			}
+		});
+		applyPreviewFont();
+
+		// returns a random string of cjk characters in this block by length
+		function randomCJKString(block, length) {
+			// Use the shared ranges object (defined globally or passed in)
+			const blockRanges = ranges[block];
+			if (!blockRanges) return "";
+
+			// function to pick a random code point from any range(s)
+			function randFromRanges(rangesArray) {
+				// Pick a random range from the array of ranges
+				const chosenRange = rangesArray[Math.floor(Math.random() * rangesArray.length)];
+				const [start, end] = chosenRange;
+				return start + Math.floor(Math.random() * (end - start + 1));
+			}
+
+			// Build the string of given length
+			let result = "";
+			for (let i = 0; i < Math.max(0, length || 0); i++) {
+				const codePoint = randFromRanges(blockRanges);
+				result += String.fromCodePoint(codePoint);
+			}
+			return result;
+		}
+
+		document.getElementById("sample-text-btn").addEventListener("click", function() {
+			length = 50;
+			html =
+			"CJK Unified Ideographs\n" + randomCJKString("cjk-unified", length) + "\n" +
+			"CJK Extension A\n" + randomCJKString("cjk-a", length) + "\n" +
+			"CJK Extension B\n" + randomCJKString("cjk-b", length) + "\n" +
+			"CJK Extension C\n" + randomCJKString("cjk-c", length) + "\n" +
+			"CJK Extension D\n" + randomCJKString("cjk-d", length) + "\n" +
+			"CJK Extension E\n" + randomCJKString("cjk-e", length) + "\n" +
+			"CJK Extension F\n" + randomCJKString("cjk-f", length) + "\n" +
+			"CJK Extension G\n" + randomCJKString("cjk-g", length) + "\n" +
+			"CJK Extension H\n" + randomCJKString("cjk-h", length) + "\n" +
+			"CJK Extension I\n" + randomCJKString("cjk-i", length) + "\n" +
+			"CJK Extension J\n" + randomCJKString("cjk-j", length) + "\n" +
+			"CJK Compatibility Ideographs\n" + randomCJKString("cjk-compat", length);
+			document.getElementById("input-text").value = html;
+			document.getElementById("convert-btn").click();
+		})
+	</script>
+</body>
+</html>
