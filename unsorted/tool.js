@@ -41,6 +41,7 @@ const topSectionButtons = {
 
 // Textboxes for the user to type in.
 const textAreas = {
+	cardFront:		document.getElementById("card-front-textarea"),
 	altForms:		document.getElementById("alt-forms-textarea"),
 	readings:		document.getElementById("readings-textarea"),
 	definitions:	document.getElementById("definitions-textarea"),
@@ -51,6 +52,7 @@ const textAreas = {
 
 // Headers. The colored text above each element in textAreas ^.
 const headers = {
+	cardFront:		document.getElementById("card-front-header"),
 	altForms:		document.getElementById("alt-forms-header"),
 	readings:		document.getElementById("readings-header"),
 	definitions:	document.getElementById("definitions-header"),
@@ -62,6 +64,7 @@ const headers = {
 
 // Checkboxes for each header.
 const checkboxes = {
+	tooLong:	 	document.getElementById("too-long-checkbox"),
 	altForms:	 	document.getElementById("alt-forms-checkbox"),
 	readings:		document.getElementById("readings-checkbox"),
 	definitions:	document.getElementById("definitions-checkbox"),
@@ -296,6 +299,39 @@ function formatExamples() {
 	// let test2 = examplesTextArea.value;
 	// console.log(test1);
 	// console.log(test2);
+}
+
+function formatCardFront() {
+	playClickSound();
+	const replacements = {
+		"(":	"<ruby><rb>",
+		")[":	"</rb><rp>(</rp><rt>",
+		"]":	"</rt><rp>)</rp></ruby>",
+		"(":	"<ruby>",
+		")[":	"<rt>",
+		"]":	"</rt></ruby>",
+		// "":		"()[]",
+		// "":		"{}[]",	// uhh what
+		"`":	"<b>",
+		"~":	"</b>",
+		// "(":	"(<rb>",
+		// ")":	"</rb>)"
+	};
+
+	const pattern = new RegExp(
+		Object.keys(replacements).map(
+			k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+		).join('|'), 'g'
+	);
+	if (checkboxes.tooLong.checked) {
+		textAreas.cardFront.value = 
+			!textAreas.cardFront.value.startsWith('<span class="six-or-more">') ?
+			`<span class="six-or-more">${textAreas.cardFront.value}</span>` :
+			textAreas.cardFront.value.replaceAll('<span class="six-or-more">', "").replaceAll("</span>", "")
+	}
+	textAreas.cardFront.value = textAreas.cardFront.value.replace(
+		pattern, match => replacements[match]
+	);
 }
 
 // Adds all of text in the textboxes into one big string, and put it in the HTML
@@ -742,6 +778,7 @@ function switchLanguage() {
 		topSectionButtons.lightDarkMode.title = body.classList
 			.contains("light-mode") ? "dark mode" : "light mode";
 		setInnerHTML(headers, {
+			cardFront:		"Card front",
 			altForms:		"<label for='alt-forms-checkbox'>Alternative forms</label>",
 			readings:		"<label for='readings-checkbox'>Readings</label>",
 			definitions:	"<label for='definitions-checkbox'>Definition</label>",

@@ -10,19 +10,18 @@
 	</head>
 	<body class="light-mode">
 		<div id="anki">
-			<div id="modes" class="unhighlightable">
-				<strong id="disclaimer"></strong><br>
-				<input type="radio" id="hiragana-only-radio" name="conversion-mode"><label id="hiragana-only-radio-label" for="hiragana-only-radio"></label><br>
-				<input type="radio" id="regular-word-radio" name="conversion-mode"><label id="regular-word-radio-label" for="regular-word-radio"></label><br>
-				<input type="radio" id="kanji-entry-radio" name="conversion-mode"><label id="kanji-entry-radio-label" for="kanji-entry-radio"></label><br>
-				<button type="button" id="set-preset-button" onclick="setCheckboxes()"></button> ・ 
-				<button type="button" id="reset-button" onclick="clearAll(1); playClickSound();"></button> ・ 
-				<button type="button" id="clear-button" onclick="clearAll(0)">clear</button> ・
-				<button type="button" id="switch-language-button" onclick="switchLanguage()"></button> ・ 
-				<button type="button" id="light-dark-mode-button" onclick="toggleDarkMode()" title="dark mode"></button><br>
-			</div>
-
 			<div class="input-boxes-left">
+				<div id="modes" class="unhighlightable">
+					<strong id="disclaimer"></strong><br>
+					<input type="radio" id="hiragana-only-radio" name="conversion-mode"><label id="hiragana-only-radio-label" for="hiragana-only-radio"></label><br>
+					<input type="radio" id="regular-word-radio" name="conversion-mode"><label id="regular-word-radio-label" for="regular-word-radio"></label><br>
+					<input type="radio" id="kanji-entry-radio" name="conversion-mode"><label id="kanji-entry-radio-label" for="kanji-entry-radio"></label><br>
+					<button type="button" id="set-preset-button" onclick="setCheckboxes()"></button> ・ 
+					<button type="button" id="reset-button" onclick="clearAll(1); playClickSound();"></button> ・ 
+					<button type="button" id="clear-button" onclick="clearAll(0)">clear</button> ・
+					<button type="button" id="switch-language-button" onclick="switchLanguage()"></button> ・ 
+					<button type="button" id="light-dark-mode-button" onclick="toggleDarkMode()" title="dark mode"></button><br>
+				</div>
 				<span class="element-headers unhighlightable" id="alt-forms-header"><label for="alt-forms-checkbox"></label></span><br>
 				<input type="checkbox" id="alt-forms-checkbox" name="alt-forms-checkbox-name" onclick="toggleHeaderColor(event, headers.altForms, '#f00');"><button class="format-buttons" type="button" onclick="formatAltForms()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.altForms.value)"></button>
 				<span id="variation-selectors" class="unhighlightable">
@@ -58,6 +57,12 @@
 			</div>
 
 			<div class="input-boxes-right">
+				<span class="element-headers unhighlightable" id="card-front-header"></span><br>
+				<button class="format-buttons" type="button" onclick="formatCardFront()"></button>
+				<span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.cardFront.value)"></button> 
+				<input type="checkbox" id="too-long-checkbox" name="too-long-checkbox-name"> (six or more)
+				<textarea id="card-front-textarea" rows="5" placeholder="" value=""></textarea>
+
 				<span class="element-headers unhighlightable" id="readings-header"><label for="readings-checkbox"></label></span><br>
 				<input type="checkbox" id="readings-checkbox" name="readings-checkbox-name" onclick="toggleHeaderColor(event, headers.readings, '#daa520');"><button class="format-buttons" type="button" onclick="formatReadings()"></button> <span class="unhighlightable">・</span><button type="button" class="copy-buttons" onclick="copy(textAreas.readings.value)"></button><br>
 				<textarea id="readings-textarea" rows="10" placeholder="" value=""></textarea><br>

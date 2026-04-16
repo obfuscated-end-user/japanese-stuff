@@ -58,12 +58,10 @@ button, select {
 
 /* The two screens */
 /* Left */
-#modes {
+#modes, #card-front-text {
 	border: solid 2px #000;
 	border-radius: 10px;
-	margin: 10px;
 	padding: 1%;
-	width: 47%;
 }
 
 #anki {
