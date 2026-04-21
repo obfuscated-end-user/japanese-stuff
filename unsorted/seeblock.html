@@ -146,7 +146,7 @@
 			gap: 15px;
 			margin-bottom: 20px;
 		}
-		#convert-btn, #sample-text-btn, #clear-btn {
+		#convert-btn, #sample-text-btn, #clear-btn, #wiki-btn {
 			background: linear-gradient(135deg, #3498db, #2980b9);
 			color: white;
 			border: none;
@@ -166,7 +166,7 @@
 			background: linear-gradient(135deg, #c0392b, #a93226);
 			box-shadow: 0 6px 20px rgba(231,76,60,0.6);
 		}
-		#convert-btn:hover, #sample-text-btn:hover {
+		#convert-btn:hover, #sample-text-btn:hover, #wiki-btn:hover {
 			transform: translateY(-2px);
 			box-shadow: 0 6px 20px rgba(52,152,219,0.6);
 		}
@@ -305,7 +305,7 @@
 				font-size: 20px;
 			}
 		}
-		#font-selector {
+		#font-selector, #wiki-input {
 			padding: 8px 12px;
 			border-radius: 6px;
 			border: 2px solid #ddd;
@@ -313,7 +313,7 @@
 			background: #fff;
 			min-width: 180px;
 		}
-		#font-selector:focus {
+		#font-selector:focus, #wiki-input:focus {
 			outline: none;
 			border-color: #3498db;
 			box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
@@ -553,6 +553,8 @@
 			<button type="button" id="style-toggle" title="Cycle font style">𝒜𝒷𝒸</button>
 			<input type="button" value="Convert" id="convert-btn"/>
 			<input type="button" value="Sample text" id="sample-text-btn"/>
+			<input type="text" id="wiki-input" placeholder="Wikipedia title or URL" style="width: 200px; margin-left: 10px;">
+			<input type="button" value="Wikipedia" id="wiki-btn" title="Get Wikipedia article text (run server.bat)"/>
 			<input type="button" value="Clear" id="clear-btn" title="Clear input and preview"/>
 			<br><br>
 			<div class="link-selector">
@@ -1002,6 +1004,92 @@
 			}
 			const icons = ["ABC", '𝑨𝑩𝑪', "𝒜𝒷𝒸"]; 
 			this.textContent = icons[currentStyle];
+		});
+
+		// COMPLETE Wikipedia function - SYNTAX FIXED
+		document.getElementById("wiki-btn").addEventListener("click", async function() {
+			const wikiInput = document.getElementById("wiki-input");
+			const inputText = document.getElementById("input-text");
+			const inputValue = wikiInput.value.trim();
+			if (!inputValue) {
+				alert("Please enter a Wikipedia title or URL");
+				wikiInput.focus();
+				return;
+			}
+			let lang = "en";
+			let title = inputValue;
+			// parse url if provided
+			if (inputValue.includes("wikipedia.org")) {
+				const url = new URL(inputValue);
+				lang = url.hostname.split(".")[0];
+				title = decodeURIComponent(url.pathname.split("/").pop()).replace(/_/g, " ");
+			}
+
+			const apiUrl = `https://${lang}.wikipedia.org/w/api.php`;
+			const params = new URLSearchParams({
+				action: "query",
+				format: "json",
+				titles: title,
+				prop: "extracts",
+				explaintext: true,
+				exsectionformat: "plain",
+				redirects: 1,
+				origin: "*"
+			});
+
+			// multiple wiorking cors proixies
+			const proxies = [
+				`https://api.cors.lol/?url=` + encodeURIComponent(`${apiUrl}?${params}`),
+				`https://corsproxy.io/?` + encodeURIComponent(`${apiUrl}?${params}`),
+				`https://thingproxy.freeboard.io/fetch/` + `${apiUrl}?${params}`
+			];
+
+			this.disabled = true;
+			this.value = "Loading...";
+			this.style.opacity = "0.7";
+
+			let data = null;
+
+			// try each proxy until each one works
+			for (let proxyUrl of proxies) {
+				try {
+					console.log("Trying proxy:", proxyUrl.substring(0, 50) + "...");
+					const response = await fetch(proxyUrl);
+
+					if (!response.ok)
+						throw new Error(`HTTP ${response.status}`);
+
+					data = await response.json();
+					console.log("Success with proxy!");
+					break;
+				} catch (e) {
+					console.log("Proxy failed:", e.message);
+					continue;
+				}
+			}
+
+			// restore button
+			this.disabled = false;
+			this.value = "Wikipedia";
+			this.style.opacity = "1";
+
+			if (!data || !data.query) {
+				alert("All proxies failed. Try again or use a simpler title.");
+				return;
+			}
+
+			const page = Object.values(data.query.pages)[0];
+
+			if (page.missing) {
+				alert(`Page not found: ${title}\nTry a more specific title.`);
+				wikiInput.focus();
+			} else {
+				const text = page.extract || "";
+				inputText.value = text;
+				document.getElementById("convert-btn").click();
+				wikiInput.value = "";
+				console.log(`Loaded ${text.length} chars, ${text.length > 0 ? 'CJK analysis ready!' : 'No content'}`);
+			}
 		});
 	</script>
 </body>
