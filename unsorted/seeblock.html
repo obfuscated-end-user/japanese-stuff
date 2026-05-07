@@ -622,8 +622,7 @@
 							break;
 						}
 					}
-					if (isCJK)
-						break;
+					if (isCJK) break;
 				}
 
 				if (isCJK) {
@@ -670,8 +669,7 @@
 				(sum, v) => sum + v, 0);
 			const statsDiv = document.getElementById("char-stats");
 
-			if (charFreq.size === 0)
-				statsDiv.textContent = "No CJK characters.";
+			if (charFreq.size === 0) statsDiv.textContent = "No CJK characters.";
 			else {
 				// sort by frequency (desc), then codepoint (asc)
 				const sorted = [...charFreq.entries()].sort((a, b) => {
@@ -696,8 +694,7 @@
 								break;
 							}
 						}
-						if (className !== "non-cjk")
-							break;
+						if (className !== "non-cjk") break;
 					}
 
 					return `
@@ -720,10 +717,8 @@
 
 		const backToTopBtn = document.getElementById("back-to-top");
 		window.addEventListener("scroll", () => {
-			if (window.pageYOffset > 300)
-				backToTopBtn.classList.add("show");
-			else
-				backToTopBtn.classList.remove("show");
+			if (window.pageYOffset > 300) backToTopBtn.classList.add("show");
+			else backToTopBtn.classList.remove("show");
 		});
 
 		backToTopBtn.addEventListener("click", () => {
@@ -819,8 +814,7 @@
 			const option = document.createElement("option");
 			option.value = font.value;
 			option.textContent = font.label;
-			if (font.label === "Yu Mincho (default)")
-				option.selected = true;
+			if (font.label === "Yu Mincho (default)") option.selected = true;
 			fontSelector.appendChild(option);
 		});
 
@@ -858,16 +852,13 @@
 			// limit to only digits
 			this.value = this.value.replace(/[^0-9]/g, "");
 			const numValue = parseInt(this.value) || 0;
-			if (this.value === "" || numValue === 0)
-				this.value = "1";
-			if (numValue > 60)
-				this.value = "60";
+			if (this.value === "" || numValue === 0) this.value = "1";
+			if (numValue > 60) this.value = "60";
 			updateFontSize();
 		});
 
 		fontSizeInput.addEventListener("blur", function() {
-			if (!this.value || parseInt(this.value) < 1)
-				this.value = '25';
+			if (!this.value || parseInt(this.value) < 1) this.value = '25';
 			updateFontSize();
 		});
 
@@ -896,8 +887,7 @@
 		document.querySelectorAll('input[name="link-type"]').forEach(radio => {
 			radio.addEventListener("change", function() {
 				const convertBtn = document.getElementById("convert-btn");
-				if (convertBtn)
-					convertBtn.click();
+				if (convertBtn) convertBtn.click();
 			});
 		});
 
@@ -905,8 +895,7 @@
 		function randomCJKString(block, length) {
 			// use the shared ranges object (defined globally or passed in)
 			const blockRanges = ranges[block];
-			if (!blockRanges)
-				return "";
+			if (!blockRanges) return "";
 
 			// function to pick a random code point from any range(s)
 			function randFromRanges(rangesArray) {
@@ -986,7 +975,6 @@
 		});
 
 		const styleToggle = document.getElementById("style-toggle");
-
 		let currentStyle = 0;	// 0=normal, 1=bold, 2=italic
 		const styles = ["", "font-weight: bold", "font-style: italic"];
 
@@ -1006,7 +994,6 @@
 			this.textContent = icons[currentStyle];
 		});
 
-		// COMPLETE Wikipedia function - SYNTAX FIXED
 		document.getElementById("wiki-btn").addEventListener("click", async function() {
 			const wikiInput = document.getElementById("wiki-input");
 			const inputText = document.getElementById("input-text");
@@ -1055,10 +1042,7 @@
 				try {
 					console.log("Trying proxy:", proxyUrl.substring(0, 50) + "...");
 					const response = await fetch(proxyUrl);
-
-					if (!response.ok)
-						throw new Error(`HTTP ${response.status}`);
-
+					if (!response.ok) throw new Error(`HTTP ${response.status}`);
 					data = await response.json();
 					console.log("Success with proxy!");
 					break;
