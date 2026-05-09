@@ -148,10 +148,11 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 				if i % 5 == col:	# this entry belongs to this column
 					title = entry.get("title", "Unknown")
 					if entry.get("error"):
-						entries_html += f'<div style="border-left:4px solid red;padding:10px;margin:10px 0"><b>{escape(title)}</b><br><small>Error: {escape(entry["error"])}</small></div>'
+						entries_html += f'<div class="entry-box error" style="border-left:4px solid red;padding:10px;margin:10px 0"><b>{escape(title)}</b><br><small>Error: {escape(entry["error"])}</small></div>'
 					else:
 						link = f"https://en.wiktionary.org/wiki/{quote(title)}"
-						entries_html += f'<div style="border-left:4px solid blue;padding:10px;margin:10px 0"><a href="{link}" target="_blank" style="text-decoration:none;"><b style="font-size:20px">{escape(title)}</b></a><br><small>{entry.get("timestamp", "N/A")[:10]}</small></div>'
+						entry_id = f"entry-{hash(link) % 1000000}"
+						entries_html += f'<div id="{entry_id}" class="entry-box" data-href="{link}" style="padding:10px;margin:10px 0"><a href="{link}" target="_blank" class="wiktionary-link" style="text-decoration:none;"><b style="font-size:20px">{escape(title)}</b></a><br><small>{entry.get("timestamp", "N/A")[:10]}</small></div>'
 			entries_html += "</div>"
 		entries_html += '<div style="clear:both"></div>'
 
@@ -160,6 +161,46 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 <head>
 	<title>{category} - {len(entries)} results</title>
 	<meta charset="UTF-8">
+	<style>
+		.grid-container {{
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 10px;
+		}}
+
+		.entry-box {{
+			padding: 10px;
+			margin: 10px 0;
+			border: 2px solid black;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+			overflow: hidden;
+			overflow-y: auto;
+		}}
+
+		.entry-box b {{
+			font-size: 20px;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-wrap: break-word;
+			max-width: 100%;
+		}}
+
+		@media (max-width: 1200px) {{
+			.grid-container {{
+				grid-template-columns: repeat(3, 1fr);
+			}}
+		}}
+
+		@media (max-width: 768px) {{
+			.grid-container {{
+				grid-template-columns: repeat(2, 1fr);
+			}}
+		}}
+	</style>
 </head>
 <body>
 	<h1><a href="/">Back</a> | {category.replace("_", " ")}</h1>
@@ -171,41 +212,42 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 		<button onclick="copyApiUrl()">Copy API URL</button>
 		<button onclick="fetchMax()">Max 500</button>
 		<button onclick="refetch()">Refresh</button>
+		<button onclick="clearVisited()">Clear Visited</button>
 	</div>
 	<h2>{len(entries)} entries found ({limit} requested)</h2>
 	<div style="overflow:auto;">
 		{entries_html}
 	</div>
 	<script>
-	const apiUrl = `{api_url}`;
-	function copyApiUrl() {{
-		navigator.clipboard.writeText(apiUrl).then(function() {{
-			alert('API URL copied to clipboard!');
-		}}, function(err) {{
-			const textArea = document.createElement("textarea");
-			textArea.value = apiUrl;
-			document.body.appendChild(textArea);
-			textArea.focus();
-			textArea.select();
-			document.execCommand('copy');
-			document.body.removeChild(textArea);
-			alert('API URL copied to clipboard!');
-		}});
-	}}
-	function changeCategory() {{
-		const category = document.getElementById('category').value;
-		const limit = document.getElementById('limit').value;
-		window.location.href = `/fetch?category=${{encodeURIComponent(category)}}&limit=${{limit}}`;
-	}}
-	function refetch() {{
-		const category = document.getElementById('category').value;
-		const limit = document.getElementById('limit').value;
-		window.location.href = `/fetch?category=${{encodeURIComponent(category)}}&limit=${{limit}}`;
-	}}
-	function fetchMax() {{
-		document.getElementById('limit').value = '500';
-		refetch();
-	}}
+		const apiUrl = `{api_url}`;
+		function copyApiUrl() {{
+			navigator.clipboard.writeText(apiUrl).then(function() {{
+				alert('API URL copied to clipboard!');
+			}}, function(err) {{
+				const textArea = document.createElement("textarea");
+				textArea.value = apiUrl;
+				document.body.appendChild(textArea);
+				textArea.focus();
+				textArea.select();
+				document.execCommand('copy');
+				document.body.removeChild(textArea);
+				alert('API URL copied to clipboard!');
+			}});
+		}}
+		function changeCategory() {{
+			const category = document.getElementById('category').value;
+			const limit = document.getElementById('limit').value;
+			window.location.href = `/fetch?category=${{encodeURIComponent(category)}}&limit=${{limit}}`;
+		}}
+		function refetch() {{
+			const category = document.getElementById('category').value;
+			const limit = document.getElementById('limit').value;
+			window.location.href = `/fetch?category=${{encodeURIComponent(category)}}&limit=${{limit}}`;
+		}}
+		function fetchMax() {{
+			document.getElementById('limit').value = '500';
+			refetch();
+		}}
 	</script>
 </body>
 </html>"""
