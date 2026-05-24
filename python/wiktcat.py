@@ -167,7 +167,6 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 			grid-template-columns: repeat(5, 1fr);
 			gap: 10px;
 		}}
-
 		.entry-box {{
 			padding: 10px;
 			margin: 10px 0;
@@ -177,7 +176,6 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 			overflow: hidden;
 			overflow-y: auto;
 		}}
-
 		.entry-box b {{
 			font-size: 20px;
 			display: -webkit-box;
@@ -188,13 +186,11 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 			word-wrap: break-word;
 			max-width: 100%;
 		}}
-
 		@media (max-width: 1200px) {{
 			.grid-container {{
 				grid-template-columns: repeat(3, 1fr);
 			}}
 		}}
-
 		@media (max-width: 768px) {{
 			.grid-container {{
 				grid-template-columns: repeat(2, 1fr);
