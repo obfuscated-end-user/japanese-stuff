@@ -25,6 +25,7 @@ CATEGORIES = sorted([
 	"Japanese-coined_CJKV_characters",
 	"Japanese-only_CJKV_Characters",
 	"Japanese_hyōgai_kanji",
+	"Japanese_kanji",
 	"Japanese_terms_spelled_with_hyōgai_kanji",
 	"Japanese_terms_spelled_with_jinmeiyō_kanji",
 	"Japanese_yojijukugo",
@@ -208,7 +209,6 @@ class WiktionaryHandler(http.server.BaseHTTPRequestHandler):
 		<button onclick="copyApiUrl()">Copy API URL</button>
 		<button onclick="fetchMax()">Max 500</button>
 		<button onclick="refetch()">Refresh</button>
-		<button onclick="clearVisited()">Clear Visited</button>
 	</div>
 	<h2>{len(entries)} entries found ({limit} requested)</h2>
 	<div style="overflow:auto;">
