@@ -558,10 +558,12 @@
 			<input type="button" value="Clear" id="clear-btn" title="Clear input and preview"/>
 			<br><br>
 			<div class="link-selector">
-				<label><input type="radio" name="link-type" value="wiktionary-en" checked> Wiktionary (en)</label>
-				<label><input type="radio" name="link-type" value="wiktionary-ja"> Wiktionary (ja)</label>
-				<label><input type="radio" name="link-type" value="ctext"> CText</label>
-				<label><input type="radio" name="link-type" value="youtube"> YouTube</label>
+				<label><input type="radio" name="link-type" value="wiktionary-en" checked>Wiktionary (en)</label>
+				<label><input type="radio" name="link-type" value="wiktionary-ja">Wiktionary (ja)</label>
+				<label><input type="radio" name="link-type" value="ctext">CText</label>
+				<label><input type="radio" name="link-type" value="google">Google</label>
+				<label><input type="radio" name="link-type" value="youtube">YouTube</label>
+				<label><input type="radio" name="link-type" value="zi-tools">zi.tools</label>
 			</div>
 		</div>
 
@@ -638,8 +640,14 @@
 						case "ctext":
 							href = `https://ctext.org/dictionary.pl?if=en&char=${encodeURIComponent(char)}`;
 							break;
+						case "google":
+							href = `https://www.google.com/search?q=${encodeURIComponent(char)}`;
+							break;
 						case "youtube":
 							href = `https://www.youtube.com/results?search_query=${encodeURIComponent(char)}`;
+							break;
+						case "zi-tools":
+							href = `https://zi.tools/zi/${encodeURIComponent(char)}`;
 							break;
 						case "wiktionary-en":	// DO NOT MOVE UPWARDS
 						default:
