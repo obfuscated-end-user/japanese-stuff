@@ -560,6 +560,7 @@
 			<div class="link-selector">
 				<label><input type="radio" name="link-type" value="wiktionary-en" checked>Wiktionary (en)</label>
 				<label><input type="radio" name="link-type" value="wiktionary-ja">Wiktionary (ja)</label>
+				<label><input type="radio" name="link-type" value="jisho">jisho</label>
 				<label><input type="radio" name="link-type" value="ctext">CText</label>
 				<label><input type="radio" name="link-type" value="google">Google</label>
 				<label><input type="radio" name="link-type" value="youtube">YouTube</label>
@@ -636,6 +637,9 @@
 					switch(linkType) {
 						case "wiktionary-ja":
 							href = `https://ja.wiktionary.org/wiki/${encodeURIComponent(char)}`;
+							break;
+						case "jisho":
+							href = `https://jisho.org/search/${encodeURIComponent(char)}`;
 							break;
 						case "ctext":
 							href = `https://ctext.org/dictionary.pl?if=en&char=${encodeURIComponent(char)}`;
